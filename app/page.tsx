@@ -12,16 +12,25 @@ export default function Home() {
           </p>
         </div>
 
+        <div className="flex justify-center gap-4">
+          <a href="/login" className="px-6 py-2 bg-green-500 hover:bg-green-600 text-white rounded-lg font-semibold transition-colors">
+            Login
+          </a>
+          <a href="/signup" className="px-6 py-2 bg-slate-700 hover:bg-slate-600 text-white rounded-lg font-semibold transition-colors">
+            Sign Up
+          </a>
+        </div>
+
         {/* Coming Soon Message */}
         <div className="bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-2xl p-8 md:p-12 space-y-6">
           <h2 className="text-3xl md:text-4xl font-semibold text-white">
             Coming Soon
           </h2>
           <p className="text-lg text-slate-300 max-w-2xl mx-auto">
-            We're building the future of electric vehicle fleet management. 
+            We're building the future of electric vehicle fleet management.
             Track your Tesla fleet in real-time, manage rentals, and optimize your operations.
           </p>
-          
+
           {/* Features Preview */}
           <div className="grid md:grid-cols-3 gap-6 mt-8 text-left">
             <div className="space-y-2">

@@ -1,5 +1,7 @@
 import type { Metadata } from 'next'
 import './globals.css'
+import ConfigureAmplify from '@/components/ConfigureAmplify'
+import Navbar from '@/components/Navbar'
 
 export const metadata: Metadata = {
   title: 'GigWheels EV - Electric Vehicle Fleet Management',
@@ -13,7 +15,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <ConfigureAmplify />
+        <Navbar />
+        {children}
+      </body>
     </html>
   )
 }

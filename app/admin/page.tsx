@@ -1,21 +1,28 @@
 export default function AdminDashboard() {
   return (
-    <div className="min-h-screen bg-slate-900 p-8">
-      <div className="max-w-7xl mx-auto">
-        <h1 className="text-4xl font-bold text-white mb-6">Admin Dashboard</h1>
-        <div className="bg-slate-800 rounded-lg p-6 border border-slate-700 space-y-4">
-          <p className="text-slate-300">
-            Admin portal coming soon. Full system control including:
-          </p>
-          <ul className="list-disc list-inside text-slate-300 space-y-2">
-            <li>User management (add/remove/edit permissions)</li>
-            <li>Vehicle fleet management (add/remove vehicles, set pricing)</li>
-            <li>Complete system access and configuration</li>
-            <li>Analytics and reporting</li>
-            <li>Tesla API integration management</li>
-          </ul>
+    <div>
+      <h1 className="text-3xl font-bold text-gray-900 mb-6">Dashboard Overview</h1>
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {/* Placeholder Stats */}
+        <div className="bg-white overflow-hidden shadow rounded-lg">
+          <div className="px-4 py-5 sm:p-6">
+            <dt className="text-sm font-medium text-gray-500 truncate">Total Vehicles</dt>
+            <dd className="mt-1 text-3xl font-semibold text-gray-900">0</dd>
+          </div>
+        </div>
+        <div className="bg-white overflow-hidden shadow rounded-lg">
+          <div className="px-4 py-5 sm:p-6">
+            <dt className="text-sm font-medium text-gray-500 truncate">Active Reservations</dt>
+            <dd className="mt-1 text-3xl font-semibold text-gray-900">0</dd>
+          </div>
+        </div>
+        <div className="bg-white overflow-hidden shadow rounded-lg">
+          <div className="px-4 py-5 sm:p-6">
+            <dt className="text-sm font-medium text-gray-500 truncate">Revenue (Month)</dt>
+            <dd className="mt-1 text-3xl font-semibold text-gray-900">$0.00</dd>
+          </div>
         </div>
       </div>
     </div>
-  )
+  );
 }
