@@ -170,7 +170,7 @@ export default function EditVehicle({ params }: { params: Promise<{ id: string }
                         <select
                             id="status"
                             name="status"
-                            value={formData.status}
+                            value={formData.status || ""}
                             onChange={(e) => setFormData({ ...formData, status: e.target.value as any })}
                             className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm border p-2"
                         >
