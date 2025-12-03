@@ -78,7 +78,7 @@ export default function VehicleList() {
                                                         {vehicle.make} {vehicle.model}
                                                     </div>
                                                     <div className="text-sm text-gray-500">
-                                                        {vehicle.year} • {vehicle.vin}
+                                                        {vehicle.year} • {vehicle.color || 'Unknown Color'} • {vehicle.vin}
                                                     </div>
                                                 </div>
                                             </td>
@@ -89,7 +89,7 @@ export default function VehicleList() {
                                                             <div className="w-24 bg-gray-200 rounded-full h-2">
                                                                 <div
                                                                     className={`h-2 rounded-full ${vehicle.batteryLevel > 60 ? 'bg-green-500' :
-                                                                            vehicle.batteryLevel > 30 ? 'bg-yellow-500' : 'bg-red-500'
+                                                                        vehicle.batteryLevel > 30 ? 'bg-yellow-500' : 'bg-red-500'
                                                                         }`}
                                                                     style={{ width: `${vehicle.batteryLevel}%` }}
                                                                 />
@@ -110,9 +110,9 @@ export default function VehicleList() {
                                             </td>
                                             <td className="px-3 py-4">
                                                 <span className={`inline-flex rounded-full px-3 py-1 text-xs font-semibold ${vehicle.status === 'AVAILABLE' ? 'bg-green-100 text-green-800' :
-                                                        vehicle.status === 'RENTED' ? 'bg-blue-100 text-blue-800' :
-                                                            vehicle.status === 'CHARGING' ? 'bg-yellow-100 text-yellow-800' :
-                                                                'bg-red-100 text-red-800'
+                                                    vehicle.status === 'RENTED' ? 'bg-blue-100 text-blue-800' :
+                                                        vehicle.status === 'CHARGING' ? 'bg-yellow-100 text-yellow-800' :
+                                                            'bg-red-100 text-red-800'
                                                     }`}>
                                                     {vehicle.status}
                                                 </span>

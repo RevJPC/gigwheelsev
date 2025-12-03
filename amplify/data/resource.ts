@@ -17,11 +17,12 @@ const schema = a.schema({
         vin: a.string().required(),
         licensePlate: a.string(),
         batteryLevel: a.integer(), // 0-100
-        range: a.integer(), // miles
+        range: a.float(), // miles
         status: a.ref('VehicleStatus'),
         locationLat: a.float(),
         locationLng: a.float(),
         pricePerDay: a.float(),
+        color: a.string(),
         imageUrl: a.string(),
         reservations: a.hasMany('Reservation', 'vehicleId'),
     }).authorization(allow => [allow.publicApiKey()]), // Open for now, refine later

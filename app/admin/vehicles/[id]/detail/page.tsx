@@ -134,9 +134,9 @@ export default function VehicleDetail({ params }: { params: Promise<{ id: string
                         <div className="flex items-center justify-between py-3 border-b">
                             <span className="text-sm font-medium text-gray-500">Status</span>
                             <span className={`inline-flex rounded-full px-3 py-1 text-sm font-semibold ${vehicle.status === 'AVAILABLE' ? 'bg-green-100 text-green-800' :
-                                    vehicle.status === 'RENTED' ? 'bg-blue-100 text-blue-800' :
-                                        vehicle.status === 'CHARGING' ? 'bg-yellow-100 text-yellow-800' :
-                                            'bg-red-100 text-red-800'
+                                vehicle.status === 'RENTED' ? 'bg-blue-100 text-blue-800' :
+                                    vehicle.status === 'CHARGING' ? 'bg-yellow-100 text-yellow-800' :
+                                        'bg-red-100 text-red-800'
                                 }`}>
                                 {vehicle.status}
                             </span>
@@ -199,6 +199,10 @@ export default function VehicleDetail({ params }: { params: Promise<{ id: string
                         <div className="flex justify-between py-2 border-b">
                             <dt className="text-sm font-medium text-gray-500">Year</dt>
                             <dd className="text-sm text-gray-900">{vehicle.year}</dd>
+                        </div>
+                        <div className="flex justify-between py-2 border-b">
+                            <dt className="text-sm font-medium text-gray-500">Color</dt>
+                            <dd className="text-sm text-gray-900">{vehicle.color || 'N/A'}</dd>
                         </div>
                         <div className="flex justify-between py-2">
                             <dt className="text-sm font-medium text-gray-500">VIN</dt>

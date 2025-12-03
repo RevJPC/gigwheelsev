@@ -144,6 +144,7 @@ export const handler: Handler = async (event) => {
                             range: vehicleData?.charge_state?.battery_range || null,
                             locationLat: vehicleData?.drive_state?.latitude || null,
                             locationLng: vehicleData?.drive_state?.longitude || null,
+                            color: vehicleData?.vehicle_config?.exterior_color || null,
                             status: status
                         }
                     }
@@ -186,6 +187,7 @@ export const handler: Handler = async (event) => {
                             range: vehicleData?.charge_state?.battery_range || null,
                             locationLat: vehicleData?.drive_state?.latitude || null,
                             locationLng: vehicleData?.drive_state?.longitude || null,
+                            color: vehicleData?.vehicle_config?.exterior_color || null,
                             status: status,
                             pricePerDay: 150
                         }

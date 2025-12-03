@@ -92,7 +92,7 @@
             "range": {
               "name": "range",
               "isArray": false,
-              "type": "Int",
+              "type": "Float",
               "isRequired": false,
               "attributes": []
             },
@@ -123,6 +123,13 @@
               "name": "pricePerDay",
               "isArray": false,
               "type": "Float",
+              "isRequired": false,
+              "attributes": []
+            },
+            "color": {
+              "name": "color",
+              "isArray": false,
+              "type": "String",
               "isRequired": false,
               "attributes": []
             },

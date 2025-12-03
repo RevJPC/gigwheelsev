@@ -166,7 +166,7 @@
      "S3Bucket": {
       "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
      },
-     "S3Key": "736b3d937cdbba30e143f170ddce5a0dbe400117531c221bd728efe29a231a89.zip"
+     "S3Key": "f1c26a3e0cd79b1078f4475d0861d430df45c60d115ad491ea744a056e4f606c.zip"
     },
     "Environment": {
      "Variables": {
@@ -222,7 +222,7 @@
    "DeletionPolicy": "Delete",
    "Metadata": {
     "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/tesla-sync-lambda/Resource",
-    "aws:asset:path": "asset.736b3d937cdbba30e143f170ddce5a0dbe400117531c221bd728efe29a231a89",
+    "aws:asset:path": "asset.f1c26a3e0cd79b1078f4475d0861d430df45c60d115ad491ea744a056e4f606c",
     "aws:asset:is-bundled": true,
     "aws:asset:property": "Code"
    }
@@ -398,7 +398,7 @@
      ]
     },
     "DefinitionS3Location": {
-     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/55fe3095be5cbe936068b7a76d07de96f6f11b2a84a9079db78455fbe8bb4a92.graphql"
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/f37d052411e92d3d7a8854de798f456108e4d20741483297339ea27fa3f2fc68.graphql"
     }
    },
    "UpdateReplacePolicy": "Delete",
@@ -416,7 +416,7 @@
       "ApiId"
      ]
     },
-    "Expires": 1767319367
+    "Expires": 1767372911
    },
    "UpdateReplacePolicy": "Delete",
    "DeletionPolicy": "Delete",
@@ -1133,7 +1133,7 @@
      }
     ],
     "SourceObjectKeys": [
-     "098cb46e23ef726946f2b4efa0aa744c93483fcb1c2bc45036a90e824adfb3ec.zip"
+     "12481469abf4ff7837a54324e524bd40b5dcaf48f4dca68697e0f62258966023.zip"
     ],
     "SourceMarkers": [
      {}
@@ -1638,7 +1638,7 @@
      }
     ],
     "SourceObjectKeys": [
-     "34df264eb191dd0bef090d0000acbd7704f532a77453e5b2e3cd2c57c1fba2fe.zip"
+     "42ea072137cd7d99240a85fff8a58e50cd7542749cb1931167babc279989101b.zip"
     ],
     "SourceMarkers": [
      {}
