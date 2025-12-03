@@ -53,13 +53,10 @@ export default function VehicleList() {
                                 <thead className="bg-gray-50">
                                     <tr>
                                         <th scope="col" className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">
-                                            Make & Model
+                                            Vehicle
                                         </th>
                                         <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-                                            Year
-                                        </th>
-                                        <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-                                            VIN
+                                            Battery & Range
                                         </th>
                                         <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
                                             Status
@@ -68,37 +65,82 @@ export default function VehicleList() {
                                             Price/Day
                                         </th>
                                         <th scope="col" className="relative py-3.5 pl-3 pr-4 sm:pr-6">
-                                            <span className="sr-only">Edit</span>
+                                            <span className="sr-only">Actions</span>
                                         </th>
                                     </tr>
                                 </thead>
                                 <tbody className="divide-y divide-gray-200 bg-white">
                                     {vehicles.map((vehicle) => (
-                                        <tr key={vehicle.id}>
-                                            <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
-                                                {vehicle.make} {vehicle.model}
+                                        <tr key={vehicle.id} className="hover:bg-gray-50">
+                                            <td className="py-4 pl-4 pr-3 sm:pl-6">
+                                                <div className="flex flex-col">
+                                                    <div className="font-medium text-gray-900">
+                                                        {vehicle.make} {vehicle.model}
+                                                    </div>
+                                                    <div className="text-sm text-gray-500">
+                                                        {vehicle.year} • {vehicle.vin}
+                                                    </div>
+                                                </div>
                                             </td>
-                                            <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{vehicle.year}</td>
-                                            <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{vehicle.vin}</td>
-                                            <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                                                <span className={`inline-flex rounded-full px-2 text-xs font-semibold leading-5 ${vehicle.status === 'AVAILABLE' ? 'bg-green-100 text-green-800' :
+                                            <td className="px-3 py-4">
+                                                {vehicle.batteryLevel !== null && vehicle.batteryLevel !== undefined ? (
+                                                    <div className="flex flex-col gap-1">
+                                                        <div className="flex items-center gap-2">
+                                                            <div className="w-24 bg-gray-200 rounded-full h-2">
+                                                                <div
+                                                                    className={`h-2 rounded-full ${vehicle.batteryLevel > 60 ? 'bg-green-500' :
+                                                                            vehicle.batteryLevel > 30 ? 'bg-yellow-500' : 'bg-red-500'
+                                                                        }`}
+                                                                    style={{ width: `${vehicle.batteryLevel}%` }}
+                                                                />
+                                                            </div>
+                                                            <span className="text-sm font-medium text-gray-900">
+                                                                {vehicle.batteryLevel}%
+                                                            </span>
+                                                        </div>
+                                                        {vehicle.range && (
+                                                            <div className="text-xs text-gray-500">
+                                                                {Math.round(vehicle.range)} mi range
+                                                            </div>
+                                                        )}
+                                                    </div>
+                                                ) : (
+                                                    <span className="text-sm text-gray-400">No data</span>
+                                                )}
+                                            </td>
+                                            <td className="px-3 py-4">
+                                                <span className={`inline-flex rounded-full px-3 py-1 text-xs font-semibold ${vehicle.status === 'AVAILABLE' ? 'bg-green-100 text-green-800' :
                                                         vehicle.status === 'RENTED' ? 'bg-blue-100 text-blue-800' :
-                                                            'bg-yellow-100 text-yellow-800'
+                                                            vehicle.status === 'CHARGING' ? 'bg-yellow-100 text-yellow-800' :
+                                                                'bg-red-100 text-red-800'
                                                     }`}>
                                                     {vehicle.status}
                                                 </span>
                                             </td>
-                                            <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">${vehicle.pricePerDay}</td>
-                                            <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
-                                                <Link href={`/admin/vehicles/${vehicle.id}`} className="text-indigo-600 hover:text-indigo-900 mr-4">
-                                                    Edit
-                                                </Link>
-                                                <button
-                                                    onClick={() => deleteVehicle(vehicle.id)}
-                                                    className="text-red-600 hover:text-red-900"
-                                                >
-                                                    Delete
-                                                </button>
+                                            <td className="px-3 py-4 text-sm text-gray-900">
+                                                ${vehicle.pricePerDay}
+                                            </td>
+                                            <td className="relative py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
+                                                <div className="flex justify-end gap-3">
+                                                    <Link
+                                                        href={`/admin/vehicles/${vehicle.id}/detail`}
+                                                        className="text-indigo-600 hover:text-indigo-900"
+                                                    >
+                                                        View
+                                                    </Link>
+                                                    <Link
+                                                        href={`/admin/vehicles/${vehicle.id}`}
+                                                        className="text-indigo-600 hover:text-indigo-900"
+                                                    >
+                                                        Edit
+                                                    </Link>
+                                                    <button
+                                                        onClick={() => deleteVehicle(vehicle.id)}
+                                                        className="text-red-600 hover:text-red-900"
+                                                    >
+                                                        Delete
+                                                    </button>
+                                                </div>
                                             </td>
                                         </tr>
                                     ))}

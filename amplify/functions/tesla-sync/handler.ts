@@ -104,6 +104,16 @@ export const handler: Handler = async (event) => {
                     }
                 `;
 
+                // Map Tesla state to our status
+                let status = 'AVAILABLE';
+                if (tv.state === 'asleep' || tv.state === 'offline') {
+                    status = 'AVAILABLE'; // Car is just sleeping, still available
+                } else if (tv.in_service) {
+                    status = 'MAINTENANCE';
+                } else if (tv.state === 'online') {
+                    status = 'AVAILABLE';
+                }
+
                 await client.graphql({
                     query: updateVehicleMutation,
                     variables: {
@@ -113,7 +123,7 @@ export const handler: Handler = async (event) => {
                             range: tv.charge_state?.battery_range,
                             locationLat: tv.drive_state?.latitude,
                             locationLng: tv.drive_state?.longitude,
-                            status: tv.state === 'online' ? 'AVAILABLE' : 'MAINTENANCE'
+                            status: status
                         }
                     }
                 });
@@ -129,17 +139,31 @@ export const handler: Handler = async (event) => {
                     }
                 `;
 
+                // Extract year from VIN (10th character)
+                const vinYearCode = tv.vin[9];
+                const yearMap: { [key: string]: number } = {
+                    'M': 2021, 'N': 2022, 'P': 2023, 'R': 2024, 'S': 2025,
+                    'T': 2026, 'V': 2027, 'W': 2028, 'X': 2029, 'Y': 2030
+                };
+                const year = yearMap[vinYearCode] || 2023;
+
+                // Map Tesla state to our status
+                let status = 'AVAILABLE';
+                if (tv.in_service) {
+                    status = 'MAINTENANCE';
+                }
+
                 await client.graphql({
                     query: createVehicleMutation,
                     variables: {
                         input: {
                             make: "Tesla",
                             model: "Model " + (tv.vin[3] || "X"),
-                            year: 2023,
+                            year: year,
                             vin: tv.vin,
                             batteryLevel: tv.charge_state?.battery_level,
                             range: tv.charge_state?.battery_range,
-                            status: 'AVAILABLE',
+                            status: status,
                             pricePerDay: 150
                         }
                     }

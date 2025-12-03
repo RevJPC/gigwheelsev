@@ -166,7 +166,7 @@
      "S3Bucket": {
       "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
      },
-     "S3Key": "dceb834ab74441720c7b9c84e4364f2ada4a6fc18ec809f216b3fdd49819c89e.zip"
+     "S3Key": "736b3d937cdbba30e143f170ddce5a0dbe400117531c221bd728efe29a231a89.zip"
     },
     "Environment": {
      "Variables": {
@@ -222,7 +222,7 @@
    "DeletionPolicy": "Delete",
    "Metadata": {
     "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/tesla-sync-lambda/Resource",
-    "aws:asset:path": "asset.dceb834ab74441720c7b9c84e4364f2ada4a6fc18ec809f216b3fdd49819c89e",
+    "aws:asset:path": "asset.736b3d937cdbba30e143f170ddce5a0dbe400117531c221bd728efe29a231a89",
     "aws:asset:is-bundled": true,
     "aws:asset:property": "Code"
    }
@@ -416,7 +416,7 @@
       "ApiId"
      ]
     },
-    "Expires": 1767298485
+    "Expires": 1767319367
    },
    "UpdateReplacePolicy": "Delete",
    "DeletionPolicy": "Delete",

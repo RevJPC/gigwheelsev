@@ -19,14 +19,14 @@ Copy-Item tesla-public-key.pem public\.well-known\appspecific\com.tesla.3p.publi
 
 1. Go to https://developer.tesla.com/
 2. Open your application
-3. Update **Redirect URI** to: `https://gigwheelev.com/admin/settings/callback`
+3. Update **Redirect URI** to: `https://gigwheelsev.com/admin/settings/callback`
 4. Save changes
 
 ## 3. Deploy to Production
 
-Deploy your app to `gigwheelev.com` - the public key will be accessible at:
+Deploy your app to `gigwheelsev.com` - the public key will be accessible at:
 ```
-https://gigwheelev.com/.well-known/appspecific/com.tesla.3p.public-key.pem
+https://gigwheelsev.com/.well-known/appspecific/com.tesla.3p.public-key.pem
 ```
 
 ## 4. Generate Partner Authentication Token
@@ -63,7 +63,7 @@ Update `amplify/functions/tesla-register/handler.ts` to use the partner token in
 
 ## 6. Complete Registration
 
-Once deployed, go to `https://gigwheelev.com/admin/settings` and click "Register Account".
+Once deployed, go to `https://gigwheelsev.com/admin/settings` and click "Register Account".
 
 ---
 
