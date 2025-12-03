@@ -33,4 +33,4 @@ console.log('✓ Public key copied to:', publicKeyPath);
 
 console.log('\n✅ Key pair generated successfully!');
 console.log('\n⚠️  IMPORTANT: Keep tesla-private-key.pem SECRET - never commit it to git!');
-console.log('📝 The public key will be accessible at: https://gigwheelev.com/.well-known/appspecific/com.tesla.3p.public-key.pem');
+console.log('📝 The public key will be accessible at: https://gigwheelsev.com/.well-known/appspecific/com.tesla.3p.public-key.pem');

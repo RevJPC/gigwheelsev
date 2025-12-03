@@ -32,7 +32,7 @@ export default function SettingsPage() {
         setLoading(true);
         try {
             const response = await client.queries.teslaConnect({
-                redirectUri: 'https://gigwheelev.com/admin/settings/callback'
+                redirectUri: 'https://gigwheelsev.com/admin/settings/callback'
             });
 
             const data = typeof response?.data === 'string' ? JSON.parse(response.data) : response?.data;
@@ -99,7 +99,7 @@ export default function SettingsPage() {
         setSyncStatus("Registering with Tesla Fleet API...");
         try {
             const response = await client.queries.teslaRegister({
-                domain: 'https://gigwheelev.com'
+                domain: 'https://gigwheelsev.com'
             });
 
             const result = typeof response?.data === 'string' ? JSON.parse(response.data) : response?.data;
