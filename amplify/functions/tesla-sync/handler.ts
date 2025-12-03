@@ -71,6 +71,27 @@ export const handler: Handler = async (event) => {
         // 3. Sync with local database
         const syncedVehicles = [];
         for (const tv of teslaVehicles) {
+            // Fetch detailed vehicle data
+            let vehicleData = null;
+            try {
+                const dataResponse = await fetch(`https://fleet-api.prd.na.vn.cloud.tesla.com/api/1/vehicles/${tv.id}/vehicle_data`, {
+                    headers: {
+                        'Authorization': `Bearer ${accessToken}`,
+                        'Content-Type': 'application/json'
+                    }
+                });
+
+                if (dataResponse.ok) {
+                    const dataJson = await dataResponse.json();
+                    vehicleData = dataJson.response;
+                    console.log(`Fetched data for ${tv.vin}:`, JSON.stringify(vehicleData, null, 2));
+                } else {
+                    console.log(`Could not fetch data for ${tv.vin}, using basic info only`);
+                }
+            } catch (error) {
+                console.error(`Error fetching vehicle data for ${tv.vin}:`, error);
+            }
+
             // Check if vehicle already exists
             const listVehiclesQuery = `
                 query ListVehicles($filter: ModelVehicleFilterInput) {
@@ -119,10 +140,10 @@ export const handler: Handler = async (event) => {
                     variables: {
                         input: {
                             id: v.id,
-                            batteryLevel: tv.charge_state?.battery_level,
-                            range: tv.charge_state?.battery_range,
-                            locationLat: tv.drive_state?.latitude,
-                            locationLng: tv.drive_state?.longitude,
+                            batteryLevel: vehicleData?.charge_state?.battery_level || null,
+                            range: vehicleData?.charge_state?.battery_range || null,
+                            locationLat: vehicleData?.drive_state?.latitude || null,
+                            locationLng: vehicleData?.drive_state?.longitude || null,
                             status: status
                         }
                     }
@@ -161,8 +182,10 @@ export const handler: Handler = async (event) => {
                             model: "Model " + (tv.vin[3] || "X"),
                             year: year,
                             vin: tv.vin,
-                            batteryLevel: tv.charge_state?.battery_level,
-                            range: tv.charge_state?.battery_range,
+                            batteryLevel: vehicleData?.charge_state?.battery_level || null,
+                            range: vehicleData?.charge_state?.battery_range || null,
+                            locationLat: vehicleData?.drive_state?.latitude || null,
+                            locationLng: vehicleData?.drive_state?.longitude || null,
                             status: status,
                             pricePerDay: 150
                         }
