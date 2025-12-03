@@ -11,6 +11,11 @@ frontend:
     baseDirectory: .next
     files:
       - '**/*'
+  customHeaders:
+    - pattern: '.well-known/**/*'
+      headers:
+        - key: 'Content-Type'
+          value: 'text/plain'
   cache:
     paths:
       - node_modules/**/*
