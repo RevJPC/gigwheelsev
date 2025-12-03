@@ -60,7 +60,11 @@ export default function SettingsPage() {
             const result = typeof response?.data === 'string' ? JSON.parse(response.data) : response?.data;
             console.log("Sync Result:", result);
 
-            if (result && result.message) {
+            // Check if statusCode is 200 (success)
+            if (result?.statusCode === 200) {
+                const body = typeof result.body === 'string' ? JSON.parse(result.body) : result.body;
+                setSyncStatus(`✅ ${body.message || 'Sync complete'}! ${body.details?.length || 0} vehicles updated.`);
+            } else if (result?.message) {
                 setSyncStatus(`Success: ${result.message}. ${result.details?.join(", ")}`);
             } else {
                 setSyncStatus(`Sync failed: ${JSON.stringify(result)}`);
