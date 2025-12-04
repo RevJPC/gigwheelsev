@@ -8,6 +8,7 @@ import { teslaRegister } from '../functions/tesla-register/resource';
  * @see https://docs.amplify.aws/gen2/build-a-backend/data/data-modeling/
  */
 const schema = a.schema({
+    UserRole: a.enum(['CUSTOMER', 'EMPLOYEE', 'ADMIN']),
     VehicleStatus: a.enum(['AVAILABLE', 'RENTED', 'MAINTENANCE', 'CHARGING']),
 
     Vehicle: a.model({
@@ -24,6 +25,8 @@ const schema = a.schema({
         pricePerDay: a.float(),
         color: a.string(),
         imageUrl: a.string(),
+        firmwareVersion: a.string(),
+        lastSyncedAt: a.datetime(),
         reservations: a.hasMany('Reservation', 'vehicleId'),
     }).authorization(allow => [allow.publicApiKey()]), // Open for now, refine later
 
@@ -45,6 +48,13 @@ const schema = a.schema({
         expiresIn: a.integer(),
         tokenType: a.string(),
     }).authorization(allow => [allow.publicApiKey()]), // TODO: Restrict to Admin
+
+    UserProfile: a.model({
+        userId: a.string().required(), // Cognito sub
+        email: a.string().required(),
+        name: a.string(),
+        role: a.ref('UserRole').required(),
+    }).authorization(allow => [allow.publicApiKey()]), // TODO: Restrict properly
 
     teslaConnect: a.query()
         .arguments({

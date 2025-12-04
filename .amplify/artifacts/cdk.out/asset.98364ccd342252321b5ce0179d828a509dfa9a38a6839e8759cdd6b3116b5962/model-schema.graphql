@@ -1,0 +1,58 @@
+enum VehicleStatus {
+  AVAILABLE
+  RENTED
+  MAINTENANCE
+  CHARGING
+}
+
+type Vehicle @model @auth(rules: [{allow: public, provider: apiKey}])
+{
+  make: String!
+  model: String!
+  year: Int!
+  vin: String!
+  licensePlate: String
+  batteryLevel: Int
+  range: Float
+  status: VehicleStatus
+  locationLat: Float
+  locationLng: Float
+  pricePerDay: Float
+  color: String
+  imageUrl: String
+  firmwareVersion: String
+  lastSyncedAt: AWSDateTime
+  reservations: [Reservation] @hasMany(references: ["vehicleId"])
+}
+
+enum ReservationStatus {
+  PENDING
+  CONFIRMED
+  COMPLETED
+  CANCELLED
+}
+
+type Reservation @model @auth(rules: [{allow: owner, ownerField: "owner"}])
+{
+  vehicleId: ID!
+  vehicle: Vehicle @belongsTo(references: ["vehicleId"])
+  userId: String!
+  startTime: AWSDateTime!
+  endTime: AWSDateTime!
+  status: ReservationStatus
+  totalPrice: Float
+}
+
+type TeslaIntegration @model @auth(rules: [{allow: public, provider: apiKey}])
+{
+  accessToken: String!
+  refreshToken: String!
+  expiresIn: Int
+  tokenType: String
+}
+
+type Query {
+  teslaConnect(code: String, redirectUri: String): AWSJSON @function(name: "FnTeslaConnect") @auth(rules: [{allow: public, provider: apiKey}])
+  teslaSync: AWSJSON @function(name: "FnTeslaSync") @auth(rules: [{allow: public, provider: apiKey}])
+  teslaRegister(domain: String): AWSJSON @function(name: "FnTeslaRegister") @auth(rules: [{allow: public, provider: apiKey}])
+}

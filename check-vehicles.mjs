@@ -1,6 +1,6 @@
 import { generateClient } from 'aws-amplify/data';
 import { Amplify } from 'aws-amplify';
-import outputs from './amplify_outputs.json' assert { type: 'json' };
+import outputs from './amplify_outputs.json' with { type: 'json' };
 
 Amplify.configure(outputs);
 
@@ -20,6 +20,8 @@ async function checkVehicles() {
             console.log(`  Battery: ${v.batteryLevel !== null ? v.batteryLevel + '%' : 'NO DATA'}`);
             console.log(`  Range: ${v.range !== null ? v.range + ' mi' : 'NO DATA'}`);
             console.log(`  Location: ${v.locationLat && v.locationLng ? `${v.locationLat}, ${v.locationLng}` : 'NO DATA'}`);
+            console.log(`  Firmware: ${v.firmwareVersion || 'NO DATA'}`);
+            console.log(`  Last Synced: ${v.lastSyncedAt || 'NO DATA'}`);
             console.log('');
         });
     } catch (error) {

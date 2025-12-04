@@ -70,11 +70,20 @@ export const handler: Handler = async (event) => {
 
         // 3. Sync with local database
         const syncedVehicles = [];
+        const debugLogs: string[] = [];
+
         for (const tv of teslaVehicles) {
             // Fetch detailed vehicle data
             let vehicleData = null;
+            let firmwareVersion = null;
+            let inService = tv.in_service;
+
             try {
-                const dataResponse = await fetch(`https://fleet-api.prd.na.vn.cloud.tesla.com/api/1/vehicles/${tv.id}/vehicle_data`, {
+                const params = new URLSearchParams();
+                params.append('endpoints', 'charge_state;drive_state;vehicle_state;vehicle_config;gui_settings;climate_state');
+
+                console.log(`Fetching data for vehicle ID: ${tv.id}, VIN: ${tv.vin}`);
+                const dataResponse = await fetch(`https://fleet-api.prd.na.vn.cloud.tesla.com/api/1/vehicles/${tv.id}/vehicle_data?${params.toString()}`, {
                     headers: {
                         'Authorization': `Bearer ${accessToken}`,
                         'Content-Type': 'application/json'
@@ -84,10 +93,99 @@ export const handler: Handler = async (event) => {
                 if (dataResponse.ok) {
                     const dataJson = await dataResponse.json();
                     vehicleData = dataJson.response;
-                    console.log(`Fetched data for ${tv.vin}:`, JSON.stringify(vehicleData, null, 2));
+                    console.log(`✅ Fetched data for ${tv.vin}`);
+                    console.log(`Response Keys: ${Object.keys(vehicleData).join(', ')}`);
+
+                    if (vehicleData.drive_state) {
+                        console.log(`Drive State: ${JSON.stringify(vehicleData.drive_state)}`);
+                    } else {
+                        console.log(`❌ drive_state is MISSING from response. Attempting fallback fetch...`);
+                        try {
+                            const driveParams = new URLSearchParams();
+                            driveParams.append('endpoints', 'drive_state');
+
+                            const driveResponse = await fetch(`https://fleet-api.prd.na.vn.cloud.tesla.com/api/1/vehicles/${tv.id}/vehicle_data?${driveParams.toString()}`, {
+                                headers: {
+                                    'Authorization': `Bearer ${accessToken}`,
+                                    'Content-Type': 'application/json'
+                                }
+                            });
+
+                            if (driveResponse.ok) {
+                                const driveJson = await driveResponse.json();
+                                // Merge the drive_state into vehicleData
+                                if (driveJson.response && driveJson.response.drive_state) {
+                                    vehicleData.drive_state = driveJson.response.drive_state;
+                                    console.log(`✅ Fallback drive_state fetch SUCCESS: ${JSON.stringify(vehicleData.drive_state)}`);
+                                } else {
+                                    console.log(`❌ Fallback response missing drive_state: ${JSON.stringify(driveJson)}`);
+                                }
+                            } else {
+                                console.log(`❌ Fallback drive_state fetch FAILED: ${driveResponse.status}`);
+                            }
+                        } catch (err) {
+                            console.error("Error in fallback drive_state fetch:", err);
+                        }
+                    }
+
+                    debugLogs.push(`Battery: ${vehicleData?.charge_state?.battery_level}%, Range: ${vehicleData?.charge_state?.battery_range} mi`);
                 } else {
-                    console.log(`Could not fetch data for ${tv.vin}, using basic info only`);
+                    debugLogs.push(`Could not fetch data for ${tv.vin}, using basic info only`);
                 }
+
+                // Fetch Fleet Status for Firmware Version
+                try {
+                    const fleetStatusResponse = await fetch(`https://fleet-api.prd.na.vn.cloud.tesla.com/api/1/vehicles/fleet_status`, {
+                        method: 'POST',
+                        headers: {
+                            'Authorization': `Bearer ${accessToken}`,
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ vins: [tv.vin] })
+                    });
+
+                    if (fleetStatusResponse.ok) {
+                        const fleetStatusJson = await fleetStatusResponse.json();
+
+                        // Check for unpaired VINs
+                        if (fleetStatusJson.response?.unpaired_vins?.includes(tv.vin)) {
+                            debugLogs.push(`⚠️ VIN ${tv.vin} is UNPAIRED. Some commands/data may fail.`);
+                        }
+
+                        // Extract firmware version from vehicle_info
+                        if (fleetStatusJson.response?.vehicle_info?.[tv.vin]) {
+                            firmwareVersion = fleetStatusJson.response.vehicle_info[tv.vin].firmware_version;
+                            debugLogs.push(`✅ Fetched firmware version for ${tv.vin}: ${firmwareVersion}`);
+                        } else {
+                            debugLogs.push(`⚠️ Firmware version not found in fleet status for ${tv.vin}: ${JSON.stringify(fleetStatusJson)}`);
+                        }
+                    } else {
+                        debugLogs.push(`❌ Failed to fetch fleet status for ${tv.vin}: ${fleetStatusResponse.status} ${await fleetStatusResponse.text()}`);
+                    }
+                } catch (err) {
+                    debugLogs.push(`Error fetching fleet status for ${tv.vin}: ${err}`);
+                }
+
+                // Fetch Service Data for Maintenance Status
+                try {
+                    const serviceDataResponse = await fetch(`https://fleet-api.prd.na.vn.cloud.tesla.com/api/1/vehicles/${tv.id}/service_data`, {
+                        headers: {
+                            'Authorization': `Bearer ${accessToken}`,
+                            'Content-Type': 'application/json'
+                        }
+                    });
+
+                    if (serviceDataResponse.ok) {
+                        const serviceDataJson = await serviceDataResponse.json();
+                        if (serviceDataJson.response && serviceDataJson.response.service_mode) {
+                            inService = true;
+                            console.log(`⚠️ Vehicle ${tv.vin} is in SERVICE MODE`);
+                        }
+                    }
+                } catch (err) {
+                    console.error(`Error fetching service data for ${tv.vin}:`, err);
+                }
+
             } catch (error) {
                 console.error(`Error fetching vehicle data for ${tv.vin}:`, error);
             }
@@ -127,10 +225,10 @@ export const handler: Handler = async (event) => {
 
                 // Map Tesla state to our status
                 let status = 'AVAILABLE';
-                if (tv.state === 'asleep' || tv.state === 'offline') {
-                    status = 'AVAILABLE'; // Car is just sleeping, still available
-                } else if (tv.in_service) {
+                if (inService) {
                     status = 'MAINTENANCE';
+                } else if (tv.state === 'asleep' || tv.state === 'offline') {
+                    status = 'AVAILABLE'; // Car is just sleeping, still available
                 } else if (tv.state === 'online') {
                     status = 'AVAILABLE';
                 }
@@ -145,7 +243,9 @@ export const handler: Handler = async (event) => {
                             locationLat: vehicleData?.drive_state?.latitude || null,
                             locationLng: vehicleData?.drive_state?.longitude || null,
                             color: vehicleData?.vehicle_config?.exterior_color || null,
-                            status: status
+                            status: status,
+                            firmwareVersion: firmwareVersion,
+                            lastSyncedAt: new Date().toISOString()
                         }
                     }
                 });
@@ -171,7 +271,7 @@ export const handler: Handler = async (event) => {
 
                 // Map Tesla state to our status
                 let status = 'AVAILABLE';
-                if (tv.in_service) {
+                if (inService) {
                     status = 'MAINTENANCE';
                 }
 
@@ -189,7 +289,9 @@ export const handler: Handler = async (event) => {
                             locationLng: vehicleData?.drive_state?.longitude || null,
                             color: vehicleData?.vehicle_config?.exterior_color || null,
                             status: status,
-                            pricePerDay: 150
+                            pricePerDay: 150,
+                            firmwareVersion: firmwareVersion,
+                            lastSyncedAt: new Date().toISOString()
                         }
                     }
                 });
@@ -199,7 +301,7 @@ export const handler: Handler = async (event) => {
 
         return {
             statusCode: 200,
-            body: JSON.stringify({ message: "Sync complete", details: syncedVehicles })
+            body: JSON.stringify({ message: "Sync complete", details: syncedVehicles, logs: debugLogs })
         };
 
     } catch (error) {

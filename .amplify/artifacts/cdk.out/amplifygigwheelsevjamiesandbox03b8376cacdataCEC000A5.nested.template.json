@@ -166,7 +166,7 @@
      "S3Bucket": {
       "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
      },
-     "S3Key": "f1c26a3e0cd79b1078f4475d0861d430df45c60d115ad491ea744a056e4f606c.zip"
+     "S3Key": "5bac8baffac71f036d9f7971aea9d9a48ede7b66713e249a130868118338109e.zip"
     },
     "Environment": {
      "Variables": {
@@ -222,7 +222,7 @@
    "DeletionPolicy": "Delete",
    "Metadata": {
     "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/tesla-sync-lambda/Resource",
-    "aws:asset:path": "asset.f1c26a3e0cd79b1078f4475d0861d430df45c60d115ad491ea744a056e4f606c",
+    "aws:asset:path": "asset.5bac8baffac71f036d9f7971aea9d9a48ede7b66713e249a130868118338109e",
     "aws:asset:is-bundled": true,
     "aws:asset:property": "Code"
    }
@@ -398,7 +398,7 @@
      ]
     },
     "DefinitionS3Location": {
-     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/f37d052411e92d3d7a8854de798f456108e4d20741483297339ea27fa3f2fc68.graphql"
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/5ec9a2f23de4359451242cca631e94ef81ddfb696ad1fb77b03d81b2692e0973.graphql"
     }
    },
    "UpdateReplacePolicy": "Delete",
@@ -416,7 +416,7 @@
       "ApiId"
      ]
     },
-    "Expires": 1767372911
+    "Expires": 1767395652
    },
    "UpdateReplacePolicy": "Delete",
    "DeletionPolicy": "Delete",
@@ -772,6 +772,99 @@
    "Metadata": {
     "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/TeslaIntegration.NestedStack/TeslaIntegration.NestedStackResource",
     "aws:asset:path": "amplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataTeslaIntegration53B4A86B.nested.template.json",
+    "aws:asset:property": "TemplateURL"
+   }
+  },
+  "amplifyDataUserProfileNestedStackUserProfileNestedStackResource1B3713C5": {
+   "Type": "AWS::CloudFormation::Stack",
+   "Properties": {
+    "Parameters": {
+     "DynamoDBModelTableReadIOPS": {
+      "Ref": "DynamoDBModelTableReadIOPS"
+     },
+     "DynamoDBModelTableWriteIOPS": {
+      "Ref": "DynamoDBModelTableWriteIOPS"
+     },
+     "DynamoDBBillingMode": {
+      "Ref": "DynamoDBBillingMode"
+     },
+     "DynamoDBEnablePointInTimeRecovery": {
+      "Ref": "DynamoDBEnablePointInTimeRecovery"
+     },
+     "DynamoDBEnableServerSideEncryption": {
+      "Ref": "DynamoDBEnableServerSideEncryption"
+     },
+     "referencetoamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataAmplifyTableManagerNestedStackAmplifyTableManagerNestedStackResource7F881793Outputsamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataAmplifyTableManagerTableManagerCusto78829339": {
+      "Fn::GetAtt": [
+       "amplifyDataAmplifyTableManagerNestedStackAmplifyTableManagerNestedStackResource86290833",
+       "Outputs.amplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataAmplifyTableManagerTableManagerCustomProviderframeworkonEventC117D7DCArn"
+      ]
+     },
+     "referencetoamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataGraphQLAPIEFD49BECApiId": {
+      "Fn::GetAtt": [
+       "amplifyDataGraphQLAPI42A6FA33",
+       "ApiId"
+      ]
+     },
+     "referencetoamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataGraphQLAPINONEDSE5668EC6Name": {
+      "Fn::GetAtt": [
+       "amplifyDataGraphQLAPINONEDS684BF699",
+       "Name"
+      ]
+     },
+     "referencetoamplifygigwheelsevjamiesandbox03b8376cacauthNestedStackauthNestedStackResourceD32EECAFOutputsamplifygigwheelsevjamiesandbox03b8376cacauthamplifyAuthauthenticatedUserRoleC3A5DEC2Ref": {
+      "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacauthNestedStackauthNestedStackResourceD32EECAFOutputsamplifygigwheelsevjamiesandbox03b8376cacauthamplifyAuthauthenticatedUserRoleC3A5DEC2Ref"
+     },
+     "referencetoamplifygigwheelsevjamiesandbox03b8376cacauthNestedStackauthNestedStackResourceD32EECAFOutputsamplifygigwheelsevjamiesandbox03b8376cacauthamplifyAuthunauthenticatedUserRole462C06D4Ref": {
+      "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacauthNestedStackauthNestedStackResourceD32EECAFOutputsamplifygigwheelsevjamiesandbox03b8376cacauthamplifyAuthunauthenticatedUserRole462C06D4Ref"
+     },
+     "referencetoamplifygigwheelsevjamiesandbox03b8376cacauthNestedStackauthNestedStackResourceD32EECAFOutputsamplifygigwheelsevjamiesandbox03b8376cacauthamplifyAuthIdentityPool49485A21Ref": {
+      "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacauthNestedStackauthNestedStackResourceD32EECAFOutputsamplifygigwheelsevjamiesandbox03b8376cacauthamplifyAuthIdentityPool49485A21Ref"
+     }
+    },
+    "Tags": [
+     {
+      "Key": "amplify:deployment-type",
+      "Value": "sandbox"
+     },
+     {
+      "Key": "amplify:friendly-name",
+      "Value": "amplifyData"
+     },
+     {
+      "Key": "created-by",
+      "Value": "amplify"
+     }
+    ],
+    "TemplateURL": {
+     "Fn::Join": [
+      "",
+      [
+       "https://s3.",
+       {
+        "Ref": "AWS::Region"
+       },
+       ".",
+       {
+        "Ref": "AWS::URLSuffix"
+       },
+       "/",
+       {
+        "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
+       },
+       "/f9e5120933bebcfb5e75b898278f3b7026e587a456061a3118007ff8def09776.json"
+      ]
+     ]
+    }
+   },
+   "DependsOn": [
+    "amplifyDataGraphQLAPITransformerSchemaFF50A789"
+   ],
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/UserProfile.NestedStack/UserProfile.NestedStackResource",
+    "aws:asset:path": "amplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataUserProfileF3AED849.nested.template.json",
     "aws:asset:property": "TemplateURL"
    }
   },
@@ -1133,7 +1226,7 @@
      }
     ],
     "SourceObjectKeys": [
-     "12481469abf4ff7837a54324e524bd40b5dcaf48f4dca68697e0f62258966023.zip"
+     "b762de789dbb19f1fc3711327a8290c9d8f38d9ba571df340f6c975a517b49bd.zip"
     ],
     "SourceMarkers": [
      {}
@@ -1638,7 +1731,7 @@
      }
     ],
     "SourceObjectKeys": [
-     "42ea072137cd7d99240a85fff8a58e50cd7542749cb1931167babc279989101b.zip"
+     "4f295ee2de97684ba2d4ed977c95709d6e4190dedfb94719578215779d07712f.zip"
     ],
     "SourceMarkers": [
      {}
