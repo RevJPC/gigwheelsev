@@ -180,7 +180,7 @@ export default function SignupPage() {
                         Join GigWheels EV
                     </h2>
                 </div>
-                <Authenticator initialState="signUp">
+                <Authenticator initialState="signUp" socialProviders={['google', 'facebook']}>
                     {({ user }) => (user ? <HandleNewUser /> : <main></main>)}
                 </Authenticator>
             </div>
