@@ -88,11 +88,18 @@ function HandleNewUser() {
                 }
             }
 
+            // Derive first and last name
+            const fullName = userAttrs.name || email.split('@')[0];
+            const nameParts = fullName.split(' ');
+            const firstName = nameParts[0];
+            const lastName = nameParts.slice(1).join(' ');
+
             // Create Profile
             await client.models.UserProfile.create({
                 userId,
                 email,
-                name: userAttrs.name || email.split('@')[0],
+                firstName,
+                lastName,
                 role: 'CUSTOMER',
                 profilePictureUrl: profilePictureUrl
             });
