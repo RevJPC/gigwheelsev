@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { fetchAuthSession } from "aws-amplify/auth";
+import { Hub } from "aws-amplify/utils";
 import { useRouter } from "next/navigation";
 import { getUserRole } from "@/app/lib/auth";
 import { Amplify } from "aws-amplify";
@@ -14,7 +15,17 @@ export default function Home() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    // Initial check
     checkAuthAndRedirect();
+
+    // Listen for auth events (e.g., successful social login)
+    const listener = Hub.listen('auth', (data) => {
+      if (data.payload.event === 'signedIn') {
+        checkAuthAndRedirect();
+      }
+    });
+
+    return () => listener();
   }, []);
 
   const checkAuthAndRedirect = async () => {
@@ -30,7 +41,9 @@ export default function Home() {
         router.push('/customer');
       }
     } catch (error) {
-      // Not authenticated, show landing page
+      // Only stop loading if we are fairly sure we aren't in the middle of a redirect flow
+      // But for now, if check fails, we assume not signed in
+      console.log('Not authenticated or error:', error);
       setLoading(false);
     }
   };
