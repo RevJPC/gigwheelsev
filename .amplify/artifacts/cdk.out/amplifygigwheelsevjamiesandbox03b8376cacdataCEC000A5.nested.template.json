@@ -398,7 +398,7 @@
      ]
     },
     "DefinitionS3Location": {
-     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/7b0782cf44b4046e44632edd44c2a12ec378cc4e65e523f280934f99cd34623e.graphql"
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/5448129a3aad442c081b26e5ba2d071993982b5a90d3efcec7078f2c0e19783c.graphql"
     }
    },
    "UpdateReplacePolicy": "Delete",
@@ -416,7 +416,7 @@
       "ApiId"
      ]
     },
-    "Expires": 1767490605
+    "Expires": 1767537414
    },
    "UpdateReplacePolicy": "Delete",
    "DeletionPolicy": "Delete",
@@ -759,7 +759,7 @@
        {
         "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
        },
-       "/0f6aefc9d3bef075eb6465d043335e9334e0e64c5912dc955bc317c642f6a1b0.json"
+       "/18343798f05f2b709a321c17312972b05940fbfad27669e1ba60964c414d5602.json"
       ]
      ]
     }
@@ -1054,6 +1054,99 @@
     "aws:asset:property": "TemplateURL"
    }
   },
+  "amplifyDataVehicleAvailabilityNestedStackVehicleAvailabilityNestedStackResource881A640C": {
+   "Type": "AWS::CloudFormation::Stack",
+   "Properties": {
+    "Parameters": {
+     "DynamoDBModelTableReadIOPS": {
+      "Ref": "DynamoDBModelTableReadIOPS"
+     },
+     "DynamoDBModelTableWriteIOPS": {
+      "Ref": "DynamoDBModelTableWriteIOPS"
+     },
+     "DynamoDBBillingMode": {
+      "Ref": "DynamoDBBillingMode"
+     },
+     "DynamoDBEnablePointInTimeRecovery": {
+      "Ref": "DynamoDBEnablePointInTimeRecovery"
+     },
+     "DynamoDBEnableServerSideEncryption": {
+      "Ref": "DynamoDBEnableServerSideEncryption"
+     },
+     "referencetoamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataAmplifyTableManagerNestedStackAmplifyTableManagerNestedStackResource7F881793Outputsamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataAmplifyTableManagerTableManagerCusto78829339": {
+      "Fn::GetAtt": [
+       "amplifyDataAmplifyTableManagerNestedStackAmplifyTableManagerNestedStackResource86290833",
+       "Outputs.amplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataAmplifyTableManagerTableManagerCustomProviderframeworkonEventC117D7DCArn"
+      ]
+     },
+     "referencetoamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataGraphQLAPIEFD49BECApiId": {
+      "Fn::GetAtt": [
+       "amplifyDataGraphQLAPI42A6FA33",
+       "ApiId"
+      ]
+     },
+     "referencetoamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataGraphQLAPINONEDSE5668EC6Name": {
+      "Fn::GetAtt": [
+       "amplifyDataGraphQLAPINONEDS684BF699",
+       "Name"
+      ]
+     },
+     "referencetoamplifygigwheelsevjamiesandbox03b8376cacauthNestedStackauthNestedStackResourceD32EECAFOutputsamplifygigwheelsevjamiesandbox03b8376cacauthamplifyAuthauthenticatedUserRoleC3A5DEC2Ref": {
+      "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacauthNestedStackauthNestedStackResourceD32EECAFOutputsamplifygigwheelsevjamiesandbox03b8376cacauthamplifyAuthauthenticatedUserRoleC3A5DEC2Ref"
+     },
+     "referencetoamplifygigwheelsevjamiesandbox03b8376cacauthNestedStackauthNestedStackResourceD32EECAFOutputsamplifygigwheelsevjamiesandbox03b8376cacauthamplifyAuthunauthenticatedUserRole462C06D4Ref": {
+      "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacauthNestedStackauthNestedStackResourceD32EECAFOutputsamplifygigwheelsevjamiesandbox03b8376cacauthamplifyAuthunauthenticatedUserRole462C06D4Ref"
+     },
+     "referencetoamplifygigwheelsevjamiesandbox03b8376cacauthNestedStackauthNestedStackResourceD32EECAFOutputsamplifygigwheelsevjamiesandbox03b8376cacauthamplifyAuthIdentityPool49485A21Ref": {
+      "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacauthNestedStackauthNestedStackResourceD32EECAFOutputsamplifygigwheelsevjamiesandbox03b8376cacauthamplifyAuthIdentityPool49485A21Ref"
+     }
+    },
+    "Tags": [
+     {
+      "Key": "amplify:deployment-type",
+      "Value": "sandbox"
+     },
+     {
+      "Key": "amplify:friendly-name",
+      "Value": "amplifyData"
+     },
+     {
+      "Key": "created-by",
+      "Value": "amplify"
+     }
+    ],
+    "TemplateURL": {
+     "Fn::Join": [
+      "",
+      [
+       "https://s3.",
+       {
+        "Ref": "AWS::Region"
+       },
+       ".",
+       {
+        "Ref": "AWS::URLSuffix"
+       },
+       "/",
+       {
+        "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
+       },
+       "/296c73cf071b57777efd1f1f2d60d0b95cfc0fd237802589d2f5df9932fe827a.json"
+      ]
+     ]
+    }
+   },
+   "DependsOn": [
+    "amplifyDataGraphQLAPITransformerSchemaFF50A789"
+   ],
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleAvailability.NestedStack/VehicleAvailability.NestedStackResource",
+    "aws:asset:path": "amplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataVehicleAvailabilityE2CB2BE6.nested.template.json",
+    "aws:asset:property": "TemplateURL"
+   }
+  },
   "amplifyDataFunctionDirectiveStackNestedStackFunctionDirectiveStackNestedStackResource1246A302": {
    "Type": "AWS::CloudFormation::Stack",
    "Properties": {
@@ -1196,6 +1289,18 @@
        "Outputs.amplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataVehicleImageVehicleImageTableBFA7358ETableArn"
       ]
      },
+     "referencetoamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataVehicleAvailabilityNestedStackVehicleAvailabilityNestedStackResourceA9A28AA6Outputsamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataVehicleAvailabilityVehicleAvailabiliFAD2C576": {
+      "Fn::GetAtt": [
+       "amplifyDataVehicleAvailabilityNestedStackVehicleAvailabilityNestedStackResource881A640C",
+       "Outputs.amplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataVehicleAvailabilityVehicleAvailabilityDataSource6ABC4383Name"
+      ]
+     },
+     "referencetoamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataVehicleAvailabilityNestedStackVehicleAvailabilityNestedStackResourceA9A28AA6Outputsamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataVehicleAvailabilityVehicleAvailabili57F9E968": {
+      "Fn::GetAtt": [
+       "amplifyDataVehicleAvailabilityNestedStackVehicleAvailabilityNestedStackResource881A640C",
+       "Outputs.amplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataVehicleAvailabilityVehicleAvailabilityTableCB3A0A51TableArn"
+      ]
+     },
      "referencetoamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataVehicleNestedStackVehicleNestedStackResourceF3AF7737Outputsamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataVehicleVehicleDataSourceF7797305Name": {
       "Fn::GetAtt": [
        "amplifyDataVehicleNestedStackVehicleNestedStackResourceCDBCB042",
@@ -1239,7 +1344,7 @@
        {
         "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
        },
-       "/d4652f00d5d4eed7ac9a0969fa8c14bd8ddc2efa3223652d89c2341450f7e9fd.json"
+       "/7944b55b1556c70f399c9eebb953a6ab1d6dd3a397f5fd97322a36103c70ddda.json"
       ]
      ]
     }
@@ -1248,6 +1353,7 @@
     "amplifyDataGraphQLAPITransformerSchemaFF50A789",
     "amplifyDataReservationNestedStackReservationNestedStackResourceC6FB3FEC",
     "amplifyDataVehicleNestedStackVehicleNestedStackResourceCDBCB042",
+    "amplifyDataVehicleAvailabilityNestedStackVehicleAvailabilityNestedStackResource881A640C",
     "amplifyDataVehicleImageNestedStackVehicleImageNestedStackResource5486BE4B"
    ],
    "UpdateReplacePolicy": "Delete",
@@ -1431,7 +1537,7 @@
      }
     ],
     "SourceObjectKeys": [
-     "0e956b6d081f45a5b7c8a347b8f3c7ff77064f528b376e2f993a21efb5c53307.zip"
+     "8a3914bf182bf633ed33d9d439ff12e110f258d1e59e14c754904f905ee052b7.zip"
     ],
     "SourceMarkers": [
      {}
@@ -1936,7 +2042,7 @@
      }
     ],
     "SourceObjectKeys": [
-     "22c7ed8146b67dede0d6a5db2cbe99b922d6fe252df9aca2e22d67a623fc4b7f.zip"
+     "9d84a0f1581cef7e67ce04dfdfe2579fabab29b6c81be59b4d67b30e739a7ab0.zip"
     ],
     "SourceMarkers": [
      {}

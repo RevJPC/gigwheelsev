@@ -57,6 +57,9 @@ export default function Home() {
         </div>
 
         <div className="flex justify-center gap-4">
+          <a href="/customer/vehicles" className="px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold transition-colors">
+            Browse Fleet
+          </a>
           <a href="/login" className="px-6 py-2 bg-green-500 hover:bg-green-600 text-white rounded-lg font-semibold transition-colors">
             Login
           </a>

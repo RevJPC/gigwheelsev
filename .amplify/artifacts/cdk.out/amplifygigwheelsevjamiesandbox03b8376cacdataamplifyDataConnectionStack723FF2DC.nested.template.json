@@ -12,7 +12,7 @@
     "FunctionVersion": "2018-05-29",
     "Name": "Vehiclereservationsauth0Function",
     "RequestMappingTemplateS3Location": {
-     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/01825e5abc3b5f822ca25c9852a45b4bee622837d6ad6be2a9adadb791a8dc27.vtl"
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/98d57dc1efb9e47547e4d43b376202499240f34e43676c88c84fab62008b2bf5.vtl"
     },
     "ResponseMappingTemplate": "$util.toJson({})"
    },
@@ -284,6 +284,149 @@
    "DeletionPolicy": "Delete",
    "Metadata": {
     "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/ConnectionStack/vehicleImagesResolver"
+   }
+  },
+  "Vehicleavailabilityauth0FunctionVehicleavailabilityauth0FunctionAppSyncFunctionDE641A84": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataGraphQLAPIEFD49BECApiId"
+    },
+    "DataSourceName": {
+     "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataGraphQLAPINONEDSE5668EC6Name"
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "Vehicleavailabilityauth0Function",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/98d57dc1efb9e47547e4d43b376202499240f34e43676c88c84fab62008b2bf5.vtl"
+    },
+    "ResponseMappingTemplate": "$util.toJson({})"
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/ConnectionStack/Vehicleavailabilityauth0Function/Vehicleavailabilityauth0Function.AppSyncFunction"
+   }
+  },
+  "VehicleAvailabilityDataResolverFnVehicleAvailabilityDataResolverFnAppSyncFunctionC9684AC5": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataGraphQLAPIEFD49BECApiId"
+    },
+    "DataSourceName": {
+     "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataVehicleAvailabilityNestedStackVehicleAvailabilityNestedStackResourceA9A28AA6Outputsamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataVehicleAvailabilityVehicleAvailabiliFAD2C576"
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "VehicleAvailabilityDataResolverFn",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/0d23d3856446ce96791010f58663dbd77ea2d6cb094400cc24272e0b3a19ce6b.vtl"
+    },
+    "ResponseMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/49e7a1f2fb4c809b82bed6b0242a2a3bcfa2c5276ebd2539ff330fee36f8fe18.vtl"
+    }
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/ConnectionStack/VehicleAvailabilityDataResolverFn/VehicleAvailabilityDataResolverFn.AppSyncFunction"
+   }
+  },
+  "VehicleavailabilityResolver": {
+   "Type": "AWS::AppSync::Resolver",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataGraphQLAPIEFD49BECApiId"
+    },
+    "FieldName": "availability",
+    "Kind": "PIPELINE",
+    "PipelineConfig": {
+     "Functions": [
+      {
+       "Fn::GetAtt": [
+        "Vehicleavailabilityauth0FunctionVehicleavailabilityauth0FunctionAppSyncFunctionDE641A84",
+        "FunctionId"
+       ]
+      },
+      {
+       "Fn::GetAtt": [
+        "VehicleAvailabilityDataResolverFnVehicleAvailabilityDataResolverFnAppSyncFunctionC9684AC5",
+        "FunctionId"
+       ]
+      }
+     ]
+    },
+    "RequestMappingTemplate": {
+     "Fn::Join": [
+      "",
+      [
+       "$util.qr($ctx.stash.put(\"typeName\", \"Vehicle\"))\n$util.qr($ctx.stash.put(\"fieldName\", \"availability\"))\n$util.qr($ctx.stash.put(\"conditions\", []))\n$util.qr($ctx.stash.put(\"metadata\", {}))\n$util.qr($ctx.stash.metadata.put(\"dataSourceType\", \"AMAZON_DYNAMODB\"))\n$util.qr($ctx.stash.metadata.put(\"apiId\", \"",
+       {
+        "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataGraphQLAPIEFD49BECApiId"
+       },
+       "\"))\n$util.qr($ctx.stash.put(\"connectionAttributes\", {}))\n$util.qr($ctx.stash.put(\"tableName\", \"",
+       {
+        "Fn::Select": [
+         1,
+         {
+          "Fn::Split": [
+           "/",
+           {
+            "Fn::Select": [
+             5,
+             {
+              "Fn::Split": [
+               ":",
+               {
+                "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataVehicleAvailabilityNestedStackVehicleAvailabilityNestedStackResourceA9A28AA6Outputsamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataVehicleAvailabilityVehicleAvailabili57F9E968"
+               }
+              ]
+             }
+            ]
+           }
+          ]
+         }
+        ]
+       },
+       "\"))\n$util.qr($ctx.stash.put(\"authRole\", \"arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":sts::",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":assumed-role/",
+       {
+        "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacauthNestedStackauthNestedStackResourceD32EECAFOutputsamplifygigwheelsevjamiesandbox03b8376cacauthamplifyAuthauthenticatedUserRoleC3A5DEC2Ref"
+       },
+       "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"unauthRole\", \"arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":sts::",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":assumed-role/",
+       {
+        "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacauthNestedStackauthNestedStackResourceD32EECAFOutputsamplifygigwheelsevjamiesandbox03b8376cacauthamplifyAuthunauthenticatedUserRole462C06D4Ref"
+       },
+       "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"identityPoolId\", \"",
+       {
+        "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacauthNestedStackauthNestedStackResourceD32EECAFOutputsamplifygigwheelsevjamiesandbox03b8376cacauthamplifyAuthIdentityPool49485A21Ref"
+       },
+       "\"))\n$util.qr($ctx.stash.put(\"adminRoles\", []))\n$util.toJson({})"
+      ]
+     ]
+    },
+    "ResponseMappingTemplate": "$util.toJson($ctx.prev.result)",
+    "TypeName": "Vehicle"
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/ConnectionStack/vehicleAvailabilityResolver"
    }
   },
   "VehicleImagevehicleauth0FunctionVehicleImagevehicleauth0FunctionAppSyncFunctionEDA59B96": {
@@ -570,6 +713,149 @@
    "DeletionPolicy": "Delete",
    "Metadata": {
     "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/ConnectionStack/reservationVehicleResolver"
+   }
+  },
+  "VehicleAvailabilityvehicleauth0FunctionVehicleAvailabilityvehicleauth0FunctionAppSyncFunctionC8923A7C": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataGraphQLAPIEFD49BECApiId"
+    },
+    "DataSourceName": {
+     "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataGraphQLAPINONEDSE5668EC6Name"
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "VehicleAvailabilityvehicleauth0Function",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/98d57dc1efb9e47547e4d43b376202499240f34e43676c88c84fab62008b2bf5.vtl"
+    },
+    "ResponseMappingTemplate": "$util.toJson({})"
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/ConnectionStack/VehicleAvailabilityvehicleauth0Function/VehicleAvailabilityvehicleauth0Function.AppSyncFunction"
+   }
+  },
+  "VehicleAvailabilityVehicleDataResolverFnVehicleAvailabilityVehicleDataResolverFnAppSyncFunction85E25989": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataGraphQLAPIEFD49BECApiId"
+    },
+    "DataSourceName": {
+     "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataVehicleNestedStackVehicleNestedStackResourceF3AF7737Outputsamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataVehicleVehicleDataSourceF7797305Name"
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "VehicleAvailabilityVehicleDataResolverFn",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/4b6af4c71e77c31cc400ac56626ee82282125c65c7d04e37b6f80c174cb62d3a.vtl"
+    },
+    "ResponseMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/dcb70e4856bc9a423e02b8b9e9c2ab3f71479784572d4c04a02d1f5b61a9f9ac.vtl"
+    }
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/ConnectionStack/VehicleAvailabilityVehicleDataResolverFn/VehicleAvailabilityVehicleDataResolverFn.AppSyncFunction"
+   }
+  },
+  "VehicleAvailabilityvehicleResolver": {
+   "Type": "AWS::AppSync::Resolver",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataGraphQLAPIEFD49BECApiId"
+    },
+    "FieldName": "vehicle",
+    "Kind": "PIPELINE",
+    "PipelineConfig": {
+     "Functions": [
+      {
+       "Fn::GetAtt": [
+        "VehicleAvailabilityvehicleauth0FunctionVehicleAvailabilityvehicleauth0FunctionAppSyncFunctionC8923A7C",
+        "FunctionId"
+       ]
+      },
+      {
+       "Fn::GetAtt": [
+        "VehicleAvailabilityVehicleDataResolverFnVehicleAvailabilityVehicleDataResolverFnAppSyncFunction85E25989",
+        "FunctionId"
+       ]
+      }
+     ]
+    },
+    "RequestMappingTemplate": {
+     "Fn::Join": [
+      "",
+      [
+       "$util.qr($ctx.stash.put(\"typeName\", \"VehicleAvailability\"))\n$util.qr($ctx.stash.put(\"fieldName\", \"vehicle\"))\n$util.qr($ctx.stash.put(\"conditions\", []))\n$util.qr($ctx.stash.put(\"metadata\", {}))\n$util.qr($ctx.stash.metadata.put(\"dataSourceType\", \"AMAZON_DYNAMODB\"))\n$util.qr($ctx.stash.metadata.put(\"apiId\", \"",
+       {
+        "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataGraphQLAPIEFD49BECApiId"
+       },
+       "\"))\n$util.qr($ctx.stash.put(\"connectionAttributes\", {}))\n$util.qr($ctx.stash.put(\"tableName\", \"",
+       {
+        "Fn::Select": [
+         1,
+         {
+          "Fn::Split": [
+           "/",
+           {
+            "Fn::Select": [
+             5,
+             {
+              "Fn::Split": [
+               ":",
+               {
+                "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataVehicleNestedStackVehicleNestedStackResourceF3AF7737Outputsamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataVehicleVehicleTable9A924DD6TableArn"
+               }
+              ]
+             }
+            ]
+           }
+          ]
+         }
+        ]
+       },
+       "\"))\n$util.qr($ctx.stash.put(\"authRole\", \"arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":sts::",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":assumed-role/",
+       {
+        "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacauthNestedStackauthNestedStackResourceD32EECAFOutputsamplifygigwheelsevjamiesandbox03b8376cacauthamplifyAuthauthenticatedUserRoleC3A5DEC2Ref"
+       },
+       "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"unauthRole\", \"arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":sts::",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":assumed-role/",
+       {
+        "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacauthNestedStackauthNestedStackResourceD32EECAFOutputsamplifygigwheelsevjamiesandbox03b8376cacauthamplifyAuthunauthenticatedUserRole462C06D4Ref"
+       },
+       "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"identityPoolId\", \"",
+       {
+        "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacauthNestedStackauthNestedStackResourceD32EECAFOutputsamplifygigwheelsevjamiesandbox03b8376cacauthamplifyAuthIdentityPool49485A21Ref"
+       },
+       "\"))\n$util.qr($ctx.stash.put(\"adminRoles\", []))\n$util.toJson({})"
+      ]
+     ]
+    },
+    "ResponseMappingTemplate": "$util.toJson($ctx.prev.result)",
+    "TypeName": "VehicleAvailability"
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/ConnectionStack/vehicleAvailabilityVehicleResolver"
    }
   },
   "CDKMetadata": {
@@ -875,6 +1161,12 @@
    "Type": "String"
   },
   "referencetoamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataVehicleImageNestedStackVehicleImageNestedStackResource9C0AD86EOutputsamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataVehicleImageVehicleImageTableBFA7358ETableArn": {
+   "Type": "String"
+  },
+  "referencetoamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataVehicleAvailabilityNestedStackVehicleAvailabilityNestedStackResourceA9A28AA6Outputsamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataVehicleAvailabilityVehicleAvailabiliFAD2C576": {
+   "Type": "String"
+  },
+  "referencetoamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataVehicleAvailabilityNestedStackVehicleAvailabilityNestedStackResourceA9A28AA6Outputsamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataVehicleAvailabilityVehicleAvailabili57F9E968": {
    "Type": "String"
   },
   "referencetoamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataVehicleNestedStackVehicleNestedStackResourceF3AF7737Outputsamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataVehicleVehicleDataSourceF7797305Name": {

@@ -15,13 +15,13 @@ export default function EmployeeDashboard() {
           </a>
 
           {/* Reservations Card */}
-          <div className="bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-2xl p-8 opacity-60">
+          <a href="/employee/reservations" className="bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-2xl p-8 hover:border-green-500 transition-all hover:shadow-lg hover:shadow-green-500/20 group">
             <div className="text-blue-400 text-4xl mb-4">📋</div>
-            <h2 className="text-2xl font-bold text-white mb-2">Reservations</h2>
+            <h2 className="text-2xl font-bold text-white mb-2 group-hover:text-green-400 transition-colors">Reservations</h2>
             <p className="text-slate-300">
-              Coming soon: Manage customer reservations and vehicle assignments.
+              Manage customer reservations and vehicle assignments.
             </p>
-          </div>
+          </a>
         </div>
       </div>
     </div>

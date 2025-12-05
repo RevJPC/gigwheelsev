@@ -7,6 +7,8 @@ import { Amplify } from "aws-amplify";
 import outputs from "@/amplify_outputs.json";
 import { getUrl } from "aws-amplify/storage";
 import { useParams, useRouter } from "next/navigation";
+import { fetchAuthSession } from "aws-amplify/auth";
+import DateRangePicker from "@/components/DateRangePicker";
 
 Amplify.configure(outputs);
 
@@ -22,6 +24,14 @@ export default function VehicleDetail() {
     const [imageUrls, setImageUrls] = useState<Record<string, string>>({});
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
     const [loading, setLoading] = useState(true);
+    const [showBookingModal, setShowBookingModal] = useState(false);
+    const [startDate, setStartDate] = useState<Date | null>(null);
+    const [endDate, setEndDate] = useState<Date | null>(null);
+    const [bookingLoading, setBookingLoading] = useState(false);
+    const [bookingError, setBookingError] = useState<string | null>(null);
+    const [bookingSuccess, setBookingSuccess] = useState(false);
+
+    const [availabilitySlots, setAvailabilitySlots] = useState<Array<Schema["VehicleAvailability"]["type"]>>([]);
 
     useEffect(() => {
         loadVehicleData();
@@ -32,6 +42,12 @@ export default function VehicleDetail() {
             // Load vehicle
             const vehicleResponse = await client.models.Vehicle.get({ id: vehicleId });
             setVehicle(vehicleResponse.data);
+
+            // Load availability slots
+            const availabilityResponse = await client.models.VehicleAvailability.list({
+                filter: { vehicleId: { eq: vehicleId } }
+            });
+            setAvailabilitySlots(availabilityResponse.data);
 
             // Load images
             const imagesResponse = await client.models.VehicleImage.list({
@@ -60,6 +76,111 @@ export default function VehicleDetail() {
         } catch (error) {
             console.error('Error loading vehicle:', error);
             setLoading(false);
+        }
+    };
+
+    const checkAvailability = (start: Date, end: Date): boolean => {
+        // Check against blocked slots
+        for (const slot of availabilitySlots) {
+            if (!slot.isAvailable) {
+                const slotStart = new Date(slot.startTime);
+                const slotEnd = new Date(slot.endTime);
+
+                // Check for overlap
+                if (
+                    (start < slotEnd && end > slotStart)
+                ) {
+                    setBookingError(`Vehicle is unavailable from ${slotStart.toLocaleString()} to ${slotEnd.toLocaleString()}`);
+                    return false;
+                }
+            }
+        }
+        return true;
+    };
+
+    const handleBooking = async () => {
+        if (!vehicle || !startDate || !endDate) return;
+
+        setBookingLoading(true);
+        setBookingError(null);
+
+        if (!checkAvailability(startDate, endDate)) {
+            setBookingLoading(false);
+            return;
+        }
+
+        try {
+            // Get current user
+            const session = await fetchAuthSession();
+            const userId = session.userSub;
+
+            if (!userId) {
+                router.push('/login');
+                return;
+            }
+
+            // Calculate total price (hours * pricePerDay / 24)
+            const hours = (endDate.getTime() - startDate.getTime()) / (1000 * 60 * 60);
+            const days = hours / 24;
+            const totalPrice = days * (vehicle.pricePerDay || 0);
+
+            console.log("Creating reservation with:", {
+                vehicleId: vehicle.id,
+                userId: userId,
+                startTime: startDate.toISOString(),
+                endTime: endDate.toISOString(),
+                status: 'PENDING',
+                totalPrice: totalPrice,
+            });
+
+            // Create reservation
+            const result = await client.models.Reservation.create({
+                vehicleId: vehicle.id,
+                userId: userId,
+                startTime: startDate.toISOString(),
+                endTime: endDate.toISOString(),
+                status: 'PENDING',
+                totalPrice: totalPrice,
+            });
+
+            console.log("Reservation created successfully:", result);
+
+            setBookingSuccess(true);
+            setShowBookingModal(false);
+
+            // Reset form after 2 seconds
+            setTimeout(() => {
+                setBookingSuccess(false);
+                setStartDate(null);
+                setEndDate(null);
+            }, 3000);
+        } catch (error: any) {
+            console.error('Error creating reservation:', error);
+            setBookingError(error.message || 'Failed to create reservation');
+        } finally {
+            setBookingLoading(false);
+        }
+    };
+
+    const calculateTotalPrice = (): number => {
+        if (!vehicle || !startDate || !endDate) return 0;
+        const hours = (endDate.getTime() - startDate.getTime()) / (1000 * 60 * 60);
+        const days = hours / 24;
+        return days * (vehicle.pricePerDay || 0);
+    };
+
+    const calculateDays = (): string => {
+        if (!startDate || !endDate) return "0";
+        const hours = (endDate.getTime() - startDate.getTime()) / (1000 * 60 * 60);
+        const days = Math.floor(hours / 24);
+        const remainingHours = Math.round(hours % 24);
+
+        if (days > 0 && remainingHours > 0) {
+            return `${days}d ${remainingHours}h`;
+        } else if (days > 0) {
+            return `${days} day${days > 1 ? 's' : ''}`;
+        } else {
+            return `${remainingHours} hour${remainingHours > 1 ? 's' : ''}`;
         }
     };
 
@@ -164,9 +285,9 @@ export default function VehicleDetail() {
                             {/* Status Badge */}
                             <div className="mb-6">
                                 <span className={`inline-flex rounded-full px-4 py-2 text-sm font-semibold ${vehicle.status === 'AVAILABLE' ? 'bg-green-500 text-white' :
-                                        vehicle.status === 'RENTED' ? 'bg-blue-500 text-white' :
-                                            vehicle.status === 'CHARGING' ? 'bg-yellow-500 text-white' :
-                                                'bg-red-500 text-white'
+                                    vehicle.status === 'RENTED' ? 'bg-blue-500 text-white' :
+                                        vehicle.status === 'CHARGING' ? 'bg-yellow-500 text-white' :
+                                            'bg-red-500 text-white'
                                     }`}>
                                     {vehicle.status}
                                 </span>
@@ -181,7 +302,7 @@ export default function VehicleDetail() {
                                             <div className="flex-1 bg-slate-600 rounded-full h-2">
                                                 <div
                                                     className={`h-2 rounded-full ${vehicle.batteryLevel > 60 ? 'bg-green-500' :
-                                                            vehicle.batteryLevel > 30 ? 'bg-yellow-500' : 'bg-red-500'
+                                                        vehicle.batteryLevel > 30 ? 'bg-yellow-500' : 'bg-red-500'
                                                         }`}
                                                     style={{ width: `${vehicle.batteryLevel}%` }}
                                                 />
@@ -226,15 +347,95 @@ export default function VehicleDetail() {
                                     </div>
                                 </div>
                                 <button
+                                    onClick={() => setShowBookingModal(true)}
                                     disabled={vehicle.status !== 'AVAILABLE'}
                                     className="w-full px-6 py-3 bg-green-600 hover:bg-green-700 disabled:bg-slate-600 disabled:cursor-not-allowed text-white rounded-lg font-semibold text-lg transition-colors"
                                 >
                                     {vehicle.status === 'AVAILABLE' ? 'Book Now' : 'Unavailable'}
                                 </button>
+
+                                {/* Success Message */}
+                                {bookingSuccess && (
+                                    <div className="mt-4 p-4 bg-green-500/20 border border-green-500 rounded-lg text-green-400 text-center">
+                                        ✓ Reservation created successfully!
+                                    </div>
+                                )}
                             </div>
                         </div>
                     </div>
                 </div>
+
+                {/* Booking Modal */}
+                {showBookingModal && (
+                    <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 p-4">
+                        <div className="bg-slate-800 rounded-2xl p-8 max-w-md w-full border border-slate-700">
+                            <h2 className="text-2xl font-bold text-white mb-6">Book Your Reservation</h2>
+
+                            <div className="mb-6">
+                                <h3 className="text-lg font-semibold text-white mb-2">
+                                    {vehicle?.year} {vehicle?.make} {vehicle?.model}
+                                </h3>
+                                <p className="text-slate-400 text-sm">
+                                    ${vehicle?.pricePerDay} per day
+                                </p>
+                            </div>
+
+                            <DateRangePicker
+                                onDateChange={(start, end) => {
+                                    setStartDate(start);
+                                    setEndDate(end);
+                                }}
+                                blockedIntervals={availabilitySlots
+                                    .filter(slot => !slot.isAvailable)
+                                    .map(slot => ({
+                                        start: new Date(slot.startTime),
+                                        end: new Date(slot.endTime)
+                                    }))}
+                            />
+
+                            {startDate && endDate && (
+                                <div className="mt-6 p-4 bg-slate-700/50 rounded-lg">
+                                    <div className="flex justify-between text-sm mb-2">
+                                        <span className="text-slate-400">Duration:</span>
+                                        <span className="text-white font-semibold">{calculateDays()} days</span>
+                                    </div>
+                                    <div className="flex justify-between text-lg font-bold">
+                                        <span className="text-slate-300">Total Price:</span>
+                                        <span className="text-green-400">${calculateTotalPrice().toFixed(2)}</span>
+                                    </div>
+                                </div>
+                            )}
+
+                            {bookingError && (
+                                <div className="mt-4 p-3 bg-red-500/20 border border-red-500 rounded-lg text-red-400 text-sm">
+                                    {bookingError}
+                                </div>
+                            )}
+
+                            <div className="flex gap-3 mt-6">
+                                <button
+                                    onClick={() => {
+                                        setShowBookingModal(false);
+                                        setBookingError(null);
+                                        setStartDate(null);
+                                        setEndDate(null);
+                                    }}
+                                    className="flex-1 px-4 py-2 bg-slate-700 hover:bg-slate-600 text-white rounded-lg font-semibold transition-colors"
+                                    disabled={bookingLoading}
+                                >
+                                    Cancel
+                                </button>
+                                <button
+                                    onClick={handleBooking}
+                                    disabled={!startDate || !endDate || bookingLoading}
+                                    className="flex-1 px-4 py-2 bg-green-600 hover:bg-green-700 disabled:bg-slate-600 disabled:cursor-not-allowed text-white rounded-lg font-semibold transition-colors"
+                                >
+                                    {bookingLoading ? 'Booking...' : 'Confirm Booking'}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                )}
             </div>
         </div>
     );

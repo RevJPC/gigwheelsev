@@ -1,0 +1,952 @@
+enum UserRole {
+  CUSTOMER
+  EMPLOYEE
+  ADMIN
+}
+
+enum UserStatus {
+  ACTIVE
+  SUSPENDED
+}
+
+enum VehicleStatus {
+  AVAILABLE
+  RENTED
+  MAINTENANCE
+  CHARGING
+}
+
+enum ChangeRequestStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+type Vehicle @aws_iam @aws_api_key {
+  make: String!
+  model: String!
+  year: Int!
+  vin: String!
+  licensePlate: String
+  batteryLevel: Int
+  range: Float
+  status: VehicleStatus
+  locationLat: Float
+  locationLng: Float
+  pricePerDay: Float
+  color: String
+  imageUrl: String
+  firmwareVersion: String
+  lastSyncedAt: AWSDateTime
+  odometer: Float
+  reservations(filter: ModelReservationFilterInput, sortDirection: ModelSortDirection, limit: Int, nextToken: String): ModelReservationConnection
+  images(filter: ModelVehicleImageFilterInput, sortDirection: ModelSortDirection, limit: Int, nextToken: String): ModelVehicleImageConnection
+  availability(filter: ModelVehicleAvailabilityFilterInput, sortDirection: ModelSortDirection, limit: Int, nextToken: String): ModelVehicleAvailabilityConnection
+  id: ID!
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+}
+
+type VehicleImage @aws_iam @aws_api_key {
+  vehicleId: ID!
+  vehicle: Vehicle
+  imageUrl: String!
+  isPrimary: Boolean
+  caption: String
+  order: Int
+  id: ID!
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+}
+
+enum ReservationStatus {
+  PENDING
+  CONFIRMED
+  COMPLETED
+  CANCELLED
+}
+
+type Reservation @aws_iam @aws_api_key {
+  vehicleId: ID!
+  vehicle: Vehicle
+  userId: String!
+  startTime: AWSDateTime!
+  endTime: AWSDateTime!
+  status: ReservationStatus
+  totalPrice: Float
+  id: ID!
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+}
+
+type TeslaIntegration @aws_iam @aws_api_key {
+  accessToken: String!
+  refreshToken: String!
+  expiresIn: Int
+  tokenType: String
+  id: ID!
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+}
+
+type UserProfile @aws_iam @aws_api_key {
+  userId: String!
+  email: String!
+  firstName: String
+  lastName: String
+  role: UserRole!
+  status: UserStatus
+  profilePictureUrl: String
+  phoneNumber: String
+  streetAddress: String
+  city: String
+  state: String
+  zipCode: String
+  licenseNumber: String
+  insurancePolicyNumber: String
+  id: ID!
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+}
+
+type ProfileChangeRequest @aws_iam @aws_api_key {
+  userId: String!
+  requestedBy: String!
+  newData: AWSJSON!
+  token: String!
+  status: ChangeRequestStatus!
+  id: ID!
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+}
+
+type VehicleAvailability @aws_iam @aws_api_key {
+  vehicleId: ID!
+  vehicle: Vehicle
+  startTime: AWSDateTime!
+  endTime: AWSDateTime!
+  isAvailable: Boolean!
+  reason: String
+  id: ID!
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+}
+
+type Mutation @aws_iam {
+  createVehicle(input: CreateVehicleInput!, condition: ModelVehicleConditionInput): Vehicle @aws_api_key @aws_iam
+  updateVehicle(input: UpdateVehicleInput!, condition: ModelVehicleConditionInput): Vehicle @aws_api_key @aws_iam
+  deleteVehicle(input: DeleteVehicleInput!, condition: ModelVehicleConditionInput): Vehicle @aws_api_key @aws_iam
+  createVehicleImage(input: CreateVehicleImageInput!, condition: ModelVehicleImageConditionInput): VehicleImage @aws_api_key @aws_iam
+  updateVehicleImage(input: UpdateVehicleImageInput!, condition: ModelVehicleImageConditionInput): VehicleImage @aws_api_key @aws_iam
+  deleteVehicleImage(input: DeleteVehicleImageInput!, condition: ModelVehicleImageConditionInput): VehicleImage @aws_api_key @aws_iam
+  createReservation(input: CreateReservationInput!, condition: ModelReservationConditionInput): Reservation @aws_api_key @aws_iam
+  updateReservation(input: UpdateReservationInput!, condition: ModelReservationConditionInput): Reservation @aws_api_key @aws_iam
+  deleteReservation(input: DeleteReservationInput!, condition: ModelReservationConditionInput): Reservation @aws_api_key @aws_iam
+  createTeslaIntegration(input: CreateTeslaIntegrationInput!, condition: ModelTeslaIntegrationConditionInput): TeslaIntegration @aws_api_key @aws_iam
+  updateTeslaIntegration(input: UpdateTeslaIntegrationInput!, condition: ModelTeslaIntegrationConditionInput): TeslaIntegration @aws_api_key @aws_iam
+  deleteTeslaIntegration(input: DeleteTeslaIntegrationInput!, condition: ModelTeslaIntegrationConditionInput): TeslaIntegration @aws_api_key @aws_iam
+  createUserProfile(input: CreateUserProfileInput!, condition: ModelUserProfileConditionInput): UserProfile @aws_api_key @aws_iam
+  updateUserProfile(input: UpdateUserProfileInput!, condition: ModelUserProfileConditionInput): UserProfile @aws_api_key @aws_iam
+  deleteUserProfile(input: DeleteUserProfileInput!, condition: ModelUserProfileConditionInput): UserProfile @aws_api_key @aws_iam
+  createProfileChangeRequest(input: CreateProfileChangeRequestInput!, condition: ModelProfileChangeRequestConditionInput): ProfileChangeRequest @aws_api_key @aws_iam
+  updateProfileChangeRequest(input: UpdateProfileChangeRequestInput!, condition: ModelProfileChangeRequestConditionInput): ProfileChangeRequest @aws_api_key @aws_iam
+  deleteProfileChangeRequest(input: DeleteProfileChangeRequestInput!, condition: ModelProfileChangeRequestConditionInput): ProfileChangeRequest @aws_api_key @aws_iam
+  createVehicleAvailability(input: CreateVehicleAvailabilityInput!, condition: ModelVehicleAvailabilityConditionInput): VehicleAvailability @aws_api_key @aws_iam
+  updateVehicleAvailability(input: UpdateVehicleAvailabilityInput!, condition: ModelVehicleAvailabilityConditionInput): VehicleAvailability @aws_api_key @aws_iam
+  deleteVehicleAvailability(input: DeleteVehicleAvailabilityInput!, condition: ModelVehicleAvailabilityConditionInput): VehicleAvailability @aws_api_key @aws_iam
+  deleteUser(userId: String!): AWSJSON @aws_iam @aws_api_key
+  sendChangeEmail(email: String!, token: String!, requestId: String!, changes: AWSJSON!): AWSJSON @aws_iam @aws_api_key
+}
+
+type Query @aws_iam {
+  getVehicle(id: ID!): Vehicle @aws_api_key @aws_iam
+  listVehicles(filter: ModelVehicleFilterInput, limit: Int, nextToken: String): ModelVehicleConnection @aws_api_key @aws_iam
+  getVehicleImage(id: ID!): VehicleImage @aws_api_key @aws_iam
+  listVehicleImages(filter: ModelVehicleImageFilterInput, limit: Int, nextToken: String): ModelVehicleImageConnection @aws_api_key @aws_iam
+  getReservation(id: ID!): Reservation @aws_api_key @aws_iam
+  listReservations(filter: ModelReservationFilterInput, limit: Int, nextToken: String): ModelReservationConnection @aws_api_key @aws_iam
+  getTeslaIntegration(id: ID!): TeslaIntegration @aws_api_key @aws_iam
+  listTeslaIntegrations(filter: ModelTeslaIntegrationFilterInput, limit: Int, nextToken: String): ModelTeslaIntegrationConnection @aws_api_key @aws_iam
+  getUserProfile(id: ID!): UserProfile @aws_api_key @aws_iam
+  listUserProfiles(filter: ModelUserProfileFilterInput, limit: Int, nextToken: String): ModelUserProfileConnection @aws_api_key @aws_iam
+  getProfileChangeRequest(id: ID!): ProfileChangeRequest @aws_api_key @aws_iam
+  listProfileChangeRequests(filter: ModelProfileChangeRequestFilterInput, limit: Int, nextToken: String): ModelProfileChangeRequestConnection @aws_api_key @aws_iam
+  getVehicleAvailability(id: ID!): VehicleAvailability @aws_api_key @aws_iam
+  listVehicleAvailabilities(filter: ModelVehicleAvailabilityFilterInput, limit: Int, nextToken: String): ModelVehicleAvailabilityConnection @aws_api_key @aws_iam
+  teslaConnect(code: String, redirectUri: String): AWSJSON @aws_iam @aws_api_key
+  teslaSync: AWSJSON @aws_iam @aws_api_key
+  teslaRegister(domain: String): AWSJSON @aws_iam @aws_api_key
+}
+
+input AmplifyAIConversationTurnErrorInput {
+  errorType: String!
+  message: String!
+}
+
+input ModelStringInput {
+  ne: String
+  eq: String
+  le: String
+  lt: String
+  ge: String
+  gt: String
+  contains: String
+  notContains: String
+  between: [String]
+  beginsWith: String
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+  size: ModelSizeInput
+}
+
+input ModelIntInput {
+  ne: Int
+  eq: Int
+  le: Int
+  lt: Int
+  ge: Int
+  gt: Int
+  between: [Int]
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+}
+
+input ModelFloatInput {
+  ne: Float
+  eq: Float
+  le: Float
+  lt: Float
+  ge: Float
+  gt: Float
+  between: [Float]
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+}
+
+input ModelBooleanInput {
+  ne: Boolean
+  eq: Boolean
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+}
+
+input ModelIDInput {
+  ne: ID
+  eq: ID
+  le: ID
+  lt: ID
+  ge: ID
+  gt: ID
+  contains: ID
+  notContains: ID
+  between: [ID]
+  beginsWith: ID
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+  size: ModelSizeInput
+}
+
+input ModelSubscriptionStringInput {
+  ne: String
+  eq: String
+  le: String
+  lt: String
+  ge: String
+  gt: String
+  contains: String
+  notContains: String
+  between: [String]
+  beginsWith: String
+  in: [String]
+  notIn: [String]
+}
+
+input ModelSubscriptionIntInput {
+  ne: Int
+  eq: Int
+  le: Int
+  lt: Int
+  ge: Int
+  gt: Int
+  between: [Int]
+  in: [Int]
+  notIn: [Int]
+}
+
+input ModelSubscriptionFloatInput {
+  ne: Float
+  eq: Float
+  le: Float
+  lt: Float
+  ge: Float
+  gt: Float
+  between: [Float]
+  in: [Float]
+  notIn: [Float]
+}
+
+input ModelSubscriptionBooleanInput {
+  ne: Boolean
+  eq: Boolean
+}
+
+input ModelSubscriptionIDInput {
+  ne: ID
+  eq: ID
+  le: ID
+  lt: ID
+  ge: ID
+  gt: ID
+  contains: ID
+  notContains: ID
+  between: [ID]
+  beginsWith: ID
+  in: [ID]
+  notIn: [ID]
+}
+
+enum ModelAttributeTypes {
+  binary
+  binarySet
+  bool
+  list
+  map
+  number
+  numberSet
+  string
+  stringSet
+  _null
+}
+
+input ModelSizeInput {
+  ne: Int
+  eq: Int
+  le: Int
+  lt: Int
+  ge: Int
+  gt: Int
+  between: [Int]
+}
+
+enum ModelSortDirection {
+  ASC
+  DESC
+}
+
+type ModelVehicleConnection @aws_api_key @aws_iam {
+  items: [Vehicle]!
+  nextToken: String
+}
+
+input ModelVehicleStatusInput {
+  eq: VehicleStatus
+  ne: VehicleStatus
+}
+
+input ModelVehicleFilterInput {
+  make: ModelStringInput
+  model: ModelStringInput
+  year: ModelIntInput
+  vin: ModelStringInput
+  licensePlate: ModelStringInput
+  batteryLevel: ModelIntInput
+  range: ModelFloatInput
+  status: ModelVehicleStatusInput
+  locationLat: ModelFloatInput
+  locationLng: ModelFloatInput
+  pricePerDay: ModelFloatInput
+  color: ModelStringInput
+  imageUrl: ModelStringInput
+  firmwareVersion: ModelStringInput
+  lastSyncedAt: ModelStringInput
+  odometer: ModelFloatInput
+  id: ModelIDInput
+  createdAt: ModelStringInput
+  updatedAt: ModelStringInput
+  and: [ModelVehicleFilterInput]
+  or: [ModelVehicleFilterInput]
+  not: ModelVehicleFilterInput
+}
+
+input ModelVehicleConditionInput {
+  make: ModelStringInput
+  model: ModelStringInput
+  year: ModelIntInput
+  vin: ModelStringInput
+  licensePlate: ModelStringInput
+  batteryLevel: ModelIntInput
+  range: ModelFloatInput
+  status: ModelVehicleStatusInput
+  locationLat: ModelFloatInput
+  locationLng: ModelFloatInput
+  pricePerDay: ModelFloatInput
+  color: ModelStringInput
+  imageUrl: ModelStringInput
+  firmwareVersion: ModelStringInput
+  lastSyncedAt: ModelStringInput
+  odometer: ModelFloatInput
+  and: [ModelVehicleConditionInput]
+  or: [ModelVehicleConditionInput]
+  not: ModelVehicleConditionInput
+  createdAt: ModelStringInput
+  updatedAt: ModelStringInput
+}
+
+input CreateVehicleInput {
+  make: String!
+  model: String!
+  year: Int!
+  vin: String!
+  licensePlate: String
+  batteryLevel: Int
+  range: Float
+  status: VehicleStatus
+  locationLat: Float
+  locationLng: Float
+  pricePerDay: Float
+  color: String
+  imageUrl: String
+  firmwareVersion: String
+  lastSyncedAt: AWSDateTime
+  odometer: Float
+  id: ID
+}
+
+input UpdateVehicleInput {
+  make: String
+  model: String
+  year: Int
+  vin: String
+  licensePlate: String
+  batteryLevel: Int
+  range: Float
+  status: VehicleStatus
+  locationLat: Float
+  locationLng: Float
+  pricePerDay: Float
+  color: String
+  imageUrl: String
+  firmwareVersion: String
+  lastSyncedAt: AWSDateTime
+  odometer: Float
+  id: ID!
+}
+
+input DeleteVehicleInput {
+  id: ID!
+}
+
+input ModelSubscriptionVehicleFilterInput {
+  make: ModelSubscriptionStringInput
+  model: ModelSubscriptionStringInput
+  year: ModelSubscriptionIntInput
+  vin: ModelSubscriptionStringInput
+  licensePlate: ModelSubscriptionStringInput
+  batteryLevel: ModelSubscriptionIntInput
+  range: ModelSubscriptionFloatInput
+  status: ModelSubscriptionStringInput
+  locationLat: ModelSubscriptionFloatInput
+  locationLng: ModelSubscriptionFloatInput
+  pricePerDay: ModelSubscriptionFloatInput
+  color: ModelSubscriptionStringInput
+  imageUrl: ModelSubscriptionStringInput
+  firmwareVersion: ModelSubscriptionStringInput
+  lastSyncedAt: ModelSubscriptionStringInput
+  odometer: ModelSubscriptionFloatInput
+  id: ModelSubscriptionIDInput
+  createdAt: ModelSubscriptionStringInput
+  updatedAt: ModelSubscriptionStringInput
+  and: [ModelSubscriptionVehicleFilterInput]
+  or: [ModelSubscriptionVehicleFilterInput]
+}
+
+type Subscription {
+  onCreateVehicle(filter: ModelSubscriptionVehicleFilterInput): Vehicle @aws_subscribe(mutations: ["createVehicle"]) @aws_api_key @aws_iam
+  onUpdateVehicle(filter: ModelSubscriptionVehicleFilterInput): Vehicle @aws_subscribe(mutations: ["updateVehicle"]) @aws_api_key @aws_iam
+  onDeleteVehicle(filter: ModelSubscriptionVehicleFilterInput): Vehicle @aws_subscribe(mutations: ["deleteVehicle"]) @aws_api_key @aws_iam
+  onCreateVehicleImage(filter: ModelSubscriptionVehicleImageFilterInput): VehicleImage @aws_subscribe(mutations: ["createVehicleImage"]) @aws_api_key @aws_iam
+  onUpdateVehicleImage(filter: ModelSubscriptionVehicleImageFilterInput): VehicleImage @aws_subscribe(mutations: ["updateVehicleImage"]) @aws_api_key @aws_iam
+  onDeleteVehicleImage(filter: ModelSubscriptionVehicleImageFilterInput): VehicleImage @aws_subscribe(mutations: ["deleteVehicleImage"]) @aws_api_key @aws_iam
+  onCreateReservation(filter: ModelSubscriptionReservationFilterInput): Reservation @aws_subscribe(mutations: ["createReservation"]) @aws_api_key @aws_iam
+  onUpdateReservation(filter: ModelSubscriptionReservationFilterInput): Reservation @aws_subscribe(mutations: ["updateReservation"]) @aws_api_key @aws_iam
+  onDeleteReservation(filter: ModelSubscriptionReservationFilterInput): Reservation @aws_subscribe(mutations: ["deleteReservation"]) @aws_api_key @aws_iam
+  onCreateTeslaIntegration(filter: ModelSubscriptionTeslaIntegrationFilterInput): TeslaIntegration @aws_subscribe(mutations: ["createTeslaIntegration"]) @aws_api_key @aws_iam
+  onUpdateTeslaIntegration(filter: ModelSubscriptionTeslaIntegrationFilterInput): TeslaIntegration @aws_subscribe(mutations: ["updateTeslaIntegration"]) @aws_api_key @aws_iam
+  onDeleteTeslaIntegration(filter: ModelSubscriptionTeslaIntegrationFilterInput): TeslaIntegration @aws_subscribe(mutations: ["deleteTeslaIntegration"]) @aws_api_key @aws_iam
+  onCreateUserProfile(filter: ModelSubscriptionUserProfileFilterInput): UserProfile @aws_subscribe(mutations: ["createUserProfile"]) @aws_api_key @aws_iam
+  onUpdateUserProfile(filter: ModelSubscriptionUserProfileFilterInput): UserProfile @aws_subscribe(mutations: ["updateUserProfile"]) @aws_api_key @aws_iam
+  onDeleteUserProfile(filter: ModelSubscriptionUserProfileFilterInput): UserProfile @aws_subscribe(mutations: ["deleteUserProfile"]) @aws_api_key @aws_iam
+  onCreateProfileChangeRequest(filter: ModelSubscriptionProfileChangeRequestFilterInput): ProfileChangeRequest @aws_subscribe(mutations: ["createProfileChangeRequest"]) @aws_api_key @aws_iam
+  onUpdateProfileChangeRequest(filter: ModelSubscriptionProfileChangeRequestFilterInput): ProfileChangeRequest @aws_subscribe(mutations: ["updateProfileChangeRequest"]) @aws_api_key @aws_iam
+  onDeleteProfileChangeRequest(filter: ModelSubscriptionProfileChangeRequestFilterInput): ProfileChangeRequest @aws_subscribe(mutations: ["deleteProfileChangeRequest"]) @aws_api_key @aws_iam
+  onCreateVehicleAvailability(filter: ModelSubscriptionVehicleAvailabilityFilterInput): VehicleAvailability @aws_subscribe(mutations: ["createVehicleAvailability"]) @aws_api_key @aws_iam
+  onUpdateVehicleAvailability(filter: ModelSubscriptionVehicleAvailabilityFilterInput): VehicleAvailability @aws_subscribe(mutations: ["updateVehicleAvailability"]) @aws_api_key @aws_iam
+  onDeleteVehicleAvailability(filter: ModelSubscriptionVehicleAvailabilityFilterInput): VehicleAvailability @aws_subscribe(mutations: ["deleteVehicleAvailability"]) @aws_api_key @aws_iam
+}
+
+type ModelVehicleImageConnection @aws_iam @aws_api_key {
+  items: [VehicleImage]!
+  nextToken: String
+}
+
+input ModelVehicleImageFilterInput {
+  vehicleId: ModelIDInput
+  imageUrl: ModelStringInput
+  isPrimary: ModelBooleanInput
+  caption: ModelStringInput
+  order: ModelIntInput
+  id: ModelIDInput
+  createdAt: ModelStringInput
+  updatedAt: ModelStringInput
+  and: [ModelVehicleImageFilterInput]
+  or: [ModelVehicleImageFilterInput]
+  not: ModelVehicleImageFilterInput
+}
+
+input ModelVehicleImageConditionInput {
+  vehicleId: ModelIDInput
+  imageUrl: ModelStringInput
+  isPrimary: ModelBooleanInput
+  caption: ModelStringInput
+  order: ModelIntInput
+  and: [ModelVehicleImageConditionInput]
+  or: [ModelVehicleImageConditionInput]
+  not: ModelVehicleImageConditionInput
+  createdAt: ModelStringInput
+  updatedAt: ModelStringInput
+}
+
+input CreateVehicleImageInput {
+  vehicleId: ID!
+  imageUrl: String!
+  isPrimary: Boolean
+  caption: String
+  order: Int
+  id: ID
+}
+
+input UpdateVehicleImageInput {
+  vehicleId: ID
+  imageUrl: String
+  isPrimary: Boolean
+  caption: String
+  order: Int
+  id: ID!
+}
+
+input DeleteVehicleImageInput {
+  id: ID!
+}
+
+input ModelSubscriptionVehicleImageFilterInput {
+  vehicleId: ModelSubscriptionIDInput
+  imageUrl: ModelSubscriptionStringInput
+  isPrimary: ModelSubscriptionBooleanInput
+  caption: ModelSubscriptionStringInput
+  order: ModelSubscriptionIntInput
+  id: ModelSubscriptionIDInput
+  createdAt: ModelSubscriptionStringInput
+  updatedAt: ModelSubscriptionStringInput
+  and: [ModelSubscriptionVehicleImageFilterInput]
+  or: [ModelSubscriptionVehicleImageFilterInput]
+}
+
+type ModelReservationConnection @aws_iam @aws_api_key {
+  items: [Reservation]!
+  nextToken: String
+}
+
+input ModelReservationStatusInput {
+  eq: ReservationStatus
+  ne: ReservationStatus
+}
+
+input ModelReservationFilterInput {
+  vehicleId: ModelIDInput
+  userId: ModelStringInput
+  startTime: ModelStringInput
+  endTime: ModelStringInput
+  status: ModelReservationStatusInput
+  totalPrice: ModelFloatInput
+  id: ModelIDInput
+  createdAt: ModelStringInput
+  updatedAt: ModelStringInput
+  and: [ModelReservationFilterInput]
+  or: [ModelReservationFilterInput]
+  not: ModelReservationFilterInput
+}
+
+input ModelReservationConditionInput {
+  vehicleId: ModelIDInput
+  userId: ModelStringInput
+  startTime: ModelStringInput
+  endTime: ModelStringInput
+  status: ModelReservationStatusInput
+  totalPrice: ModelFloatInput
+  and: [ModelReservationConditionInput]
+  or: [ModelReservationConditionInput]
+  not: ModelReservationConditionInput
+  createdAt: ModelStringInput
+  updatedAt: ModelStringInput
+}
+
+input CreateReservationInput {
+  vehicleId: ID!
+  userId: String!
+  startTime: AWSDateTime!
+  endTime: AWSDateTime!
+  status: ReservationStatus
+  totalPrice: Float
+  id: ID
+}
+
+input UpdateReservationInput {
+  vehicleId: ID
+  userId: String
+  startTime: AWSDateTime
+  endTime: AWSDateTime
+  status: ReservationStatus
+  totalPrice: Float
+  id: ID!
+}
+
+input DeleteReservationInput {
+  id: ID!
+}
+
+input ModelSubscriptionReservationFilterInput {
+  vehicleId: ModelSubscriptionIDInput
+  userId: ModelSubscriptionStringInput
+  startTime: ModelSubscriptionStringInput
+  endTime: ModelSubscriptionStringInput
+  status: ModelSubscriptionStringInput
+  totalPrice: ModelSubscriptionFloatInput
+  id: ModelSubscriptionIDInput
+  createdAt: ModelSubscriptionStringInput
+  updatedAt: ModelSubscriptionStringInput
+  and: [ModelSubscriptionReservationFilterInput]
+  or: [ModelSubscriptionReservationFilterInput]
+}
+
+type ModelTeslaIntegrationConnection @aws_api_key @aws_iam {
+  items: [TeslaIntegration]!
+  nextToken: String
+}
+
+input ModelTeslaIntegrationFilterInput {
+  accessToken: ModelStringInput
+  refreshToken: ModelStringInput
+  expiresIn: ModelIntInput
+  tokenType: ModelStringInput
+  id: ModelIDInput
+  createdAt: ModelStringInput
+  updatedAt: ModelStringInput
+  and: [ModelTeslaIntegrationFilterInput]
+  or: [ModelTeslaIntegrationFilterInput]
+  not: ModelTeslaIntegrationFilterInput
+}
+
+input ModelTeslaIntegrationConditionInput {
+  accessToken: ModelStringInput
+  refreshToken: ModelStringInput
+  expiresIn: ModelIntInput
+  tokenType: ModelStringInput
+  and: [ModelTeslaIntegrationConditionInput]
+  or: [ModelTeslaIntegrationConditionInput]
+  not: ModelTeslaIntegrationConditionInput
+  createdAt: ModelStringInput
+  updatedAt: ModelStringInput
+}
+
+input CreateTeslaIntegrationInput {
+  accessToken: String!
+  refreshToken: String!
+  expiresIn: Int
+  tokenType: String
+  id: ID
+}
+
+input UpdateTeslaIntegrationInput {
+  accessToken: String
+  refreshToken: String
+  expiresIn: Int
+  tokenType: String
+  id: ID!
+}
+
+input DeleteTeslaIntegrationInput {
+  id: ID!
+}
+
+input ModelSubscriptionTeslaIntegrationFilterInput {
+  accessToken: ModelSubscriptionStringInput
+  refreshToken: ModelSubscriptionStringInput
+  expiresIn: ModelSubscriptionIntInput
+  tokenType: ModelSubscriptionStringInput
+  id: ModelSubscriptionIDInput
+  createdAt: ModelSubscriptionStringInput
+  updatedAt: ModelSubscriptionStringInput
+  and: [ModelSubscriptionTeslaIntegrationFilterInput]
+  or: [ModelSubscriptionTeslaIntegrationFilterInput]
+}
+
+type ModelUserProfileConnection @aws_api_key @aws_iam {
+  items: [UserProfile]!
+  nextToken: String
+}
+
+input ModelUserRoleInput {
+  eq: UserRole
+  ne: UserRole
+}
+
+input ModelUserStatusInput {
+  eq: UserStatus
+  ne: UserStatus
+}
+
+input ModelUserProfileFilterInput {
+  userId: ModelStringInput
+  email: ModelStringInput
+  firstName: ModelStringInput
+  lastName: ModelStringInput
+  role: ModelUserRoleInput
+  status: ModelUserStatusInput
+  profilePictureUrl: ModelStringInput
+  phoneNumber: ModelStringInput
+  streetAddress: ModelStringInput
+  city: ModelStringInput
+  state: ModelStringInput
+  zipCode: ModelStringInput
+  licenseNumber: ModelStringInput
+  insurancePolicyNumber: ModelStringInput
+  id: ModelIDInput
+  createdAt: ModelStringInput
+  updatedAt: ModelStringInput
+  and: [ModelUserProfileFilterInput]
+  or: [ModelUserProfileFilterInput]
+  not: ModelUserProfileFilterInput
+}
+
+input ModelUserProfileConditionInput {
+  userId: ModelStringInput
+  email: ModelStringInput
+  firstName: ModelStringInput
+  lastName: ModelStringInput
+  role: ModelUserRoleInput
+  status: ModelUserStatusInput
+  profilePictureUrl: ModelStringInput
+  phoneNumber: ModelStringInput
+  streetAddress: ModelStringInput
+  city: ModelStringInput
+  state: ModelStringInput
+  zipCode: ModelStringInput
+  licenseNumber: ModelStringInput
+  insurancePolicyNumber: ModelStringInput
+  and: [ModelUserProfileConditionInput]
+  or: [ModelUserProfileConditionInput]
+  not: ModelUserProfileConditionInput
+  createdAt: ModelStringInput
+  updatedAt: ModelStringInput
+}
+
+input CreateUserProfileInput {
+  userId: String!
+  email: String!
+  firstName: String
+  lastName: String
+  role: UserRole!
+  status: UserStatus
+  profilePictureUrl: String
+  phoneNumber: String
+  streetAddress: String
+  city: String
+  state: String
+  zipCode: String
+  licenseNumber: String
+  insurancePolicyNumber: String
+  id: ID
+}
+
+input UpdateUserProfileInput {
+  userId: String
+  email: String
+  firstName: String
+  lastName: String
+  role: UserRole
+  status: UserStatus
+  profilePictureUrl: String
+  phoneNumber: String
+  streetAddress: String
+  city: String
+  state: String
+  zipCode: String
+  licenseNumber: String
+  insurancePolicyNumber: String
+  id: ID!
+}
+
+input DeleteUserProfileInput {
+  id: ID!
+}
+
+input ModelSubscriptionUserProfileFilterInput {
+  userId: ModelSubscriptionStringInput
+  email: ModelSubscriptionStringInput
+  firstName: ModelSubscriptionStringInput
+  lastName: ModelSubscriptionStringInput
+  role: ModelSubscriptionStringInput
+  status: ModelSubscriptionStringInput
+  profilePictureUrl: ModelSubscriptionStringInput
+  phoneNumber: ModelSubscriptionStringInput
+  streetAddress: ModelSubscriptionStringInput
+  city: ModelSubscriptionStringInput
+  state: ModelSubscriptionStringInput
+  zipCode: ModelSubscriptionStringInput
+  licenseNumber: ModelSubscriptionStringInput
+  insurancePolicyNumber: ModelSubscriptionStringInput
+  id: ModelSubscriptionIDInput
+  createdAt: ModelSubscriptionStringInput
+  updatedAt: ModelSubscriptionStringInput
+  and: [ModelSubscriptionUserProfileFilterInput]
+  or: [ModelSubscriptionUserProfileFilterInput]
+}
+
+type ModelProfileChangeRequestConnection @aws_api_key @aws_iam {
+  items: [ProfileChangeRequest]!
+  nextToken: String
+}
+
+input ModelChangeRequestStatusInput {
+  eq: ChangeRequestStatus
+  ne: ChangeRequestStatus
+}
+
+input ModelProfileChangeRequestFilterInput {
+  userId: ModelStringInput
+  requestedBy: ModelStringInput
+  newData: ModelStringInput
+  token: ModelStringInput
+  status: ModelChangeRequestStatusInput
+  id: ModelIDInput
+  createdAt: ModelStringInput
+  updatedAt: ModelStringInput
+  and: [ModelProfileChangeRequestFilterInput]
+  or: [ModelProfileChangeRequestFilterInput]
+  not: ModelProfileChangeRequestFilterInput
+}
+
+input ModelProfileChangeRequestConditionInput {
+  userId: ModelStringInput
+  requestedBy: ModelStringInput
+  newData: ModelStringInput
+  token: ModelStringInput
+  status: ModelChangeRequestStatusInput
+  and: [ModelProfileChangeRequestConditionInput]
+  or: [ModelProfileChangeRequestConditionInput]
+  not: ModelProfileChangeRequestConditionInput
+  createdAt: ModelStringInput
+  updatedAt: ModelStringInput
+}
+
+input CreateProfileChangeRequestInput {
+  userId: String!
+  requestedBy: String!
+  newData: AWSJSON!
+  token: String!
+  status: ChangeRequestStatus!
+  id: ID
+}
+
+input UpdateProfileChangeRequestInput {
+  userId: String
+  requestedBy: String
+  newData: AWSJSON
+  token: String
+  status: ChangeRequestStatus
+  id: ID!
+}
+
+input DeleteProfileChangeRequestInput {
+  id: ID!
+}
+
+input ModelSubscriptionProfileChangeRequestFilterInput {
+  userId: ModelSubscriptionStringInput
+  requestedBy: ModelSubscriptionStringInput
+  newData: ModelSubscriptionStringInput
+  token: ModelSubscriptionStringInput
+  status: ModelSubscriptionStringInput
+  id: ModelSubscriptionIDInput
+  createdAt: ModelSubscriptionStringInput
+  updatedAt: ModelSubscriptionStringInput
+  and: [ModelSubscriptionProfileChangeRequestFilterInput]
+  or: [ModelSubscriptionProfileChangeRequestFilterInput]
+}
+
+type ModelVehicleAvailabilityConnection @aws_iam @aws_api_key {
+  items: [VehicleAvailability]!
+  nextToken: String
+}
+
+input ModelVehicleAvailabilityFilterInput {
+  vehicleId: ModelIDInput
+  startTime: ModelStringInput
+  endTime: ModelStringInput
+  isAvailable: ModelBooleanInput
+  reason: ModelStringInput
+  id: ModelIDInput
+  createdAt: ModelStringInput
+  updatedAt: ModelStringInput
+  and: [ModelVehicleAvailabilityFilterInput]
+  or: [ModelVehicleAvailabilityFilterInput]
+  not: ModelVehicleAvailabilityFilterInput
+}
+
+input ModelVehicleAvailabilityConditionInput {
+  vehicleId: ModelIDInput
+  startTime: ModelStringInput
+  endTime: ModelStringInput
+  isAvailable: ModelBooleanInput
+  reason: ModelStringInput
+  and: [ModelVehicleAvailabilityConditionInput]
+  or: [ModelVehicleAvailabilityConditionInput]
+  not: ModelVehicleAvailabilityConditionInput
+  createdAt: ModelStringInput
+  updatedAt: ModelStringInput
+}
+
+input CreateVehicleAvailabilityInput {
+  vehicleId: ID!
+  startTime: AWSDateTime!
+  endTime: AWSDateTime!
+  isAvailable: Boolean!
+  reason: String
+  id: ID
+}
+
+input UpdateVehicleAvailabilityInput {
+  vehicleId: ID
+  startTime: AWSDateTime
+  endTime: AWSDateTime
+  isAvailable: Boolean
+  reason: String
+  id: ID!
+}
+
+input DeleteVehicleAvailabilityInput {
+  id: ID!
+}
+
+input ModelSubscriptionVehicleAvailabilityFilterInput {
+  vehicleId: ModelSubscriptionIDInput
+  startTime: ModelSubscriptionStringInput
+  endTime: ModelSubscriptionStringInput
+  isAvailable: ModelSubscriptionBooleanInput
+  reason: ModelSubscriptionStringInput
+  id: ModelSubscriptionIDInput
+  createdAt: ModelSubscriptionStringInput
+  updatedAt: ModelSubscriptionStringInput
+  and: [ModelSubscriptionVehicleAvailabilityFilterInput]
+  or: [ModelSubscriptionVehicleAvailabilityFilterInput]
+}

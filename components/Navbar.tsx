@@ -36,6 +36,7 @@ export default function Navbar() {
             const attributes = await fetchUserAttributes();
             const userId = attributes.sub;
             let pictureUrl = null;
+            let dbRole = null;
 
             if (userId) {
                 const { data: profiles } = await client.models.UserProfile.list({
@@ -43,6 +44,9 @@ export default function Navbar() {
                 });
                 if (profiles.length > 0) {
                     const profile = profiles[0];
+                    if (profile.role) {
+                        dbRole = profile.role.toLowerCase();
+                    }
                     if (profile.profilePictureUrl) {
                         if (profile.profilePictureUrl.startsWith('http')) {
                             pictureUrl = profile.profilePictureUrl;
@@ -60,7 +64,7 @@ export default function Navbar() {
 
             setUser({
                 email: attributes.email || '',
-                role: attributes['custom:role'] || 'customer',
+                role: dbRole || attributes['custom:role'] || 'customer',
                 picture: pictureUrl || undefined
             });
         } catch (error) {
@@ -106,6 +110,12 @@ export default function Navbar() {
                                         <Link href="/admin/vehicles" className="text-slate-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
                                             Vehicles
                                         </Link>
+                                        <Link href="/admin/vehicles/availability" className="text-slate-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                                            Availability
+                                        </Link>
+                                        <Link href="/admin/reservations" className="text-slate-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                                            Reservations
+                                        </Link>
                                         <Link href="/admin/users" className="text-slate-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
                                             Users
                                         </Link>
@@ -119,6 +129,9 @@ export default function Navbar() {
                                         <Link href="/employee/fleet" className="text-slate-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
                                             Fleet
                                         </Link>
+                                        <Link href="/employee/reservations" className="text-slate-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                                            Reservations
+                                        </Link>
                                     </>
                                 )}
                                 {user.role === 'customer' && (
@@ -128,6 +141,9 @@ export default function Navbar() {
                                         </Link>
                                         <Link href="/customer/vehicles" className="text-slate-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
                                             Browse Vehicles
+                                        </Link>
+                                        <Link href="/customer/reservations" className="text-slate-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                                            My Reservations
                                         </Link>
                                     </>
                                 )}
@@ -189,6 +205,9 @@ export default function Navbar() {
                             </div>
                         ) : (
                             <div className="flex items-center gap-3">
+                                <Link href="/customer/vehicles" className="text-slate-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                                    Browse Vehicles
+                                </Link>
                                 <Link href="/login" className="text-slate-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
                                     Login
                                 </Link>

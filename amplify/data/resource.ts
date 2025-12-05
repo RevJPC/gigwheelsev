@@ -35,6 +35,7 @@ const schema = a.schema({
         odometer: a.float(), // miles
         reservations: a.hasMany('Reservation', 'vehicleId'),
         images: a.hasMany('VehicleImage', 'vehicleId'),
+        availability: a.hasMany('VehicleAvailability', 'vehicleId'),
     }).authorization(allow => [allow.publicApiKey()]), // Open for now, refine later
 
     VehicleImage: a.model({
@@ -56,7 +57,7 @@ const schema = a.schema({
         endTime: a.datetime().required(),
         status: a.ref('ReservationStatus'),
         totalPrice: a.float(),
-    }).authorization(allow => [allow.owner()]), // Only owner can see/edit
+    }).authorization(allow => [allow.publicApiKey()]), // TODO: Restrict to user's own reservations
 
     TeslaIntegration: a.model({
         accessToken: a.string().required(),
@@ -89,6 +90,15 @@ const schema = a.schema({
         token: a.string().required(), // Unique confirmation token
         status: a.ref('ChangeRequestStatus').required(),
     }).authorization(allow => [allow.publicApiKey()]), // TODO: Restrict properly
+
+    VehicleAvailability: a.model({
+        vehicleId: a.id().required(),
+        vehicle: a.belongsTo('Vehicle', 'vehicleId'),
+        startTime: a.datetime().required(),
+        endTime: a.datetime().required(),
+        isAvailable: a.boolean().required().default(true), // true = available, false = blocked
+        reason: a.string(), // Optional reason for blocking (maintenance, etc.)
+    }).authorization(allow => [allow.publicApiKey()]), // TODO: Restrict to Admin/Employee
 
     teslaConnect: a.query()
         .arguments({

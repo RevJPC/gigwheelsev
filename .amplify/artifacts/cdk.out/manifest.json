@@ -22,7 +22,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/200dadb87320cca11d4911a4e328c57ed81976df89d979848826e8fd0bc9aec2.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/9f62eb10f2977dedd1f4f63abd98c5369fc4b4d01ec70f34686a89886b0d7236.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -1921,26 +1921,6 @@
             "data": "Subscription.onDeleteReservation"
           }
         ],
-        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/Reservation/ReservationOwnerDataResolverFn/ReservationOwnerDataResolverFn.AppSyncFunction": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "ReservationOwnerDataResolverFnReservationOwnerDataResolverFnAppSyncFunctionD5FAEF9C"
-          },
-          {
-            "type": "graphqltransformer:resourceName",
-            "data": "ReservationOwnerDataResolverFn"
-          }
-        ],
-        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/Reservation/reservationOwnerResolver": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "ReservationownerResolver"
-          },
-          {
-            "type": "graphqltransformer:resourceName",
-            "data": "Reservation.owner"
-          }
-        ],
         "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/Reservation/CDKMetadata/Default": [
           {
             "type": "aws:cdk:logicalId",
@@ -3531,6 +3511,536 @@
             "data": "amplifyDataProfileChangeRequestNestedStackProfileChangeRequestNestedStackResource17300911"
           }
         ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleAvailability/DynamoDBModelTableReadIOPS": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "DynamoDBModelTableReadIOPS"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleAvailability/DynamoDBModelTableWriteIOPS": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "DynamoDBModelTableWriteIOPS"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleAvailability/DynamoDBBillingMode": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "DynamoDBBillingMode"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleAvailability/DynamoDBEnablePointInTimeRecovery": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "DynamoDBEnablePointInTimeRecovery"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleAvailability/DynamoDBEnableServerSideEncryption": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "DynamoDBEnableServerSideEncryption"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleAvailability/HasEnvironmentParameter": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "HasEnvironmentParameter"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleAvailability/ShouldUsePayPerRequestBilling": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ShouldUsePayPerRequestBilling"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleAvailability/ShouldUsePointInTimeRecovery": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ShouldUsePointInTimeRecovery"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleAvailability/VehicleAvailabilityTable": [
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "VehicleAvailability"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleAvailability/VehicleAvailabilityTable/Default/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "VehicleAvailabilityTable"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "VehicleAvailability"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleAvailability/CustomTableVehicleAvailabilityTable": [
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "VehicleAvailability"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleAvailability/GetAttVehicleAvailabilityTableStreamArn": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "GetAttVehicleAvailabilityTableStreamArn"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleAvailability/GetAttVehicleAvailabilityTableName": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "GetAttVehicleAvailabilityTableName"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleAvailability/VehicleAvailabilityIAMRole": [
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "VehicleAvailabilityIAMRole"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleAvailability/VehicleAvailabilityIAMRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "VehicleAvailabilityIAMRole68E0FB43"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "VehicleAvailabilityIAMRole"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleAvailability/VehicleAvailabilityDataSource": [
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "VehicleAvailabilityTable"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleAvailability/VehicleAvailabilityDataSource/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "VehicleAvailabilityDataSource"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "VehicleAvailabilityTable"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleAvailability/QuerygetVehicleAvailabilityauth0Function/QuerygetVehicleAvailabilityauth0Function.AppSyncFunction": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "QuerygetVehicleAvailabilityauth0FunctionQuerygetVehicleAvailabilityauth0FunctionAppSyncFunction18B2BB23"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "QuerygetVehicleAvailabilityauth0Function"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleAvailability/QuerygetVehicleAvailabilitypostAuth0Function/QuerygetVehicleAvailabilitypostAuth0Function.AppSyncFunction": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "QuerygetVehicleAvailabilitypostAuth0FunctionQuerygetVehicleAvailabilitypostAuth0FunctionAppSyncFunctionDFD42A61"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "QuerygetVehicleAvailabilitypostAuth0Function"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleAvailability/QueryGetVehicleAvailabilityDataResolverFn/QueryGetVehicleAvailabilityDataResolverFn.AppSyncFunction": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "QueryGetVehicleAvailabilityDataResolverFnQueryGetVehicleAvailabilityDataResolverFnAppSyncFunction8688CCC7"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "QueryGetVehicleAvailabilityDataResolverFn"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleAvailability/queryGetVehicleAvailabilityResolver": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "GetVehicleAvailabilityResolver"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "Query.getVehicleAvailability"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleAvailability/QuerylistVehicleAvailabilitiesauth0Function/QuerylistVehicleAvailabilitiesauth0Function.AppSyncFunction": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "QuerylistVehicleAvailabilitiesauth0FunctionQuerylistVehicleAvailabilitiesauth0FunctionAppSyncFunctionFC36D9E3"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "QuerylistVehicleAvailabilitiesauth0Function"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleAvailability/QuerylistVehicleAvailabilitiespostAuth0Function/QuerylistVehicleAvailabilitiespostAuth0Function.AppSyncFunction": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "QuerylistVehicleAvailabilitiespostAuth0FunctionQuerylistVehicleAvailabilitiespostAuth0FunctionAppSyncFunction3EE619B0"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "QuerylistVehicleAvailabilitiespostAuth0Function"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleAvailability/QueryListVehicleAvailabilitiesDataResolverFn/QueryListVehicleAvailabilitiesDataResolverFn.AppSyncFunction": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "QueryListVehicleAvailabilitiesDataResolverFnQueryListVehicleAvailabilitiesDataResolverFnAppSyncFunctionA925D222"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "QueryListVehicleAvailabilitiesDataResolverFn"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleAvailability/queryListVehicleAvailabilitiesResolver": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ListVehicleAvailabilityResolver"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "Query.listVehicleAvailabilities"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleAvailability/MutationcreateVehicleAvailabilityinit0Function/MutationcreateVehicleAvailabilityinit0Function.AppSyncFunction": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MutationcreateVehicleAvailabilityinit0FunctionMutationcreateVehicleAvailabilityinit0FunctionAppSyncFunction8C15FC0A"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "MutationcreateVehicleAvailabilityinit0Function"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleAvailability/MutationcreateVehicleAvailabilityinit1Function/MutationcreateVehicleAvailabilityinit1Function.AppSyncFunction": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MutationcreateVehicleAvailabilityinit1FunctionMutationcreateVehicleAvailabilityinit1FunctionAppSyncFunctionBE975A60"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "MutationcreateVehicleAvailabilityinit1Function"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleAvailability/MutationcreateVehicleAvailabilityauth0Function/MutationcreateVehicleAvailabilityauth0Function.AppSyncFunction": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MutationcreateVehicleAvailabilityauth0FunctionMutationcreateVehicleAvailabilityauth0FunctionAppSyncFunction854FA62F"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "MutationcreateVehicleAvailabilityauth0Function"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleAvailability/MutationcreateVehicleAvailabilitypostAuth0Function/MutationcreateVehicleAvailabilitypostAuth0Function.AppSyncFunction": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MutationcreateVehicleAvailabilitypostAuth0FunctionMutationcreateVehicleAvailabilitypostAuth0FunctionAppSyncFunction74E08323"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "MutationcreateVehicleAvailabilitypostAuth0Function"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleAvailability/MutationCreateVehicleAvailabilityDataResolverFn/MutationCreateVehicleAvailabilityDataResolverFn.AppSyncFunction": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MutationCreateVehicleAvailabilityDataResolverFnMutationCreateVehicleAvailabilityDataResolverFnAppSyncFunction9E3F889C"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "MutationCreateVehicleAvailabilityDataResolverFn"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleAvailability/mutationCreateVehicleAvailabilityResolver": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CreateVehicleAvailabilityResolver"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "Mutation.createVehicleAvailability"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleAvailability/MutationupdateVehicleAvailabilityinit0Function/MutationupdateVehicleAvailabilityinit0Function.AppSyncFunction": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MutationupdateVehicleAvailabilityinit0FunctionMutationupdateVehicleAvailabilityinit0FunctionAppSyncFunction851A2A51"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "MutationupdateVehicleAvailabilityinit0Function"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleAvailability/MutationupdateVehicleAvailabilityauth0Function/MutationupdateVehicleAvailabilityauth0Function.AppSyncFunction": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MutationupdateVehicleAvailabilityauth0FunctionMutationupdateVehicleAvailabilityauth0FunctionAppSyncFunctionD58EDD47"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "MutationupdateVehicleAvailabilityauth0Function"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleAvailability/MutationupdateVehicleAvailabilitypostAuth0Function/MutationupdateVehicleAvailabilitypostAuth0Function.AppSyncFunction": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MutationupdateVehicleAvailabilitypostAuth0FunctionMutationupdateVehicleAvailabilitypostAuth0FunctionAppSyncFunction04F26D9A"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "MutationupdateVehicleAvailabilitypostAuth0Function"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleAvailability/MutationUpdateVehicleAvailabilityDataResolverFn/MutationUpdateVehicleAvailabilityDataResolverFn.AppSyncFunction": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MutationUpdateVehicleAvailabilityDataResolverFnMutationUpdateVehicleAvailabilityDataResolverFnAppSyncFunctionDD7D0BA5"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "MutationUpdateVehicleAvailabilityDataResolverFn"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleAvailability/mutationUpdateVehicleAvailabilityResolver": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "UpdateVehicleAvailabilityResolver"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "Mutation.updateVehicleAvailability"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleAvailability/MutationdeleteVehicleAvailabilityauth0Function/MutationdeleteVehicleAvailabilityauth0Function.AppSyncFunction": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MutationdeleteVehicleAvailabilityauth0FunctionMutationdeleteVehicleAvailabilityauth0FunctionAppSyncFunction225491C0"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "MutationdeleteVehicleAvailabilityauth0Function"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleAvailability/MutationdeleteVehicleAvailabilitypostAuth0Function/MutationdeleteVehicleAvailabilitypostAuth0Function.AppSyncFunction": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MutationdeleteVehicleAvailabilitypostAuth0FunctionMutationdeleteVehicleAvailabilitypostAuth0FunctionAppSyncFunctionA4B43E2F"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "MutationdeleteVehicleAvailabilitypostAuth0Function"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleAvailability/MutationDeleteVehicleAvailabilityDataResolverFn/MutationDeleteVehicleAvailabilityDataResolverFn.AppSyncFunction": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MutationDeleteVehicleAvailabilityDataResolverFnMutationDeleteVehicleAvailabilityDataResolverFnAppSyncFunctionDECC06D6"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "MutationDeleteVehicleAvailabilityDataResolverFn"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleAvailability/mutationDeleteVehicleAvailabilityResolver": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "DeleteVehicleAvailabilityResolver"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "Mutation.deleteVehicleAvailability"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleAvailability/SubscriptiononCreateVehicleAvailabilityauth0Function/SubscriptiononCreateVehicleAvailabilityauth0Function.AppSyncFunction": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "SubscriptiononCreateVehicleAvailabilityauth0FunctionSubscriptiononCreateVehicleAvailabilityauth0FunctionAppSyncFunction0EB411AD"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "SubscriptiononCreateVehicleAvailabilityauth0Function"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleAvailability/SubscriptiononCreateVehicleAvailabilitypostAuth0Function/SubscriptiononCreateVehicleAvailabilitypostAuth0Function.AppSyncFunction": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "SubscriptiononCreateVehicleAvailabilitypostAuth0FunctionSubscriptiononCreateVehicleAvailabilitypostAuth0FunctionAppSyncFunction4240B6FF"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "SubscriptiononCreateVehicleAvailabilitypostAuth0Function"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleAvailability/SubscriptionOnCreateVehicleAvailabilityDataResolverFn/SubscriptionOnCreateVehicleAvailabilityDataResolverFn.AppSyncFunction": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "SubscriptionOnCreateVehicleAvailabilityDataResolverFnSubscriptionOnCreateVehicleAvailabilityDataResolverFnAppSyncFunction3BA10489"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "SubscriptionOnCreateVehicleAvailabilityDataResolverFn"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleAvailability/subscriptionOnCreateVehicleAvailabilityResolver": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "SubscriptiononCreateVehicleAvailabilityResolver"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "Subscription.onCreateVehicleAvailability"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleAvailability/SubscriptiononUpdateVehicleAvailabilityauth0Function/SubscriptiononUpdateVehicleAvailabilityauth0Function.AppSyncFunction": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "SubscriptiononUpdateVehicleAvailabilityauth0FunctionSubscriptiononUpdateVehicleAvailabilityauth0FunctionAppSyncFunction41F88A03"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "SubscriptiononUpdateVehicleAvailabilityauth0Function"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleAvailability/SubscriptiononUpdateVehicleAvailabilitypostAuth0Function/SubscriptiononUpdateVehicleAvailabilitypostAuth0Function.AppSyncFunction": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "SubscriptiononUpdateVehicleAvailabilitypostAuth0FunctionSubscriptiononUpdateVehicleAvailabilitypostAuth0FunctionAppSyncFunction3051C0FC"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "SubscriptiononUpdateVehicleAvailabilitypostAuth0Function"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleAvailability/SubscriptionOnUpdateVehicleAvailabilityDataResolverFn/SubscriptionOnUpdateVehicleAvailabilityDataResolverFn.AppSyncFunction": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "SubscriptionOnUpdateVehicleAvailabilityDataResolverFnSubscriptionOnUpdateVehicleAvailabilityDataResolverFnAppSyncFunctionE5AA153B"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "SubscriptionOnUpdateVehicleAvailabilityDataResolverFn"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleAvailability/subscriptionOnUpdateVehicleAvailabilityResolver": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "SubscriptiononUpdateVehicleAvailabilityResolver"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "Subscription.onUpdateVehicleAvailability"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleAvailability/SubscriptiononDeleteVehicleAvailabilityauth0Function/SubscriptiononDeleteVehicleAvailabilityauth0Function.AppSyncFunction": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "SubscriptiononDeleteVehicleAvailabilityauth0FunctionSubscriptiononDeleteVehicleAvailabilityauth0FunctionAppSyncFunction4516DB4B"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "SubscriptiononDeleteVehicleAvailabilityauth0Function"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleAvailability/SubscriptiononDeleteVehicleAvailabilitypostAuth0Function/SubscriptiononDeleteVehicleAvailabilitypostAuth0Function.AppSyncFunction": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "SubscriptiononDeleteVehicleAvailabilitypostAuth0FunctionSubscriptiononDeleteVehicleAvailabilitypostAuth0FunctionAppSyncFunction2A498652"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "SubscriptiononDeleteVehicleAvailabilitypostAuth0Function"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleAvailability/SubscriptionOnDeleteVehicleAvailabilityDataResolverFn/SubscriptionOnDeleteVehicleAvailabilityDataResolverFn.AppSyncFunction": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "SubscriptionOnDeleteVehicleAvailabilityDataResolverFnSubscriptionOnDeleteVehicleAvailabilityDataResolverFnAppSyncFunction9E2D2458"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "SubscriptionOnDeleteVehicleAvailabilityDataResolverFn"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleAvailability/subscriptionOnDeleteVehicleAvailabilityResolver": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "SubscriptiononDeleteVehicleAvailabilityResolver"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "Subscription.onDeleteVehicleAvailability"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleAvailability/CDKMetadata/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadata"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleAvailability/CDKMetadata/Condition": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadataAvailable"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleAvailability/reference-to-amplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataAmplifyTableManagerNestedStackAmplifyTableManagerNestedStackResource7F881793Outputs.amplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataAmplifyTableManagerTableManagerCustomProviderframeworkonEventC117D7DCArn": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "referencetoamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataAmplifyTableManagerNestedStackAmplifyTableManagerNestedStackResource7F881793Outputsamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataAmplifyTableManagerTableManagerCusto78829339"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleAvailability/reference-to-amplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataGraphQLAPIEFD49BECApiId": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "referencetoamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataGraphQLAPIEFD49BECApiId"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleAvailability/reference-to-amplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataGraphQLAPINONEDSE5668EC6Name": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "referencetoamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataGraphQLAPINONEDSE5668EC6Name"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleAvailability/reference-to-amplifygigwheelsevjamiesandbox03b8376cacauthNestedStackauthNestedStackResourceD32EECAFOutputs.amplifygigwheelsevjamiesandbox03b8376cacauthamplifyAuthauthenticatedUserRoleC3A5DEC2Ref": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "referencetoamplifygigwheelsevjamiesandbox03b8376cacauthNestedStackauthNestedStackResourceD32EECAFOutputsamplifygigwheelsevjamiesandbox03b8376cacauthamplifyAuthauthenticatedUserRoleC3A5DEC2Ref"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleAvailability/reference-to-amplifygigwheelsevjamiesandbox03b8376cacauthNestedStackauthNestedStackResourceD32EECAFOutputs.amplifygigwheelsevjamiesandbox03b8376cacauthamplifyAuthunauthenticatedUserRole462C06D4Ref": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "referencetoamplifygigwheelsevjamiesandbox03b8376cacauthNestedStackauthNestedStackResourceD32EECAFOutputsamplifygigwheelsevjamiesandbox03b8376cacauthamplifyAuthunauthenticatedUserRole462C06D4Ref"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleAvailability/reference-to-amplifygigwheelsevjamiesandbox03b8376cacauthNestedStackauthNestedStackResourceD32EECAFOutputs.amplifygigwheelsevjamiesandbox03b8376cacauthamplifyAuthIdentityPool49485A21Ref": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "referencetoamplifygigwheelsevjamiesandbox03b8376cacauthNestedStackauthNestedStackResourceD32EECAFOutputsamplifygigwheelsevjamiesandbox03b8376cacauthamplifyAuthIdentityPool49485A21Ref"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleAvailability/amplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataVehicleAvailabilityVehicleAvailabilityDataSource6ABC4383Name": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "amplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataVehicleAvailabilityVehicleAvailabilityDataSource6ABC4383Name"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleAvailability/amplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataVehicleAvailabilityVehicleAvailabilityTableCB3A0A51TableArn": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "amplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataVehicleAvailabilityVehicleAvailabilityTableCB3A0A51TableArn"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleAvailability.NestedStack/VehicleAvailability.NestedStackResource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "amplifyDataVehicleAvailabilityNestedStackVehicleAvailabilityNestedStackResource881A640C"
+          }
+        ],
         "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/FunctionDirectiveStack/HasEnvironmentParameter": [
           {
             "type": "aws:cdk:logicalId",
@@ -3965,6 +4475,36 @@
             "data": "Vehicle.images"
           }
         ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/ConnectionStack/Vehicleavailabilityauth0Function/Vehicleavailabilityauth0Function.AppSyncFunction": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "Vehicleavailabilityauth0FunctionVehicleavailabilityauth0FunctionAppSyncFunctionDE641A84"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "Vehicleavailabilityauth0Function"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/ConnectionStack/VehicleAvailabilityDataResolverFn/VehicleAvailabilityDataResolverFn.AppSyncFunction": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "VehicleAvailabilityDataResolverFnVehicleAvailabilityDataResolverFnAppSyncFunctionC9684AC5"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "VehicleAvailabilityDataResolverFn"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/ConnectionStack/vehicleAvailabilityResolver": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "VehicleavailabilityResolver"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "Vehicle.availability"
+          }
+        ],
         "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/ConnectionStack/VehicleImagevehicleauth0Function/VehicleImagevehicleauth0Function.AppSyncFunction": [
           {
             "type": "aws:cdk:logicalId",
@@ -4023,6 +4563,36 @@
           {
             "type": "graphqltransformer:resourceName",
             "data": "Reservation.vehicle"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/ConnectionStack/VehicleAvailabilityvehicleauth0Function/VehicleAvailabilityvehicleauth0Function.AppSyncFunction": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "VehicleAvailabilityvehicleauth0FunctionVehicleAvailabilityvehicleauth0FunctionAppSyncFunctionC8923A7C"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "VehicleAvailabilityvehicleauth0Function"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/ConnectionStack/VehicleAvailabilityVehicleDataResolverFn/VehicleAvailabilityVehicleDataResolverFn.AppSyncFunction": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "VehicleAvailabilityVehicleDataResolverFnVehicleAvailabilityVehicleDataResolverFnAppSyncFunction85E25989"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "VehicleAvailabilityVehicleDataResolverFn"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/ConnectionStack/vehicleAvailabilityVehicleResolver": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "VehicleAvailabilityvehicleResolver"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "VehicleAvailability.vehicle"
           }
         ],
         "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/ConnectionStack/CDKMetadata/Default": [
@@ -4089,6 +4659,18 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "referencetoamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataVehicleImageNestedStackVehicleImageNestedStackResource9C0AD86EOutputsamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataVehicleImageVehicleImageTableBFA7358ETableArn"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/ConnectionStack/reference-to-amplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataVehicleAvailabilityNestedStackVehicleAvailabilityNestedStackResourceA9A28AA6Outputs.amplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataVehicleAvailabilityVehicleAvailabilityDataSource6ABC4383Name": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "referencetoamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataVehicleAvailabilityNestedStackVehicleAvailabilityNestedStackResourceA9A28AA6Outputsamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataVehicleAvailabilityVehicleAvailabiliFAD2C576"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/ConnectionStack/reference-to-amplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataVehicleAvailabilityNestedStackVehicleAvailabilityNestedStackResourceA9A28AA6Outputs.amplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataVehicleAvailabilityVehicleAvailabilityTableCB3A0A51TableArn": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "referencetoamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataVehicleAvailabilityNestedStackVehicleAvailabilityNestedStackResourceA9A28AA6Outputsamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataVehicleAvailabilityVehicleAvailabili57F9E968"
           }
         ],
         "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/ConnectionStack/reference-to-amplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataVehicleNestedStackVehicleNestedStackResourceF3AF7737Outputs.amplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataVehicleVehicleDataSourceF7797305Name": [

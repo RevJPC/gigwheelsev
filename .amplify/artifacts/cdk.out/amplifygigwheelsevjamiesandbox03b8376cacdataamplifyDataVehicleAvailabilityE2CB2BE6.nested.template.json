@@ -349,7 +349,7 @@
   }
  },
  "Resources": {
-  "ReservationTable": {
+  "VehicleAvailabilityTable": {
    "Type": "Custom::AmplifyDynamoDBTable",
    "Properties": {
     "ServiceToken": {
@@ -359,7 +359,7 @@
      "Fn::Join": [
       "",
       [
-       "Reservation-",
+       "VehicleAvailability-",
        {
         "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataGraphQLAPIEFD49BECApiId"
        },
@@ -385,7 +385,7 @@
     ],
     "globalSecondaryIndexes": [
      {
-      "indexName": "gsi-Vehicle.reservations",
+      "indexName": "gsi-Vehicle.availability",
       "keySchema": [
        {
         "attributeName": "vehicleId",
@@ -462,10 +462,10 @@
    "UpdateReplacePolicy": "Delete",
    "DeletionPolicy": "Delete",
    "Metadata": {
-    "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/Reservation/ReservationTable/Default/Default"
+    "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleAvailability/VehicleAvailabilityTable/Default/Default"
    }
   },
-  "ReservationIAMRole6DCBB17E": {
+  "VehicleAvailabilityIAMRole68E0FB43": {
    "Type": "AWS::IAM::Role",
    "Properties": {
     "AssumeRolePolicyDocument": {
@@ -509,7 +509,7 @@
               "Fn::Join": [
                "",
                [
-                "Reservation-",
+                "VehicleAvailability-",
                 {
                  "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataGraphQLAPIEFD49BECApiId"
                 },
@@ -528,7 +528,7 @@
               "Fn::Join": [
                "",
                [
-                "Reservation-",
+                "VehicleAvailability-",
                 {
                  "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataGraphQLAPIEFD49BECApiId"
                 },
@@ -551,7 +551,7 @@
      "Fn::Join": [
       "",
       [
-       "ReservationIAMRole0c6266-",
+       "VehicleAvailabilityIc1138f-",
        {
         "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataGraphQLAPIEFD49BECApiId"
        },
@@ -577,10 +577,10 @@
    "UpdateReplacePolicy": "Delete",
    "DeletionPolicy": "Delete",
    "Metadata": {
-    "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/Reservation/ReservationIAMRole/Resource"
+    "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleAvailability/VehicleAvailabilityIAMRole/Resource"
    }
   },
-  "ReservationDataSource": {
+  "VehicleAvailabilityDataSource": {
    "Type": "AWS::AppSync::DataSource",
    "Properties": {
     "ApiId": {
@@ -604,7 +604,7 @@
              ":",
              {
               "Fn::GetAtt": [
-               "ReservationTable",
+               "VehicleAvailabilityTable",
                "TableArn"
               ]
              }
@@ -617,25 +617,25 @@
       ]
      }
     },
-    "Name": "ReservationTable",
+    "Name": "VehicleAvailabilityTable",
     "ServiceRoleArn": {
      "Fn::GetAtt": [
-      "ReservationIAMRole6DCBB17E",
+      "VehicleAvailabilityIAMRole68E0FB43",
       "Arn"
      ]
     },
     "Type": "AMAZON_DYNAMODB"
    },
    "DependsOn": [
-    "ReservationIAMRole6DCBB17E"
+    "VehicleAvailabilityIAMRole68E0FB43"
    ],
    "UpdateReplacePolicy": "Delete",
    "DeletionPolicy": "Delete",
    "Metadata": {
-    "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/Reservation/ReservationDataSource/Resource"
+    "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleAvailability/VehicleAvailabilityDataSource/Resource"
    }
   },
-  "QuerygetReservationauth0FunctionQuerygetReservationauth0FunctionAppSyncFunction6670AEDF": {
+  "QuerygetVehicleAvailabilityauth0FunctionQuerygetVehicleAvailabilityauth0FunctionAppSyncFunction18B2BB23": {
    "Type": "AWS::AppSync::FunctionConfiguration",
    "Properties": {
     "ApiId": {
@@ -645,7 +645,7 @@
      "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataGraphQLAPINONEDSE5668EC6Name"
     },
     "FunctionVersion": "2018-05-29",
-    "Name": "QuerygetReservationauth0Function",
+    "Name": "QuerygetVehicleAvailabilityauth0Function",
     "RequestMappingTemplateS3Location": {
      "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/0224a3e5097427da3f4460b5d6d2b86ad4195c9cb8da7bc13e7187eead1c3ae3.vtl"
     },
@@ -654,10 +654,10 @@
    "UpdateReplacePolicy": "Delete",
    "DeletionPolicy": "Delete",
    "Metadata": {
-    "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/Reservation/QuerygetReservationauth0Function/QuerygetReservationauth0Function.AppSyncFunction"
+    "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleAvailability/QuerygetVehicleAvailabilityauth0Function/QuerygetVehicleAvailabilityauth0Function.AppSyncFunction"
    }
   },
-  "QuerygetReservationpostAuth0FunctionQuerygetReservationpostAuth0FunctionAppSyncFunctionF01FEFAA": {
+  "QuerygetVehicleAvailabilitypostAuth0FunctionQuerygetVehicleAvailabilitypostAuth0FunctionAppSyncFunctionDFD42A61": {
    "Type": "AWS::AppSync::FunctionConfiguration",
    "Properties": {
     "ApiId": {
@@ -667,7 +667,7 @@
      "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataGraphQLAPINONEDSE5668EC6Name"
     },
     "FunctionVersion": "2018-05-29",
-    "Name": "QuerygetReservationpostAuth0Function",
+    "Name": "QuerygetVehicleAvailabilitypostAuth0Function",
     "RequestMappingTemplateS3Location": {
      "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/c1721bcd774e27c514d3454b5be4f9bdd094c0161b57ddf053d618e3b0086a77.vtl"
     },
@@ -676,10 +676,10 @@
    "UpdateReplacePolicy": "Delete",
    "DeletionPolicy": "Delete",
    "Metadata": {
-    "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/Reservation/QuerygetReservationpostAuth0Function/QuerygetReservationpostAuth0Function.AppSyncFunction"
+    "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleAvailability/QuerygetVehicleAvailabilitypostAuth0Function/QuerygetVehicleAvailabilitypostAuth0Function.AppSyncFunction"
    }
   },
-  "QueryGetReservationDataResolverFnQueryGetReservationDataResolverFnAppSyncFunctionCF59D9F1": {
+  "QueryGetVehicleAvailabilityDataResolverFnQueryGetVehicleAvailabilityDataResolverFnAppSyncFunction8688CCC7": {
    "Type": "AWS::AppSync::FunctionConfiguration",
    "Properties": {
     "ApiId": {
@@ -687,12 +687,12 @@
     },
     "DataSourceName": {
      "Fn::GetAtt": [
-      "ReservationDataSource",
+      "VehicleAvailabilityDataSource",
       "Name"
      ]
     },
     "FunctionVersion": "2018-05-29",
-    "Name": "QueryGetReservationDataResolverFn",
+    "Name": "QueryGetVehicleAvailabilityDataResolverFn",
     "RequestMappingTemplateS3Location": {
      "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/08f4d557693d96c1a4efba0f9dc91330e4b19772fd5477c156468843e3d9cb5e.vtl"
     },
@@ -701,39 +701,39 @@
     }
    },
    "DependsOn": [
-    "ReservationDataSource"
+    "VehicleAvailabilityDataSource"
    ],
    "UpdateReplacePolicy": "Delete",
    "DeletionPolicy": "Delete",
    "Metadata": {
-    "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/Reservation/QueryGetReservationDataResolverFn/QueryGetReservationDataResolverFn.AppSyncFunction"
+    "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleAvailability/QueryGetVehicleAvailabilityDataResolverFn/QueryGetVehicleAvailabilityDataResolverFn.AppSyncFunction"
    }
   },
-  "GetReservationResolver": {
+  "GetVehicleAvailabilityResolver": {
    "Type": "AWS::AppSync::Resolver",
    "Properties": {
     "ApiId": {
      "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataGraphQLAPIEFD49BECApiId"
     },
-    "FieldName": "getReservation",
+    "FieldName": "getVehicleAvailability",
     "Kind": "PIPELINE",
     "PipelineConfig": {
      "Functions": [
       {
        "Fn::GetAtt": [
-        "QuerygetReservationauth0FunctionQuerygetReservationauth0FunctionAppSyncFunction6670AEDF",
+        "QuerygetVehicleAvailabilityauth0FunctionQuerygetVehicleAvailabilityauth0FunctionAppSyncFunction18B2BB23",
         "FunctionId"
        ]
       },
       {
        "Fn::GetAtt": [
-        "QuerygetReservationpostAuth0FunctionQuerygetReservationpostAuth0FunctionAppSyncFunctionF01FEFAA",
+        "QuerygetVehicleAvailabilitypostAuth0FunctionQuerygetVehicleAvailabilitypostAuth0FunctionAppSyncFunctionDFD42A61",
         "FunctionId"
        ]
       },
       {
        "Fn::GetAtt": [
-        "QueryGetReservationDataResolverFnQueryGetReservationDataResolverFnAppSyncFunctionCF59D9F1",
+        "QueryGetVehicleAvailabilityDataResolverFnQueryGetVehicleAvailabilityDataResolverFnAppSyncFunction8688CCC7",
         "FunctionId"
        ]
       }
@@ -743,7 +743,7 @@
      "Fn::Join": [
       "",
       [
-       "$util.qr($ctx.stash.put(\"typeName\", \"Query\"))\n$util.qr($ctx.stash.put(\"fieldName\", \"getReservation\"))\n$util.qr($ctx.stash.put(\"conditions\", []))\n$util.qr($ctx.stash.put(\"metadata\", {}))\n$util.qr($ctx.stash.metadata.put(\"dataSourceType\", \"AMAZON_DYNAMODB\"))\n$util.qr($ctx.stash.metadata.put(\"apiId\", \"",
+       "$util.qr($ctx.stash.put(\"typeName\", \"Query\"))\n$util.qr($ctx.stash.put(\"fieldName\", \"getVehicleAvailability\"))\n$util.qr($ctx.stash.put(\"conditions\", []))\n$util.qr($ctx.stash.put(\"metadata\", {}))\n$util.qr($ctx.stash.metadata.put(\"dataSourceType\", \"AMAZON_DYNAMODB\"))\n$util.qr($ctx.stash.metadata.put(\"apiId\", \"",
        {
         "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataGraphQLAPIEFD49BECApiId"
        },
@@ -762,7 +762,7 @@
                ":",
                {
                 "Fn::GetAtt": [
-                 "ReservationTable",
+                 "VehicleAvailabilityTable",
                  "TableArn"
                 ]
                }
@@ -812,10 +812,10 @@
    "UpdateReplacePolicy": "Delete",
    "DeletionPolicy": "Delete",
    "Metadata": {
-    "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/Reservation/queryGetReservationResolver"
+    "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleAvailability/queryGetVehicleAvailabilityResolver"
    }
   },
-  "QuerylistReservationsauth0FunctionQuerylistReservationsauth0FunctionAppSyncFunction4A23CB4B": {
+  "QuerylistVehicleAvailabilitiesauth0FunctionQuerylistVehicleAvailabilitiesauth0FunctionAppSyncFunctionFC36D9E3": {
    "Type": "AWS::AppSync::FunctionConfiguration",
    "Properties": {
     "ApiId": {
@@ -825,7 +825,7 @@
      "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataGraphQLAPINONEDSE5668EC6Name"
     },
     "FunctionVersion": "2018-05-29",
-    "Name": "QuerylistReservationsauth0Function",
+    "Name": "QuerylistVehicleAvailabilitiesauth0Function",
     "RequestMappingTemplateS3Location": {
      "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/0224a3e5097427da3f4460b5d6d2b86ad4195c9cb8da7bc13e7187eead1c3ae3.vtl"
     },
@@ -834,10 +834,10 @@
    "UpdateReplacePolicy": "Delete",
    "DeletionPolicy": "Delete",
    "Metadata": {
-    "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/Reservation/QuerylistReservationsauth0Function/QuerylistReservationsauth0Function.AppSyncFunction"
+    "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleAvailability/QuerylistVehicleAvailabilitiesauth0Function/QuerylistVehicleAvailabilitiesauth0Function.AppSyncFunction"
    }
   },
-  "QuerylistReservationspostAuth0FunctionQuerylistReservationspostAuth0FunctionAppSyncFunction0F437906": {
+  "QuerylistVehicleAvailabilitiespostAuth0FunctionQuerylistVehicleAvailabilitiespostAuth0FunctionAppSyncFunction3EE619B0": {
    "Type": "AWS::AppSync::FunctionConfiguration",
    "Properties": {
     "ApiId": {
@@ -847,7 +847,7 @@
      "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataGraphQLAPINONEDSE5668EC6Name"
     },
     "FunctionVersion": "2018-05-29",
-    "Name": "QuerylistReservationspostAuth0Function",
+    "Name": "QuerylistVehicleAvailabilitiespostAuth0Function",
     "RequestMappingTemplateS3Location": {
      "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/c1721bcd774e27c514d3454b5be4f9bdd094c0161b57ddf053d618e3b0086a77.vtl"
     },
@@ -856,10 +856,10 @@
    "UpdateReplacePolicy": "Delete",
    "DeletionPolicy": "Delete",
    "Metadata": {
-    "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/Reservation/QuerylistReservationspostAuth0Function/QuerylistReservationspostAuth0Function.AppSyncFunction"
+    "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleAvailability/QuerylistVehicleAvailabilitiespostAuth0Function/QuerylistVehicleAvailabilitiespostAuth0Function.AppSyncFunction"
    }
   },
-  "QueryListReservationsDataResolverFnQueryListReservationsDataResolverFnAppSyncFunctionCAC416EC": {
+  "QueryListVehicleAvailabilitiesDataResolverFnQueryListVehicleAvailabilitiesDataResolverFnAppSyncFunctionA925D222": {
    "Type": "AWS::AppSync::FunctionConfiguration",
    "Properties": {
     "ApiId": {
@@ -867,12 +867,12 @@
     },
     "DataSourceName": {
      "Fn::GetAtt": [
-      "ReservationDataSource",
+      "VehicleAvailabilityDataSource",
       "Name"
      ]
     },
     "FunctionVersion": "2018-05-29",
-    "Name": "QueryListReservationsDataResolverFn",
+    "Name": "QueryListVehicleAvailabilitiesDataResolverFn",
     "RequestMappingTemplateS3Location": {
      "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/9fcbe070ecd3023c5bf5b966fa9584757db9762eef123bad0820bd87591b2174.vtl"
     },
@@ -881,39 +881,39 @@
     }
    },
    "DependsOn": [
-    "ReservationDataSource"
+    "VehicleAvailabilityDataSource"
    ],
    "UpdateReplacePolicy": "Delete",
    "DeletionPolicy": "Delete",
    "Metadata": {
-    "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/Reservation/QueryListReservationsDataResolverFn/QueryListReservationsDataResolverFn.AppSyncFunction"
+    "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleAvailability/QueryListVehicleAvailabilitiesDataResolverFn/QueryListVehicleAvailabilitiesDataResolverFn.AppSyncFunction"
    }
   },
-  "ListReservationResolver": {
+  "ListVehicleAvailabilityResolver": {
    "Type": "AWS::AppSync::Resolver",
    "Properties": {
     "ApiId": {
      "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataGraphQLAPIEFD49BECApiId"
     },
-    "FieldName": "listReservations",
+    "FieldName": "listVehicleAvailabilities",
     "Kind": "PIPELINE",
     "PipelineConfig": {
      "Functions": [
       {
        "Fn::GetAtt": [
-        "QuerylistReservationsauth0FunctionQuerylistReservationsauth0FunctionAppSyncFunction4A23CB4B",
+        "QuerylistVehicleAvailabilitiesauth0FunctionQuerylistVehicleAvailabilitiesauth0FunctionAppSyncFunctionFC36D9E3",
         "FunctionId"
        ]
       },
       {
        "Fn::GetAtt": [
-        "QuerylistReservationspostAuth0FunctionQuerylistReservationspostAuth0FunctionAppSyncFunction0F437906",
+        "QuerylistVehicleAvailabilitiespostAuth0FunctionQuerylistVehicleAvailabilitiespostAuth0FunctionAppSyncFunction3EE619B0",
         "FunctionId"
        ]
       },
       {
        "Fn::GetAtt": [
-        "QueryListReservationsDataResolverFnQueryListReservationsDataResolverFnAppSyncFunctionCAC416EC",
+        "QueryListVehicleAvailabilitiesDataResolverFnQueryListVehicleAvailabilitiesDataResolverFnAppSyncFunctionA925D222",
         "FunctionId"
        ]
       }
@@ -923,7 +923,7 @@
      "Fn::Join": [
       "",
       [
-       "$util.qr($ctx.stash.put(\"typeName\", \"Query\"))\n$util.qr($ctx.stash.put(\"fieldName\", \"listReservations\"))\n$util.qr($ctx.stash.put(\"conditions\", []))\n$util.qr($ctx.stash.put(\"metadata\", {}))\n$util.qr($ctx.stash.metadata.put(\"dataSourceType\", \"AMAZON_DYNAMODB\"))\n$util.qr($ctx.stash.metadata.put(\"apiId\", \"",
+       "$util.qr($ctx.stash.put(\"typeName\", \"Query\"))\n$util.qr($ctx.stash.put(\"fieldName\", \"listVehicleAvailabilities\"))\n$util.qr($ctx.stash.put(\"conditions\", []))\n$util.qr($ctx.stash.put(\"metadata\", {}))\n$util.qr($ctx.stash.metadata.put(\"dataSourceType\", \"AMAZON_DYNAMODB\"))\n$util.qr($ctx.stash.metadata.put(\"apiId\", \"",
        {
         "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataGraphQLAPIEFD49BECApiId"
        },
@@ -942,7 +942,7 @@
                ":",
                {
                 "Fn::GetAtt": [
-                 "ReservationTable",
+                 "VehicleAvailabilityTable",
                  "TableArn"
                 ]
                }
@@ -992,10 +992,10 @@
    "UpdateReplacePolicy": "Delete",
    "DeletionPolicy": "Delete",
    "Metadata": {
-    "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/Reservation/queryListReservationsResolver"
+    "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleAvailability/queryListVehicleAvailabilitiesResolver"
    }
   },
-  "MutationcreateReservationinit0FunctionMutationcreateReservationinit0FunctionAppSyncFunction45901420": {
+  "MutationcreateVehicleAvailabilityinit0FunctionMutationcreateVehicleAvailabilityinit0FunctionAppSyncFunction8C15FC0A": {
    "Type": "AWS::AppSync::FunctionConfiguration",
    "Properties": {
     "ApiId": {
@@ -1005,7 +1005,7 @@
      "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataGraphQLAPINONEDSE5668EC6Name"
     },
     "FunctionVersion": "2018-05-29",
-    "Name": "MutationcreateReservationinit0Function",
+    "Name": "MutationcreateVehicleAvailabilityinit0Function",
     "RequestMappingTemplateS3Location": {
      "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/a183ddccbd956316c38ef97177b8f088ef0826f62023323f5ae6053d348ccffc.vtl"
     },
@@ -1014,10 +1014,10 @@
    "UpdateReplacePolicy": "Delete",
    "DeletionPolicy": "Delete",
    "Metadata": {
-    "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/Reservation/MutationcreateReservationinit0Function/MutationcreateReservationinit0Function.AppSyncFunction"
+    "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleAvailability/MutationcreateVehicleAvailabilityinit0Function/MutationcreateVehicleAvailabilityinit0Function.AppSyncFunction"
    }
   },
-  "MutationcreateReservationauth0FunctionMutationcreateReservationauth0FunctionAppSyncFunction325EE6A0": {
+  "MutationcreateVehicleAvailabilityinit1FunctionMutationcreateVehicleAvailabilityinit1FunctionAppSyncFunctionBE975A60": {
    "Type": "AWS::AppSync::FunctionConfiguration",
    "Properties": {
     "ApiId": {
@@ -1027,7 +1027,29 @@
      "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataGraphQLAPINONEDSE5668EC6Name"
     },
     "FunctionVersion": "2018-05-29",
-    "Name": "MutationcreateReservationauth0Function",
+    "Name": "MutationcreateVehicleAvailabilityinit1Function",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/dde7be5c8974b42348b0fb9221375ca721c0c016dd22729439ab9b8013156450.vtl"
+    },
+    "ResponseMappingTemplate": "$util.toJson({})"
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleAvailability/MutationcreateVehicleAvailabilityinit1Function/MutationcreateVehicleAvailabilityinit1Function.AppSyncFunction"
+   }
+  },
+  "MutationcreateVehicleAvailabilityauth0FunctionMutationcreateVehicleAvailabilityauth0FunctionAppSyncFunction854FA62F": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataGraphQLAPIEFD49BECApiId"
+    },
+    "DataSourceName": {
+     "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataGraphQLAPINONEDSE5668EC6Name"
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "MutationcreateVehicleAvailabilityauth0Function",
     "RequestMappingTemplateS3Location": {
      "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/d637c1fb7301003b8a5ada269338cf2e8df6cc0dc412ef13acc6158d680b6d3e.vtl"
     },
@@ -1036,10 +1058,10 @@
    "UpdateReplacePolicy": "Delete",
    "DeletionPolicy": "Delete",
    "Metadata": {
-    "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/Reservation/MutationcreateReservationauth0Function/MutationcreateReservationauth0Function.AppSyncFunction"
+    "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleAvailability/MutationcreateVehicleAvailabilityauth0Function/MutationcreateVehicleAvailabilityauth0Function.AppSyncFunction"
    }
   },
-  "MutationcreateReservationpostAuth0FunctionMutationcreateReservationpostAuth0FunctionAppSyncFunction97DB81A8": {
+  "MutationcreateVehicleAvailabilitypostAuth0FunctionMutationcreateVehicleAvailabilitypostAuth0FunctionAppSyncFunction74E08323": {
    "Type": "AWS::AppSync::FunctionConfiguration",
    "Properties": {
     "ApiId": {
@@ -1049,7 +1071,7 @@
      "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataGraphQLAPINONEDSE5668EC6Name"
     },
     "FunctionVersion": "2018-05-29",
-    "Name": "MutationcreateReservationpostAuth0Function",
+    "Name": "MutationcreateVehicleAvailabilitypostAuth0Function",
     "RequestMappingTemplateS3Location": {
      "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/c1721bcd774e27c514d3454b5be4f9bdd094c0161b57ddf053d618e3b0086a77.vtl"
     },
@@ -1058,10 +1080,10 @@
    "UpdateReplacePolicy": "Delete",
    "DeletionPolicy": "Delete",
    "Metadata": {
-    "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/Reservation/MutationcreateReservationpostAuth0Function/MutationcreateReservationpostAuth0Function.AppSyncFunction"
+    "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleAvailability/MutationcreateVehicleAvailabilitypostAuth0Function/MutationcreateVehicleAvailabilitypostAuth0Function.AppSyncFunction"
    }
   },
-  "MutationCreateReservationDataResolverFnMutationCreateReservationDataResolverFnAppSyncFunction6F9D9813": {
+  "MutationCreateVehicleAvailabilityDataResolverFnMutationCreateVehicleAvailabilityDataResolverFnAppSyncFunction9E3F889C": {
    "Type": "AWS::AppSync::FunctionConfiguration",
    "Properties": {
     "ApiId": {
@@ -1069,59 +1091,65 @@
     },
     "DataSourceName": {
      "Fn::GetAtt": [
-      "ReservationDataSource",
+      "VehicleAvailabilityDataSource",
       "Name"
      ]
     },
     "FunctionVersion": "2018-05-29",
-    "Name": "MutationCreateReservationDataResolverFn",
+    "Name": "MutationCreateVehicleAvailabilityDataResolverFn",
     "RequestMappingTemplateS3Location": {
-     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/748e469a11ef513cc32fa52076825c03501b0e567dd6cc95e0693038b5ab502a.vtl"
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/c586a4daedc5cc83ec77a698e90298a718f2e17eaeef6ae062ae0434f53f489c.vtl"
     },
     "ResponseMappingTemplateS3Location": {
      "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/f4a52b72209a9dfa197b5e7367a5c378c5bb86de6e29ddd9e48b49a3fe54b249.vtl"
     }
    },
    "DependsOn": [
-    "ReservationDataSource"
+    "VehicleAvailabilityDataSource"
    ],
    "UpdateReplacePolicy": "Delete",
    "DeletionPolicy": "Delete",
    "Metadata": {
-    "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/Reservation/MutationCreateReservationDataResolverFn/MutationCreateReservationDataResolverFn.AppSyncFunction"
+    "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleAvailability/MutationCreateVehicleAvailabilityDataResolverFn/MutationCreateVehicleAvailabilityDataResolverFn.AppSyncFunction"
    }
   },
-  "CreateReservationResolver": {
+  "CreateVehicleAvailabilityResolver": {
    "Type": "AWS::AppSync::Resolver",
    "Properties": {
     "ApiId": {
      "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataGraphQLAPIEFD49BECApiId"
     },
-    "FieldName": "createReservation",
+    "FieldName": "createVehicleAvailability",
     "Kind": "PIPELINE",
     "PipelineConfig": {
      "Functions": [
       {
        "Fn::GetAtt": [
-        "MutationcreateReservationinit0FunctionMutationcreateReservationinit0FunctionAppSyncFunction45901420",
+        "MutationcreateVehicleAvailabilityinit0FunctionMutationcreateVehicleAvailabilityinit0FunctionAppSyncFunction8C15FC0A",
         "FunctionId"
        ]
       },
       {
        "Fn::GetAtt": [
-        "MutationcreateReservationauth0FunctionMutationcreateReservationauth0FunctionAppSyncFunction325EE6A0",
+        "MutationcreateVehicleAvailabilityinit1FunctionMutationcreateVehicleAvailabilityinit1FunctionAppSyncFunctionBE975A60",
         "FunctionId"
        ]
       },
       {
        "Fn::GetAtt": [
-        "MutationcreateReservationpostAuth0FunctionMutationcreateReservationpostAuth0FunctionAppSyncFunction97DB81A8",
+        "MutationcreateVehicleAvailabilityauth0FunctionMutationcreateVehicleAvailabilityauth0FunctionAppSyncFunction854FA62F",
         "FunctionId"
        ]
       },
       {
        "Fn::GetAtt": [
-        "MutationCreateReservationDataResolverFnMutationCreateReservationDataResolverFnAppSyncFunction6F9D9813",
+        "MutationcreateVehicleAvailabilitypostAuth0FunctionMutationcreateVehicleAvailabilitypostAuth0FunctionAppSyncFunction74E08323",
+        "FunctionId"
+       ]
+      },
+      {
+       "Fn::GetAtt": [
+        "MutationCreateVehicleAvailabilityDataResolverFnMutationCreateVehicleAvailabilityDataResolverFnAppSyncFunction9E3F889C",
         "FunctionId"
        ]
       }
@@ -1131,7 +1159,7 @@
      "Fn::Join": [
       "",
       [
-       "$util.qr($ctx.stash.put(\"typeName\", \"Mutation\"))\n$util.qr($ctx.stash.put(\"fieldName\", \"createReservation\"))\n$util.qr($ctx.stash.put(\"conditions\", []))\n$util.qr($ctx.stash.put(\"metadata\", {}))\n$util.qr($ctx.stash.metadata.put(\"dataSourceType\", \"AMAZON_DYNAMODB\"))\n$util.qr($ctx.stash.metadata.put(\"apiId\", \"",
+       "$util.qr($ctx.stash.put(\"typeName\", \"Mutation\"))\n$util.qr($ctx.stash.put(\"fieldName\", \"createVehicleAvailability\"))\n$util.qr($ctx.stash.put(\"conditions\", []))\n$util.qr($ctx.stash.put(\"metadata\", {}))\n$util.qr($ctx.stash.metadata.put(\"dataSourceType\", \"AMAZON_DYNAMODB\"))\n$util.qr($ctx.stash.metadata.put(\"apiId\", \"",
        {
         "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataGraphQLAPIEFD49BECApiId"
        },
@@ -1150,7 +1178,7 @@
                ":",
                {
                 "Fn::GetAtt": [
-                 "ReservationTable",
+                 "VehicleAvailabilityTable",
                  "TableArn"
                 ]
                }
@@ -1200,10 +1228,10 @@
    "UpdateReplacePolicy": "Delete",
    "DeletionPolicy": "Delete",
    "Metadata": {
-    "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/Reservation/mutationCreateReservationResolver"
+    "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleAvailability/mutationCreateVehicleAvailabilityResolver"
    }
   },
-  "MutationupdateReservationinit0FunctionMutationupdateReservationinit0FunctionAppSyncFunctionF514DD24": {
+  "MutationupdateVehicleAvailabilityinit0FunctionMutationupdateVehicleAvailabilityinit0FunctionAppSyncFunction851A2A51": {
    "Type": "AWS::AppSync::FunctionConfiguration",
    "Properties": {
     "ApiId": {
@@ -1213,7 +1241,7 @@
      "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataGraphQLAPINONEDSE5668EC6Name"
     },
     "FunctionVersion": "2018-05-29",
-    "Name": "MutationupdateReservationinit0Function",
+    "Name": "MutationupdateVehicleAvailabilityinit0Function",
     "RequestMappingTemplateS3Location": {
      "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/06db846fd14e6fc371f22b12b5545ba8e2dbfeda85d8c8d586c71c282166657b.vtl"
     },
@@ -1222,10 +1250,10 @@
    "UpdateReplacePolicy": "Delete",
    "DeletionPolicy": "Delete",
    "Metadata": {
-    "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/Reservation/MutationupdateReservationinit0Function/MutationupdateReservationinit0Function.AppSyncFunction"
+    "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleAvailability/MutationupdateVehicleAvailabilityinit0Function/MutationupdateVehicleAvailabilityinit0Function.AppSyncFunction"
    }
   },
-  "MutationupdateReservationauth0FunctionMutationupdateReservationauth0FunctionAppSyncFunction85B6CB38": {
+  "MutationupdateVehicleAvailabilityauth0FunctionMutationupdateVehicleAvailabilityauth0FunctionAppSyncFunctionD58EDD47": {
    "Type": "AWS::AppSync::FunctionConfiguration",
    "Properties": {
     "ApiId": {
@@ -1233,12 +1261,12 @@
     },
     "DataSourceName": {
      "Fn::GetAtt": [
-      "ReservationDataSource",
+      "VehicleAvailabilityDataSource",
       "Name"
      ]
     },
     "FunctionVersion": "2018-05-29",
-    "Name": "MutationupdateReservationauth0Function",
+    "Name": "MutationupdateVehicleAvailabilityauth0Function",
     "RequestMappingTemplateS3Location": {
      "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/1f5fed297da9c32ae3af922bf3a38ccf23b956078887d16891ec06c20c64722c.vtl"
     },
@@ -1247,15 +1275,15 @@
     }
    },
    "DependsOn": [
-    "ReservationDataSource"
+    "VehicleAvailabilityDataSource"
    ],
    "UpdateReplacePolicy": "Delete",
    "DeletionPolicy": "Delete",
    "Metadata": {
-    "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/Reservation/MutationupdateReservationauth0Function/MutationupdateReservationauth0Function.AppSyncFunction"
+    "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleAvailability/MutationupdateVehicleAvailabilityauth0Function/MutationupdateVehicleAvailabilityauth0Function.AppSyncFunction"
    }
   },
-  "MutationupdateReservationpostAuth0FunctionMutationupdateReservationpostAuth0FunctionAppSyncFunctionC56AB92D": {
+  "MutationupdateVehicleAvailabilitypostAuth0FunctionMutationupdateVehicleAvailabilitypostAuth0FunctionAppSyncFunction04F26D9A": {
    "Type": "AWS::AppSync::FunctionConfiguration",
    "Properties": {
     "ApiId": {
@@ -1265,7 +1293,7 @@
      "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataGraphQLAPINONEDSE5668EC6Name"
     },
     "FunctionVersion": "2018-05-29",
-    "Name": "MutationupdateReservationpostAuth0Function",
+    "Name": "MutationupdateVehicleAvailabilitypostAuth0Function",
     "RequestMappingTemplateS3Location": {
      "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/c1721bcd774e27c514d3454b5be4f9bdd094c0161b57ddf053d618e3b0086a77.vtl"
     },
@@ -1274,10 +1302,10 @@
    "UpdateReplacePolicy": "Delete",
    "DeletionPolicy": "Delete",
    "Metadata": {
-    "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/Reservation/MutationupdateReservationpostAuth0Function/MutationupdateReservationpostAuth0Function.AppSyncFunction"
+    "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleAvailability/MutationupdateVehicleAvailabilitypostAuth0Function/MutationupdateVehicleAvailabilitypostAuth0Function.AppSyncFunction"
    }
   },
-  "MutationUpdateReservationDataResolverFnMutationUpdateReservationDataResolverFnAppSyncFunctionBF422FB9": {
+  "MutationUpdateVehicleAvailabilityDataResolverFnMutationUpdateVehicleAvailabilityDataResolverFnAppSyncFunctionDD7D0BA5": {
    "Type": "AWS::AppSync::FunctionConfiguration",
    "Properties": {
     "ApiId": {
@@ -1285,12 +1313,12 @@
     },
     "DataSourceName": {
      "Fn::GetAtt": [
-      "ReservationDataSource",
+      "VehicleAvailabilityDataSource",
       "Name"
      ]
     },
     "FunctionVersion": "2018-05-29",
-    "Name": "MutationUpdateReservationDataResolverFn",
+    "Name": "MutationUpdateVehicleAvailabilityDataResolverFn",
     "RequestMappingTemplateS3Location": {
      "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/474bf0776ec2164a13191d1a0a9e057154931e4918fea5086f49850d02a5371b.vtl"
     },
@@ -1299,45 +1327,45 @@
     }
    },
    "DependsOn": [
-    "ReservationDataSource"
+    "VehicleAvailabilityDataSource"
    ],
    "UpdateReplacePolicy": "Delete",
    "DeletionPolicy": "Delete",
    "Metadata": {
-    "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/Reservation/MutationUpdateReservationDataResolverFn/MutationUpdateReservationDataResolverFn.AppSyncFunction"
+    "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleAvailability/MutationUpdateVehicleAvailabilityDataResolverFn/MutationUpdateVehicleAvailabilityDataResolverFn.AppSyncFunction"
    }
   },
-  "UpdateReservationResolver": {
+  "UpdateVehicleAvailabilityResolver": {
    "Type": "AWS::AppSync::Resolver",
    "Properties": {
     "ApiId": {
      "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataGraphQLAPIEFD49BECApiId"
     },
-    "FieldName": "updateReservation",
+    "FieldName": "updateVehicleAvailability",
     "Kind": "PIPELINE",
     "PipelineConfig": {
      "Functions": [
       {
        "Fn::GetAtt": [
-        "MutationupdateReservationinit0FunctionMutationupdateReservationinit0FunctionAppSyncFunctionF514DD24",
+        "MutationupdateVehicleAvailabilityinit0FunctionMutationupdateVehicleAvailabilityinit0FunctionAppSyncFunction851A2A51",
         "FunctionId"
        ]
       },
       {
        "Fn::GetAtt": [
-        "MutationupdateReservationauth0FunctionMutationupdateReservationauth0FunctionAppSyncFunction85B6CB38",
+        "MutationupdateVehicleAvailabilityauth0FunctionMutationupdateVehicleAvailabilityauth0FunctionAppSyncFunctionD58EDD47",
         "FunctionId"
        ]
       },
       {
        "Fn::GetAtt": [
-        "MutationupdateReservationpostAuth0FunctionMutationupdateReservationpostAuth0FunctionAppSyncFunctionC56AB92D",
+        "MutationupdateVehicleAvailabilitypostAuth0FunctionMutationupdateVehicleAvailabilitypostAuth0FunctionAppSyncFunction04F26D9A",
         "FunctionId"
        ]
       },
       {
        "Fn::GetAtt": [
-        "MutationUpdateReservationDataResolverFnMutationUpdateReservationDataResolverFnAppSyncFunctionBF422FB9",
+        "MutationUpdateVehicleAvailabilityDataResolverFnMutationUpdateVehicleAvailabilityDataResolverFnAppSyncFunctionDD7D0BA5",
         "FunctionId"
        ]
       }
@@ -1347,7 +1375,7 @@
      "Fn::Join": [
       "",
       [
-       "$util.qr($ctx.stash.put(\"typeName\", \"Mutation\"))\n$util.qr($ctx.stash.put(\"fieldName\", \"updateReservation\"))\n$util.qr($ctx.stash.put(\"conditions\", []))\n$util.qr($ctx.stash.put(\"metadata\", {}))\n$util.qr($ctx.stash.metadata.put(\"dataSourceType\", \"AMAZON_DYNAMODB\"))\n$util.qr($ctx.stash.metadata.put(\"apiId\", \"",
+       "$util.qr($ctx.stash.put(\"typeName\", \"Mutation\"))\n$util.qr($ctx.stash.put(\"fieldName\", \"updateVehicleAvailability\"))\n$util.qr($ctx.stash.put(\"conditions\", []))\n$util.qr($ctx.stash.put(\"metadata\", {}))\n$util.qr($ctx.stash.metadata.put(\"dataSourceType\", \"AMAZON_DYNAMODB\"))\n$util.qr($ctx.stash.metadata.put(\"apiId\", \"",
        {
         "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataGraphQLAPIEFD49BECApiId"
        },
@@ -1366,7 +1394,7 @@
                ":",
                {
                 "Fn::GetAtt": [
-                 "ReservationTable",
+                 "VehicleAvailabilityTable",
                  "TableArn"
                 ]
                }
@@ -1416,10 +1444,10 @@
    "UpdateReplacePolicy": "Delete",
    "DeletionPolicy": "Delete",
    "Metadata": {
-    "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/Reservation/mutationUpdateReservationResolver"
+    "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleAvailability/mutationUpdateVehicleAvailabilityResolver"
    }
   },
-  "MutationdeleteReservationauth0FunctionMutationdeleteReservationauth0FunctionAppSyncFunction31145750": {
+  "MutationdeleteVehicleAvailabilityauth0FunctionMutationdeleteVehicleAvailabilityauth0FunctionAppSyncFunction225491C0": {
    "Type": "AWS::AppSync::FunctionConfiguration",
    "Properties": {
     "ApiId": {
@@ -1427,12 +1455,12 @@
     },
     "DataSourceName": {
      "Fn::GetAtt": [
-      "ReservationDataSource",
+      "VehicleAvailabilityDataSource",
       "Name"
      ]
     },
     "FunctionVersion": "2018-05-29",
-    "Name": "MutationdeleteReservationauth0Function",
+    "Name": "MutationdeleteVehicleAvailabilityauth0Function",
     "RequestMappingTemplateS3Location": {
      "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/1f5fed297da9c32ae3af922bf3a38ccf23b956078887d16891ec06c20c64722c.vtl"
     },
@@ -1441,15 +1469,15 @@
     }
    },
    "DependsOn": [
-    "ReservationDataSource"
+    "VehicleAvailabilityDataSource"
    ],
    "UpdateReplacePolicy": "Delete",
    "DeletionPolicy": "Delete",
    "Metadata": {
-    "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/Reservation/MutationdeleteReservationauth0Function/MutationdeleteReservationauth0Function.AppSyncFunction"
+    "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleAvailability/MutationdeleteVehicleAvailabilityauth0Function/MutationdeleteVehicleAvailabilityauth0Function.AppSyncFunction"
    }
   },
-  "MutationdeleteReservationpostAuth0FunctionMutationdeleteReservationpostAuth0FunctionAppSyncFunctionF99D79A1": {
+  "MutationdeleteVehicleAvailabilitypostAuth0FunctionMutationdeleteVehicleAvailabilitypostAuth0FunctionAppSyncFunctionA4B43E2F": {
    "Type": "AWS::AppSync::FunctionConfiguration",
    "Properties": {
     "ApiId": {
@@ -1459,7 +1487,7 @@
      "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataGraphQLAPINONEDSE5668EC6Name"
     },
     "FunctionVersion": "2018-05-29",
-    "Name": "MutationdeleteReservationpostAuth0Function",
+    "Name": "MutationdeleteVehicleAvailabilitypostAuth0Function",
     "RequestMappingTemplateS3Location": {
      "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/c1721bcd774e27c514d3454b5be4f9bdd094c0161b57ddf053d618e3b0086a77.vtl"
     },
@@ -1468,10 +1496,10 @@
    "UpdateReplacePolicy": "Delete",
    "DeletionPolicy": "Delete",
    "Metadata": {
-    "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/Reservation/MutationdeleteReservationpostAuth0Function/MutationdeleteReservationpostAuth0Function.AppSyncFunction"
+    "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleAvailability/MutationdeleteVehicleAvailabilitypostAuth0Function/MutationdeleteVehicleAvailabilitypostAuth0Function.AppSyncFunction"
    }
   },
-  "MutationDeleteReservationDataResolverFnMutationDeleteReservationDataResolverFnAppSyncFunction9F69C459": {
+  "MutationDeleteVehicleAvailabilityDataResolverFnMutationDeleteVehicleAvailabilityDataResolverFnAppSyncFunctionDECC06D6": {
    "Type": "AWS::AppSync::FunctionConfiguration",
    "Properties": {
     "ApiId": {
@@ -1479,12 +1507,12 @@
     },
     "DataSourceName": {
      "Fn::GetAtt": [
-      "ReservationDataSource",
+      "VehicleAvailabilityDataSource",
       "Name"
      ]
     },
     "FunctionVersion": "2018-05-29",
-    "Name": "MutationDeleteReservationDataResolverFn",
+    "Name": "MutationDeleteVehicleAvailabilityDataResolverFn",
     "RequestMappingTemplateS3Location": {
      "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/4f7907d1209a2c9953a0c053df402c634e359546d70c7cc5c2e8e21ea734880f.vtl"
     },
@@ -1493,39 +1521,39 @@
     }
    },
    "DependsOn": [
-    "ReservationDataSource"
+    "VehicleAvailabilityDataSource"
    ],
    "UpdateReplacePolicy": "Delete",
    "DeletionPolicy": "Delete",
    "Metadata": {
-    "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/Reservation/MutationDeleteReservationDataResolverFn/MutationDeleteReservationDataResolverFn.AppSyncFunction"
+    "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleAvailability/MutationDeleteVehicleAvailabilityDataResolverFn/MutationDeleteVehicleAvailabilityDataResolverFn.AppSyncFunction"
    }
   },
-  "DeleteReservationResolver": {
+  "DeleteVehicleAvailabilityResolver": {
    "Type": "AWS::AppSync::Resolver",
    "Properties": {
     "ApiId": {
      "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataGraphQLAPIEFD49BECApiId"
     },
-    "FieldName": "deleteReservation",
+    "FieldName": "deleteVehicleAvailability",
     "Kind": "PIPELINE",
     "PipelineConfig": {
      "Functions": [
       {
        "Fn::GetAtt": [
-        "MutationdeleteReservationauth0FunctionMutationdeleteReservationauth0FunctionAppSyncFunction31145750",
+        "MutationdeleteVehicleAvailabilityauth0FunctionMutationdeleteVehicleAvailabilityauth0FunctionAppSyncFunction225491C0",
         "FunctionId"
        ]
       },
       {
        "Fn::GetAtt": [
-        "MutationdeleteReservationpostAuth0FunctionMutationdeleteReservationpostAuth0FunctionAppSyncFunctionF99D79A1",
+        "MutationdeleteVehicleAvailabilitypostAuth0FunctionMutationdeleteVehicleAvailabilitypostAuth0FunctionAppSyncFunctionA4B43E2F",
         "FunctionId"
        ]
       },
       {
        "Fn::GetAtt": [
-        "MutationDeleteReservationDataResolverFnMutationDeleteReservationDataResolverFnAppSyncFunction9F69C459",
+        "MutationDeleteVehicleAvailabilityDataResolverFnMutationDeleteVehicleAvailabilityDataResolverFnAppSyncFunctionDECC06D6",
         "FunctionId"
        ]
       }
@@ -1535,7 +1563,7 @@
      "Fn::Join": [
       "",
       [
-       "$util.qr($ctx.stash.put(\"typeName\", \"Mutation\"))\n$util.qr($ctx.stash.put(\"fieldName\", \"deleteReservation\"))\n$util.qr($ctx.stash.put(\"conditions\", []))\n$util.qr($ctx.stash.put(\"metadata\", {}))\n$util.qr($ctx.stash.metadata.put(\"dataSourceType\", \"AMAZON_DYNAMODB\"))\n$util.qr($ctx.stash.metadata.put(\"apiId\", \"",
+       "$util.qr($ctx.stash.put(\"typeName\", \"Mutation\"))\n$util.qr($ctx.stash.put(\"fieldName\", \"deleteVehicleAvailability\"))\n$util.qr($ctx.stash.put(\"conditions\", []))\n$util.qr($ctx.stash.put(\"metadata\", {}))\n$util.qr($ctx.stash.metadata.put(\"dataSourceType\", \"AMAZON_DYNAMODB\"))\n$util.qr($ctx.stash.metadata.put(\"apiId\", \"",
        {
         "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataGraphQLAPIEFD49BECApiId"
        },
@@ -1554,7 +1582,7 @@
                ":",
                {
                 "Fn::GetAtt": [
-                 "ReservationTable",
+                 "VehicleAvailabilityTable",
                  "TableArn"
                 ]
                }
@@ -1604,10 +1632,10 @@
    "UpdateReplacePolicy": "Delete",
    "DeletionPolicy": "Delete",
    "Metadata": {
-    "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/Reservation/mutationDeleteReservationResolver"
+    "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleAvailability/mutationDeleteVehicleAvailabilityResolver"
    }
   },
-  "SubscriptiononCreateReservationauth0FunctionSubscriptiononCreateReservationauth0FunctionAppSyncFunction53E519A4": {
+  "SubscriptiononCreateVehicleAvailabilityauth0FunctionSubscriptiononCreateVehicleAvailabilityauth0FunctionAppSyncFunction0EB411AD": {
    "Type": "AWS::AppSync::FunctionConfiguration",
    "Properties": {
     "ApiId": {
@@ -1617,7 +1645,7 @@
      "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataGraphQLAPINONEDSE5668EC6Name"
     },
     "FunctionVersion": "2018-05-29",
-    "Name": "SubscriptiononCreateReservationauth0Function",
+    "Name": "SubscriptiononCreateVehicleAvailabilityauth0Function",
     "RequestMappingTemplateS3Location": {
      "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/e6da5a6e993df8b5fdc91086b71eb53e72a3a97c98836ef9c9257776f36c452b.vtl"
     },
@@ -1626,10 +1654,10 @@
    "UpdateReplacePolicy": "Delete",
    "DeletionPolicy": "Delete",
    "Metadata": {
-    "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/Reservation/SubscriptiononCreateReservationauth0Function/SubscriptiononCreateReservationauth0Function.AppSyncFunction"
+    "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleAvailability/SubscriptiononCreateVehicleAvailabilityauth0Function/SubscriptiononCreateVehicleAvailabilityauth0Function.AppSyncFunction"
    }
   },
-  "SubscriptiononCreateReservationpostAuth0FunctionSubscriptiononCreateReservationpostAuth0FunctionAppSyncFunction3312119D": {
+  "SubscriptiononCreateVehicleAvailabilitypostAuth0FunctionSubscriptiononCreateVehicleAvailabilitypostAuth0FunctionAppSyncFunction4240B6FF": {
    "Type": "AWS::AppSync::FunctionConfiguration",
    "Properties": {
     "ApiId": {
@@ -1639,7 +1667,7 @@
      "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataGraphQLAPINONEDSE5668EC6Name"
     },
     "FunctionVersion": "2018-05-29",
-    "Name": "SubscriptiononCreateReservationpostAuth0Function",
+    "Name": "SubscriptiononCreateVehicleAvailabilitypostAuth0Function",
     "RequestMappingTemplateS3Location": {
      "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/c1721bcd774e27c514d3454b5be4f9bdd094c0161b57ddf053d618e3b0086a77.vtl"
     },
@@ -1648,10 +1676,10 @@
    "UpdateReplacePolicy": "Delete",
    "DeletionPolicy": "Delete",
    "Metadata": {
-    "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/Reservation/SubscriptiononCreateReservationpostAuth0Function/SubscriptiononCreateReservationpostAuth0Function.AppSyncFunction"
+    "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleAvailability/SubscriptiononCreateVehicleAvailabilitypostAuth0Function/SubscriptiononCreateVehicleAvailabilitypostAuth0Function.AppSyncFunction"
    }
   },
-  "SubscriptionOnCreateReservationDataResolverFnSubscriptionOnCreateReservationDataResolverFnAppSyncFunction99B39D99": {
+  "SubscriptionOnCreateVehicleAvailabilityDataResolverFnSubscriptionOnCreateVehicleAvailabilityDataResolverFnAppSyncFunction3BA10489": {
    "Type": "AWS::AppSync::FunctionConfiguration",
    "Properties": {
     "ApiId": {
@@ -1661,7 +1689,7 @@
      "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataGraphQLAPINONEDSE5668EC6Name"
     },
     "FunctionVersion": "2018-05-29",
-    "Name": "SubscriptionOnCreateReservationDataResolverFn",
+    "Name": "SubscriptionOnCreateVehicleAvailabilityDataResolverFn",
     "RequestMappingTemplateS3Location": {
      "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/fe3c43ada4b9d681a5e2312663ef7a73386424d73b73e51f8e2e9d4b50f7c502.vtl"
     },
@@ -1672,34 +1700,34 @@
    "UpdateReplacePolicy": "Delete",
    "DeletionPolicy": "Delete",
    "Metadata": {
-    "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/Reservation/SubscriptionOnCreateReservationDataResolverFn/SubscriptionOnCreateReservationDataResolverFn.AppSyncFunction"
+    "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleAvailability/SubscriptionOnCreateVehicleAvailabilityDataResolverFn/SubscriptionOnCreateVehicleAvailabilityDataResolverFn.AppSyncFunction"
    }
   },
-  "SubscriptiononCreateReservationResolver": {
+  "SubscriptiononCreateVehicleAvailabilityResolver": {
    "Type": "AWS::AppSync::Resolver",
    "Properties": {
     "ApiId": {
      "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataGraphQLAPIEFD49BECApiId"
     },
-    "FieldName": "onCreateReservation",
+    "FieldName": "onCreateVehicleAvailability",
     "Kind": "PIPELINE",
     "PipelineConfig": {
      "Functions": [
       {
        "Fn::GetAtt": [
-        "SubscriptiononCreateReservationauth0FunctionSubscriptiononCreateReservationauth0FunctionAppSyncFunction53E519A4",
+        "SubscriptiononCreateVehicleAvailabilityauth0FunctionSubscriptiononCreateVehicleAvailabilityauth0FunctionAppSyncFunction0EB411AD",
         "FunctionId"
        ]
       },
       {
        "Fn::GetAtt": [
-        "SubscriptiononCreateReservationpostAuth0FunctionSubscriptiononCreateReservationpostAuth0FunctionAppSyncFunction3312119D",
+        "SubscriptiononCreateVehicleAvailabilitypostAuth0FunctionSubscriptiononCreateVehicleAvailabilitypostAuth0FunctionAppSyncFunction4240B6FF",
         "FunctionId"
        ]
       },
       {
        "Fn::GetAtt": [
-        "SubscriptionOnCreateReservationDataResolverFnSubscriptionOnCreateReservationDataResolverFnAppSyncFunction99B39D99",
+        "SubscriptionOnCreateVehicleAvailabilityDataResolverFnSubscriptionOnCreateVehicleAvailabilityDataResolverFnAppSyncFunction3BA10489",
         "FunctionId"
        ]
       }
@@ -1709,7 +1737,7 @@
      "Fn::Join": [
       "",
       [
-       "$util.qr($ctx.stash.put(\"typeName\", \"Subscription\"))\n$util.qr($ctx.stash.put(\"fieldName\", \"onCreateReservation\"))\n$util.qr($ctx.stash.put(\"conditions\", []))\n$util.qr($ctx.stash.put(\"metadata\", {}))\n$util.qr($ctx.stash.metadata.put(\"dataSourceType\", \"NONE\"))\n$util.qr($ctx.stash.metadata.put(\"apiId\", \"",
+       "$util.qr($ctx.stash.put(\"typeName\", \"Subscription\"))\n$util.qr($ctx.stash.put(\"fieldName\", \"onCreateVehicleAvailability\"))\n$util.qr($ctx.stash.put(\"conditions\", []))\n$util.qr($ctx.stash.put(\"metadata\", {}))\n$util.qr($ctx.stash.metadata.put(\"dataSourceType\", \"NONE\"))\n$util.qr($ctx.stash.metadata.put(\"apiId\", \"",
        {
         "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataGraphQLAPIEFD49BECApiId"
        },
@@ -1751,10 +1779,10 @@
    "UpdateReplacePolicy": "Delete",
    "DeletionPolicy": "Delete",
    "Metadata": {
-    "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/Reservation/subscriptionOnCreateReservationResolver"
+    "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleAvailability/subscriptionOnCreateVehicleAvailabilityResolver"
    }
   },
-  "SubscriptiononUpdateReservationauth0FunctionSubscriptiononUpdateReservationauth0FunctionAppSyncFunctionD7918D63": {
+  "SubscriptiononUpdateVehicleAvailabilityauth0FunctionSubscriptiononUpdateVehicleAvailabilityauth0FunctionAppSyncFunction41F88A03": {
    "Type": "AWS::AppSync::FunctionConfiguration",
    "Properties": {
     "ApiId": {
@@ -1764,7 +1792,7 @@
      "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataGraphQLAPINONEDSE5668EC6Name"
     },
     "FunctionVersion": "2018-05-29",
-    "Name": "SubscriptiononUpdateReservationauth0Function",
+    "Name": "SubscriptiononUpdateVehicleAvailabilityauth0Function",
     "RequestMappingTemplateS3Location": {
      "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/e6da5a6e993df8b5fdc91086b71eb53e72a3a97c98836ef9c9257776f36c452b.vtl"
     },
@@ -1773,10 +1801,10 @@
    "UpdateReplacePolicy": "Delete",
    "DeletionPolicy": "Delete",
    "Metadata": {
-    "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/Reservation/SubscriptiononUpdateReservationauth0Function/SubscriptiononUpdateReservationauth0Function.AppSyncFunction"
+    "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleAvailability/SubscriptiononUpdateVehicleAvailabilityauth0Function/SubscriptiononUpdateVehicleAvailabilityauth0Function.AppSyncFunction"
    }
   },
-  "SubscriptiononUpdateReservationpostAuth0FunctionSubscriptiononUpdateReservationpostAuth0FunctionAppSyncFunction7A2D97FB": {
+  "SubscriptiononUpdateVehicleAvailabilitypostAuth0FunctionSubscriptiononUpdateVehicleAvailabilitypostAuth0FunctionAppSyncFunction3051C0FC": {
    "Type": "AWS::AppSync::FunctionConfiguration",
    "Properties": {
     "ApiId": {
@@ -1786,7 +1814,7 @@
      "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataGraphQLAPINONEDSE5668EC6Name"
     },
     "FunctionVersion": "2018-05-29",
-    "Name": "SubscriptiononUpdateReservationpostAuth0Function",
+    "Name": "SubscriptiononUpdateVehicleAvailabilitypostAuth0Function",
     "RequestMappingTemplateS3Location": {
      "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/c1721bcd774e27c514d3454b5be4f9bdd094c0161b57ddf053d618e3b0086a77.vtl"
     },
@@ -1795,10 +1823,10 @@
    "UpdateReplacePolicy": "Delete",
    "DeletionPolicy": "Delete",
    "Metadata": {
-    "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/Reservation/SubscriptiononUpdateReservationpostAuth0Function/SubscriptiononUpdateReservationpostAuth0Function.AppSyncFunction"
+    "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleAvailability/SubscriptiononUpdateVehicleAvailabilitypostAuth0Function/SubscriptiononUpdateVehicleAvailabilitypostAuth0Function.AppSyncFunction"
    }
   },
-  "SubscriptionOnUpdateReservationDataResolverFnSubscriptionOnUpdateReservationDataResolverFnAppSyncFunction40125D5E": {
+  "SubscriptionOnUpdateVehicleAvailabilityDataResolverFnSubscriptionOnUpdateVehicleAvailabilityDataResolverFnAppSyncFunctionE5AA153B": {
    "Type": "AWS::AppSync::FunctionConfiguration",
    "Properties": {
     "ApiId": {
@@ -1808,7 +1836,7 @@
      "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataGraphQLAPINONEDSE5668EC6Name"
     },
     "FunctionVersion": "2018-05-29",
-    "Name": "SubscriptionOnUpdateReservationDataResolverFn",
+    "Name": "SubscriptionOnUpdateVehicleAvailabilityDataResolverFn",
     "RequestMappingTemplateS3Location": {
      "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/fe3c43ada4b9d681a5e2312663ef7a73386424d73b73e51f8e2e9d4b50f7c502.vtl"
     },
@@ -1819,34 +1847,34 @@
    "UpdateReplacePolicy": "Delete",
    "DeletionPolicy": "Delete",
    "Metadata": {
-    "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/Reservation/SubscriptionOnUpdateReservationDataResolverFn/SubscriptionOnUpdateReservationDataResolverFn.AppSyncFunction"
+    "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleAvailability/SubscriptionOnUpdateVehicleAvailabilityDataResolverFn/SubscriptionOnUpdateVehicleAvailabilityDataResolverFn.AppSyncFunction"
    }
   },
-  "SubscriptiononUpdateReservationResolver": {
+  "SubscriptiononUpdateVehicleAvailabilityResolver": {
    "Type": "AWS::AppSync::Resolver",
    "Properties": {
     "ApiId": {
      "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataGraphQLAPIEFD49BECApiId"
     },
-    "FieldName": "onUpdateReservation",
+    "FieldName": "onUpdateVehicleAvailability",
     "Kind": "PIPELINE",
     "PipelineConfig": {
      "Functions": [
       {
        "Fn::GetAtt": [
-        "SubscriptiononUpdateReservationauth0FunctionSubscriptiononUpdateReservationauth0FunctionAppSyncFunctionD7918D63",
+        "SubscriptiononUpdateVehicleAvailabilityauth0FunctionSubscriptiononUpdateVehicleAvailabilityauth0FunctionAppSyncFunction41F88A03",
         "FunctionId"
        ]
       },
       {
        "Fn::GetAtt": [
-        "SubscriptiononUpdateReservationpostAuth0FunctionSubscriptiononUpdateReservationpostAuth0FunctionAppSyncFunction7A2D97FB",
+        "SubscriptiononUpdateVehicleAvailabilitypostAuth0FunctionSubscriptiononUpdateVehicleAvailabilitypostAuth0FunctionAppSyncFunction3051C0FC",
         "FunctionId"
        ]
       },
       {
        "Fn::GetAtt": [
-        "SubscriptionOnUpdateReservationDataResolverFnSubscriptionOnUpdateReservationDataResolverFnAppSyncFunction40125D5E",
+        "SubscriptionOnUpdateVehicleAvailabilityDataResolverFnSubscriptionOnUpdateVehicleAvailabilityDataResolverFnAppSyncFunctionE5AA153B",
         "FunctionId"
        ]
       }
@@ -1856,7 +1884,7 @@
      "Fn::Join": [
       "",
       [
-       "$util.qr($ctx.stash.put(\"typeName\", \"Subscription\"))\n$util.qr($ctx.stash.put(\"fieldName\", \"onUpdateReservation\"))\n$util.qr($ctx.stash.put(\"conditions\", []))\n$util.qr($ctx.stash.put(\"metadata\", {}))\n$util.qr($ctx.stash.metadata.put(\"dataSourceType\", \"NONE\"))\n$util.qr($ctx.stash.metadata.put(\"apiId\", \"",
+       "$util.qr($ctx.stash.put(\"typeName\", \"Subscription\"))\n$util.qr($ctx.stash.put(\"fieldName\", \"onUpdateVehicleAvailability\"))\n$util.qr($ctx.stash.put(\"conditions\", []))\n$util.qr($ctx.stash.put(\"metadata\", {}))\n$util.qr($ctx.stash.metadata.put(\"dataSourceType\", \"NONE\"))\n$util.qr($ctx.stash.metadata.put(\"apiId\", \"",
        {
         "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataGraphQLAPIEFD49BECApiId"
        },
@@ -1898,10 +1926,10 @@
    "UpdateReplacePolicy": "Delete",
    "DeletionPolicy": "Delete",
    "Metadata": {
-    "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/Reservation/subscriptionOnUpdateReservationResolver"
+    "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleAvailability/subscriptionOnUpdateVehicleAvailabilityResolver"
    }
   },
-  "SubscriptiononDeleteReservationauth0FunctionSubscriptiononDeleteReservationauth0FunctionAppSyncFunction7B7A7902": {
+  "SubscriptiononDeleteVehicleAvailabilityauth0FunctionSubscriptiononDeleteVehicleAvailabilityauth0FunctionAppSyncFunction4516DB4B": {
    "Type": "AWS::AppSync::FunctionConfiguration",
    "Properties": {
     "ApiId": {
@@ -1911,7 +1939,7 @@
      "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataGraphQLAPINONEDSE5668EC6Name"
     },
     "FunctionVersion": "2018-05-29",
-    "Name": "SubscriptiononDeleteReservationauth0Function",
+    "Name": "SubscriptiononDeleteVehicleAvailabilityauth0Function",
     "RequestMappingTemplateS3Location": {
      "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/e6da5a6e993df8b5fdc91086b71eb53e72a3a97c98836ef9c9257776f36c452b.vtl"
     },
@@ -1920,10 +1948,10 @@
    "UpdateReplacePolicy": "Delete",
    "DeletionPolicy": "Delete",
    "Metadata": {
-    "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/Reservation/SubscriptiononDeleteReservationauth0Function/SubscriptiononDeleteReservationauth0Function.AppSyncFunction"
+    "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleAvailability/SubscriptiononDeleteVehicleAvailabilityauth0Function/SubscriptiononDeleteVehicleAvailabilityauth0Function.AppSyncFunction"
    }
   },
-  "SubscriptiononDeleteReservationpostAuth0FunctionSubscriptiononDeleteReservationpostAuth0FunctionAppSyncFunctionBB041A9E": {
+  "SubscriptiononDeleteVehicleAvailabilitypostAuth0FunctionSubscriptiononDeleteVehicleAvailabilitypostAuth0FunctionAppSyncFunction2A498652": {
    "Type": "AWS::AppSync::FunctionConfiguration",
    "Properties": {
     "ApiId": {
@@ -1933,7 +1961,7 @@
      "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataGraphQLAPINONEDSE5668EC6Name"
     },
     "FunctionVersion": "2018-05-29",
-    "Name": "SubscriptiononDeleteReservationpostAuth0Function",
+    "Name": "SubscriptiononDeleteVehicleAvailabilitypostAuth0Function",
     "RequestMappingTemplateS3Location": {
      "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/c1721bcd774e27c514d3454b5be4f9bdd094c0161b57ddf053d618e3b0086a77.vtl"
     },
@@ -1942,10 +1970,10 @@
    "UpdateReplacePolicy": "Delete",
    "DeletionPolicy": "Delete",
    "Metadata": {
-    "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/Reservation/SubscriptiononDeleteReservationpostAuth0Function/SubscriptiononDeleteReservationpostAuth0Function.AppSyncFunction"
+    "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleAvailability/SubscriptiononDeleteVehicleAvailabilitypostAuth0Function/SubscriptiononDeleteVehicleAvailabilitypostAuth0Function.AppSyncFunction"
    }
   },
-  "SubscriptionOnDeleteReservationDataResolverFnSubscriptionOnDeleteReservationDataResolverFnAppSyncFunction7C53061E": {
+  "SubscriptionOnDeleteVehicleAvailabilityDataResolverFnSubscriptionOnDeleteVehicleAvailabilityDataResolverFnAppSyncFunction9E2D2458": {
    "Type": "AWS::AppSync::FunctionConfiguration",
    "Properties": {
     "ApiId": {
@@ -1955,7 +1983,7 @@
      "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataGraphQLAPINONEDSE5668EC6Name"
     },
     "FunctionVersion": "2018-05-29",
-    "Name": "SubscriptionOnDeleteReservationDataResolverFn",
+    "Name": "SubscriptionOnDeleteVehicleAvailabilityDataResolverFn",
     "RequestMappingTemplateS3Location": {
      "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/fe3c43ada4b9d681a5e2312663ef7a73386424d73b73e51f8e2e9d4b50f7c502.vtl"
     },
@@ -1966,34 +1994,34 @@
    "UpdateReplacePolicy": "Delete",
    "DeletionPolicy": "Delete",
    "Metadata": {
-    "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/Reservation/SubscriptionOnDeleteReservationDataResolverFn/SubscriptionOnDeleteReservationDataResolverFn.AppSyncFunction"
+    "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleAvailability/SubscriptionOnDeleteVehicleAvailabilityDataResolverFn/SubscriptionOnDeleteVehicleAvailabilityDataResolverFn.AppSyncFunction"
    }
   },
-  "SubscriptiononDeleteReservationResolver": {
+  "SubscriptiononDeleteVehicleAvailabilityResolver": {
    "Type": "AWS::AppSync::Resolver",
    "Properties": {
     "ApiId": {
      "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataGraphQLAPIEFD49BECApiId"
     },
-    "FieldName": "onDeleteReservation",
+    "FieldName": "onDeleteVehicleAvailability",
     "Kind": "PIPELINE",
     "PipelineConfig": {
      "Functions": [
       {
        "Fn::GetAtt": [
-        "SubscriptiononDeleteReservationauth0FunctionSubscriptiononDeleteReservationauth0FunctionAppSyncFunction7B7A7902",
+        "SubscriptiononDeleteVehicleAvailabilityauth0FunctionSubscriptiononDeleteVehicleAvailabilityauth0FunctionAppSyncFunction4516DB4B",
         "FunctionId"
        ]
       },
       {
        "Fn::GetAtt": [
-        "SubscriptiononDeleteReservationpostAuth0FunctionSubscriptiononDeleteReservationpostAuth0FunctionAppSyncFunctionBB041A9E",
+        "SubscriptiononDeleteVehicleAvailabilitypostAuth0FunctionSubscriptiononDeleteVehicleAvailabilitypostAuth0FunctionAppSyncFunction2A498652",
         "FunctionId"
        ]
       },
       {
        "Fn::GetAtt": [
-        "SubscriptionOnDeleteReservationDataResolverFnSubscriptionOnDeleteReservationDataResolverFnAppSyncFunction7C53061E",
+        "SubscriptionOnDeleteVehicleAvailabilityDataResolverFnSubscriptionOnDeleteVehicleAvailabilityDataResolverFnAppSyncFunction9E2D2458",
         "FunctionId"
        ]
       }
@@ -2003,7 +2031,7 @@
      "Fn::Join": [
       "",
       [
-       "$util.qr($ctx.stash.put(\"typeName\", \"Subscription\"))\n$util.qr($ctx.stash.put(\"fieldName\", \"onDeleteReservation\"))\n$util.qr($ctx.stash.put(\"conditions\", []))\n$util.qr($ctx.stash.put(\"metadata\", {}))\n$util.qr($ctx.stash.metadata.put(\"dataSourceType\", \"NONE\"))\n$util.qr($ctx.stash.metadata.put(\"apiId\", \"",
+       "$util.qr($ctx.stash.put(\"typeName\", \"Subscription\"))\n$util.qr($ctx.stash.put(\"fieldName\", \"onDeleteVehicleAvailability\"))\n$util.qr($ctx.stash.put(\"conditions\", []))\n$util.qr($ctx.stash.put(\"metadata\", {}))\n$util.qr($ctx.stash.metadata.put(\"dataSourceType\", \"NONE\"))\n$util.qr($ctx.stash.metadata.put(\"apiId\", \"",
        {
         "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataGraphQLAPIEFD49BECApiId"
        },
@@ -2045,7 +2073,7 @@
    "UpdateReplacePolicy": "Delete",
    "DeletionPolicy": "Delete",
    "Metadata": {
-    "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/Reservation/subscriptionOnDeleteReservationResolver"
+    "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleAvailability/subscriptionOnDeleteVehicleAvailabilityResolver"
    }
   },
   "CDKMetadata": {
@@ -2054,17 +2082,17 @@
     "Analytics": "v2:deflate64:H4sIAAAAAAAA/1WOQW6DQAxFz5L94FI4QQPqsq2g+8jMGDQJeNDYkyhC3L2CVKm6+n7yk/0LKMoc8gPeJLPuko2+g+WDRMm1ivZiqp6/MOJESnGDKrDz6gObhiSkaMlUSTRMf9jzc8abnBZ3Z5yC6+Abu5GOKGQ8TrA0YXzYYaTV4DzLnS0s9a7XXY2K7fPkf3pPbLcSVeDeDyni3uj383iluBopTyhCKvC2hZESjsleSLcC6+Z+Jp2Tmn3dKg6eh9VwcARnebkWBbwWkB/O4n0WE6ufCJpH/gC+d4sVNgEAAA=="
    },
    "Metadata": {
-    "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/Reservation/CDKMetadata/Default"
+    "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleAvailability/CDKMetadata/Default"
    },
    "Condition": "CDKMetadataAvailable"
   }
  },
  "Outputs": {
-  "GetAttReservationTableStreamArn": {
+  "GetAttVehicleAvailabilityTableStreamArn": {
    "Description": "Your DynamoDB table StreamArn.",
    "Value": {
     "Fn::GetAtt": [
-     "ReservationTable",
+     "VehicleAvailabilityTable",
      "TableStreamArn"
     ]
    },
@@ -2076,19 +2104,19 @@
        {
         "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataGraphQLAPIEFD49BECApiId"
        },
-       "GetAtt:ReservationTable:StreamArn"
+       "GetAtt:VehicleAvailabilityTable:StreamArn"
       ]
      ]
     }
    }
   },
-  "GetAttReservationTableName": {
+  "GetAttVehicleAvailabilityTableName": {
    "Description": "Your DynamoDB table name.",
    "Value": {
     "Fn::Join": [
      "",
      [
-      "Reservation-",
+      "VehicleAvailability-",
       {
        "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataGraphQLAPIEFD49BECApiId"
       },
@@ -2104,24 +2132,24 @@
        {
         "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataGraphQLAPIEFD49BECApiId"
        },
-       "GetAtt:ReservationTable:Name"
+       "GetAtt:VehicleAvailabilityTable:Name"
       ]
      ]
     }
    }
   },
-  "amplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataReservationReservationDataSourceDC77DB5BName": {
+  "amplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataVehicleAvailabilityVehicleAvailabilityDataSource6ABC4383Name": {
    "Value": {
     "Fn::GetAtt": [
-     "ReservationDataSource",
+     "VehicleAvailabilityDataSource",
      "Name"
     ]
    }
   },
-  "amplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataReservationReservationTableAD5720B2TableArn": {
+  "amplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataVehicleAvailabilityVehicleAvailabilityTableCB3A0A51TableArn": {
    "Value": {
     "Fn::GetAtt": [
-     "ReservationTable",
+     "VehicleAvailabilityTable",
      "TableArn"
     ]
    }

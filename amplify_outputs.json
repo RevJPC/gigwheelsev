@@ -193,6 +193,22 @@
                 ]
               }
             },
+            "availability": {
+              "name": "availability",
+              "isArray": true,
+              "type": {
+                "model": "VehicleAvailability"
+              },
+              "isRequired": false,
+              "attributes": [],
+              "isArrayNullable": true,
+              "association": {
+                "connectionType": "HAS_MANY",
+                "associatedWith": [
+                  "vehicleId"
+                ]
+              }
+            },
             "createdAt": {
               "name": "createdAt",
               "isArray": false,
@@ -447,10 +463,8 @@
               "properties": {
                 "rules": [
                   {
-                    "provider": "userPools",
-                    "ownerField": "owner",
-                    "allow": "owner",
-                    "identityClaim": "cognito:username",
+                    "allow": "public",
+                    "provider": "apiKey",
                     "operations": [
                       "create",
                       "update",
@@ -780,6 +794,114 @@
           },
           "syncable": true,
           "pluralName": "ProfileChangeRequests",
+          "attributes": [
+            {
+              "type": "model",
+              "properties": {}
+            },
+            {
+              "type": "auth",
+              "properties": {
+                "rules": [
+                  {
+                    "allow": "public",
+                    "provider": "apiKey",
+                    "operations": [
+                      "create",
+                      "update",
+                      "delete",
+                      "read"
+                    ]
+                  }
+                ]
+              }
+            }
+          ],
+          "primaryKeyInfo": {
+            "isCustomPrimaryKey": false,
+            "primaryKeyFieldName": "id",
+            "sortKeyFieldNames": []
+          }
+        },
+        "VehicleAvailability": {
+          "name": "VehicleAvailability",
+          "fields": {
+            "id": {
+              "name": "id",
+              "isArray": false,
+              "type": "ID",
+              "isRequired": true,
+              "attributes": []
+            },
+            "vehicleId": {
+              "name": "vehicleId",
+              "isArray": false,
+              "type": "ID",
+              "isRequired": true,
+              "attributes": []
+            },
+            "vehicle": {
+              "name": "vehicle",
+              "isArray": false,
+              "type": {
+                "model": "Vehicle"
+              },
+              "isRequired": false,
+              "attributes": [],
+              "association": {
+                "connectionType": "BELONGS_TO",
+                "targetNames": [
+                  "vehicleId"
+                ]
+              }
+            },
+            "startTime": {
+              "name": "startTime",
+              "isArray": false,
+              "type": "AWSDateTime",
+              "isRequired": true,
+              "attributes": []
+            },
+            "endTime": {
+              "name": "endTime",
+              "isArray": false,
+              "type": "AWSDateTime",
+              "isRequired": true,
+              "attributes": []
+            },
+            "isAvailable": {
+              "name": "isAvailable",
+              "isArray": false,
+              "type": "Boolean",
+              "isRequired": true,
+              "attributes": []
+            },
+            "reason": {
+              "name": "reason",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false,
+              "attributes": []
+            },
+            "createdAt": {
+              "name": "createdAt",
+              "isArray": false,
+              "type": "AWSDateTime",
+              "isRequired": false,
+              "attributes": [],
+              "isReadOnly": true
+            },
+            "updatedAt": {
+              "name": "updatedAt",
+              "isArray": false,
+              "type": "AWSDateTime",
+              "isRequired": false,
+              "attributes": [],
+              "isReadOnly": true
+            }
+          },
+          "syncable": true,
+          "pluralName": "VehicleAvailabilities",
           "attributes": [
             {
               "type": "model",

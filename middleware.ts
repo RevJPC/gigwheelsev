@@ -26,7 +26,10 @@ export async function middleware(request: NextRequest) {
         },
     });
 
-    const isOnDashboard = request.nextUrl.pathname.startsWith('/customer') ||
+    const isProtectedCustomerRoute = request.nextUrl.pathname.startsWith('/customer') &&
+        !request.nextUrl.pathname.startsWith('/customer/vehicles');
+
+    const isOnDashboard = isProtectedCustomerRoute ||
         request.nextUrl.pathname.startsWith('/employee') ||
         request.nextUrl.pathname.startsWith('/admin');
 

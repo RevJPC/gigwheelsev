@@ -8,8 +8,8 @@ export default function CustomerLayout({
     children: React.ReactNode;
 }) {
     return (
-        <RouteGuard allowedRoles={['customer']}>
+        <>
             {children}
-        </RouteGuard>
+        </>
     );
 }
