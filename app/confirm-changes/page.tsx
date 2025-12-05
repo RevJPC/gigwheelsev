@@ -11,7 +11,9 @@ Amplify.configure(outputs);
 
 const client = generateClient<Schema>();
 
-export default function ConfirmChangesPage() {
+import { Suspense } from "react";
+
+function ConfirmChangesContent() {
     const searchParams = useSearchParams();
     const token = searchParams.get("token");
     const requestId = searchParams.get("id");
@@ -193,5 +195,17 @@ export default function ConfirmChangesPage() {
                 </div>
             </div>
         </div>
+    );
+}
+
+export default function ConfirmChangesPage() {
+    return (
+        <Suspense fallback={
+            <div className="min-h-screen bg-slate-900 flex items-center justify-center">
+                <div className="text-white text-xl">Loading...</div>
+            </div>
+        }>
+            <ConfirmChangesContent />
+        </Suspense>
     );
 }
