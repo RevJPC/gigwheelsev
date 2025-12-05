@@ -51,6 +51,6 @@ export const config = {
          * - login
          * - signup
          */
-        '/((?!api|_next/static|_next/image|favicon.ico|login|signup).*)',
+        '/((?!api|_next/static|_next/image|favicon.ico|login|signup|privacy-policy).*)',
     ],
 };

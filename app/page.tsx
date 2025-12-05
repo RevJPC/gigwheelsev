@@ -118,8 +118,9 @@ export default function Home() {
         </div>
 
         {/* Contact */}
-        <div className="text-slate-400">
+        <div className="text-slate-400 flex flex-col items-center gap-2">
           <p>Questions? Reach out at <a href="mailto:info@gigwheelsev.com" className="text-green-400 hover:text-green-300 transition-colors">info@gigwheelsev.com</a></p>
+          <a href="/privacy-policy" className="text-sm text-slate-500 hover:text-slate-400 underline transition-colors">Privacy Policy</a>
         </div>
       </div>
     </main>
