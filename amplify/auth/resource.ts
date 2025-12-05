@@ -13,11 +13,11 @@ export const auth = defineAuth({
                 clientSecret: secret('GOOGLE_CLIENT_SECRET'),
                 scopes: ['email', 'profile']
             },
-            facebook: {
-                clientId: secret('FACEBOOK_CLIENT_ID'),
-                clientSecret: secret('FACEBOOK_CLIENT_SECRET'),
-                scopes: ['public_profile', 'email']
-            },
+            // facebook: {
+            //     clientId: secret('FACEBOOK_CLIENT_ID'),
+            //     clientSecret: secret('FACEBOOK_CLIENT_SECRET'),
+            //     scopes: ['public_profile', 'email']
+            // },
             callbackUrls: [
                 'http://localhost:3000/oauth2/idpresponse',
                 'https://master.d2j2484950395.amplifyapp.com/oauth2/idpresponse' // Update this with your actual production URL when known

@@ -44,7 +44,7 @@ export default function LoginPage() {
                         Sign in to GigWheels EV
                     </h2>
                 </div>
-                <Authenticator initialState="signIn" socialProviders={['google', 'facebook']}>
+                <Authenticator initialState="signIn" socialProviders={['google'/*, 'facebook'*/]}>
                     {({ user }) => (user ? <RoleBasedRedirect /> : <main></main>)}
                 </Authenticator>
             </div>

@@ -22,7 +22,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/6218ecb7a788864a51779f2a9273e4fd67596385e06832ef78d12d8fd742c719.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/74645c576b55787021fa512194c4802793e3c1d5c5e6506d28d9d41f81b6a758.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -65,10 +65,70 @@
             "data": "region"
           }
         ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/auth/AmplifySecretFetcherResourceProviderLambda/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "AmplifySecretFetcherResourceProviderLambdaServiceRole3F02FB0D"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/auth/AmplifySecretFetcherResourceProviderLambda/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "AmplifySecretFetcherResourceProviderLambdaServiceRoleDefaultPolicy080657DD"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/auth/AmplifySecretFetcherResourceProviderLambda/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "AmplifySecretFetcherResourceProviderLambda27823B35"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/auth/AmplifySecretFetcherResourceProvider/framework-onEvent/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "AmplifySecretFetcherResourceProviderframeworkonEventServiceRole0941C6B4"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/auth/AmplifySecretFetcherResourceProvider/framework-onEvent/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "AmplifySecretFetcherResourceProviderframeworkonEventServiceRoleDefaultPolicy749EBE05"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/auth/AmplifySecretFetcherResourceProvider/framework-onEvent/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "AmplifySecretFetcherResourceProviderframeworkonEventA62AE3A8"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/auth/AmplifySecretFetcherResource/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "AmplifySecretFetcherResource"
+          }
+        ],
         "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/auth/amplifyAuth/UserPool/Resource": [
           {
             "type": "aws:cdk:logicalId",
             "data": "amplifyAuthUserPool4BA7F805"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/auth/amplifyAuth/UserPool/UserPoolDomain/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "amplifyAuthUserPoolUserPoolDomain1F688B5B"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/auth/amplifyAuth/GoogleIdP/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "amplifyAuthGoogleIdPA9736819"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/auth/amplifyAuth/FacebookIDP/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "amplifyAuthFacebookIDP7CB5B5CC"
           }
         ],
         "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/auth/amplifyAuth/UserPoolAppClient/Resource": [
@@ -129,6 +189,12 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "amplifygigwheelsevjamiesandbox03b8376cacauthamplifyAuthIdentityPool49485A21Ref"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/auth/amplifygigwheelsevjamiesandbox03b8376cacauthamplifyAuthUserPoolUserPoolDomain1ADF2080Ref": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "amplifygigwheelsevjamiesandbox03b8376cacauthamplifyAuthUserPoolUserPoolDomain1ADF2080Ref"
           }
         ],
         "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/auth/amplifygigwheelsevjamiesandbox03b8376cacauthamplifyAuthauthenticatedUserRoleC3A5DEC2Ref": [
