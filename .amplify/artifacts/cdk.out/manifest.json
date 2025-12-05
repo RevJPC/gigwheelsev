@@ -22,7 +22,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/74645c576b55787021fa512194c4802793e3c1d5c5e6506d28d9d41f81b6a758.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/d88cf8be8f8ef6d77dec6ba89097802f0f7afc0077ebba0d4c9f2cfe4eb66196.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -123,12 +123,6 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "amplifyAuthGoogleIdPA9736819"
-          }
-        ],
-        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/auth/amplifyAuth/FacebookIDP/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "amplifyAuthFacebookIDP7CB5B5CC"
           }
         ],
         "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/auth/amplifyAuth/UserPoolAppClient/Resource": [

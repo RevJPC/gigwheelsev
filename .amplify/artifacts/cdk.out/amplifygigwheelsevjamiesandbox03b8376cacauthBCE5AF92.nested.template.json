@@ -291,8 +291,6 @@
     "name": "jamie",
     "type": "sandbox",
     "secretNames": [
-     "FACEBOOK_CLIENT_ID",
-     "FACEBOOK_CLIENT_SECRET",
      "GOOGLE_CLIENT_ID",
      "GOOGLE_CLIENT_SECRET"
     ],
@@ -422,39 +420,6 @@
     "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/auth/amplifyAuth/GoogleIdP/Resource"
    }
   },
-  "amplifyAuthFacebookIDP7CB5B5CC": {
-   "Type": "AWS::Cognito::UserPoolIdentityProvider",
-   "Properties": {
-    "AttributeMapping": {
-     "email": "email"
-    },
-    "ProviderDetails": {
-     "client_id": {
-      "Fn::GetAtt": [
-       "AmplifySecretFetcherResource",
-       "FACEBOOK_CLIENT_ID"
-      ]
-     },
-     "client_secret": {
-      "Fn::GetAtt": [
-       "AmplifySecretFetcherResource",
-       "FACEBOOK_CLIENT_SECRET"
-      ]
-     },
-     "authorize_scopes": "public_profile,email"
-    },
-    "ProviderName": "Facebook",
-    "ProviderType": "Facebook",
-    "UserPoolId": {
-     "Ref": "amplifyAuthUserPool4BA7F805"
-    }
-   },
-   "UpdateReplacePolicy": "Delete",
-   "DeletionPolicy": "Delete",
-   "Metadata": {
-    "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/auth/amplifyAuth/FacebookIDP/Resource"
-   }
-  },
   "amplifyAuthUserPoolAppClient2626C6F8": {
    "Type": "AWS::Cognito::UserPoolClient",
    "Properties": {
@@ -470,8 +435,8 @@
      "aws.cognito.signin.user.admin"
     ],
     "CallbackURLs": [
-     "http://localhost:3000/oauth2/idpresponse",
-     "https://master.d2j2484950395.amplifyapp.com/oauth2/idpresponse"
+     "http://localhost:3000/",
+     "https://master.d2j2484950395.amplifyapp.com/"
     ],
     "ExplicitAuthFlows": [
      "ALLOW_CUSTOM_AUTH",
@@ -486,9 +451,6 @@
     "SupportedIdentityProviders": [
      {
       "Ref": "amplifyAuthGoogleIdPA9736819"
-     },
-     {
-      "Ref": "amplifyAuthFacebookIDP7CB5B5CC"
      },
      "COGNITO"
     ],
@@ -547,12 +509,6 @@
       "Fn::GetAtt": [
        "AmplifySecretFetcherResource",
        "GOOGLE_CLIENT_ID"
-      ]
-     },
-     "graph.facebook.com": {
-      "Fn::GetAtt": [
-       "AmplifySecretFetcherResource",
-       "FACEBOOK_CLIENT_ID"
       ]
      }
     }
@@ -714,7 +670,7 @@
   "CDKMetadata": {
    "Type": "AWS::CDK::Metadata",
    "Properties": {
-    "Analytics": "v2:deflate64:H4sIAAAAAAAA/3VRy27CQAz8Fu4bNw1fAKmouCAE6jlaNiZ1HmspdkAoyr9XeTYXTjNje0aWHUG0DSHc2KcELi2Ckm7QnlAU06taVxj7lKQtbXVLbeI5xVzgNMCh8U6JvSFbQXvhEk189wOeuST36uXIOiPbxIqgCux6MLKFfeMK1L0VNGM8tPHdL6kz6YzjzJMytD+C9Zm57IMXPpMvriz5dWuqzPKYolfS17nmB6VYfzNn487vJt5aD9bhjblYBuKS0Os667+ymKfN17q/1k7Vut8KvXaduaBwUzs0w5muajPymXGNKFdJPTUFlg3jobO4+gdMvDP9tyCXj0cUwWcE4SYXoqBuvFKFcBnxDzSp0eoAAgAA"
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/3VRy26DQAz8ltw3LoUvSKha5RJFRD2jzeJQk2UtYZMoQvx7xbO59DQzHntk2THESQTRxj5k64rb1tMFuiOKYnFW627GPiTvvK0vhc0DF1gJHEf4bINT4mDI1tBl7NGk1zDiiT255yAn1htJciuCKrAbwEgC+9bdUPdW0Ezx0KXXsKYupDeOy0DK0H0LNidmPwSvfCEfXFsKr9ZcWeShwKCkz1PDdyqw+WIup53/61hHU08Y9LX1r7IOzYu96uEYO1XrfmoM2vcmQ+G2cWjGK5zVlhRK41pRrvNmNgXWBdLRWaeG+868N8MzoJK3exzDewzRphKibdMGpRohm/AXlXCQKd8BAAA="
    },
    "Metadata": {
     "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/auth/CDKMetadata/Default"

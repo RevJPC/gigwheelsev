@@ -23,6 +23,28 @@
       "require_symbols": true,
       "require_uppercase": true
     },
+    "oauth": {
+      "identity_providers": [
+        "GOOGLE"
+      ],
+      "redirect_sign_in_uri": [
+        "http://localhost:3000/",
+        "https://master.d2j2484950395.amplifyapp.com/"
+      ],
+      "redirect_sign_out_uri": [
+        "http://localhost:3000/",
+        "https://master.d2j2484950395.amplifyapp.com/"
+      ],
+      "response_type": "code",
+      "scopes": [
+        "phone",
+        "email",
+        "openid",
+        "profile",
+        "aws.cognito.signin.user.admin"
+      ],
+      "domain": "9929be728231d5664e25.auth.us-east-1.amazoncognito.com"
+    },
     "unauthenticated_identities_enabled": true
   },
   "data": {

@@ -123,7 +123,7 @@
    "Value": "[]"
   },
   "socialProviders": {
-   "Value": "[\"GOOGLE\",\"FACEBOOK\"]"
+   "Value": "[\"GOOGLE\"]"
   },
   "oauthCognitoDomain": {
    "Value": {
@@ -149,7 +149,7 @@
    "Value": "[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"]"
   },
   "oauthRedirectSignIn": {
-   "Value": "http://localhost:3000/oauth2/idpresponse,https://master.d2j2484950395.amplifyapp.com/oauth2/idpresponse"
+   "Value": "http://localhost:3000/,https://master.d2j2484950395.amplifyapp.com/"
   },
   "oauthRedirectSignOut": {
    "Value": "http://localhost:3000/,https://master.d2j2484950395.amplifyapp.com/"
@@ -350,7 +350,7 @@
        {
         "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
        },
-       "/ee32968d2f59138741ae9a4068c20569dc340a15296820592fdbc7586154156d.json"
+       "/3f0b445978d4178efb493217fcc68ba8f8c972a5bd59fb2680930e004d831194.json"
       ]
      ]
     }
@@ -436,7 +436,7 @@
        {
         "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
        },
-       "/f0f61b77e98cd1aece24559f36c2860c04c7b0a917453e762edc61e267ac56c4.json"
+       "/563d89f88af5d2a12def8aa9113dccbc02bc715965cd43f6f07fecd66745283e.json"
       ]
      ]
     }
