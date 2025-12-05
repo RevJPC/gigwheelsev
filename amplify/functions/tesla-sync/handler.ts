@@ -243,6 +243,7 @@ export const handler: Handler = async (event) => {
                             locationLat: vehicleData?.drive_state?.latitude || null,
                             locationLng: vehicleData?.drive_state?.longitude || null,
                             color: vehicleData?.vehicle_config?.exterior_color || null,
+                            odometer: vehicleData?.vehicle_state?.odometer || null,
                             status: status,
                             firmwareVersion: firmwareVersion,
                             lastSyncedAt: new Date().toISOString()
@@ -288,6 +289,7 @@ export const handler: Handler = async (event) => {
                             locationLat: vehicleData?.drive_state?.latitude || null,
                             locationLng: vehicleData?.drive_state?.longitude || null,
                             color: vehicleData?.vehicle_config?.exterior_color || null,
+                            odometer: vehicleData?.vehicle_state?.odometer || null,
                             status: status,
                             pricePerDay: 150,
                             firmwareVersion: firmwareVersion,

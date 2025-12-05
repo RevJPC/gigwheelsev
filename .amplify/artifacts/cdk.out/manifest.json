@@ -22,7 +22,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/ccaf31ee5ca79d7db3a8d75a73682528e924c4101c4dad27b0d996d9e3436655.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/200dadb87320cca11d4911a4e328c57ed81976df89d979848826e8fd0bc9aec2.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -141,6 +141,12 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "amplifygigwheelsevjamiesandbox03b8376cacauthamplifyAuthunauthenticatedUserRole462C06D4Ref"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/auth/amplifygigwheelsevjamiesandbox03b8376cacauthamplifyAuthUserPool6D20C8C9Arn": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "amplifygigwheelsevjamiesandbox03b8376cacauthamplifyAuthUserPool6D20C8C9Arn"
           }
         ],
         "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/auth.NestedStack/auth.NestedStackResource": [
@@ -929,6 +935,536 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "amplifyDataVehicleNestedStackVehicleNestedStackResourceCDBCB042"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleImage/DynamoDBModelTableReadIOPS": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "DynamoDBModelTableReadIOPS"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleImage/DynamoDBModelTableWriteIOPS": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "DynamoDBModelTableWriteIOPS"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleImage/DynamoDBBillingMode": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "DynamoDBBillingMode"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleImage/DynamoDBEnablePointInTimeRecovery": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "DynamoDBEnablePointInTimeRecovery"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleImage/DynamoDBEnableServerSideEncryption": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "DynamoDBEnableServerSideEncryption"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleImage/HasEnvironmentParameter": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "HasEnvironmentParameter"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleImage/ShouldUsePayPerRequestBilling": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ShouldUsePayPerRequestBilling"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleImage/ShouldUsePointInTimeRecovery": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ShouldUsePointInTimeRecovery"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleImage/VehicleImageTable": [
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "VehicleImage"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleImage/VehicleImageTable/Default/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "VehicleImageTable"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "VehicleImage"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleImage/CustomTableVehicleImageTable": [
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "VehicleImage"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleImage/GetAttVehicleImageTableStreamArn": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "GetAttVehicleImageTableStreamArn"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleImage/GetAttVehicleImageTableName": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "GetAttVehicleImageTableName"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleImage/VehicleImageIAMRole": [
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "VehicleImageIAMRole"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleImage/VehicleImageIAMRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "VehicleImageIAMRole7F29C9B8"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "VehicleImageIAMRole"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleImage/VehicleImageDataSource": [
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "VehicleImageTable"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleImage/VehicleImageDataSource/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "VehicleImageDataSource"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "VehicleImageTable"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleImage/QuerygetVehicleImageauth0Function/QuerygetVehicleImageauth0Function.AppSyncFunction": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "QuerygetVehicleImageauth0FunctionQuerygetVehicleImageauth0FunctionAppSyncFunction8F9D3BE4"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "QuerygetVehicleImageauth0Function"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleImage/QuerygetVehicleImagepostAuth0Function/QuerygetVehicleImagepostAuth0Function.AppSyncFunction": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "QuerygetVehicleImagepostAuth0FunctionQuerygetVehicleImagepostAuth0FunctionAppSyncFunctionBA1445FA"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "QuerygetVehicleImagepostAuth0Function"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleImage/QueryGetVehicleImageDataResolverFn/QueryGetVehicleImageDataResolverFn.AppSyncFunction": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "QueryGetVehicleImageDataResolverFnQueryGetVehicleImageDataResolverFnAppSyncFunction1B6C22D6"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "QueryGetVehicleImageDataResolverFn"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleImage/queryGetVehicleImageResolver": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "GetVehicleImageResolver"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "Query.getVehicleImage"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleImage/QuerylistVehicleImagesauth0Function/QuerylistVehicleImagesauth0Function.AppSyncFunction": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "QuerylistVehicleImagesauth0FunctionQuerylistVehicleImagesauth0FunctionAppSyncFunction5B709D0F"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "QuerylistVehicleImagesauth0Function"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleImage/QuerylistVehicleImagespostAuth0Function/QuerylistVehicleImagespostAuth0Function.AppSyncFunction": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "QuerylistVehicleImagespostAuth0FunctionQuerylistVehicleImagespostAuth0FunctionAppSyncFunctionFE50DF4F"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "QuerylistVehicleImagespostAuth0Function"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleImage/QueryListVehicleImagesDataResolverFn/QueryListVehicleImagesDataResolverFn.AppSyncFunction": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "QueryListVehicleImagesDataResolverFnQueryListVehicleImagesDataResolverFnAppSyncFunctionF5CD7AD2"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "QueryListVehicleImagesDataResolverFn"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleImage/queryListVehicleImagesResolver": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ListVehicleImageResolver"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "Query.listVehicleImages"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleImage/MutationcreateVehicleImageinit0Function/MutationcreateVehicleImageinit0Function.AppSyncFunction": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MutationcreateVehicleImageinit0FunctionMutationcreateVehicleImageinit0FunctionAppSyncFunction9656FE5D"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "MutationcreateVehicleImageinit0Function"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleImage/MutationcreateVehicleImageinit1Function/MutationcreateVehicleImageinit1Function.AppSyncFunction": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MutationcreateVehicleImageinit1FunctionMutationcreateVehicleImageinit1FunctionAppSyncFunction1AF46601"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "MutationcreateVehicleImageinit1Function"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleImage/MutationcreateVehicleImageauth0Function/MutationcreateVehicleImageauth0Function.AppSyncFunction": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MutationcreateVehicleImageauth0FunctionMutationcreateVehicleImageauth0FunctionAppSyncFunction2C21D6C8"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "MutationcreateVehicleImageauth0Function"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleImage/MutationcreateVehicleImagepostAuth0Function/MutationcreateVehicleImagepostAuth0Function.AppSyncFunction": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MutationcreateVehicleImagepostAuth0FunctionMutationcreateVehicleImagepostAuth0FunctionAppSyncFunction912DCF5E"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "MutationcreateVehicleImagepostAuth0Function"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleImage/MutationCreateVehicleImageDataResolverFn/MutationCreateVehicleImageDataResolverFn.AppSyncFunction": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MutationCreateVehicleImageDataResolverFnMutationCreateVehicleImageDataResolverFnAppSyncFunctionA8245952"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "MutationCreateVehicleImageDataResolverFn"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleImage/mutationCreateVehicleImageResolver": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CreateVehicleImageResolver"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "Mutation.createVehicleImage"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleImage/MutationupdateVehicleImageinit0Function/MutationupdateVehicleImageinit0Function.AppSyncFunction": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MutationupdateVehicleImageinit0FunctionMutationupdateVehicleImageinit0FunctionAppSyncFunction7AC6402A"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "MutationupdateVehicleImageinit0Function"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleImage/MutationupdateVehicleImageauth0Function/MutationupdateVehicleImageauth0Function.AppSyncFunction": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MutationupdateVehicleImageauth0FunctionMutationupdateVehicleImageauth0FunctionAppSyncFunction9D0FAFB3"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "MutationupdateVehicleImageauth0Function"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleImage/MutationupdateVehicleImagepostAuth0Function/MutationupdateVehicleImagepostAuth0Function.AppSyncFunction": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MutationupdateVehicleImagepostAuth0FunctionMutationupdateVehicleImagepostAuth0FunctionAppSyncFunctionB7ED099F"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "MutationupdateVehicleImagepostAuth0Function"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleImage/MutationUpdateVehicleImageDataResolverFn/MutationUpdateVehicleImageDataResolverFn.AppSyncFunction": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MutationUpdateVehicleImageDataResolverFnMutationUpdateVehicleImageDataResolverFnAppSyncFunctionD115D479"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "MutationUpdateVehicleImageDataResolverFn"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleImage/mutationUpdateVehicleImageResolver": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "UpdateVehicleImageResolver"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "Mutation.updateVehicleImage"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleImage/MutationdeleteVehicleImageauth0Function/MutationdeleteVehicleImageauth0Function.AppSyncFunction": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MutationdeleteVehicleImageauth0FunctionMutationdeleteVehicleImageauth0FunctionAppSyncFunction947694A4"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "MutationdeleteVehicleImageauth0Function"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleImage/MutationdeleteVehicleImagepostAuth0Function/MutationdeleteVehicleImagepostAuth0Function.AppSyncFunction": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MutationdeleteVehicleImagepostAuth0FunctionMutationdeleteVehicleImagepostAuth0FunctionAppSyncFunction17D87360"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "MutationdeleteVehicleImagepostAuth0Function"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleImage/MutationDeleteVehicleImageDataResolverFn/MutationDeleteVehicleImageDataResolverFn.AppSyncFunction": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MutationDeleteVehicleImageDataResolverFnMutationDeleteVehicleImageDataResolverFnAppSyncFunction55446122"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "MutationDeleteVehicleImageDataResolverFn"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleImage/mutationDeleteVehicleImageResolver": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "DeleteVehicleImageResolver"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "Mutation.deleteVehicleImage"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleImage/SubscriptiononCreateVehicleImageauth0Function/SubscriptiononCreateVehicleImageauth0Function.AppSyncFunction": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "SubscriptiononCreateVehicleImageauth0FunctionSubscriptiononCreateVehicleImageauth0FunctionAppSyncFunction45C78D18"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "SubscriptiononCreateVehicleImageauth0Function"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleImage/SubscriptiononCreateVehicleImagepostAuth0Function/SubscriptiononCreateVehicleImagepostAuth0Function.AppSyncFunction": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "SubscriptiononCreateVehicleImagepostAuth0FunctionSubscriptiononCreateVehicleImagepostAuth0FunctionAppSyncFunctionD63DA9AF"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "SubscriptiononCreateVehicleImagepostAuth0Function"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleImage/SubscriptionOnCreateVehicleImageDataResolverFn/SubscriptionOnCreateVehicleImageDataResolverFn.AppSyncFunction": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "SubscriptionOnCreateVehicleImageDataResolverFnSubscriptionOnCreateVehicleImageDataResolverFnAppSyncFunctionF8D0312C"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "SubscriptionOnCreateVehicleImageDataResolverFn"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleImage/subscriptionOnCreateVehicleImageResolver": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "SubscriptiononCreateVehicleImageResolver"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "Subscription.onCreateVehicleImage"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleImage/SubscriptiononUpdateVehicleImageauth0Function/SubscriptiononUpdateVehicleImageauth0Function.AppSyncFunction": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "SubscriptiononUpdateVehicleImageauth0FunctionSubscriptiononUpdateVehicleImageauth0FunctionAppSyncFunction1C94A095"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "SubscriptiononUpdateVehicleImageauth0Function"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleImage/SubscriptiononUpdateVehicleImagepostAuth0Function/SubscriptiononUpdateVehicleImagepostAuth0Function.AppSyncFunction": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "SubscriptiononUpdateVehicleImagepostAuth0FunctionSubscriptiononUpdateVehicleImagepostAuth0FunctionAppSyncFunction85EAB24B"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "SubscriptiononUpdateVehicleImagepostAuth0Function"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleImage/SubscriptionOnUpdateVehicleImageDataResolverFn/SubscriptionOnUpdateVehicleImageDataResolverFn.AppSyncFunction": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "SubscriptionOnUpdateVehicleImageDataResolverFnSubscriptionOnUpdateVehicleImageDataResolverFnAppSyncFunction12B14B7D"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "SubscriptionOnUpdateVehicleImageDataResolverFn"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleImage/subscriptionOnUpdateVehicleImageResolver": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "SubscriptiononUpdateVehicleImageResolver"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "Subscription.onUpdateVehicleImage"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleImage/SubscriptiononDeleteVehicleImageauth0Function/SubscriptiononDeleteVehicleImageauth0Function.AppSyncFunction": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "SubscriptiononDeleteVehicleImageauth0FunctionSubscriptiononDeleteVehicleImageauth0FunctionAppSyncFunctionAA59F205"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "SubscriptiononDeleteVehicleImageauth0Function"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleImage/SubscriptiononDeleteVehicleImagepostAuth0Function/SubscriptiononDeleteVehicleImagepostAuth0Function.AppSyncFunction": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "SubscriptiononDeleteVehicleImagepostAuth0FunctionSubscriptiononDeleteVehicleImagepostAuth0FunctionAppSyncFunction0D37FF72"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "SubscriptiononDeleteVehicleImagepostAuth0Function"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleImage/SubscriptionOnDeleteVehicleImageDataResolverFn/SubscriptionOnDeleteVehicleImageDataResolverFn.AppSyncFunction": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "SubscriptionOnDeleteVehicleImageDataResolverFnSubscriptionOnDeleteVehicleImageDataResolverFnAppSyncFunction35C0374F"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "SubscriptionOnDeleteVehicleImageDataResolverFn"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleImage/subscriptionOnDeleteVehicleImageResolver": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "SubscriptiononDeleteVehicleImageResolver"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "Subscription.onDeleteVehicleImage"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleImage/CDKMetadata/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadata"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleImage/CDKMetadata/Condition": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadataAvailable"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleImage/reference-to-amplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataAmplifyTableManagerNestedStackAmplifyTableManagerNestedStackResource7F881793Outputs.amplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataAmplifyTableManagerTableManagerCustomProviderframeworkonEventC117D7DCArn": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "referencetoamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataAmplifyTableManagerNestedStackAmplifyTableManagerNestedStackResource7F881793Outputsamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataAmplifyTableManagerTableManagerCusto78829339"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleImage/reference-to-amplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataGraphQLAPIEFD49BECApiId": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "referencetoamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataGraphQLAPIEFD49BECApiId"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleImage/reference-to-amplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataGraphQLAPINONEDSE5668EC6Name": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "referencetoamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataGraphQLAPINONEDSE5668EC6Name"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleImage/reference-to-amplifygigwheelsevjamiesandbox03b8376cacauthNestedStackauthNestedStackResourceD32EECAFOutputs.amplifygigwheelsevjamiesandbox03b8376cacauthamplifyAuthauthenticatedUserRoleC3A5DEC2Ref": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "referencetoamplifygigwheelsevjamiesandbox03b8376cacauthNestedStackauthNestedStackResourceD32EECAFOutputsamplifygigwheelsevjamiesandbox03b8376cacauthamplifyAuthauthenticatedUserRoleC3A5DEC2Ref"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleImage/reference-to-amplifygigwheelsevjamiesandbox03b8376cacauthNestedStackauthNestedStackResourceD32EECAFOutputs.amplifygigwheelsevjamiesandbox03b8376cacauthamplifyAuthunauthenticatedUserRole462C06D4Ref": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "referencetoamplifygigwheelsevjamiesandbox03b8376cacauthNestedStackauthNestedStackResourceD32EECAFOutputsamplifygigwheelsevjamiesandbox03b8376cacauthamplifyAuthunauthenticatedUserRole462C06D4Ref"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleImage/reference-to-amplifygigwheelsevjamiesandbox03b8376cacauthNestedStackauthNestedStackResourceD32EECAFOutputs.amplifygigwheelsevjamiesandbox03b8376cacauthamplifyAuthIdentityPool49485A21Ref": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "referencetoamplifygigwheelsevjamiesandbox03b8376cacauthNestedStackauthNestedStackResourceD32EECAFOutputsamplifygigwheelsevjamiesandbox03b8376cacauthamplifyAuthIdentityPool49485A21Ref"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleImage/amplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataVehicleImageVehicleImageDataSource403FA4BBName": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "amplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataVehicleImageVehicleImageDataSource403FA4BBName"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleImage/amplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataVehicleImageVehicleImageTableBFA7358ETableArn": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "amplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataVehicleImageVehicleImageTableBFA7358ETableArn"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/VehicleImage.NestedStack/VehicleImage.NestedStackResource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "amplifyDataVehicleImageNestedStackVehicleImageNestedStackResource5486BE4B"
           }
         ],
         "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/Reservation/DynamoDBModelTableReadIOPS": [
@@ -2487,10 +3023,614 @@
             "data": "amplifyDataUserProfileNestedStackUserProfileNestedStackResource1B3713C5"
           }
         ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/ProfileChangeRequest/DynamoDBModelTableReadIOPS": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "DynamoDBModelTableReadIOPS"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/ProfileChangeRequest/DynamoDBModelTableWriteIOPS": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "DynamoDBModelTableWriteIOPS"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/ProfileChangeRequest/DynamoDBBillingMode": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "DynamoDBBillingMode"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/ProfileChangeRequest/DynamoDBEnablePointInTimeRecovery": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "DynamoDBEnablePointInTimeRecovery"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/ProfileChangeRequest/DynamoDBEnableServerSideEncryption": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "DynamoDBEnableServerSideEncryption"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/ProfileChangeRequest/HasEnvironmentParameter": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "HasEnvironmentParameter"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/ProfileChangeRequest/ShouldUsePayPerRequestBilling": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ShouldUsePayPerRequestBilling"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/ProfileChangeRequest/ShouldUsePointInTimeRecovery": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ShouldUsePointInTimeRecovery"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/ProfileChangeRequest/ProfileChangeRequestTable": [
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "ProfileChangeRequest"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/ProfileChangeRequest/ProfileChangeRequestTable/Default/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ProfileChangeRequestTable"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "ProfileChangeRequest"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/ProfileChangeRequest/CustomTableProfileChangeRequestTable": [
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "ProfileChangeRequest"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/ProfileChangeRequest/GetAttProfileChangeRequestTableStreamArn": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "GetAttProfileChangeRequestTableStreamArn"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/ProfileChangeRequest/GetAttProfileChangeRequestTableName": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "GetAttProfileChangeRequestTableName"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/ProfileChangeRequest/ProfileChangeRequestIAMRole": [
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "ProfileChangeRequestIAMRole"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/ProfileChangeRequest/ProfileChangeRequestIAMRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ProfileChangeRequestIAMRole43B355D4"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "ProfileChangeRequestIAMRole"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/ProfileChangeRequest/ProfileChangeRequestDataSource": [
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "ProfileChangeRequestTable"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/ProfileChangeRequest/ProfileChangeRequestDataSource/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ProfileChangeRequestDataSource"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "ProfileChangeRequestTable"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/ProfileChangeRequest/QuerygetProfileChangeRequestauth0Function/QuerygetProfileChangeRequestauth0Function.AppSyncFunction": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "QuerygetProfileChangeRequestauth0FunctionQuerygetProfileChangeRequestauth0FunctionAppSyncFunction9BD317D0"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "QuerygetProfileChangeRequestauth0Function"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/ProfileChangeRequest/QuerygetProfileChangeRequestpostAuth0Function/QuerygetProfileChangeRequestpostAuth0Function.AppSyncFunction": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "QuerygetProfileChangeRequestpostAuth0FunctionQuerygetProfileChangeRequestpostAuth0FunctionAppSyncFunctionA902B78A"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "QuerygetProfileChangeRequestpostAuth0Function"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/ProfileChangeRequest/QueryGetProfileChangeRequestDataResolverFn/QueryGetProfileChangeRequestDataResolverFn.AppSyncFunction": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "QueryGetProfileChangeRequestDataResolverFnQueryGetProfileChangeRequestDataResolverFnAppSyncFunction76DA63BA"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "QueryGetProfileChangeRequestDataResolverFn"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/ProfileChangeRequest/queryGetProfileChangeRequestResolver": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "GetProfileChangeRequestResolver"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "Query.getProfileChangeRequest"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/ProfileChangeRequest/QuerylistProfileChangeRequestsauth0Function/QuerylistProfileChangeRequestsauth0Function.AppSyncFunction": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "QuerylistProfileChangeRequestsauth0FunctionQuerylistProfileChangeRequestsauth0FunctionAppSyncFunction683ED7F6"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "QuerylistProfileChangeRequestsauth0Function"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/ProfileChangeRequest/QuerylistProfileChangeRequestspostAuth0Function/QuerylistProfileChangeRequestspostAuth0Function.AppSyncFunction": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "QuerylistProfileChangeRequestspostAuth0FunctionQuerylistProfileChangeRequestspostAuth0FunctionAppSyncFunction898127DA"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "QuerylistProfileChangeRequestspostAuth0Function"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/ProfileChangeRequest/QueryListProfileChangeRequestsDataResolverFn/QueryListProfileChangeRequestsDataResolverFn.AppSyncFunction": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "QueryListProfileChangeRequestsDataResolverFnQueryListProfileChangeRequestsDataResolverFnAppSyncFunction14FA702E"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "QueryListProfileChangeRequestsDataResolverFn"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/ProfileChangeRequest/queryListProfileChangeRequestsResolver": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ListProfileChangeRequestResolver"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "Query.listProfileChangeRequests"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/ProfileChangeRequest/MutationcreateProfileChangeRequestinit0Function/MutationcreateProfileChangeRequestinit0Function.AppSyncFunction": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MutationcreateProfileChangeRequestinit0FunctionMutationcreateProfileChangeRequestinit0FunctionAppSyncFunction6EFC6058"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "MutationcreateProfileChangeRequestinit0Function"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/ProfileChangeRequest/MutationcreateProfileChangeRequestauth0Function/MutationcreateProfileChangeRequestauth0Function.AppSyncFunction": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MutationcreateProfileChangeRequestauth0FunctionMutationcreateProfileChangeRequestauth0FunctionAppSyncFunction435E1707"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "MutationcreateProfileChangeRequestauth0Function"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/ProfileChangeRequest/MutationcreateProfileChangeRequestpostAuth0Function/MutationcreateProfileChangeRequestpostAuth0Function.AppSyncFunction": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MutationcreateProfileChangeRequestpostAuth0FunctionMutationcreateProfileChangeRequestpostAuth0FunctionAppSyncFunctionBC86539B"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "MutationcreateProfileChangeRequestpostAuth0Function"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/ProfileChangeRequest/MutationCreateProfileChangeRequestDataResolverFn/MutationCreateProfileChangeRequestDataResolverFn.AppSyncFunction": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MutationCreateProfileChangeRequestDataResolverFnMutationCreateProfileChangeRequestDataResolverFnAppSyncFunction438F8A3A"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "MutationCreateProfileChangeRequestDataResolverFn"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/ProfileChangeRequest/mutationCreateProfileChangeRequestResolver": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CreateProfileChangeRequestResolver"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "Mutation.createProfileChangeRequest"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/ProfileChangeRequest/MutationupdateProfileChangeRequestinit0Function/MutationupdateProfileChangeRequestinit0Function.AppSyncFunction": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MutationupdateProfileChangeRequestinit0FunctionMutationupdateProfileChangeRequestinit0FunctionAppSyncFunction74EBDC00"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "MutationupdateProfileChangeRequestinit0Function"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/ProfileChangeRequest/MutationupdateProfileChangeRequestauth0Function/MutationupdateProfileChangeRequestauth0Function.AppSyncFunction": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MutationupdateProfileChangeRequestauth0FunctionMutationupdateProfileChangeRequestauth0FunctionAppSyncFunctionD027AF27"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "MutationupdateProfileChangeRequestauth0Function"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/ProfileChangeRequest/MutationupdateProfileChangeRequestpostAuth0Function/MutationupdateProfileChangeRequestpostAuth0Function.AppSyncFunction": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MutationupdateProfileChangeRequestpostAuth0FunctionMutationupdateProfileChangeRequestpostAuth0FunctionAppSyncFunction8CC7AC8A"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "MutationupdateProfileChangeRequestpostAuth0Function"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/ProfileChangeRequest/MutationUpdateProfileChangeRequestDataResolverFn/MutationUpdateProfileChangeRequestDataResolverFn.AppSyncFunction": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MutationUpdateProfileChangeRequestDataResolverFnMutationUpdateProfileChangeRequestDataResolverFnAppSyncFunction4A3F5855"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "MutationUpdateProfileChangeRequestDataResolverFn"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/ProfileChangeRequest/mutationUpdateProfileChangeRequestResolver": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "UpdateProfileChangeRequestResolver"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "Mutation.updateProfileChangeRequest"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/ProfileChangeRequest/MutationdeleteProfileChangeRequestauth0Function/MutationdeleteProfileChangeRequestauth0Function.AppSyncFunction": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MutationdeleteProfileChangeRequestauth0FunctionMutationdeleteProfileChangeRequestauth0FunctionAppSyncFunction544C001B"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "MutationdeleteProfileChangeRequestauth0Function"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/ProfileChangeRequest/MutationdeleteProfileChangeRequestpostAuth0Function/MutationdeleteProfileChangeRequestpostAuth0Function.AppSyncFunction": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MutationdeleteProfileChangeRequestpostAuth0FunctionMutationdeleteProfileChangeRequestpostAuth0FunctionAppSyncFunction6509E0FD"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "MutationdeleteProfileChangeRequestpostAuth0Function"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/ProfileChangeRequest/MutationDeleteProfileChangeRequestDataResolverFn/MutationDeleteProfileChangeRequestDataResolverFn.AppSyncFunction": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MutationDeleteProfileChangeRequestDataResolverFnMutationDeleteProfileChangeRequestDataResolverFnAppSyncFunction2CAA3742"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "MutationDeleteProfileChangeRequestDataResolverFn"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/ProfileChangeRequest/mutationDeleteProfileChangeRequestResolver": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "DeleteProfileChangeRequestResolver"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "Mutation.deleteProfileChangeRequest"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/ProfileChangeRequest/SubscriptiononCreateProfileChangeRequestauth0Function/SubscriptiononCreateProfileChangeRequestauth0Function.AppSyncFunction": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "SubscriptiononCreateProfileChangeRequestauth0FunctionSubscriptiononCreateProfileChangeRequestauth0FunctionAppSyncFunction097095A3"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "SubscriptiononCreateProfileChangeRequestauth0Function"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/ProfileChangeRequest/SubscriptiononCreateProfileChangeRequestpostAuth0Function/SubscriptiononCreateProfileChangeRequestpostAuth0Function.AppSyncFunction": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "SubscriptiononCreateProfileChangeRequestpostAuth0FunctionSubscriptiononCreateProfileChangeRequestpostAuth0FunctionAppSyncFunction40F83727"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "SubscriptiononCreateProfileChangeRequestpostAuth0Function"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/ProfileChangeRequest/SubscriptionOnCreateProfileChangeRequestDataResolverFn/SubscriptionOnCreateProfileChangeRequestDataResolverFn.AppSyncFunction": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "SubscriptionOnCreateProfileChangeRequestDataResolverFnSubscriptionOnCreateProfileChangeRequestDataResolverFnAppSyncFunction30B0D313"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "SubscriptionOnCreateProfileChangeRequestDataResolverFn"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/ProfileChangeRequest/subscriptionOnCreateProfileChangeRequestResolver": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "SubscriptiononCreateProfileChangeRequestResolver"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "Subscription.onCreateProfileChangeRequest"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/ProfileChangeRequest/SubscriptiononUpdateProfileChangeRequestauth0Function/SubscriptiononUpdateProfileChangeRequestauth0Function.AppSyncFunction": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "SubscriptiononUpdateProfileChangeRequestauth0FunctionSubscriptiononUpdateProfileChangeRequestauth0FunctionAppSyncFunctionFB6CCD1E"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "SubscriptiononUpdateProfileChangeRequestauth0Function"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/ProfileChangeRequest/SubscriptiononUpdateProfileChangeRequestpostAuth0Function/SubscriptiononUpdateProfileChangeRequestpostAuth0Function.AppSyncFunction": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "SubscriptiononUpdateProfileChangeRequestpostAuth0FunctionSubscriptiononUpdateProfileChangeRequestpostAuth0FunctionAppSyncFunction8D8471BB"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "SubscriptiononUpdateProfileChangeRequestpostAuth0Function"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/ProfileChangeRequest/SubscriptionOnUpdateProfileChangeRequestDataResolverFn/SubscriptionOnUpdateProfileChangeRequestDataResolverFn.AppSyncFunction": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "SubscriptionOnUpdateProfileChangeRequestDataResolverFnSubscriptionOnUpdateProfileChangeRequestDataResolverFnAppSyncFunction836B7626"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "SubscriptionOnUpdateProfileChangeRequestDataResolverFn"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/ProfileChangeRequest/subscriptionOnUpdateProfileChangeRequestResolver": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "SubscriptiononUpdateProfileChangeRequestResolver"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "Subscription.onUpdateProfileChangeRequest"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/ProfileChangeRequest/SubscriptiononDeleteProfileChangeRequestauth0Function/SubscriptiononDeleteProfileChangeRequestauth0Function.AppSyncFunction": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "SubscriptiononDeleteProfileChangeRequestauth0FunctionSubscriptiononDeleteProfileChangeRequestauth0FunctionAppSyncFunctionD1331303"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "SubscriptiononDeleteProfileChangeRequestauth0Function"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/ProfileChangeRequest/SubscriptiononDeleteProfileChangeRequestpostAuth0Function/SubscriptiononDeleteProfileChangeRequestpostAuth0Function.AppSyncFunction": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "SubscriptiononDeleteProfileChangeRequestpostAuth0FunctionSubscriptiononDeleteProfileChangeRequestpostAuth0FunctionAppSyncFunctionBF4D52AD"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "SubscriptiononDeleteProfileChangeRequestpostAuth0Function"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/ProfileChangeRequest/SubscriptionOnDeleteProfileChangeRequestDataResolverFn/SubscriptionOnDeleteProfileChangeRequestDataResolverFn.AppSyncFunction": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "SubscriptionOnDeleteProfileChangeRequestDataResolverFnSubscriptionOnDeleteProfileChangeRequestDataResolverFnAppSyncFunction033190F2"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "SubscriptionOnDeleteProfileChangeRequestDataResolverFn"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/ProfileChangeRequest/subscriptionOnDeleteProfileChangeRequestResolver": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "SubscriptiononDeleteProfileChangeRequestResolver"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "Subscription.onDeleteProfileChangeRequest"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/ProfileChangeRequest/CDKMetadata/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadata"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/ProfileChangeRequest/CDKMetadata/Condition": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadataAvailable"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/ProfileChangeRequest/reference-to-amplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataAmplifyTableManagerNestedStackAmplifyTableManagerNestedStackResource7F881793Outputs.amplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataAmplifyTableManagerTableManagerCustomProviderframeworkonEventC117D7DCArn": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "referencetoamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataAmplifyTableManagerNestedStackAmplifyTableManagerNestedStackResource7F881793Outputsamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataAmplifyTableManagerTableManagerCusto78829339"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/ProfileChangeRequest/reference-to-amplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataGraphQLAPIEFD49BECApiId": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "referencetoamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataGraphQLAPIEFD49BECApiId"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/ProfileChangeRequest/reference-to-amplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataGraphQLAPINONEDSE5668EC6Name": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "referencetoamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataGraphQLAPINONEDSE5668EC6Name"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/ProfileChangeRequest/reference-to-amplifygigwheelsevjamiesandbox03b8376cacauthNestedStackauthNestedStackResourceD32EECAFOutputs.amplifygigwheelsevjamiesandbox03b8376cacauthamplifyAuthauthenticatedUserRoleC3A5DEC2Ref": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "referencetoamplifygigwheelsevjamiesandbox03b8376cacauthNestedStackauthNestedStackResourceD32EECAFOutputsamplifygigwheelsevjamiesandbox03b8376cacauthamplifyAuthauthenticatedUserRoleC3A5DEC2Ref"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/ProfileChangeRequest/reference-to-amplifygigwheelsevjamiesandbox03b8376cacauthNestedStackauthNestedStackResourceD32EECAFOutputs.amplifygigwheelsevjamiesandbox03b8376cacauthamplifyAuthunauthenticatedUserRole462C06D4Ref": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "referencetoamplifygigwheelsevjamiesandbox03b8376cacauthNestedStackauthNestedStackResourceD32EECAFOutputsamplifygigwheelsevjamiesandbox03b8376cacauthamplifyAuthunauthenticatedUserRole462C06D4Ref"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/ProfileChangeRequest/reference-to-amplifygigwheelsevjamiesandbox03b8376cacauthNestedStackauthNestedStackResourceD32EECAFOutputs.amplifygigwheelsevjamiesandbox03b8376cacauthamplifyAuthIdentityPool49485A21Ref": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "referencetoamplifygigwheelsevjamiesandbox03b8376cacauthNestedStackauthNestedStackResourceD32EECAFOutputsamplifygigwheelsevjamiesandbox03b8376cacauthamplifyAuthIdentityPool49485A21Ref"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/ProfileChangeRequest.NestedStack/ProfileChangeRequest.NestedStackResource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "amplifyDataProfileChangeRequestNestedStackProfileChangeRequestNestedStackResource17300911"
+          }
+        ],
         "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/FunctionDirectiveStack/HasEnvironmentParameter": [
           {
             "type": "aws:cdk:logicalId",
             "data": "HasEnvironmentParameter"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/FunctionDirectiveStack/FnDeleteUserLambdaDataSource": [
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "FnDeleteUserLambdaDataSource"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/FunctionDirectiveStack/FnDeleteUserLambdaDataSource/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "FnDeleteUserLambdaDataSourceServiceRole6FC23B64"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/FunctionDirectiveStack/FnDeleteUserLambdaDataSource/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "FnDeleteUserLambdaDataSourceServiceRoleDefaultPolicyE375FA8B"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/FunctionDirectiveStack/FnDeleteUserLambdaDataSource/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "FnDeleteUserLambdaDataSource"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "FnDeleteUserLambdaDataSource"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/FunctionDirectiveStack/InvokeFnDeleteUserLambdaDataSource/InvokeFnDeleteUserLambdaDataSource.AppSyncFunction": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "InvokeFnDeleteUserLambdaDataSourceInvokeFnDeleteUserLambdaDataSourceAppSyncFunction12A0DABE"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "InvokeFnDeleteUserLambdaDataSource"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/FunctionDirectiveStack/mutationDeleteUserResolver": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MutationdeleteUserResolver"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "Mutation.deleteUser"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/FunctionDirectiveStack/FnSendChangeEmailLambdaDataSource": [
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "FnSendChangeEmailLambdaDataSource"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/FunctionDirectiveStack/FnSendChangeEmailLambdaDataSource/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "FnSendChangeEmailLambdaDataSourceServiceRole23C45F86"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/FunctionDirectiveStack/FnSendChangeEmailLambdaDataSource/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "FnSendChangeEmailLambdaDataSourceServiceRoleDefaultPolicyDC35720D"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/FunctionDirectiveStack/FnSendChangeEmailLambdaDataSource/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "FnSendChangeEmailLambdaDataSource"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "FnSendChangeEmailLambdaDataSource"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/FunctionDirectiveStack/InvokeFnSendChangeEmailLambdaDataSource/InvokeFnSendChangeEmailLambdaDataSource.AppSyncFunction": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "InvokeFnSendChangeEmailLambdaDataSourceInvokeFnSendChangeEmailLambdaDataSourceAppSyncFunction550D02EA"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "InvokeFnSendChangeEmailLambdaDataSource"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/FunctionDirectiveStack/mutationSendChangeEmailResolver": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MutationsendChangeEmailResolver"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "Mutation.sendChangeEmail"
           }
         ],
         "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/FunctionDirectiveStack/FnTeslaConnectLambdaDataSource": [
@@ -2637,6 +3777,26 @@
             "data": "Query.teslaRegister"
           }
         ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/FunctionDirectiveStack/MutationDeleteUserAuthFN/MutationDeleteUserAuthFN.AppSyncFunction": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MutationDeleteUserAuthFNMutationDeleteUserAuthFNAppSyncFunction6A93D213"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "MutationDeleteUserAuthFN"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/FunctionDirectiveStack/MutationSendChangeEmailAuthFN/MutationSendChangeEmailAuthFN.AppSyncFunction": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MutationSendChangeEmailAuthFNMutationSendChangeEmailAuthFNAppSyncFunctionA33D2BD6"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "MutationSendChangeEmailAuthFN"
+          }
+        ],
         "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/FunctionDirectiveStack/QueryTeslaConnectAuthFN/QueryTeslaConnectAuthFN.AppSyncFunction": [
           {
             "type": "aws:cdk:logicalId",
@@ -2679,10 +3839,10 @@
             "data": "CDKMetadataAvailable"
           }
         ],
-        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/FunctionDirectiveStack/reference-to-amplifygigwheelsevjamiesandbox03b8376cacfunctionNestedStackfunctionNestedStackResource78F71BA1Outputs.amplifygigwheelsevjamiesandbox03b8376cacfunctionteslaconnectlambdaFFA8DED5Arn": [
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/FunctionDirectiveStack/reference-to-amplifygigwheelsevjamiesandbox03b8376cacfunctionNestedStackfunctionNestedStackResource78F71BA1Outputs.amplifygigwheelsevjamiesandbox03b8376cacfunctiondeleteuserlambda38C6F52EArn": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "referencetoamplifygigwheelsevjamiesandbox03b8376cacfunctionNestedStackfunctionNestedStackResource78F71BA1Outputsamplifygigwheelsevjamiesandbox03b8376cacfunctionteslaconnectlambdaFFA8DED5Arn"
+            "data": "referencetoamplifygigwheelsevjamiesandbox03b8376cacfunctionNestedStackfunctionNestedStackResource78F71BA1Outputsamplifygigwheelsevjamiesandbox03b8376cacfunctiondeleteuserlambda38C6F52EArn"
           }
         ],
         "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/FunctionDirectiveStack/reference-to-amplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataGraphQLAPIEFD49BECApiId": [
@@ -2707,6 +3867,18 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "referencetoamplifygigwheelsevjamiesandbox03b8376cacauthNestedStackauthNestedStackResourceD32EECAFOutputsamplifygigwheelsevjamiesandbox03b8376cacauthamplifyAuthIdentityPool49485A21Ref"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/FunctionDirectiveStack/reference-to-amplifygigwheelsevjamiesandbox03b8376cacfunctionNestedStackfunctionNestedStackResource78F71BA1Outputs.amplifygigwheelsevjamiesandbox03b8376cacfunctionsendchangeemaillambdaDBF33FD1Arn": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "referencetoamplifygigwheelsevjamiesandbox03b8376cacfunctionNestedStackfunctionNestedStackResource78F71BA1Outputsamplifygigwheelsevjamiesandbox03b8376cacfunctionsendchangeemaillambdaDBF33FD1Arn"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/FunctionDirectiveStack/reference-to-amplifygigwheelsevjamiesandbox03b8376cacfunctionNestedStackfunctionNestedStackResource78F71BA1Outputs.amplifygigwheelsevjamiesandbox03b8376cacfunctionteslaconnectlambdaFFA8DED5Arn": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "referencetoamplifygigwheelsevjamiesandbox03b8376cacfunctionNestedStackfunctionNestedStackResource78F71BA1Outputsamplifygigwheelsevjamiesandbox03b8376cacfunctionteslaconnectlambdaFFA8DED5Arn"
           }
         ],
         "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/FunctionDirectiveStack/reference-to-amplifygigwheelsevjamiesandbox03b8376cacdatateslasynclambdaEA21BF4BArn": [
@@ -2761,6 +3933,66 @@
           {
             "type": "graphqltransformer:resourceName",
             "data": "Vehicle.reservations"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/ConnectionStack/Vehicleimagesauth0Function/Vehicleimagesauth0Function.AppSyncFunction": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "Vehicleimagesauth0FunctionVehicleimagesauth0FunctionAppSyncFunction17D3D201"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "Vehicleimagesauth0Function"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/ConnectionStack/VehicleImagesDataResolverFn/VehicleImagesDataResolverFn.AppSyncFunction": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "VehicleImagesDataResolverFnVehicleImagesDataResolverFnAppSyncFunction0EDE8354"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "VehicleImagesDataResolverFn"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/ConnectionStack/vehicleImagesResolver": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "VehicleimagesResolver"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "Vehicle.images"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/ConnectionStack/VehicleImagevehicleauth0Function/VehicleImagevehicleauth0Function.AppSyncFunction": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "VehicleImagevehicleauth0FunctionVehicleImagevehicleauth0FunctionAppSyncFunctionEDA59B96"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "VehicleImagevehicleauth0Function"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/ConnectionStack/VehicleImageVehicleDataResolverFn/VehicleImageVehicleDataResolverFn.AppSyncFunction": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "VehicleImageVehicleDataResolverFnVehicleImageVehicleDataResolverFnAppSyncFunction32D300B4"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "VehicleImageVehicleDataResolverFn"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/ConnectionStack/vehicleImageVehicleResolver": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "VehicleImagevehicleResolver"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "VehicleImage.vehicle"
           }
         ],
         "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/ConnectionStack/Reservationvehicleauth0Function/Reservationvehicleauth0Function.AppSyncFunction": [
@@ -2845,6 +4077,18 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "referencetoamplifygigwheelsevjamiesandbox03b8376cacauthNestedStackauthNestedStackResourceD32EECAFOutputsamplifygigwheelsevjamiesandbox03b8376cacauthamplifyAuthIdentityPool49485A21Ref"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/ConnectionStack/reference-to-amplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataVehicleImageNestedStackVehicleImageNestedStackResource9C0AD86EOutputs.amplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataVehicleImageVehicleImageDataSource403FA4BBName": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "referencetoamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataVehicleImageNestedStackVehicleImageNestedStackResource9C0AD86EOutputsamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataVehicleImageVehicleImageDataSource403FA4BBName"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/ConnectionStack/reference-to-amplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataVehicleImageNestedStackVehicleImageNestedStackResource9C0AD86EOutputs.amplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataVehicleImageVehicleImageTableBFA7358ETableArn": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "referencetoamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataVehicleImageNestedStackVehicleImageNestedStackResource9C0AD86EOutputsamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataVehicleImageVehicleImageTableBFA7358ETableArn"
           }
         ],
         "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/ConnectionStack/reference-to-amplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataVehicleNestedStackVehicleNestedStackResourceF3AF7737Outputs.amplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataVehicleVehicleDataSourceF7797305Name": [
@@ -3069,6 +4313,18 @@
             "data": "referencetoamplifygigwheelsevjamiesandbox03b8376cacauthNestedStackauthNestedStackResourceD32EECAFOutputsamplifygigwheelsevjamiesandbox03b8376cacauthamplifyAuthIdentityPool49485A21Ref"
           }
         ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/reference-to-amplifygigwheelsevjamiesandbox03b8376cacfunctionNestedStackfunctionNestedStackResource78F71BA1Outputs.amplifygigwheelsevjamiesandbox03b8376cacfunctiondeleteuserlambda38C6F52EArn": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "referencetoamplifygigwheelsevjamiesandbox03b8376cacfunctionNestedStackfunctionNestedStackResource78F71BA1Outputsamplifygigwheelsevjamiesandbox03b8376cacfunctiondeleteuserlambda38C6F52EArn"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/reference-to-amplifygigwheelsevjamiesandbox03b8376cacfunctionNestedStackfunctionNestedStackResource78F71BA1Outputs.amplifygigwheelsevjamiesandbox03b8376cacfunctionsendchangeemaillambdaDBF33FD1Arn": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "referencetoamplifygigwheelsevjamiesandbox03b8376cacfunctionNestedStackfunctionNestedStackResource78F71BA1Outputsamplifygigwheelsevjamiesandbox03b8376cacfunctionsendchangeemaillambdaDBF33FD1Arn"
+          }
+        ],
         "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/reference-to-amplifygigwheelsevjamiesandbox03b8376cacfunctionNestedStackfunctionNestedStackResource78F71BA1Outputs.amplifygigwheelsevjamiesandbox03b8376cacfunctionteslaconnectlambdaFFA8DED5Arn": [
           {
             "type": "aws:cdk:logicalId",
@@ -3135,6 +4391,36 @@
             "data": "teslaconnectlambda0D1C1111"
           }
         ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/function/delete-user-lambda/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "deleteuserlambdaServiceRole90D15AF8"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/function/delete-user-lambda/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "deleteuserlambdaServiceRoleDefaultPolicy7A08DB7D"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/function/delete-user-lambda/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "deleteuserlambda37AACCD2"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/function/send-change-email-lambda/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "sendchangeemaillambdaServiceRoleF35FBDE8"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/function/send-change-email-lambda/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "sendchangeemaillambda9782E71D"
+          }
+        ],
         "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/function/CDKMetadata/Default": [
           {
             "type": "aws:cdk:logicalId",
@@ -3147,16 +4433,52 @@
             "data": "CDKMetadataAvailable"
           }
         ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/function/amplifygigwheelsevjamiesandbox03b8376cacfunctiondeleteuserlambda38C6F52EArn": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "amplifygigwheelsevjamiesandbox03b8376cacfunctiondeleteuserlambda38C6F52EArn"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/function/amplifygigwheelsevjamiesandbox03b8376cacfunctionsendchangeemaillambdaDBF33FD1Arn": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "amplifygigwheelsevjamiesandbox03b8376cacfunctionsendchangeemaillambdaDBF33FD1Arn"
+          }
+        ],
         "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/function/amplifygigwheelsevjamiesandbox03b8376cacfunctionteslaconnectlambdaFFA8DED5Arn": [
           {
             "type": "aws:cdk:logicalId",
             "data": "amplifygigwheelsevjamiesandbox03b8376cacfunctionteslaconnectlambdaFFA8DED5Arn"
           }
         ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/function/reference-to-amplifygigwheelsevjamiesandbox03b8376cacauthNestedStackauthNestedStackResourceD32EECAFOutputs.amplifygigwheelsevjamiesandbox03b8376cacauthamplifyAuthUserPool6D20C8C9Arn": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "referencetoamplifygigwheelsevjamiesandbox03b8376cacauthNestedStackauthNestedStackResourceD32EECAFOutputsamplifygigwheelsevjamiesandbox03b8376cacauthamplifyAuthUserPool6D20C8C9Arn"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/function/reference-to-amplifygigwheelsevjamiesandbox03b8376cacauthNestedStackauthNestedStackResourceD32EECAFOutputs.amplifygigwheelsevjamiesandbox03b8376cacauthamplifyAuthUserPool6D20C8C9Ref": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "referencetoamplifygigwheelsevjamiesandbox03b8376cacauthNestedStackauthNestedStackResourceD32EECAFOutputsamplifygigwheelsevjamiesandbox03b8376cacauthamplifyAuthUserPool6D20C8C9Ref"
+          }
+        ],
         "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/function/amplifygigwheelsevjamiesandbox03b8376cacfunctionteslaconnectlambdaFFA8DED5Ref": [
           {
             "type": "aws:cdk:logicalId",
             "data": "amplifygigwheelsevjamiesandbox03b8376cacfunctionteslaconnectlambdaFFA8DED5Ref"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/function/amplifygigwheelsevjamiesandbox03b8376cacfunctiondeleteuserlambda38C6F52ERef": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "amplifygigwheelsevjamiesandbox03b8376cacfunctiondeleteuserlambda38C6F52ERef"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/function/amplifygigwheelsevjamiesandbox03b8376cacfunctionsendchangeemaillambdaDBF33FD1Ref": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "amplifygigwheelsevjamiesandbox03b8376cacfunctionsendchangeemaillambdaDBF33FD1Ref"
           }
         ],
         "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/function.NestedStack/function.NestedStackResource": [
@@ -3211,6 +4533,114 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "awsAppsyncAdditionalAuthenticationTypes"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/storage/vehicleImages/Bucket/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "vehicleImagesBucket37531DD3"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/storage/vehicleImages/Bucket/Policy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "vehicleImagesBucketPolicy205E4911"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/storage/vehicleImages/Bucket/AutoDeleteObjectsCustomResource/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "vehicleImagesBucketAutoDeleteObjectsCustomResource62BAF176"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/storage/Custom::S3AutoDeleteObjectsCustomResourceProvider": [
+          {
+            "type": "aws:cdk:is-custom-resource-handler-customResourceProvider",
+            "data": true
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/storage/Custom::S3AutoDeleteObjectsCustomResourceProvider/Role": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CustomS3AutoDeleteObjectsCustomResourceProviderRole3B1BD092"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/storage/Custom::S3AutoDeleteObjectsCustomResourceProvider/Handler": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CustomS3AutoDeleteObjectsCustomResourceProviderHandler9D90184F"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/storage/VEHICLE_IMAGES_BUCKET_NAMEParameter/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "VEHICLEIMAGESBUCKETNAMEParameter54C8141F"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/storage/amplify-gigwheelsev-jamie-sandbox-03b8376cac--storageAccess3/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "amplifygigwheelsevjamiesandbox03b8376cacstorageAccess311812CF5"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/storage/amplify-gigwheelsev-jamie-sandbox-03b8376cac--storageAccess4/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "amplifygigwheelsevjamiesandbox03b8376cacstorageAccess46150A18C"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/storage/CDKMetadata/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadata"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/storage/CDKMetadata/Condition": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadataAvailable"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/storage/reference-to-amplifygigwheelsevjamiesandbox03b8376cacauthNestedStackauthNestedStackResourceD32EECAFOutputs.amplifygigwheelsevjamiesandbox03b8376cacauthamplifyAuthauthenticatedUserRoleC3A5DEC2Ref": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "referencetoamplifygigwheelsevjamiesandbox03b8376cacauthNestedStackauthNestedStackResourceD32EECAFOutputsamplifygigwheelsevjamiesandbox03b8376cacauthamplifyAuthauthenticatedUserRoleC3A5DEC2Ref"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/storage/reference-to-amplifygigwheelsevjamiesandbox03b8376cacauthNestedStackauthNestedStackResourceD32EECAFOutputs.amplifygigwheelsevjamiesandbox03b8376cacauthamplifyAuthunauthenticatedUserRole462C06D4Ref": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "referencetoamplifygigwheelsevjamiesandbox03b8376cacauthNestedStackauthNestedStackResourceD32EECAFOutputsamplifygigwheelsevjamiesandbox03b8376cacauthamplifyAuthunauthenticatedUserRole462C06D4Ref"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/storage/amplifygigwheelsevjamiesandbox03b8376cacstoragevehicleImagesBucket2631152ERef": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "amplifygigwheelsevjamiesandbox03b8376cacstoragevehicleImagesBucket2631152ERef"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/storage.NestedStack/storage.NestedStackResource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "storage0EC3F24A"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/storageRegion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "storageRegion"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/bucketName": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "bucketName"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/buckets": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "buckets"
           }
         ],
         "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/CDKMetadata/Default": [

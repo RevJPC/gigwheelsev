@@ -278,6 +278,398 @@
   }
  },
  "Resources": {
+  "FnDeleteUserLambdaDataSourceServiceRole6FC23B64": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "appsync.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "Tags": [
+     {
+      "Key": "amplify:deployment-type",
+      "Value": "sandbox"
+     },
+     {
+      "Key": "amplify:friendly-name",
+      "Value": "amplifyData"
+     },
+     {
+      "Key": "created-by",
+      "Value": "amplify"
+     }
+    ]
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/FunctionDirectiveStack/FnDeleteUserLambdaDataSource/ServiceRole/Resource"
+   }
+  },
+  "FnDeleteUserLambdaDataSourceServiceRoleDefaultPolicyE375FA8B": {
+   "Type": "AWS::IAM::Policy",
+   "Properties": {
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": "lambda:InvokeFunction",
+       "Effect": "Allow",
+       "Resource": [
+        {
+         "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacfunctionNestedStackfunctionNestedStackResource78F71BA1Outputsamplifygigwheelsevjamiesandbox03b8376cacfunctiondeleteuserlambda38C6F52EArn"
+        },
+        {
+         "Fn::Join": [
+          "",
+          [
+           {
+            "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacfunctionNestedStackfunctionNestedStackResource78F71BA1Outputsamplifygigwheelsevjamiesandbox03b8376cacfunctiondeleteuserlambda38C6F52EArn"
+           },
+           ":*"
+          ]
+         ]
+        }
+       ]
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "PolicyName": "FnDeleteUserLambdaDataSourceServiceRoleDefaultPolicyE375FA8B",
+    "Roles": [
+     {
+      "Ref": "FnDeleteUserLambdaDataSourceServiceRole6FC23B64"
+     }
+    ]
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/FunctionDirectiveStack/FnDeleteUserLambdaDataSource/ServiceRole/DefaultPolicy/Resource"
+   }
+  },
+  "FnDeleteUserLambdaDataSource": {
+   "Type": "AWS::AppSync::DataSource",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataGraphQLAPIEFD49BECApiId"
+    },
+    "LambdaConfig": {
+     "LambdaFunctionArn": {
+      "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacfunctionNestedStackfunctionNestedStackResource78F71BA1Outputsamplifygigwheelsevjamiesandbox03b8376cacfunctiondeleteuserlambda38C6F52EArn"
+     }
+    },
+    "Name": "FnDeleteUserLambdaDataSource",
+    "ServiceRoleArn": {
+     "Fn::GetAtt": [
+      "FnDeleteUserLambdaDataSourceServiceRole6FC23B64",
+      "Arn"
+     ]
+    },
+    "Type": "AWS_LAMBDA"
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/FunctionDirectiveStack/FnDeleteUserLambdaDataSource/Resource"
+   }
+  },
+  "InvokeFnDeleteUserLambdaDataSourceInvokeFnDeleteUserLambdaDataSourceAppSyncFunction12A0DABE": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataGraphQLAPIEFD49BECApiId"
+    },
+    "DataSourceName": {
+     "Fn::GetAtt": [
+      "FnDeleteUserLambdaDataSource",
+      "Name"
+     ]
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "InvokeFnDeleteUserLambdaDataSource",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/53479ba5bec6b15db52992a6775e48a26765c7279a839462a78a3215db695453.vtl"
+    },
+    "ResponseMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/a20e304512b1fde77dc16ed9d5e0ed03817afcab629ce87ef11c99877b7b1e30.vtl"
+    }
+   },
+   "DependsOn": [
+    "FnDeleteUserLambdaDataSource"
+   ],
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/FunctionDirectiveStack/InvokeFnDeleteUserLambdaDataSource/InvokeFnDeleteUserLambdaDataSource.AppSyncFunction"
+   }
+  },
+  "MutationdeleteUserResolver": {
+   "Type": "AWS::AppSync::Resolver",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataGraphQLAPIEFD49BECApiId"
+    },
+    "FieldName": "deleteUser",
+    "Kind": "PIPELINE",
+    "PipelineConfig": {
+     "Functions": [
+      {
+       "Fn::GetAtt": [
+        "MutationDeleteUserAuthFNMutationDeleteUserAuthFNAppSyncFunction6A93D213",
+        "FunctionId"
+       ]
+      },
+      {
+       "Fn::GetAtt": [
+        "InvokeFnDeleteUserLambdaDataSourceInvokeFnDeleteUserLambdaDataSourceAppSyncFunction12A0DABE",
+        "FunctionId"
+       ]
+      }
+     ]
+    },
+    "RequestMappingTemplate": {
+     "Fn::Join": [
+      "",
+      [
+       "## [Start] Stash resolver specific context.. **\n$util.qr($ctx.stash.put(\"typeName\", \"Mutation\"))\n$util.qr($ctx.stash.put(\"fieldName\", \"deleteUser\"))\n$util.qr($ctx.stash.put(\"authRole\", \"arn:aws:sts::",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":assumed-role/",
+       {
+        "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacauthNestedStackauthNestedStackResourceD32EECAFOutputsamplifygigwheelsevjamiesandbox03b8376cacauthamplifyAuthauthenticatedUserRoleC3A5DEC2Ref"
+       },
+       "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"unauthRole\", \"arn:aws:sts::",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":assumed-role/",
+       {
+        "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacauthNestedStackauthNestedStackResourceD32EECAFOutputsamplifygigwheelsevjamiesandbox03b8376cacauthamplifyAuthunauthenticatedUserRole462C06D4Ref"
+       },
+       "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"identityPoolId\", \"",
+       {
+        "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacauthNestedStackauthNestedStackResourceD32EECAFOutputsamplifygigwheelsevjamiesandbox03b8376cacauthamplifyAuthIdentityPool49485A21Ref"
+       },
+       "\"))\n$util.qr($ctx.stash.put(\"adminRoles\", []))\n{}\n## [End] Stash resolver specific context.. **"
+      ]
+     ]
+    },
+    "ResponseMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/387d5992f5fc03d05de27289457dcc374a84c42a889acb504aff1031047dde00.vtl"
+    },
+    "TypeName": "Mutation"
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/FunctionDirectiveStack/mutationDeleteUserResolver"
+   }
+  },
+  "FnSendChangeEmailLambdaDataSourceServiceRole23C45F86": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "appsync.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "Tags": [
+     {
+      "Key": "amplify:deployment-type",
+      "Value": "sandbox"
+     },
+     {
+      "Key": "amplify:friendly-name",
+      "Value": "amplifyData"
+     },
+     {
+      "Key": "created-by",
+      "Value": "amplify"
+     }
+    ]
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/FunctionDirectiveStack/FnSendChangeEmailLambdaDataSource/ServiceRole/Resource"
+   }
+  },
+  "FnSendChangeEmailLambdaDataSourceServiceRoleDefaultPolicyDC35720D": {
+   "Type": "AWS::IAM::Policy",
+   "Properties": {
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": "lambda:InvokeFunction",
+       "Effect": "Allow",
+       "Resource": [
+        {
+         "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacfunctionNestedStackfunctionNestedStackResource78F71BA1Outputsamplifygigwheelsevjamiesandbox03b8376cacfunctionsendchangeemaillambdaDBF33FD1Arn"
+        },
+        {
+         "Fn::Join": [
+          "",
+          [
+           {
+            "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacfunctionNestedStackfunctionNestedStackResource78F71BA1Outputsamplifygigwheelsevjamiesandbox03b8376cacfunctionsendchangeemaillambdaDBF33FD1Arn"
+           },
+           ":*"
+          ]
+         ]
+        }
+       ]
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "PolicyName": "FnSendChangeEmailLambdaDataSourceServiceRoleDefaultPolicyDC35720D",
+    "Roles": [
+     {
+      "Ref": "FnSendChangeEmailLambdaDataSourceServiceRole23C45F86"
+     }
+    ]
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/FunctionDirectiveStack/FnSendChangeEmailLambdaDataSource/ServiceRole/DefaultPolicy/Resource"
+   }
+  },
+  "FnSendChangeEmailLambdaDataSource": {
+   "Type": "AWS::AppSync::DataSource",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataGraphQLAPIEFD49BECApiId"
+    },
+    "LambdaConfig": {
+     "LambdaFunctionArn": {
+      "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacfunctionNestedStackfunctionNestedStackResource78F71BA1Outputsamplifygigwheelsevjamiesandbox03b8376cacfunctionsendchangeemaillambdaDBF33FD1Arn"
+     }
+    },
+    "Name": "FnSendChangeEmailLambdaDataSource",
+    "ServiceRoleArn": {
+     "Fn::GetAtt": [
+      "FnSendChangeEmailLambdaDataSourceServiceRole23C45F86",
+      "Arn"
+     ]
+    },
+    "Type": "AWS_LAMBDA"
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/FunctionDirectiveStack/FnSendChangeEmailLambdaDataSource/Resource"
+   }
+  },
+  "InvokeFnSendChangeEmailLambdaDataSourceInvokeFnSendChangeEmailLambdaDataSourceAppSyncFunction550D02EA": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataGraphQLAPIEFD49BECApiId"
+    },
+    "DataSourceName": {
+     "Fn::GetAtt": [
+      "FnSendChangeEmailLambdaDataSource",
+      "Name"
+     ]
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "InvokeFnSendChangeEmailLambdaDataSource",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/dd179ab1c1bb3f3971b707b302e2e6c0d898c0ccaa646844eda09a697f92d5c7.vtl"
+    },
+    "ResponseMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/a20e304512b1fde77dc16ed9d5e0ed03817afcab629ce87ef11c99877b7b1e30.vtl"
+    }
+   },
+   "DependsOn": [
+    "FnSendChangeEmailLambdaDataSource"
+   ],
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/FunctionDirectiveStack/InvokeFnSendChangeEmailLambdaDataSource/InvokeFnSendChangeEmailLambdaDataSource.AppSyncFunction"
+   }
+  },
+  "MutationsendChangeEmailResolver": {
+   "Type": "AWS::AppSync::Resolver",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataGraphQLAPIEFD49BECApiId"
+    },
+    "FieldName": "sendChangeEmail",
+    "Kind": "PIPELINE",
+    "PipelineConfig": {
+     "Functions": [
+      {
+       "Fn::GetAtt": [
+        "MutationSendChangeEmailAuthFNMutationSendChangeEmailAuthFNAppSyncFunctionA33D2BD6",
+        "FunctionId"
+       ]
+      },
+      {
+       "Fn::GetAtt": [
+        "InvokeFnSendChangeEmailLambdaDataSourceInvokeFnSendChangeEmailLambdaDataSourceAppSyncFunction550D02EA",
+        "FunctionId"
+       ]
+      }
+     ]
+    },
+    "RequestMappingTemplate": {
+     "Fn::Join": [
+      "",
+      [
+       "## [Start] Stash resolver specific context.. **\n$util.qr($ctx.stash.put(\"typeName\", \"Mutation\"))\n$util.qr($ctx.stash.put(\"fieldName\", \"sendChangeEmail\"))\n$util.qr($ctx.stash.put(\"authRole\", \"arn:aws:sts::",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":assumed-role/",
+       {
+        "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacauthNestedStackauthNestedStackResourceD32EECAFOutputsamplifygigwheelsevjamiesandbox03b8376cacauthamplifyAuthauthenticatedUserRoleC3A5DEC2Ref"
+       },
+       "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"unauthRole\", \"arn:aws:sts::",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":assumed-role/",
+       {
+        "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacauthNestedStackauthNestedStackResourceD32EECAFOutputsamplifygigwheelsevjamiesandbox03b8376cacauthamplifyAuthunauthenticatedUserRole462C06D4Ref"
+       },
+       "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"identityPoolId\", \"",
+       {
+        "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacauthNestedStackauthNestedStackResourceD32EECAFOutputsamplifygigwheelsevjamiesandbox03b8376cacauthamplifyAuthIdentityPool49485A21Ref"
+       },
+       "\"))\n$util.qr($ctx.stash.put(\"adminRoles\", []))\n{}\n## [End] Stash resolver specific context.. **"
+      ]
+     ]
+    },
+    "ResponseMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/387d5992f5fc03d05de27289457dcc374a84c42a889acb504aff1031047dde00.vtl"
+    },
+    "TypeName": "Mutation"
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/FunctionDirectiveStack/mutationSendChangeEmailResolver"
+   }
+  },
   "FnTeslaConnectLambdaDataSourceServiceRole7855803E": {
    "Type": "AWS::IAM::Role",
    "Properties": {
@@ -866,6 +1258,50 @@
     "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/FunctionDirectiveStack/queryTeslaRegisterResolver"
    }
   },
+  "MutationDeleteUserAuthFNMutationDeleteUserAuthFNAppSyncFunction6A93D213": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataGraphQLAPIEFD49BECApiId"
+    },
+    "DataSourceName": {
+     "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataGraphQLAPINONEDSE5668EC6Name"
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "MutationDeleteUserAuthFN",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/830fd5a473c43e78ac02d7ec373d9543ca16c5b96b72acdde27ccd8277dec3f2.vtl"
+    },
+    "ResponseMappingTemplate": "$util.toJson({})"
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/FunctionDirectiveStack/MutationDeleteUserAuthFN/MutationDeleteUserAuthFN.AppSyncFunction"
+   }
+  },
+  "MutationSendChangeEmailAuthFNMutationSendChangeEmailAuthFNAppSyncFunctionA33D2BD6": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataGraphQLAPIEFD49BECApiId"
+    },
+    "DataSourceName": {
+     "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataGraphQLAPINONEDSE5668EC6Name"
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "MutationSendChangeEmailAuthFN",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/830fd5a473c43e78ac02d7ec373d9543ca16c5b96b72acdde27ccd8277dec3f2.vtl"
+    },
+    "ResponseMappingTemplate": "$util.toJson({})"
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/FunctionDirectiveStack/MutationSendChangeEmailAuthFN/MutationSendChangeEmailAuthFN.AppSyncFunction"
+   }
+  },
   "QueryTeslaConnectAuthFNQueryTeslaConnectAuthFNAppSyncFunction40445129": {
    "Type": "AWS::AppSync::FunctionConfiguration",
    "Properties": {
@@ -944,7 +1380,7 @@
   }
  },
  "Parameters": {
-  "referencetoamplifygigwheelsevjamiesandbox03b8376cacfunctionNestedStackfunctionNestedStackResource78F71BA1Outputsamplifygigwheelsevjamiesandbox03b8376cacfunctionteslaconnectlambdaFFA8DED5Arn": {
+  "referencetoamplifygigwheelsevjamiesandbox03b8376cacfunctionNestedStackfunctionNestedStackResource78F71BA1Outputsamplifygigwheelsevjamiesandbox03b8376cacfunctiondeleteuserlambda38C6F52EArn": {
    "Type": "String"
   },
   "referencetoamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataGraphQLAPIEFD49BECApiId": {
@@ -957,6 +1393,12 @@
    "Type": "String"
   },
   "referencetoamplifygigwheelsevjamiesandbox03b8376cacauthNestedStackauthNestedStackResourceD32EECAFOutputsamplifygigwheelsevjamiesandbox03b8376cacauthamplifyAuthIdentityPool49485A21Ref": {
+   "Type": "String"
+  },
+  "referencetoamplifygigwheelsevjamiesandbox03b8376cacfunctionNestedStackfunctionNestedStackResource78F71BA1Outputsamplifygigwheelsevjamiesandbox03b8376cacfunctionsendchangeemaillambdaDBF33FD1Arn": {
+   "Type": "String"
+  },
+  "referencetoamplifygigwheelsevjamiesandbox03b8376cacfunctionNestedStackfunctionNestedStackResource78F71BA1Outputsamplifygigwheelsevjamiesandbox03b8376cacfunctionteslaconnectlambdaFFA8DED5Arn": {
    "Type": "String"
   },
   "referencetoamplifygigwheelsevjamiesandbox03b8376cacdatateslasynclambdaEA21BF4BArn": {

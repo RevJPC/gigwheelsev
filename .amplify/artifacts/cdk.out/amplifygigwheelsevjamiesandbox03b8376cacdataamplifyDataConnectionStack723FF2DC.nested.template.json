@@ -143,6 +143,292 @@
     "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/ConnectionStack/vehicleReservationsResolver"
    }
   },
+  "Vehicleimagesauth0FunctionVehicleimagesauth0FunctionAppSyncFunction17D3D201": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataGraphQLAPIEFD49BECApiId"
+    },
+    "DataSourceName": {
+     "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataGraphQLAPINONEDSE5668EC6Name"
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "Vehicleimagesauth0Function",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/98d57dc1efb9e47547e4d43b376202499240f34e43676c88c84fab62008b2bf5.vtl"
+    },
+    "ResponseMappingTemplate": "$util.toJson({})"
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/ConnectionStack/Vehicleimagesauth0Function/Vehicleimagesauth0Function.AppSyncFunction"
+   }
+  },
+  "VehicleImagesDataResolverFnVehicleImagesDataResolverFnAppSyncFunction0EDE8354": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataGraphQLAPIEFD49BECApiId"
+    },
+    "DataSourceName": {
+     "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataVehicleImageNestedStackVehicleImageNestedStackResource9C0AD86EOutputsamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataVehicleImageVehicleImageDataSource403FA4BBName"
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "VehicleImagesDataResolverFn",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/b0cefafa02820ad3d0fddba7b4b73a5d7089ad6f277990d1392624d57349d5d5.vtl"
+    },
+    "ResponseMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/49e7a1f2fb4c809b82bed6b0242a2a3bcfa2c5276ebd2539ff330fee36f8fe18.vtl"
+    }
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/ConnectionStack/VehicleImagesDataResolverFn/VehicleImagesDataResolverFn.AppSyncFunction"
+   }
+  },
+  "VehicleimagesResolver": {
+   "Type": "AWS::AppSync::Resolver",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataGraphQLAPIEFD49BECApiId"
+    },
+    "FieldName": "images",
+    "Kind": "PIPELINE",
+    "PipelineConfig": {
+     "Functions": [
+      {
+       "Fn::GetAtt": [
+        "Vehicleimagesauth0FunctionVehicleimagesauth0FunctionAppSyncFunction17D3D201",
+        "FunctionId"
+       ]
+      },
+      {
+       "Fn::GetAtt": [
+        "VehicleImagesDataResolverFnVehicleImagesDataResolverFnAppSyncFunction0EDE8354",
+        "FunctionId"
+       ]
+      }
+     ]
+    },
+    "RequestMappingTemplate": {
+     "Fn::Join": [
+      "",
+      [
+       "$util.qr($ctx.stash.put(\"typeName\", \"Vehicle\"))\n$util.qr($ctx.stash.put(\"fieldName\", \"images\"))\n$util.qr($ctx.stash.put(\"conditions\", []))\n$util.qr($ctx.stash.put(\"metadata\", {}))\n$util.qr($ctx.stash.metadata.put(\"dataSourceType\", \"AMAZON_DYNAMODB\"))\n$util.qr($ctx.stash.metadata.put(\"apiId\", \"",
+       {
+        "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataGraphQLAPIEFD49BECApiId"
+       },
+       "\"))\n$util.qr($ctx.stash.put(\"connectionAttributes\", {}))\n$util.qr($ctx.stash.put(\"tableName\", \"",
+       {
+        "Fn::Select": [
+         1,
+         {
+          "Fn::Split": [
+           "/",
+           {
+            "Fn::Select": [
+             5,
+             {
+              "Fn::Split": [
+               ":",
+               {
+                "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataVehicleImageNestedStackVehicleImageNestedStackResource9C0AD86EOutputsamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataVehicleImageVehicleImageTableBFA7358ETableArn"
+               }
+              ]
+             }
+            ]
+           }
+          ]
+         }
+        ]
+       },
+       "\"))\n$util.qr($ctx.stash.put(\"authRole\", \"arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":sts::",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":assumed-role/",
+       {
+        "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacauthNestedStackauthNestedStackResourceD32EECAFOutputsamplifygigwheelsevjamiesandbox03b8376cacauthamplifyAuthauthenticatedUserRoleC3A5DEC2Ref"
+       },
+       "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"unauthRole\", \"arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":sts::",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":assumed-role/",
+       {
+        "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacauthNestedStackauthNestedStackResourceD32EECAFOutputsamplifygigwheelsevjamiesandbox03b8376cacauthamplifyAuthunauthenticatedUserRole462C06D4Ref"
+       },
+       "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"identityPoolId\", \"",
+       {
+        "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacauthNestedStackauthNestedStackResourceD32EECAFOutputsamplifygigwheelsevjamiesandbox03b8376cacauthamplifyAuthIdentityPool49485A21Ref"
+       },
+       "\"))\n$util.qr($ctx.stash.put(\"adminRoles\", []))\n$util.toJson({})"
+      ]
+     ]
+    },
+    "ResponseMappingTemplate": "$util.toJson($ctx.prev.result)",
+    "TypeName": "Vehicle"
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/ConnectionStack/vehicleImagesResolver"
+   }
+  },
+  "VehicleImagevehicleauth0FunctionVehicleImagevehicleauth0FunctionAppSyncFunctionEDA59B96": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataGraphQLAPIEFD49BECApiId"
+    },
+    "DataSourceName": {
+     "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataGraphQLAPINONEDSE5668EC6Name"
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "VehicleImagevehicleauth0Function",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/98d57dc1efb9e47547e4d43b376202499240f34e43676c88c84fab62008b2bf5.vtl"
+    },
+    "ResponseMappingTemplate": "$util.toJson({})"
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/ConnectionStack/VehicleImagevehicleauth0Function/VehicleImagevehicleauth0Function.AppSyncFunction"
+   }
+  },
+  "VehicleImageVehicleDataResolverFnVehicleImageVehicleDataResolverFnAppSyncFunction32D300B4": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataGraphQLAPIEFD49BECApiId"
+    },
+    "DataSourceName": {
+     "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataVehicleNestedStackVehicleNestedStackResourceF3AF7737Outputsamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataVehicleVehicleDataSourceF7797305Name"
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "VehicleImageVehicleDataResolverFn",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/4b6af4c71e77c31cc400ac56626ee82282125c65c7d04e37b6f80c174cb62d3a.vtl"
+    },
+    "ResponseMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/dcb70e4856bc9a423e02b8b9e9c2ab3f71479784572d4c04a02d1f5b61a9f9ac.vtl"
+    }
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/ConnectionStack/VehicleImageVehicleDataResolverFn/VehicleImageVehicleDataResolverFn.AppSyncFunction"
+   }
+  },
+  "VehicleImagevehicleResolver": {
+   "Type": "AWS::AppSync::Resolver",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataGraphQLAPIEFD49BECApiId"
+    },
+    "FieldName": "vehicle",
+    "Kind": "PIPELINE",
+    "PipelineConfig": {
+     "Functions": [
+      {
+       "Fn::GetAtt": [
+        "VehicleImagevehicleauth0FunctionVehicleImagevehicleauth0FunctionAppSyncFunctionEDA59B96",
+        "FunctionId"
+       ]
+      },
+      {
+       "Fn::GetAtt": [
+        "VehicleImageVehicleDataResolverFnVehicleImageVehicleDataResolverFnAppSyncFunction32D300B4",
+        "FunctionId"
+       ]
+      }
+     ]
+    },
+    "RequestMappingTemplate": {
+     "Fn::Join": [
+      "",
+      [
+       "$util.qr($ctx.stash.put(\"typeName\", \"VehicleImage\"))\n$util.qr($ctx.stash.put(\"fieldName\", \"vehicle\"))\n$util.qr($ctx.stash.put(\"conditions\", []))\n$util.qr($ctx.stash.put(\"metadata\", {}))\n$util.qr($ctx.stash.metadata.put(\"dataSourceType\", \"AMAZON_DYNAMODB\"))\n$util.qr($ctx.stash.metadata.put(\"apiId\", \"",
+       {
+        "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataGraphQLAPIEFD49BECApiId"
+       },
+       "\"))\n$util.qr($ctx.stash.put(\"connectionAttributes\", {}))\n$util.qr($ctx.stash.put(\"tableName\", \"",
+       {
+        "Fn::Select": [
+         1,
+         {
+          "Fn::Split": [
+           "/",
+           {
+            "Fn::Select": [
+             5,
+             {
+              "Fn::Split": [
+               ":",
+               {
+                "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataVehicleNestedStackVehicleNestedStackResourceF3AF7737Outputsamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataVehicleVehicleTable9A924DD6TableArn"
+               }
+              ]
+             }
+            ]
+           }
+          ]
+         }
+        ]
+       },
+       "\"))\n$util.qr($ctx.stash.put(\"authRole\", \"arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":sts::",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":assumed-role/",
+       {
+        "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacauthNestedStackauthNestedStackResourceD32EECAFOutputsamplifygigwheelsevjamiesandbox03b8376cacauthamplifyAuthauthenticatedUserRoleC3A5DEC2Ref"
+       },
+       "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"unauthRole\", \"arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":sts::",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":assumed-role/",
+       {
+        "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacauthNestedStackauthNestedStackResourceD32EECAFOutputsamplifygigwheelsevjamiesandbox03b8376cacauthamplifyAuthunauthenticatedUserRole462C06D4Ref"
+       },
+       "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"identityPoolId\", \"",
+       {
+        "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacauthNestedStackauthNestedStackResourceD32EECAFOutputsamplifygigwheelsevjamiesandbox03b8376cacauthamplifyAuthIdentityPool49485A21Ref"
+       },
+       "\"))\n$util.qr($ctx.stash.put(\"adminRoles\", []))\n$util.toJson({})"
+      ]
+     ]
+    },
+    "ResponseMappingTemplate": "$util.toJson($ctx.prev.result)",
+    "TypeName": "VehicleImage"
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/ConnectionStack/vehicleImageVehicleResolver"
+   }
+  },
   "Reservationvehicleauth0FunctionReservationvehicleauth0FunctionAppSyncFunctionB2A3E480": {
    "Type": "AWS::AppSync::FunctionConfiguration",
    "Properties": {
@@ -583,6 +869,12 @@
    "Type": "String"
   },
   "referencetoamplifygigwheelsevjamiesandbox03b8376cacauthNestedStackauthNestedStackResourceD32EECAFOutputsamplifygigwheelsevjamiesandbox03b8376cacauthamplifyAuthIdentityPool49485A21Ref": {
+   "Type": "String"
+  },
+  "referencetoamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataVehicleImageNestedStackVehicleImageNestedStackResource9C0AD86EOutputsamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataVehicleImageVehicleImageDataSource403FA4BBName": {
+   "Type": "String"
+  },
+  "referencetoamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataVehicleImageNestedStackVehicleImageNestedStackResource9C0AD86EOutputsamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataVehicleImageVehicleImageTableBFA7358ETableArn": {
    "Type": "String"
   },
   "referencetoamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataVehicleNestedStackVehicleNestedStackResourceF3AF7737Outputsamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataVehicleVehicleDataSourceF7797305Name": {

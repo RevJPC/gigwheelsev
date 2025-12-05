@@ -1,4 +1,5 @@
 import AdminSidebar from "@/components/AdminSidebar";
+import RouteGuard from "@/app/components/RouteGuard";
 
 export default function AdminLayout({
     children,
@@ -6,11 +7,13 @@ export default function AdminLayout({
     children: React.ReactNode;
 }) {
     return (
-        <div className="flex h-screen bg-gray-100">
-            <AdminSidebar />
-            <main className="flex-1 overflow-y-auto p-8">
-                {children}
-            </main>
-        </div>
+        <RouteGuard allowedRoles={['admin']}>
+            <div className="flex h-screen bg-gray-100">
+                <AdminSidebar />
+                <main className="flex-1 overflow-y-auto p-8">
+                    {children}
+                </main>
+            </div>
+        </RouteGuard>
     );
 }

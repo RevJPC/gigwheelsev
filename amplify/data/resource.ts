@@ -2,14 +2,19 @@ import { type ClientSchema, a, defineData } from '@aws-amplify/backend';
 import { teslaConnect } from '../functions/tesla-connect/resource';
 import { teslaSync } from '../functions/tesla-sync/resource';
 import { teslaRegister } from '../functions/tesla-register/resource';
+import { deleteUser } from '../functions/delete-user/resource';
+import { sendChangeEmail } from '../functions/send-change-email/resource';
 
 /*
  * Define your data schema
  * @see https://docs.amplify.aws/gen2/build-a-backend/data/data-modeling/
+ * Updated: Added ProfileChangeRequest model and split name/address fields
  */
 const schema = a.schema({
     UserRole: a.enum(['CUSTOMER', 'EMPLOYEE', 'ADMIN']),
+    UserStatus: a.enum(['ACTIVE', 'SUSPENDED']),
     VehicleStatus: a.enum(['AVAILABLE', 'RENTED', 'MAINTENANCE', 'CHARGING']),
+    ChangeRequestStatus: a.enum(['PENDING', 'APPROVED', 'REJECTED']),
 
     Vehicle: a.model({
         make: a.string().required(),
@@ -27,8 +32,19 @@ const schema = a.schema({
         imageUrl: a.string(),
         firmwareVersion: a.string(),
         lastSyncedAt: a.datetime(),
+        odometer: a.float(), // miles
         reservations: a.hasMany('Reservation', 'vehicleId'),
+        images: a.hasMany('VehicleImage', 'vehicleId'),
     }).authorization(allow => [allow.publicApiKey()]), // Open for now, refine later
+
+    VehicleImage: a.model({
+        vehicleId: a.id().required(),
+        vehicle: a.belongsTo('Vehicle', 'vehicleId'),
+        imageUrl: a.string().required(),
+        isPrimary: a.boolean().default(false),
+        caption: a.string(),
+        order: a.integer().default(0),
+    }).authorization(allow => [allow.publicApiKey()]),
 
     ReservationStatus: a.enum(['PENDING', 'CONFIRMED', 'COMPLETED', 'CANCELLED']),
 
@@ -52,8 +68,26 @@ const schema = a.schema({
     UserProfile: a.model({
         userId: a.string().required(), // Cognito sub
         email: a.string().required(),
-        name: a.string(),
+        firstName: a.string(),
+        lastName: a.string(),
         role: a.ref('UserRole').required(),
+        status: a.ref('UserStatus'),
+        profilePictureUrl: a.string(),
+        phoneNumber: a.string(),
+        streetAddress: a.string(),
+        city: a.string(),
+        state: a.string(),
+        zipCode: a.string(),
+        licenseNumber: a.string(),
+        insurancePolicyNumber: a.string(),
+    }).authorization(allow => [allow.publicApiKey()]), // TODO: Restrict properly
+
+    ProfileChangeRequest: a.model({
+        userId: a.string().required(), // User whose profile will be changed
+        requestedBy: a.string().required(), // Admin/Employee who requested
+        newData: a.json().required(), // Proposed changes as JSON
+        token: a.string().required(), // Unique confirmation token
+        status: a.ref('ChangeRequestStatus').required(),
     }).authorization(allow => [allow.publicApiKey()]), // TODO: Restrict properly
 
     teslaConnect: a.query()
@@ -77,6 +111,25 @@ const schema = a.schema({
         .returns(a.json())
         .authorization(allow => [allow.publicApiKey()])
         .handler(a.handler.function(teslaRegister)),
+
+    deleteUser: a.mutation()
+        .arguments({
+            userId: a.string().required()
+        })
+        .returns(a.json())
+        .authorization(allow => [allow.publicApiKey()]) // TODO: Restrict to Admin
+        .handler(a.handler.function(deleteUser)),
+
+    sendChangeEmail: a.mutation()
+        .arguments({
+            email: a.string().required(),
+            token: a.string().required(),
+            requestId: a.string().required(),
+            changes: a.json().required()
+        })
+        .returns(a.json())
+        .authorization(allow => [allow.publicApiKey()]) // TODO: Restrict to Admin
+        .handler(a.handler.function(sendChangeEmail)),
 });
 
 export type Schema = ClientSchema<typeof schema>;

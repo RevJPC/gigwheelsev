@@ -8,43 +8,56 @@ const client = generateClient({
     authMode: 'apiKey'
 });
 
-async function makeAdmin() {
-    const email = process.argv[2];
-
-    if (!email) {
-        console.error('Usage: node make-admin.mjs <email>');
-        process.exit(1);
-    }
-
-    console.log(`Looking for user with email: ${email}`);
-
+async function listAndMakeAdmin() {
+    console.log('Fetching all users...\n');
+    
     try {
-        // Find user by email
-        const users = await client.models.UserProfile.list({
-            filter: { email: { eq: email } }
-        });
+        const users = await client.models.UserProfile.list();
 
         if (users.data.length === 0) {
-            console.error(`No user found with email: ${email}`);
-            console.log('Make sure the user has signed up first!');
-            process.exit(1);
+            console.log('No users found in database.');
+            console.log('\nCreating admin profile for jamiececil@gmail.com...');
+            
+            // Create admin profile manually
+            const newAdmin = await client.models.UserProfile.create({
+                userId: 'manual-admin-' + Date.now(), // Temporary userId
+                email: 'jamiececil@gmail.com',
+                name: 'Jamie Cecil',
+                role: 'ADMIN'
+            });
+            
+            console.log('✅ Created admin profile!');
+            console.log('Note: You may need to update the userId after next login.');
+            return;
         }
 
-        const user = users.data[0];
-        console.log(`Found user: ${user.name} (${user.email})`);
-        console.log(`Current role: ${user.role}`);
-
-        // Update to admin
-        await client.models.UserProfile.update({
-            id: user.id,
-            role: 'ADMIN'
+        console.log(`Found ${users.data.length} user(s):\n`);
+        users.data.forEach((user, index) => {
+            console.log(`${index + 1}. ${user.name || 'No name'} (${user.email}) - Role: ${user.role}`);
         });
 
-        console.log('✅ Successfully promoted user to ADMIN!');
-        console.log('The user will be redirected to /admin on next login.');
+        // Auto-promote first user to admin if email matches
+        const targetUser = users.data.find(u => u.email === 'jamiececil@gmail.com');
+        
+        if (targetUser) {
+            console.log(`\nPromoting ${targetUser.email} to ADMIN...`);
+            await client.models.UserProfile.update({
+                id: targetUser.id,
+                role: 'ADMIN'
+            });
+            console.log('✅ Successfully promoted to ADMIN!');
+        } else {
+            console.log('\njamiececil@gmail.com not found. Promoting first user to admin...');
+            const firstUser = users.data[0];
+            await client.models.UserProfile.update({
+                id: firstUser.id,
+                role: 'ADMIN'
+            });
+            console.log(`✅ Promoted ${firstUser.email} to ADMIN!`);
+        }
     } catch (error) {
         console.error('Error:', error);
     }
 }
 
-makeAdmin();
+listAndMakeAdmin();

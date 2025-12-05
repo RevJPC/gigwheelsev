@@ -216,10 +216,256 @@
     "aws:asset:property": "Code"
    }
   },
+  "deleteuserlambdaServiceRole90D15AF8": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "lambda.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+       ]
+      ]
+     }
+    ],
+    "Tags": [
+     {
+      "Key": "amplify:deployment-type",
+      "Value": "sandbox"
+     },
+     {
+      "Key": "amplify:friendly-name",
+      "Value": "delete-user"
+     },
+     {
+      "Key": "created-by",
+      "Value": "amplify"
+     }
+    ]
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/function/delete-user-lambda/ServiceRole/Resource"
+   }
+  },
+  "deleteuserlambdaServiceRoleDefaultPolicy7A08DB7D": {
+   "Type": "AWS::IAM::Policy",
+   "Properties": {
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": "cognito-idp:AdminDeleteUser",
+       "Effect": "Allow",
+       "Resource": {
+        "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacauthNestedStackauthNestedStackResourceD32EECAFOutputsamplifygigwheelsevjamiesandbox03b8376cacauthamplifyAuthUserPool6D20C8C9Arn"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "PolicyName": "deleteuserlambdaServiceRoleDefaultPolicy7A08DB7D",
+    "Roles": [
+     {
+      "Ref": "deleteuserlambdaServiceRole90D15AF8"
+     }
+    ]
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/function/delete-user-lambda/ServiceRole/DefaultPolicy/Resource"
+   }
+  },
+  "deleteuserlambda37AACCD2": {
+   "Type": "AWS::Lambda::Function",
+   "Properties": {
+    "Architectures": [
+     "x86_64"
+    ],
+    "Code": {
+     "S3Bucket": {
+      "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
+     },
+     "S3Key": "c77a58ed267769ade5874066e5431ac86134473ea5c389e24acd1f9f84bdb315.zip"
+    },
+    "Environment": {
+     "Variables": {
+      "AMPLIFY_SSM_ENV_CONFIG": "{}",
+      "AMPLIFY_AUTH_USERPOOL_ID": {
+       "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacauthNestedStackauthNestedStackResourceD32EECAFOutputsamplifygigwheelsevjamiesandbox03b8376cacauthamplifyAuthUserPool6D20C8C9Ref"
+      }
+     }
+    },
+    "EphemeralStorage": {
+     "Size": 512
+    },
+    "Handler": "index.handler",
+    "MemorySize": 512,
+    "Role": {
+     "Fn::GetAtt": [
+      "deleteuserlambdaServiceRole90D15AF8",
+      "Arn"
+     ]
+    },
+    "Runtime": "nodejs20.x",
+    "Tags": [
+     {
+      "Key": "amplify:deployment-type",
+      "Value": "sandbox"
+     },
+     {
+      "Key": "amplify:friendly-name",
+      "Value": "delete-user"
+     },
+     {
+      "Key": "created-by",
+      "Value": "amplify"
+     }
+    ],
+    "Timeout": 3
+   },
+   "DependsOn": [
+    "deleteuserlambdaServiceRoleDefaultPolicy7A08DB7D",
+    "deleteuserlambdaServiceRole90D15AF8"
+   ],
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/function/delete-user-lambda/Resource",
+    "aws:asset:path": "asset.c77a58ed267769ade5874066e5431ac86134473ea5c389e24acd1f9f84bdb315",
+    "aws:asset:is-bundled": true,
+    "aws:asset:property": "Code"
+   }
+  },
+  "sendchangeemaillambdaServiceRoleF35FBDE8": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "lambda.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+       ]
+      ]
+     }
+    ],
+    "Tags": [
+     {
+      "Key": "amplify:deployment-type",
+      "Value": "sandbox"
+     },
+     {
+      "Key": "amplify:friendly-name",
+      "Value": "send-change-email"
+     },
+     {
+      "Key": "created-by",
+      "Value": "amplify"
+     }
+    ]
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/function/send-change-email-lambda/ServiceRole/Resource"
+   }
+  },
+  "sendchangeemaillambda9782E71D": {
+   "Type": "AWS::Lambda::Function",
+   "Properties": {
+    "Architectures": [
+     "x86_64"
+    ],
+    "Code": {
+     "S3Bucket": {
+      "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
+     },
+     "S3Key": "4592e6f5a6fc1ec7b7c59c0747e78ab0c35364e4d1c4026be2e87f0694d3e0e2.zip"
+    },
+    "Environment": {
+     "Variables": {
+      "AMPLIFY_SSM_ENV_CONFIG": "{}"
+     }
+    },
+    "EphemeralStorage": {
+     "Size": 512
+    },
+    "Handler": "index.handler",
+    "MemorySize": 512,
+    "Role": {
+     "Fn::GetAtt": [
+      "sendchangeemaillambdaServiceRoleF35FBDE8",
+      "Arn"
+     ]
+    },
+    "Runtime": "nodejs20.x",
+    "Tags": [
+     {
+      "Key": "amplify:deployment-type",
+      "Value": "sandbox"
+     },
+     {
+      "Key": "amplify:friendly-name",
+      "Value": "send-change-email"
+     },
+     {
+      "Key": "created-by",
+      "Value": "amplify"
+     }
+    ],
+    "Timeout": 3
+   },
+   "DependsOn": [
+    "sendchangeemaillambdaServiceRoleF35FBDE8"
+   ],
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/function/send-change-email-lambda/Resource",
+    "aws:asset:path": "asset.4592e6f5a6fc1ec7b7c59c0747e78ab0c35364e4d1c4026be2e87f0694d3e0e2",
+    "aws:asset:is-bundled": true,
+    "aws:asset:property": "Code"
+   }
+  },
   "CDKMetadata": {
    "Type": "AWS::CDK::Metadata",
    "Properties": {
-    "Analytics": "v2:deflate64:H4sIAAAAAAAA/zXNOw6DMBBF0bXQDxNiVhCQUlLAAtBgD8h8bImxoUDsPQKU6lTvPoUqzzBLaJdUmymdbYdHxRLYNIH0BLRLe8y0dIZa5w2PgtXNNzodrHdgacGj9jND2bvLEyRvSYSD4OcCJMci6olDQcLw1LDs3b9xQs3i46oZ7kETaLBuOOF6xFFem1L4Vpglo1ibrtEFuzDWjz/nAvXKxAAAAA=="
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/zWOTQqDMBCFz9L9OLXxBFXoUooeQMZklPiTgJNUinj3otLV997ifTyFKksxvdEqiTZjMtkWt5IlsKkD6RFolWabaG4NNc4bHgTLE6/odLDegaUZt8pPDEXnTr79ZPX3qFfaQbKGRDgIPg+AZJhHPXLISRguPRad+0t3qFh8XDTDOagD9db1OxwXcJD7Ryl8KExvg1ibLNEFOzNWF3/a5+5E1QAAAA=="
    },
    "Metadata": {
     "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/function/CDKMetadata/Default"
@@ -494,6 +740,22 @@
   }
  },
  "Outputs": {
+  "amplifygigwheelsevjamiesandbox03b8376cacfunctiondeleteuserlambda38C6F52EArn": {
+   "Value": {
+    "Fn::GetAtt": [
+     "deleteuserlambda37AACCD2",
+     "Arn"
+    ]
+   }
+  },
+  "amplifygigwheelsevjamiesandbox03b8376cacfunctionsendchangeemaillambdaDBF33FD1Arn": {
+   "Value": {
+    "Fn::GetAtt": [
+     "sendchangeemaillambda9782E71D",
+     "Arn"
+    ]
+   }
+  },
   "amplifygigwheelsevjamiesandbox03b8376cacfunctionteslaconnectlambdaFFA8DED5Arn": {
    "Value": {
     "Fn::GetAtt": [
@@ -506,6 +768,24 @@
    "Value": {
     "Ref": "teslaconnectlambda0D1C1111"
    }
+  },
+  "amplifygigwheelsevjamiesandbox03b8376cacfunctiondeleteuserlambda38C6F52ERef": {
+   "Value": {
+    "Ref": "deleteuserlambda37AACCD2"
+   }
+  },
+  "amplifygigwheelsevjamiesandbox03b8376cacfunctionsendchangeemaillambdaDBF33FD1Ref": {
+   "Value": {
+    "Ref": "sendchangeemaillambda9782E71D"
+   }
+  }
+ },
+ "Parameters": {
+  "referencetoamplifygigwheelsevjamiesandbox03b8376cacauthNestedStackauthNestedStackResourceD32EECAFOutputsamplifygigwheelsevjamiesandbox03b8376cacauthamplifyAuthUserPool6D20C8C9Arn": {
+   "Type": "String"
+  },
+  "referencetoamplifygigwheelsevjamiesandbox03b8376cacauthNestedStackauthNestedStackResourceD32EECAFOutputsamplifygigwheelsevjamiesandbox03b8376cacauthamplifyAuthUserPool6D20C8C9Ref": {
+   "Type": "String"
   }
  }
 }

@@ -140,6 +140,7 @@ export default function VehicleList() {
                                                     </div>
                                                     <div className="text-sm text-gray-500">
                                                         {vehicle.year} • {vehicle.color || 'Unknown Color'} • {vehicle.vin}
+                                                        {vehicle.odometer && ` • ${Math.round(vehicle.odometer).toLocaleString()} mi`}
                                                     </div>
                                                 </div>
                                             </td>

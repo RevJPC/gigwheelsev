@@ -5,6 +5,7 @@ import type { Schema } from "@/amplify/data/resource";
 import { useEffect, useState } from "react";
 import { Amplify } from "aws-amplify";
 import outputs from "@/amplify_outputs.json";
+import Link from "next/link";
 
 Amplify.configure(outputs);
 
@@ -55,8 +56,8 @@ export default function VehicleBrowse() {
                     <button
                         onClick={() => setFilter('available')}
                         className={`px-4 py-2 rounded-lg font-medium transition-colors ${filter === 'available'
-                                ? 'bg-green-600 text-white'
-                                : 'bg-slate-700 text-slate-300 hover:bg-slate-600'
+                            ? 'bg-green-600 text-white'
+                            : 'bg-slate-700 text-slate-300 hover:bg-slate-600'
                             }`}
                     >
                         Available Now
@@ -64,8 +65,8 @@ export default function VehicleBrowse() {
                     <button
                         onClick={() => setFilter('all')}
                         className={`px-4 py-2 rounded-lg font-medium transition-colors ${filter === 'all'
-                                ? 'bg-green-600 text-white'
-                                : 'bg-slate-700 text-slate-300 hover:bg-slate-600'
+                            ? 'bg-green-600 text-white'
+                            : 'bg-slate-700 text-slate-300 hover:bg-slate-600'
                             }`}
                     >
                         All Vehicles
@@ -85,9 +86,10 @@ export default function VehicleBrowse() {
                 ) : (
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                         {filteredVehicles.map((vehicle) => (
-                            <div
+                            <Link
                                 key={vehicle.id}
-                                className="bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-2xl overflow-hidden hover:border-green-500 transition-all hover:shadow-lg hover:shadow-green-500/20"
+                                href={`/customer/vehicles/${vehicle.id}`}
+                                className="bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-2xl overflow-hidden hover:border-green-500 transition-all hover:shadow-lg hover:shadow-green-500/20 block"
                             >
                                 {/* Vehicle Image */}
                                 <div className="relative h-48 bg-gradient-to-br from-slate-700 to-slate-800 overflow-hidden">
@@ -103,9 +105,9 @@ export default function VehicleBrowse() {
                                     {/* Status Badge */}
                                     <div className="absolute top-3 right-3">
                                         <span className={`inline-flex rounded-full px-3 py-1 text-xs font-semibold ${vehicle.status === 'AVAILABLE' ? 'bg-green-500 text-white' :
-                                                vehicle.status === 'RENTED' ? 'bg-blue-500 text-white' :
-                                                    vehicle.status === 'CHARGING' ? 'bg-yellow-500 text-white' :
-                                                        'bg-red-500 text-white'
+                                            vehicle.status === 'RENTED' ? 'bg-blue-500 text-white' :
+                                                vehicle.status === 'CHARGING' ? 'bg-yellow-500 text-white' :
+                                                    'bg-red-500 text-white'
                                             }`}>
                                             {vehicle.status}
                                         </span>
@@ -130,7 +132,7 @@ export default function VehicleBrowse() {
                                                     <div className="flex-1 bg-slate-600 rounded-full h-2">
                                                         <div
                                                             className={`h-2 rounded-full ${vehicle.batteryLevel > 60 ? 'bg-green-500' :
-                                                                    vehicle.batteryLevel > 30 ? 'bg-yellow-500' : 'bg-red-500'
+                                                                vehicle.batteryLevel > 30 ? 'bg-yellow-500' : 'bg-red-500'
                                                                 }`}
                                                             style={{ width: `${vehicle.batteryLevel}%` }}
                                                         />
@@ -165,7 +167,7 @@ export default function VehicleBrowse() {
                                         </button>
                                     </div>
                                 </div>
-                            </div>
+                            </Link>
                         ))}
                     </div>
                 )}
