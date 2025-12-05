@@ -120,7 +120,10 @@ export default function Home() {
         {/* Contact */}
         <div className="text-slate-400 flex flex-col items-center gap-2">
           <p>Questions? Reach out at <a href="mailto:info@gigwheelsev.com" className="text-green-400 hover:text-green-300 transition-colors">info@gigwheelsev.com</a></p>
-          <a href="/privacy-policy" className="text-sm text-slate-500 hover:text-slate-400 underline transition-colors">Privacy Policy</a>
+          <div className="flex gap-4 text-sm text-slate-500">
+            <a href="/privacy-policy" className="hover:text-slate-400 underline transition-colors">Privacy Policy</a>
+            <a href="/data-deletion" className="hover:text-slate-400 underline transition-colors">Data Deletion</a>
+          </div>
         </div>
       </div>
     </main>
