@@ -22,8 +22,8 @@ export const auth = defineAuth({
             //     scopes: ['public_profile', 'email']
             // },
             callbackUrls: [
-                'http://localhost:3000/oauth2/idpresponse',
-                'https://master.d2j2484950395.amplifyapp.com/oauth2/idpresponse' // Update this with your actual production URL when known
+                'http://localhost:3000/',
+                'https://master.d2j2484950395.amplifyapp.com/'
             ],
             logoutUrls: ['http://localhost:3000/', 'https://master.d2j2484950395.amplifyapp.com/']
         }
