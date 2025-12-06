@@ -2,7 +2,8 @@ import { generateClient } from "aws-amplify/data";
 import { getCurrentUser, fetchUserAttributes } from "aws-amplify/auth";
 import type { Schema } from "@/amplify/data/resource";
 
-const client = generateClient<Schema>();
+// Lazy load client to avoid eager configuration issues
+const getClient = () => generateClient<Schema>();
 
 export type UserRole = 'admin' | 'employee' | 'customer';
 
@@ -17,7 +18,7 @@ export async function getUserRole(): Promise<UserRole> {
 
     try {
         // 1. Try to find by userId
-        const { data: byId } = await client.models.UserProfile.list({
+        const { data: byId } = await getClient().models.UserProfile.list({
             filter: {
                 userId: {
                     eq: user.userId
@@ -30,7 +31,7 @@ export async function getUserRole(): Promise<UserRole> {
 
             // Check if we need to sync profile picture from social login
             if (!profile.profilePictureUrl && userAttributes?.picture) {
-                await client.models.UserProfile.update({
+                await getClient().models.UserProfile.update({
                     id: profile.id,
                     profilePictureUrl: userAttributes.picture
                 });
@@ -48,7 +49,7 @@ export async function getUserRole(): Promise<UserRole> {
 
         // 2. If not found by userId, try by email (to sync manual entries)
         if (user.signInDetails?.loginId) {
-            const { data: byEmail } = await client.models.UserProfile.list({
+            const { data: byEmail } = await getClient().models.UserProfile.list({
                 filter: {
                     email: {
                         eq: user.signInDetails.loginId
@@ -65,7 +66,7 @@ export async function getUserRole(): Promise<UserRole> {
                 }
 
                 // Update the profile with the correct userId and picture if available
-                await client.models.UserProfile.update({
+                await getClient().models.UserProfile.update({
                     id: profile.id,
                     userId: user.userId,
                     profilePictureUrl: profile.profilePictureUrl || userAttributes?.picture

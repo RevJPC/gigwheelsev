@@ -436,7 +436,9 @@
     ],
     "CallbackURLs": [
      "http://localhost:3000/",
-     "https://master.d2j2484950395.amplifyapp.com/"
+     "https://master.d2j2484950395.amplifyapp.com/",
+     "https://gigwheelsev.com/",
+     "https://www.gigwheelsev.com/"
     ],
     "ExplicitAuthFlows": [
      "ALLOW_CUSTOM_AUTH",
@@ -445,7 +447,9 @@
     ],
     "LogoutURLs": [
      "http://localhost:3000/",
-     "https://master.d2j2484950395.amplifyapp.com/"
+     "https://master.d2j2484950395.amplifyapp.com/",
+     "https://gigwheelsev.com/",
+     "https://www.gigwheelsev.com/"
     ],
     "PreventUserExistenceErrors": "ENABLED",
     "SupportedIdentityProviders": [

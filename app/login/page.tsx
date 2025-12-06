@@ -3,18 +3,29 @@
 import { Authenticator } from "@aws-amplify/ui-react";
 import "@aws-amplify/ui-react/styles.css";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { fetchAuthSession, fetchUserAttributes } from "aws-amplify/auth";
+import { Hub } from "aws-amplify/utils";
 
 function RoleBasedRedirect() {
     const router = useRouter();
-    const [isRedirecting, setIsRedirecting] = useState(true);
+    const [status, setStatus] = useState("Redirecting to your dashboard...");
+    const attemptRef = useRef(0);
 
     useEffect(() => {
+        let mounted = true;
+
         async function redirect() {
             try {
+                // Ensure we have a session first
+                await fetchAuthSession();
+
                 const attributes = await fetchUserAttributes();
                 const role = attributes['custom:role'];
+
+                console.log("User role found:", role);
+
+                if (!mounted) return;
 
                 // Route based on role
                 if (role === 'admin') {
@@ -26,13 +37,42 @@ function RoleBasedRedirect() {
                 }
             } catch (error) {
                 console.error('Error fetching user role:', error);
-                router.push('/customer'); // Default to customer
+
+                // Retry logic if we just got a session but attributes aren't ready
+                if (attemptRef.current < 3) {
+                    attemptRef.current += 1;
+                    setStatus(`Syncing profile... (Attempt ${attemptRef.current})`);
+                    setTimeout(redirect, 1000);
+                    return;
+                }
+
+                // Fallback
+                console.log("Fallback to customer dashboard");
+                router.push('/customer');
             }
         }
+
+        // Listen for token refresh or sign in events as well, in case we mounted too early
+        const listener = Hub.listen('auth', (data) => {
+            if (data.payload.event === 'signIn_with_redirect' || data.payload.event === 'signedIn') {
+                redirect();
+            }
+        });
+
         redirect();
+
+        return () => {
+            mounted = false;
+            listener();
+        };
     }, [router]);
 
-    return <div className="text-center mt-4">Redirecting to your dashboard...</div>;
+    return (
+        <div className="text-center mt-8 p-4 bg-slate-800 rounded-lg border border-slate-700">
+            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-emerald-500 mx-auto mb-4"></div>
+            <p className="text-slate-300">{status}</p>
+        </div>
+    );
 }
 
 export default function LoginPage() {
@@ -44,7 +84,7 @@ export default function LoginPage() {
                         Sign in to GigWheels EV
                     </h2>
                 </div>
-                <Authenticator initialState="signIn" socialProviders={['google'/*, 'facebook'*/]}>
+                <Authenticator initialState="signIn" socialProviders={['google']}>
                     {({ user }) => (user ? <RoleBasedRedirect /> : <main></main>)}
                 </Authenticator>
             </div>

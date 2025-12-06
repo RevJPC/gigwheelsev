@@ -149,10 +149,10 @@
    "Value": "[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"]"
   },
   "oauthRedirectSignIn": {
-   "Value": "http://localhost:3000/,https://master.d2j2484950395.amplifyapp.com/"
+   "Value": "http://localhost:3000/,https://master.d2j2484950395.amplifyapp.com/,https://gigwheelsev.com/,https://www.gigwheelsev.com/"
   },
   "oauthRedirectSignOut": {
-   "Value": "http://localhost:3000/,https://master.d2j2484950395.amplifyapp.com/"
+   "Value": "http://localhost:3000/,https://master.d2j2484950395.amplifyapp.com/,https://gigwheelsev.com/,https://www.gigwheelsev.com/"
   },
   "oauthResponseType": {
    "Value": "code"
@@ -350,7 +350,7 @@
        {
         "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
        },
-       "/3f0b445978d4178efb493217fcc68ba8f8c972a5bd59fb2680930e004d831194.json"
+       "/c0e764b037730a034f7838ac329c3ed1e3dbbcadbe218543916d181bae469b4d.json"
       ]
      ]
     }
@@ -436,7 +436,7 @@
        {
         "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
        },
-       "/563d89f88af5d2a12def8aa9113dccbc02bc715965cd43f6f07fecd66745283e.json"
+       "/f584d4ef66e971e99b8cfdfac953f524e61b97d4f99eac7e76b637ff8f19cf96.json"
       ]
      ]
     }

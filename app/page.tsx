@@ -1,35 +1,34 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { fetchAuthSession } from "aws-amplify/auth";
-import { Hub } from "aws-amplify/utils";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { getUserRole } from "@/app/lib/auth";
-// Amplify configuration is handled in components/ConfigureAmplify.tsx
 
 export default function Home() {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Initial check
+    // Check if we are returning from an OAuth redirect
+    const hasOAuthParams = searchParams.has('code') || searchParams.has('state');
+
+    if (hasOAuthParams) {
+      // Redirect to login page to let Authenticator handle the OAuth flow
+      console.log("OAuth redirect detected, forwarding to /login");
+      router.push(`/login?${searchParams.toString()}`);
+      return;
+    }
+
+    // Normal load - check if user is already authenticated
     checkAuthAndRedirect();
-
-    // Listen for auth events (e.g., successful social login)
-    const listener = Hub.listen('auth', (data) => {
-      if (data.payload.event === 'signedIn') {
-        checkAuthAndRedirect();
-      }
-    });
-
-    return () => listener();
   }, []);
 
   const checkAuthAndRedirect = async () => {
     try {
       const role = await getUserRole();
+      console.log("Redirecting for role:", role);
 
-      // Redirect based on role
       if (role === 'admin') {
         router.push('/admin');
       } else if (role === 'employee') {
@@ -38,9 +37,7 @@ export default function Home() {
         router.push('/customer');
       }
     } catch (error) {
-      // Only stop loading if we are fairly sure we aren't in the middle of a redirect flow
-      // But for now, if check fails, we assume not signed in
-      console.log('Not authenticated or error:', error);
+      console.log('Not authenticated:', error);
       setLoading(false);
     }
   };
@@ -48,7 +45,10 @@ export default function Home() {
   if (loading) {
     return (
       <main className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
-        <div className="text-white">Loading...</div>
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-green-400 mx-auto mb-4"></div>
+          <div className="text-slate-300">Loading...</div>
+        </div>
       </main>
     );
   }

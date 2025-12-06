@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import './globals.css'
 import ConfigureAmplify from '@/components/ConfigureAmplify'
 import Navbar from '@/components/Navbar'
+import Footer from '@/components/Footer'
 
 export const metadata: Metadata = {
   title: 'GigWheels EV - Electric Vehicle Fleet Management',
@@ -15,10 +16,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body>
+      <body className="flex flex-col min-h-screen">
         <ConfigureAmplify />
         <Navbar />
-        {children}
+        <main className="flex-grow">
+          {children}
+        </main>
+        <Footer />
       </body>
     </html>
   )

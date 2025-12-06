@@ -8,15 +8,16 @@ import Link from "next/link";
 import { getUrl } from "aws-amplify/storage";
 import { generateClient } from "aws-amplify/data";
 import type { Schema } from "@/amplify/data/resource";
+import { FaUserCircle, FaBars, FaTimes, FaChevronDown } from 'react-icons/fa';
 
 const client = generateClient<Schema>();
 
 export default function Navbar() {
     const router = useRouter();
-    const [user, setUser] = useState<{ email: string; role: string; picture?: string; isMenuOpen?: boolean } | null>(null);
+    const [user, setUser] = useState<{ email: string; role: string; picture?: string; } | null>(null);
     const [loading, setLoading] = useState(true);
-
-
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
 
     useEffect(() => {
         checkAuth();
@@ -24,6 +25,9 @@ export default function Navbar() {
         const listener = Hub.listen('auth', (data) => {
             if (data.payload.event === 'signedIn' || data.payload.event === 'signedOut') {
                 checkAuth();
+                // Close menus on auth change
+                setIsMobileMenuOpen(false);
+                setIsUserMenuOpen(false);
             }
         });
 
@@ -84,141 +88,239 @@ export default function Navbar() {
         }
     };
 
+    // Navigation links based on role
+    const getNavLinks = () => {
+        const publicLinks = [
+            { href: '/about', label: 'About' },
+            { href: '/reviews', label: 'Reviews' },
+        ];
+
+        if (!user) {
+            return [
+                { href: '/customer/vehicles', label: 'Browse Fleet' },
+                ...publicLinks,
+            ];
+        }
+
+        const roleLinks = {
+            admin: [
+                { href: '/admin', label: 'Dashboard' },
+                { href: '/admin/vehicles', label: 'Vehicles' },
+                { href: '/admin/reservations', label: 'Reservations' },
+                { href: '/admin/users', label: 'Users' },
+            ],
+            employee: [
+                { href: '/employee', label: 'Dashboard' },
+                { href: '/employee/fleet', label: 'Fleet' },
+                { href: '/employee/reservations', label: 'Reservations' },
+            ],
+            customer: [
+                { href: '/customer', label: 'Dashboard' },
+                { href: '/customer/vehicles', label: 'Browse Fleet' },
+                { href: '/customer/reservations', label: 'My Bookings' },
+            ]
+        };
+
+        if (user.role === 'customer') {
+            return [...roleLinks.customer, ...publicLinks];
+        }
+
+        return roleLinks[user.role as keyof typeof roleLinks] || roleLinks.customer;
+    };
+
+    const links = getNavLinks();
+
     if (loading) {
-        return null; // Don't show nav while loading
+        return (
+            <nav className="fixed w-full z-50 bg-slate-900/80 backdrop-blur-md border-b border-white/10 h-20 transition-all duration-300">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center justify-between">
+                    <div className="h-8 w-32 bg-slate-800 rounded animate-pulse"></div>
+                    <div className="hidden md:flex space-x-8">
+                        {[1, 2, 3].map(i => <div key={i} className="h-4 w-20 bg-slate-800 rounded animate-pulse"></div>)}
+                    </div>
+                    <div className="h-10 w-24 bg-slate-800 rounded animate-pulse"></div>
+                </div>
+            </nav>
+        );
     }
 
     return (
-        <nav className="bg-slate-800/50 backdrop-blur-sm border-b border-slate-700">
+        <nav className="fixed w-full z-50 transition-all duration-300 bg-slate-900/80 backdrop-blur-md border-b border-white/10">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="flex justify-between h-16">
-                    <div className="flex items-center">
+                <div className="flex justify-between h-20 items-center">
+                    {/* Logo */}
+                    <div className="flex-shrink-0 flex items-center">
                         <Link
                             href={user ? (user.role === 'admin' ? '/admin' : user.role === 'employee' ? '/employee' : '/customer') : '/'}
-                            className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500"
+                            className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 to-cyan-500 hover:opacity-90 transition-opacity"
                         >
                             GigWheels EV
                         </Link>
-
-                        {user && (
-                            <div className="ml-10 flex items-baseline space-x-4">
-                                {user.role === 'admin' && (
-                                    <>
-                                        <Link href="/admin" className="text-slate-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
-                                            Dashboard
-                                        </Link>
-                                        <Link href="/admin/vehicles" className="text-slate-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
-                                            Vehicles
-                                        </Link>
-                                        <Link href="/admin/vehicles/availability" className="text-slate-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
-                                            Availability
-                                        </Link>
-                                        <Link href="/admin/reservations" className="text-slate-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
-                                            Reservations
-                                        </Link>
-                                        <Link href="/admin/users" className="text-slate-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
-                                            Users
-                                        </Link>
-                                    </>
-                                )}
-                                {user.role === 'employee' && (
-                                    <>
-                                        <Link href="/employee" className="text-slate-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
-                                            Dashboard
-                                        </Link>
-                                        <Link href="/employee/fleet" className="text-slate-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
-                                            Fleet
-                                        </Link>
-                                        <Link href="/employee/reservations" className="text-slate-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
-                                            Reservations
-                                        </Link>
-                                    </>
-                                )}
-                                {user.role === 'customer' && (
-                                    <>
-                                        <Link href="/customer" className="text-slate-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
-                                            Dashboard
-                                        </Link>
-                                        <Link href="/customer/vehicles" className="text-slate-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
-                                            Browse Vehicles
-                                        </Link>
-                                        <Link href="/customer/reservations" className="text-slate-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
-                                            My Reservations
-                                        </Link>
-                                    </>
-                                )}
-                            </div>
-                        )}
                     </div>
 
-                    <div className="flex items-center">
+                    {/* Desktop Navigation */}
+                    <div className="hidden md:flex items-center space-x-8">
+                        {links.map((link) => (
+                            <Link
+                                key={link.href}
+                                href={link.href}
+                                className="text-slate-300 hover:text-white transition-colors text-sm font-medium tracking-wide"
+                            >
+                                {link.label}
+                            </Link>
+                        ))}
+                    </div>
+
+                    {/* User Menu / Auth Buttons */}
+                    <div className="hidden md:flex items-center space-x-4">
                         {user ? (
                             <div className="relative ml-3">
                                 <button
-                                    onClick={() => setUser((prev) => prev ? { ...prev, isMenuOpen: !prev.isMenuOpen } : null)}
-                                    className="flex items-center gap-2 focus:outline-none"
+                                    onClick={() => setIsUserMenuOpen(!isUserMenuOpen)}
+                                    className="flex items-center gap-3 focus:outline-none group"
                                 >
+                                    <span className="text-slate-300 text-sm font-medium group-hover:text-white transition-colors">
+                                        {user.email}
+                                    </span>
                                     {user.picture ? (
                                         <img
                                             src={user.picture}
                                             alt="Profile"
-                                            className="w-8 h-8 rounded-full object-cover border border-slate-600"
+                                            className="w-10 h-10 rounded-full object-cover border-2 border-slate-700 group-hover:border-emerald-500 transition-colors"
                                         />
                                     ) : (
-                                        <div className="w-8 h-8 rounded-full bg-slate-700 flex items-center justify-center text-slate-400">
+                                        <div className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 border-2 border-slate-700 group-hover:border-emerald-500 transition-colors">
                                             {user.email[0].toUpperCase()}
                                         </div>
                                     )}
-                                    <span className="text-slate-300 text-sm hidden md:block">
-                                        {user.email}
-                                    </span>
-                                    <svg className="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                                    </svg>
+                                    <FaChevronDown className={`w-3 h-3 text-slate-400 transition-transform duration-200 ${isUserMenuOpen ? 'transform rotate-180' : ''}`} />
                                 </button>
 
-                                {/* Dropdown Menu */}
-                                {user.isMenuOpen && (
-                                    <div className="absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-slate-800 ring-1 ring-black ring-opacity-5 py-1 z-50 border border-slate-700">
-                                        <div className="px-4 py-2 border-b border-slate-700">
-                                            <p className="text-sm text-white truncate">{user.email}</p>
-                                            <p className="text-xs text-slate-400 capitalize">{user.role}</p>
+                                {/* Dropdown */}
+                                {isUserMenuOpen && (
+                                    <div className="absolute right-0 mt-4 w-56 rounded-xl shadow-2xl bg-slate-900 ring-1 ring-white/10 py-2 z-50 transform origin-top-right transition-all">
+                                        <div className="px-4 py-3 border-b border-white/10">
+                                            <p className="text-sm text-white font-medium truncate">{user.email}</p>
+                                            <p className="text-xs text-emerald-400 mt-1 capitalize">{user.role}</p>
                                         </div>
-                                        <Link
-                                            href="/settings"
-                                            className="block px-4 py-2 text-sm text-slate-300 hover:bg-slate-700 hover:text-white"
-                                            onClick={() => setUser((prev) => prev ? { ...prev, isMenuOpen: false } : null)}
-                                        >
-                                            Settings
-                                        </Link>
-                                        <button
-                                            onClick={() => {
-                                                handleSignOut();
-                                                setUser((prev) => prev ? { ...prev, isMenuOpen: false } : null);
-                                            }}
-                                            className="block w-full text-left px-4 py-2 text-sm text-slate-300 hover:bg-slate-700 hover:text-white"
-                                        >
-                                            Sign Out
-                                        </button>
+                                        <div className="py-2">
+                                            <Link
+                                                href="/settings"
+                                                className="block px-4 py-2 text-sm text-slate-300 hover:bg-white/5 hover:text-white transition-colors"
+                                                onClick={() => setIsUserMenuOpen(false)}
+                                            >
+                                                Account Settings
+                                            </Link>
+                                            <button
+                                                onClick={() => {
+                                                    handleSignOut();
+                                                    setIsUserMenuOpen(false);
+                                                }}
+                                                className="block w-full text-left px-4 py-2 text-sm text-rose-400 hover:bg-white/5 hover:text-rose-300 transition-colors"
+                                            >
+                                                Sign Out
+                                            </button>
+                                        </div>
                                     </div>
                                 )}
                             </div>
                         ) : (
-                            <div className="flex items-center gap-3">
-                                <Link href="/customer/vehicles" className="text-slate-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
-                                    Browse Vehicles
+                            <div className="flex items-center gap-4">
+                                <Link
+                                    href="/login"
+                                    className="text-slate-300 hover:text-white font-medium transition-colors"
+                                >
+                                    Log In
                                 </Link>
-                                <Link href="/login" className="text-slate-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
-                                    Login
+                                <Link
+                                    href="/signup"
+                                    className="px-5 py-2.5 bg-gradient-to-r from-emerald-500 to-cyan-600 hover:from-emerald-400 hover:to-cyan-500 text-white rounded-full font-medium shadow-lg shadow-emerald-500/20 transition-all hover:shadow-emerald-500/30 hover:translate-y-[-1px]"
+                                >
+                                    Get Started
                                 </Link>
-                                <Link href="/signup" className="px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-md text-sm font-medium transition-colors">
+                            </div>
+                        )}
+                    </div>
+
+                    {/* Mobile Menu Button */}
+                    <div className="flex md:hidden">
+                        <button
+                            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                            className="text-slate-300 hover:text-white p-2"
+                        >
+                            {isMobileMenuOpen ? <FaTimes className="w-6 h-6" /> : <FaBars className="w-6 h-6" />}
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            {/* Mobile Menu */}
+            {isMobileMenuOpen && (
+                <div className="md:hidden bg-slate-900/95 backdrop-blur-xl border-b border-white/10">
+                    <div className="px-4 pt-2 pb-6 space-y-2">
+                        {links.map((link) => (
+                            <Link
+                                key={link.href}
+                                href={link.href}
+                                className="block px-3 py-3 rounded-lg text-base font-medium text-slate-300 hover:text-white hover:bg-white/5 transition-all"
+                                onClick={() => setIsMobileMenuOpen(false)}
+                            >
+                                {link.label}
+                            </Link>
+                        ))}
+                        {user ? (
+                            <div className="pt-4 mt-4 border-t border-white/10">
+                                <div className="flex items-center px-3 mb-4">
+                                    {user.picture ? (
+                                        <img src={user.picture} alt="" className="w-8 h-8 rounded-full border border-slate-600" />
+                                    ) : (
+                                        <div className="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 border border-slate-700">
+                                            {user.email[0].toUpperCase()}
+                                        </div>
+                                    )}
+                                    <div className="ml-3">
+                                        <p className="text-sm font-medium text-white">{user.email}</p>
+                                        <p className="text-xs text-slate-400 capitalize">{user.role}</p>
+                                    </div>
+                                </div>
+                                <Link
+                                    href="/settings"
+                                    className="block px-3 py-3 rounded-lg text-base font-medium text-slate-300 hover:text-white hover:bg-white/5"
+                                    onClick={() => setIsMobileMenuOpen(false)}
+                                >
+                                    Settings
+                                </Link>
+                                <button
+                                    onClick={() => {
+                                        handleSignOut();
+                                        setIsMobileMenuOpen(false);
+                                    }}
+                                    className="block w-full text-left px-3 py-3 rounded-lg text-base font-medium text-rose-400 hover:text-rose-300 hover:bg-white/5"
+                                >
+                                    Sign Out
+                                </button>
+                            </div>
+                        ) : (
+                            <div className="pt-4 mt-4 border-t border-white/10 grid grid-cols-2 gap-4">
+                                <Link
+                                    href="/login"
+                                    className="block text-center px-4 py-3 rounded-lg text-base font-medium text-slate-300 hover:bg-white/5"
+                                    onClick={() => setIsMobileMenuOpen(false)}
+                                >
+                                    Log In
+                                </Link>
+                                <Link
+                                    href="/signup"
+                                    className="block text-center px-4 py-3 rounded-lg text-base font-medium bg-emerald-600 text-white hover:bg-emerald-500"
+                                    onClick={() => setIsMobileMenuOpen(false)}
+                                >
                                     Sign Up
                                 </Link>
                             </div>
                         )}
                     </div>
                 </div>
-            </div>
+            )}
         </nav>
     );
 }
