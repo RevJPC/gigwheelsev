@@ -5,10 +5,7 @@ import { fetchAuthSession } from "aws-amplify/auth";
 import { Hub } from "aws-amplify/utils";
 import { useRouter } from "next/navigation";
 import { getUserRole } from "@/app/lib/auth";
-import { Amplify } from "aws-amplify";
-import outputs from "@/amplify_outputs.json";
-
-Amplify.configure(outputs);
+// Amplify configuration is handled in components/ConfigureAmplify.tsx
 
 export default function Home() {
   const router = useRouter();

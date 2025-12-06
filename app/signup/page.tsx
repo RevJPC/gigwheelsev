@@ -8,10 +8,7 @@ import { fetchUserAttributes, updateUserAttributes, fetchAuthSession } from "aws
 import { generateClient } from "aws-amplify/data";
 import { uploadData } from "aws-amplify/storage";
 import type { Schema } from "@/amplify/data/resource";
-import { Amplify } from "aws-amplify";
-import outputs from "@/amplify_outputs.json";
-
-Amplify.configure(outputs);
+// Amplify configuration is handled in components/ConfigureAmplify.tsx
 const client = generateClient<Schema>();
 
 function HandleNewUser() {
