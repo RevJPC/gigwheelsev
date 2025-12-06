@@ -54,7 +54,7 @@ function RoleBasedRedirect() {
 
         // Listen for token refresh or sign in events as well, in case we mounted too early
         const listener = Hub.listen('auth', (data) => {
-            if (data.payload.event === 'signIn_with_redirect' || data.payload.event === 'signedIn') {
+            if (data.payload.event === 'signInWithRedirect' || data.payload.event === 'signedIn') {
                 redirect();
             }
         });
