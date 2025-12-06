@@ -23,9 +23,16 @@ export const auth = defineAuth({
             // },
             callbackUrls: [
                 'http://localhost:3000/',
-                'https://master.d2j2484950395.amplifyapp.com/'
+                'https://master.d2j2484950395.amplifyapp.com/',
+                'https://gigwheelsev.com/',
+                'https://www.gigwheelsev.com/'
             ],
-            logoutUrls: ['http://localhost:3000/', 'https://master.d2j2484950395.amplifyapp.com/']
+            logoutUrls: [
+                'http://localhost:3000/',
+                'https://master.d2j2484950395.amplifyapp.com/',
+                'https://gigwheelsev.com/',
+                'https://www.gigwheelsev.com/'
+            ]
         }
     },
     userAttributes: {
