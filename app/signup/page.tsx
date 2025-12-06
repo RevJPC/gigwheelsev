@@ -9,7 +9,8 @@ import { generateClient } from "aws-amplify/data";
 import { uploadData } from "aws-amplify/storage";
 import type { Schema } from "@/amplify/data/resource";
 // Amplify configuration is handled in components/ConfigureAmplify.tsx
-const client = generateClient<Schema>();
+// Lazy load client to avoid eager configuration issues
+const getClient = () => generateClient<Schema>();
 
 function HandleNewUser() {
     const router = useRouter();
@@ -27,7 +28,7 @@ function HandleNewUser() {
                 const userId = attributes.sub!;
 
                 // Check if profile exists
-                const existingProfiles = await client.models.UserProfile.list({
+                const existingProfiles = await getClient().models.UserProfile.list({
                     filter: { userId: { eq: userId } }
                 });
 
@@ -92,7 +93,8 @@ function HandleNewUser() {
             const lastName = nameParts.slice(1).join(' ');
 
             // Create Profile
-            await client.models.UserProfile.create({
+            console.log("Creating UserProfile with data:", { userId, email, firstName, lastName });
+            const { data: newProfile, errors: profileErrors } = await getClient().models.UserProfile.create({
                 userId,
                 email,
                 firstName,
@@ -100,6 +102,13 @@ function HandleNewUser() {
                 role: 'CUSTOMER',
                 profilePictureUrl: profilePictureUrl
             });
+
+            if (profileErrors) {
+                console.error("Error creating profile:", profileErrors);
+                throw new Error("Failed to create user profile");
+            }
+
+            console.log("✅ UserProfile created successfully:", newProfile);
 
             // Set default Cognito role if needed
             if (!userAttrs['custom:role']) {
