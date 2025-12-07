@@ -22,7 +22,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/0be93a7682a5eb4699c6cc7ffc4e82f75cb5511d8ff1539e99d6a345ca6e0a66.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/118fa55ba1c7a501f9ebfbfe8bab6a7f2cee3605fe265377edccb158a5ff86f3.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -5055,6 +5055,12 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "sendchangeemaillambdaServiceRoleF35FBDE8"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/function/send-change-email-lambda/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "sendchangeemaillambdaServiceRoleDefaultPolicyCE9EBBD9"
           }
         ],
         "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/function/send-change-email-lambda/Resource": [

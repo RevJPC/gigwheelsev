@@ -3,9 +3,15 @@
 import { useState, useEffect } from "react";
 import { generateClient } from "aws-amplify/data";
 import type { Schema } from "@/amplify/data/resource";
-import { fetchUserAttributes, fetchAuthSession } from "aws-amplify/auth";
+import { fetchUserAttributes, fetchAuthSession, updatePassword } from "aws-amplify/auth";
 import { uploadData, getUrl } from "aws-amplify/storage";
 import RouteGuard from "@/app/components/RouteGuard";
+import {
+    validatePasswordRequirements,
+    checkPasswordStrength,
+    getAuthProvider,
+    type PasswordStrength
+} from "@/lib/password-utils";
 
 const client = generateClient<Schema>();
 
@@ -23,9 +29,25 @@ export default function SettingsPage() {
         zipCode: "",
         licenseNumber: "",
         insurancePolicyNumber: "",
+        dateOfBirth: "",
+        emergencyContactName: "",
+        emergencyContactPhone: "",
     });
     const [file, setFile] = useState<File | null>(null);
     const [previewUrl, setPreviewUrl] = useState<string | null>(null);
+
+    // Password management state
+    const [authProvider, setAuthProvider] = useState<'email' | 'google' | 'unknown'>('unknown');
+    const [showPasswordSection, setShowPasswordSection] = useState(false);
+    const [passwordForm, setPasswordForm] = useState({
+        currentPassword: '',
+        newPassword: '',
+        confirmPassword: ''
+    });
+    const [passwordStrength, setPasswordStrength] = useState<PasswordStrength | null>(null);
+    const [passwordError, setPasswordError] = useState<string>('');
+    const [passwordSuccess, setPasswordSuccess] = useState<string>('');
+    const [changingPassword, setChangingPassword] = useState(false);
 
     useEffect(() => {
         loadProfile();
@@ -54,6 +76,9 @@ export default function SettingsPage() {
                         zipCode: userProfile.zipCode || "",
                         licenseNumber: userProfile.licenseNumber || "",
                         insurancePolicyNumber: userProfile.insurancePolicyNumber || "",
+                        dateOfBirth: userProfile.dateOfBirth || "",
+                        emergencyContactName: userProfile.emergencyContactName || "",
+                        emergencyContactPhone: userProfile.emergencyContactPhone || "",
                     });
 
                     if (userProfile.profilePictureUrl) {
@@ -70,6 +95,10 @@ export default function SettingsPage() {
                     }
                 }
             }
+
+            // Detect auth provider
+            const provider = await getAuthProvider();
+            setAuthProvider(provider);
         } catch (error) {
             console.error("Error loading profile:", error);
         } finally {
@@ -129,6 +158,9 @@ export default function SettingsPage() {
                 zipCode: formData.zipCode,
                 licenseNumber: formData.licenseNumber,
                 insurancePolicyNumber: formData.insurancePolicyNumber,
+                dateOfBirth: formData.dateOfBirth,
+                emergencyContactName: formData.emergencyContactName,
+                emergencyContactPhone: formData.emergencyContactPhone,
                 profilePictureUrl: profilePictureUrl
             });
 
@@ -143,6 +175,9 @@ export default function SettingsPage() {
                 zipCode: formData.zipCode,
                 licenseNumber: formData.licenseNumber,
                 insurancePolicyNumber: formData.insurancePolicyNumber,
+                dateOfBirth: formData.dateOfBirth,
+                emergencyContactName: formData.emergencyContactName,
+                emergencyContactPhone: formData.emergencyContactPhone,
                 profilePictureUrl: profilePictureUrl
             });
 
@@ -157,6 +192,97 @@ export default function SettingsPage() {
             alert(`Failed to update profile: ${error.message || 'Unknown error'}`);
         } finally {
             setSaving(false);
+        }
+    };
+
+    // Handle password form changes
+    const handlePasswordChange = (field: string, value: string) => {
+        setPasswordForm(prev => ({ ...prev, [field]: value }));
+        setPasswordError('');
+        setPasswordSuccess('');
+
+        // Check strength for new password
+        if (field === 'newPassword') {
+            if (value) {
+                setPasswordStrength(checkPasswordStrength(value));
+            } else {
+                setPasswordStrength(null);
+            }
+        }
+    };
+
+    // Handle password update
+    const handlePasswordUpdate = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setPasswordError('');
+        setPasswordSuccess('');
+
+        // Validate passwords match
+        if (passwordForm.newPassword !== passwordForm.confirmPassword) {
+            setPasswordError('Passwords do not match');
+            return;
+        }
+
+        // Validate password requirements
+        const validation = validatePasswordRequirements(passwordForm.newPassword);
+        if (!validation.isValid) {
+            setPasswordError(validation.errors.join('. '));
+            return;
+        }
+
+        setChangingPassword(true);
+
+        try {
+            if (authProvider === 'google') {
+                // OAuth users cannot directly set a password
+                // They need to use the password reset flow
+                setPasswordError(
+                    'To set a password for your Google account, please use the "Forgot Password" option on the login page. ' +
+                    'You will receive a verification code via email to set your password.'
+                );
+                setChangingPassword(false);
+                return;
+            } else {
+                // Regular user changing password
+                if (!passwordForm.currentPassword) {
+                    setPasswordError('Current password is required');
+                    return;
+                }
+
+                await updatePassword({
+                    oldPassword: passwordForm.currentPassword,
+                    newPassword: passwordForm.newPassword
+                });
+            }
+
+            setPasswordSuccess('Password updated successfully!');
+            setPasswordForm({
+                currentPassword: '',
+                newPassword: '',
+                confirmPassword: ''
+            });
+            setPasswordStrength(null);
+
+            // Close the section after a delay
+            setTimeout(() => {
+                setShowPasswordSection(false);
+                setPasswordSuccess('');
+            }, 2000);
+
+        } catch (error: any) {
+            console.error('Error updating password:', error);
+
+            if (error.name === 'NotAuthorizedException') {
+                setPasswordError('Current password is incorrect');
+            } else if (error.name === 'InvalidPasswordException') {
+                setPasswordError('Password does not meet requirements');
+            } else if (error.name === 'LimitExceededException') {
+                setPasswordError('Too many attempts. Please try again later');
+            } else {
+                setPasswordError(error.message || 'Failed to update password');
+            }
+        } finally {
+            setChangingPassword(false);
         }
     };
 
@@ -360,6 +486,166 @@ export default function SettingsPage() {
                                         />
                                     </div>
                                 </div>
+                            </div>
+
+                            {/* Security Section */}
+                            <div className="pt-6 border-t border-slate-700">
+                                <div className="flex items-center justify-between mb-4">
+                                    <div>
+                                        <h3 className="text-lg font-medium text-white">Security</h3>
+                                        <p className="text-sm text-slate-400">
+                                            {authProvider === 'google'
+                                                ? 'You signed in with Google. You can add password login as an alternative.'
+                                                : 'Manage your password and security settings'}
+                                        </p>
+                                    </div>
+                                    {authProvider === 'email' && (
+                                        <button
+                                            type="button"
+                                            onClick={() => setShowPasswordSection(!showPasswordSection)}
+                                            className="px-4 py-2 bg-slate-700 hover:bg-slate-600 text-white rounded-lg transition-colors text-sm font-medium"
+                                        >
+                                            {showPasswordSection ? 'Cancel' : 'Change Password'}
+                                        </button>
+                                    )}
+                                </div>
+
+                                {authProvider === 'google' && (
+                                    <div className="p-4 bg-blue-900/30 border border-blue-700/50 rounded-lg">
+                                        <h4 className="text-sm font-semibold text-blue-200 mb-2">How to add password login:</h4>
+                                        <ol className="text-sm text-blue-100 space-y-2 list-decimal list-inside">
+                                            <li>Log out of your account</li>
+                                            <li>On the login page, click "Forgot Password"</li>
+                                            <li>Enter your email address ({profile?.email})</li>
+                                            <li>Check your email for a verification code</li>
+                                            <li>Set your new password</li>
+                                        </ol>
+                                        <p className="text-xs text-blue-200 mt-3">
+                                            After setting a password, you'll be able to log in using either Google or email/password.
+                                        </p>
+                                    </div>
+                                )}
+
+                                {showPasswordSection && authProvider === 'email' && (
+                                    <form onSubmit={handlePasswordUpdate} className="space-y-4 mt-4 p-4 bg-slate-750 rounded-lg border border-slate-600">
+                                        <div>
+                                            <label htmlFor="currentPassword" className="block text-sm font-medium text-slate-300 mb-1">
+                                                Current Password
+                                            </label>
+                                            <input
+                                                type="password"
+                                                id="currentPassword"
+                                                value={passwordForm.currentPassword}
+                                                onChange={(e) => handlePasswordChange('currentPassword', e.target.value)}
+                                                className="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-slate-600 bg-slate-700 text-white rounded-md"
+                                                required
+                                            />
+                                        </div>
+
+                                        <div>
+                                            <label htmlFor="newPassword" className="block text-sm font-medium text-slate-300 mb-1">
+                                                New Password
+                                            </label>
+                                            <input
+                                                type="password"
+                                                id="newPassword"
+                                                value={passwordForm.newPassword}
+                                                onChange={(e) => handlePasswordChange('newPassword', e.target.value)}
+                                                className="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-slate-600 bg-slate-700 text-white rounded-md"
+                                                required
+                                            />
+
+                                            {/* Password Strength Indicator */}
+                                            {passwordStrength && (
+                                                <div className="mt-2">
+                                                    <div className="flex items-center gap-2 mb-1">
+                                                        <div className="flex-1 h-2 bg-slate-600 rounded-full overflow-hidden">
+                                                            <div
+                                                                className={`h-full transition-all duration-300 ${passwordStrength.level === 'weak' ? 'bg-red-500 w-1/3' :
+                                                                    passwordStrength.level === 'medium' ? 'bg-yellow-500 w-2/3' :
+                                                                        'bg-green-500 w-full'
+                                                                    }`}
+                                                            />
+                                                        </div>
+                                                        <span className={`text-xs font-medium ${passwordStrength.level === 'weak' ? 'text-red-400' :
+                                                            passwordStrength.level === 'medium' ? 'text-yellow-400' :
+                                                                'text-green-400'
+                                                            }`}>
+                                                            {passwordStrength.level.charAt(0).toUpperCase() + passwordStrength.level.slice(1)}
+                                                        </span>
+                                                    </div>
+                                                    {passwordStrength.feedback.length > 0 && (
+                                                        <ul className="text-xs text-slate-400 space-y-1 mt-1">
+                                                            {passwordStrength.feedback.map((item, idx) => (
+                                                                <li key={idx}>• {item}</li>
+                                                            ))}
+                                                        </ul>
+                                                    )}
+                                                </div>
+                                            )}
+
+                                            {/* Password Requirements */}
+                                            <div className="mt-2 text-xs text-slate-400">
+                                                <p className="font-medium mb-1">Password must contain:</p>
+                                                <ul className="space-y-0.5">
+                                                    <li>• At least 8 characters</li>
+                                                    <li>• Uppercase and lowercase letters</li>
+                                                    <li>• At least one number</li>
+                                                    <li>• At least one special character</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                                        <div>
+                                            <label htmlFor="confirmPassword" className="block text-sm font-medium text-slate-300 mb-1">
+                                                Confirm Password
+                                            </label>
+                                            <input
+                                                type="password"
+                                                id="confirmPassword"
+                                                value={passwordForm.confirmPassword}
+                                                onChange={(e) => handlePasswordChange('confirmPassword', e.target.value)}
+                                                className="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-slate-600 bg-slate-700 text-white rounded-md"
+                                                required
+                                            />
+                                        </div>
+
+                                        {passwordError && (
+                                            <div className="p-3 bg-red-900/50 border border-red-700 rounded-lg text-red-200 text-sm">
+                                                {passwordError}
+                                            </div>
+                                        )}
+
+                                        {passwordSuccess && (
+                                            <div className="p-3 bg-green-900/50 border border-green-700 rounded-lg text-green-200 text-sm">
+                                                {passwordSuccess}
+                                            </div>
+                                        )}
+
+                                        <div className="flex gap-3">
+                                            <button
+                                                type="button"
+                                                onClick={() => {
+                                                    setShowPasswordSection(false);
+                                                    setPasswordForm({ currentPassword: '', newPassword: '', confirmPassword: '' });
+                                                    setPasswordError('');
+                                                    setPasswordSuccess('');
+                                                    setPasswordStrength(null);
+                                                }}
+                                                className="flex-1 px-4 py-2 bg-slate-600 hover:bg-slate-500 text-white rounded-lg transition-colors text-sm font-medium"
+                                            >
+                                                Cancel
+                                            </button>
+                                            <button
+                                                type="submit"
+                                                disabled={changingPassword}
+                                                className={`flex-1 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors text-sm font-medium ${changingPassword ? 'opacity-50 cursor-not-allowed' : ''}`}
+                                            >
+                                                {changingPassword ? 'Updating...' : 'Update Password'}
+                                            </button>
+                                        </div>
+                                    </form>
+                                )}
                             </div>
 
                             <div className="pt-5 border-t border-slate-700 flex justify-end">

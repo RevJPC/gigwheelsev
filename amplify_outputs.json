@@ -706,6 +706,27 @@
               "isRequired": false,
               "attributes": []
             },
+            "dateOfBirth": {
+              "name": "dateOfBirth",
+              "isArray": false,
+              "type": "AWSDate",
+              "isRequired": false,
+              "attributes": []
+            },
+            "emergencyContactName": {
+              "name": "emergencyContactName",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false,
+              "attributes": []
+            },
+            "emergencyContactPhone": {
+              "name": "emergencyContactPhone",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false,
+              "attributes": []
+            },
             "createdAt": {
               "name": "createdAt",
               "isArray": false,

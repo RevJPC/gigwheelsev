@@ -33,6 +33,7 @@ import { PolicyStatement } from 'aws-cdk-lib/aws-iam';
 const lambdaFunction = backend.teslaSync.resources.lambda as unknown as Function;
 const lambdaRegister = backend.teslaRegister.resources.lambda as unknown as Function;
 const deleteUserLambda = backend.deleteUser.resources.lambda as unknown as Function;
+const sendEmailLambda = backend.sendChangeEmail.resources.lambda as unknown as Function;
 
 const { cfnGraphqlApi } = backend.data.resources.cfnResources;
 
@@ -56,3 +57,10 @@ deleteUserLambda.addToRolePolicy(deleteUserPolicy);
 
 // Add User Pool ID as environment variable
 deleteUserLambda.addEnvironment('AMPLIFY_AUTH_USERPOOL_ID', backend.auth.resources.userPool.userPoolId);
+
+// Grant SES send email permissions
+const sesPolicy = new PolicyStatement({
+    actions: ['ses:SendEmail', 'ses:SendRawEmail'],
+    resources: ['*'], // You can restrict this to specific verified identities if needed
+});
+sendEmailLambda.addToRolePolicy(sesPolicy);

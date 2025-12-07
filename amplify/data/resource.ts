@@ -81,6 +81,9 @@ const schema = a.schema({
         zipCode: a.string(),
         licenseNumber: a.string(),
         insurancePolicyNumber: a.string(),
+        dateOfBirth: a.date(), // For age verification
+        emergencyContactName: a.string(),
+        emergencyContactPhone: a.string(),
     }).authorization(allow => [allow.publicApiKey()]), // TODO: Restrict properly
 
     ProfileChangeRequest: a.model({

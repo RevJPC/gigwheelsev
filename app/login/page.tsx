@@ -37,31 +37,31 @@ function RoleBasedRedirect() {
                 });
 
                 if (existingProfiles.length === 0) {
-                    console.log("No UserProfile found, creating one for OAuth user...");
-                    setStatus("Setting up your profile...");
+                    console.log("No UserProfile found, redirecting to signup...");
+                    // Redirect to signup page to complete profile
+                    router.push('/signup');
+                    return;
+                }
 
-                    // Extract name from attributes
-                    const fullName = attributes.name || email.split('@')[0];
-                    const nameParts = fullName.split(' ');
-                    const firstName = nameParts[0];
-                    const lastName = nameParts.slice(1).join(' ');
+                // Check if profile is complete (has all required fields)
+                const profile = existingProfiles[0];
+                const isProfileComplete = !!(
+                    profile.phoneNumber &&
+                    profile.streetAddress &&
+                    profile.city &&
+                    profile.state &&
+                    profile.zipCode &&
+                    profile.licenseNumber &&
+                    profile.insurancePolicyNumber &&
+                    profile.dateOfBirth &&
+                    profile.emergencyContactName &&
+                    profile.emergencyContactPhone
+                );
 
-                    // Create UserProfile for OAuth user
-                    const { data: newProfile, errors: profileErrors } = await getClient().models.UserProfile.create({
-                        userId,
-                        email,
-                        firstName,
-                        lastName,
-                        role: 'CUSTOMER',
-                        status: 'ACTIVE',
-                        profilePictureUrl: attributes.picture || null
-                    });
-
-                    if (profileErrors) {
-                        console.error("Error creating profile:", profileErrors);
-                    } else {
-                        console.log("✅ UserProfile created for OAuth user:", newProfile);
-                    }
+                if (!isProfileComplete) {
+                    console.log("Profile incomplete, redirecting to signup...");
+                    router.push('/signup');
+                    return;
                 }
 
                 const role = attributes['custom:role'];

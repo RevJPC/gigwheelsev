@@ -405,6 +405,35 @@
     "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/function/send-change-email-lambda/ServiceRole/Resource"
    }
   },
+  "sendchangeemaillambdaServiceRoleDefaultPolicyCE9EBBD9": {
+   "Type": "AWS::IAM::Policy",
+   "Properties": {
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": [
+        "ses:SendEmail",
+        "ses:SendRawEmail"
+       ],
+       "Effect": "Allow",
+       "Resource": "*"
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "PolicyName": "sendchangeemaillambdaServiceRoleDefaultPolicyCE9EBBD9",
+    "Roles": [
+     {
+      "Ref": "sendchangeemaillambdaServiceRoleF35FBDE8"
+     }
+    ]
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/function/send-change-email-lambda/ServiceRole/DefaultPolicy/Resource"
+   }
+  },
   "sendchangeemaillambda9782E71D": {
    "Type": "AWS::Lambda::Function",
    "Properties": {
@@ -415,10 +444,11 @@
      "S3Bucket": {
       "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
      },
-     "S3Key": "4592e6f5a6fc1ec7b7c59c0747e78ab0c35364e4d1c4026be2e87f0694d3e0e2.zip"
+     "S3Key": "0058087cc3fd39c739be9342ade27fe5569f5d97942552602971f5e5f8fbfa29.zip"
     },
     "Environment": {
      "Variables": {
+      "SES_FROM_EMAIL": "noreply@gigwheelsev.com",
       "AMPLIFY_SSM_ENV_CONFIG": "{}"
      }
     },
@@ -451,13 +481,14 @@
     "Timeout": 3
    },
    "DependsOn": [
+    "sendchangeemaillambdaServiceRoleDefaultPolicyCE9EBBD9",
     "sendchangeemaillambdaServiceRoleF35FBDE8"
    ],
    "UpdateReplacePolicy": "Delete",
    "DeletionPolicy": "Delete",
    "Metadata": {
     "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/function/send-change-email-lambda/Resource",
-    "aws:asset:path": "asset.4592e6f5a6fc1ec7b7c59c0747e78ab0c35364e4d1c4026be2e87f0694d3e0e2",
+    "aws:asset:path": "asset.0058087cc3fd39c739be9342ade27fe5569f5d97942552602971f5e5f8fbfa29",
     "aws:asset:is-bundled": true,
     "aws:asset:property": "Code"
    }

@@ -99,6 +99,9 @@ export default function UsersManagement() {
             zipCode: user.zipCode || "",
             licenseNumber: user.licenseNumber || "",
             insurancePolicyNumber: user.insurancePolicyNumber || "",
+            dateOfBirth: user.dateOfBirth || "",
+            emergencyContactName: user.emergencyContactName || "",
+            emergencyContactPhone: user.emergencyContactPhone || "",
         });
     };
 
@@ -354,6 +357,35 @@ export default function UsersManagement() {
                                     onChange={(e) => setEditedData({ ...editedData, insurancePolicyNumber: e.target.value })}
                                     className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                                 />
+                            </div>
+                            <div>
+                                <label className="block text-sm font-medium text-gray-700">Date of Birth</label>
+                                <input
+                                    type="date"
+                                    value={editedData.dateOfBirth}
+                                    onChange={(e) => setEditedData({ ...editedData, dateOfBirth: e.target.value })}
+                                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                                />
+                            </div>
+                            <div className="grid grid-cols-2 gap-4">
+                                <div>
+                                    <label className="block text-sm font-medium text-gray-700">Emergency Contact Name</label>
+                                    <input
+                                        type="text"
+                                        value={editedData.emergencyContactName}
+                                        onChange={(e) => setEditedData({ ...editedData, emergencyContactName: e.target.value })}
+                                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                                    />
+                                </div>
+                                <div>
+                                    <label className="block text-sm font-medium text-gray-700">Emergency Contact Phone</label>
+                                    <input
+                                        type="tel"
+                                        value={editedData.emergencyContactPhone}
+                                        onChange={(e) => setEditedData({ ...editedData, emergencyContactPhone: e.target.value })}
+                                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                                    />
+                                </div>
                             </div>
                         </div>
                         <div className="px-6 py-4 border-t border-gray-200 flex justify-end space-x-3">
