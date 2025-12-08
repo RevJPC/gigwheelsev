@@ -230,7 +230,7 @@
    }
   },
   "awsAppsyncAuthenticationType": {
-   "Value": "API_KEY"
+   "Value": "AMAZON_COGNITO_USER_POOLS"
   },
   "awsAppsyncRegion": {
    "Value": {
@@ -283,7 +283,7 @@
    }
   },
   "awsAppsyncAdditionalAuthenticationTypes": {
-   "Value": "AMAZON_COGNITO_USER_POOLS,AWS_IAM"
+   "Value": "API_KEY,AWS_IAM"
   },
   "storageRegion": {
    "Value": {
@@ -350,7 +350,7 @@
        {
         "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
        },
-       "/c0e764b037730a034f7838ac329c3ed1e3dbbcadbe218543916d181bae469b4d.json"
+       "/b794d805a4765a85219a95a1a8c5ce59754032387bbc6c8fb10087e6c62c84a9.json"
       ]
      ]
     }
@@ -436,7 +436,7 @@
        {
         "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
        },
-       "/360161e9c16d4b1d587cbedbbb5d7f3def2db320dc67c5396b3cf95fd93e2aab.json"
+       "/e804607675b9d86d08340e924a56785f6f60a6f325c94ab008c3829f7f18382f.json"
       ]
      ]
     }
@@ -492,7 +492,7 @@
        {
         "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
        },
-       "/fc3f11ecd001ce215433366790f3f138aecd320f4370185dba774da65f430c6c.json"
+       "/2089ba9920216ea89b10479a412fcb9ae2a7704279416dd11fedc786afbd8f74.json"
       ]
      ]
     }

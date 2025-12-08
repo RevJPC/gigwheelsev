@@ -22,7 +22,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/118fa55ba1c7a501f9ebfbfe8bab6a7f2cee3605fe265377edccb158a5ff86f3.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/61d3942e3d841e81c77d890abc118b9edc5dea6c03d4445a140872689ea3fa1b.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -1981,6 +1981,26 @@
             "data": "Subscription.onDeleteReservation"
           }
         ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/Reservation/ReservationOwnerDataResolverFn/ReservationOwnerDataResolverFn.AppSyncFunction": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ReservationOwnerDataResolverFnReservationOwnerDataResolverFnAppSyncFunctionD5FAEF9C"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "ReservationOwnerDataResolverFn"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/Reservation/reservationOwnerResolver": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ReservationownerResolver"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "Reservation.owner"
+          }
+        ],
         "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/Reservation/CDKMetadata/Default": [
           {
             "type": "aws:cdk:logicalId",
@@ -3009,6 +3029,26 @@
             "data": "Subscription.onDeleteUserProfile"
           }
         ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/UserProfile/UserProfileOwnerDataResolverFn/UserProfileOwnerDataResolverFn.AppSyncFunction": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "UserProfileOwnerDataResolverFnUserProfileOwnerDataResolverFnAppSyncFunction23A35218"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "UserProfileOwnerDataResolverFn"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/UserProfile/userProfileOwnerResolver": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "UserProfileownerResolver"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "UserProfile.owner"
+          }
+        ],
         "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/UserProfile/CDKMetadata/Default": [
           {
             "type": "aws:cdk:logicalId",
@@ -3515,6 +3555,26 @@
           {
             "type": "graphqltransformer:resourceName",
             "data": "Subscription.onDeleteProfileChangeRequest"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/ProfileChangeRequest/ProfileChangeRequestOwnerDataResolverFn/ProfileChangeRequestOwnerDataResolverFn.AppSyncFunction": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ProfileChangeRequestOwnerDataResolverFnProfileChangeRequestOwnerDataResolverFnAppSyncFunction5026D232"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "ProfileChangeRequestOwnerDataResolverFn"
+          }
+        ],
+        "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/ProfileChangeRequest/profileChangeRequestOwnerResolver": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ProfileChangeRequestownerResolver"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "ProfileChangeRequest.owner"
           }
         ],
         "/amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/ProfileChangeRequest/CDKMetadata/Default": [

@@ -36,7 +36,11 @@ const schema = a.schema({
         reservations: a.hasMany('Reservation', 'vehicleId'),
         images: a.hasMany('VehicleImage', 'vehicleId'),
         availability: a.hasMany('VehicleAvailability', 'vehicleId'),
-    }).authorization(allow => [allow.publicApiKey()]), // Open for now, refine later
+    }).authorization(allow => [
+        allow.publicApiKey().to(['read']),
+        allow.authenticated().to(['read']),
+        allow.groups(['ADMIN', 'EMPLOYEE'])
+    ]),
 
     VehicleImage: a.model({
         vehicleId: a.id().required(),
@@ -45,7 +49,11 @@ const schema = a.schema({
         isPrimary: a.boolean().default(false),
         caption: a.string(),
         order: a.integer().default(0),
-    }).authorization(allow => [allow.publicApiKey()]),
+    }).authorization(allow => [
+        allow.publicApiKey().to(['read']),
+        allow.authenticated().to(['read']),
+        allow.groups(['ADMIN', 'EMPLOYEE'])
+    ]),
 
     ReservationStatus: a.enum(['PENDING', 'CONFIRMED', 'COMPLETED', 'CANCELLED']),
 
@@ -57,14 +65,19 @@ const schema = a.schema({
         endTime: a.datetime().required(),
         status: a.ref('ReservationStatus'),
         totalPrice: a.float(),
-    }).authorization(allow => [allow.publicApiKey()]), // TODO: Restrict to user's own reservations
+    }).authorization(allow => [
+        allow.owner(),
+        allow.groups(['ADMIN', 'EMPLOYEE'])
+    ]),
 
     TeslaIntegration: a.model({
         accessToken: a.string().required(),
         refreshToken: a.string().required(),
         expiresIn: a.integer(),
         tokenType: a.string(),
-    }).authorization(allow => [allow.publicApiKey()]), // TODO: Restrict to Admin
+    }).authorization(allow => [
+        allow.groups(['ADMIN'])
+    ]),
 
     UserProfile: a.model({
         userId: a.string().required(), // Cognito sub
@@ -84,7 +97,10 @@ const schema = a.schema({
         dateOfBirth: a.date(), // For age verification
         emergencyContactName: a.string(),
         emergencyContactPhone: a.string(),
-    }).authorization(allow => [allow.publicApiKey()]), // TODO: Restrict properly
+    }).authorization(allow => [
+        allow.owner(),
+        allow.groups(['ADMIN', 'EMPLOYEE'])
+    ]),
 
     ProfileChangeRequest: a.model({
         userId: a.string().required(), // User whose profile will be changed
@@ -92,7 +108,10 @@ const schema = a.schema({
         newData: a.json().required(), // Proposed changes as JSON
         token: a.string().required(), // Unique confirmation token
         status: a.ref('ChangeRequestStatus').required(),
-    }).authorization(allow => [allow.publicApiKey()]), // TODO: Restrict properly
+    }).authorization(allow => [
+        allow.owner(),
+        allow.groups(['ADMIN', 'EMPLOYEE'])
+    ]),
 
     VehicleAvailability: a.model({
         vehicleId: a.id().required(),
@@ -101,7 +120,10 @@ const schema = a.schema({
         endTime: a.datetime().required(),
         isAvailable: a.boolean().required().default(true), // true = available, false = blocked
         reason: a.string(), // Optional reason for blocking (maintenance, etc.)
-    }).authorization(allow => [allow.publicApiKey()]), // TODO: Restrict to Admin/Employee
+    }).authorization(allow => [
+        allow.groups(['ADMIN', 'EMPLOYEE']),
+        allow.publicApiKey().to(['read']) // Allow public to see availability
+    ]),
 
     teslaConnect: a.query()
         .arguments({
@@ -109,12 +131,12 @@ const schema = a.schema({
             redirectUri: a.string()
         })
         .returns(a.json())
-        .authorization(allow => [allow.publicApiKey()])
+        .authorization(allow => [allow.groups(['ADMIN'])])
         .handler(a.handler.function(teslaConnect)),
 
     teslaSync: a.query()
         .returns(a.json())
-        .authorization(allow => [allow.publicApiKey()])
+        .authorization(allow => [allow.groups(['ADMIN'])])
         .handler(a.handler.function(teslaSync)),
 
     teslaRegister: a.query()
@@ -122,7 +144,7 @@ const schema = a.schema({
             domain: a.string()
         })
         .returns(a.json())
-        .authorization(allow => [allow.publicApiKey()])
+        .authorization(allow => [allow.groups(['ADMIN'])])
         .handler(a.handler.function(teslaRegister)),
 
     deleteUser: a.mutation()
@@ -130,7 +152,7 @@ const schema = a.schema({
             userId: a.string().required()
         })
         .returns(a.json())
-        .authorization(allow => [allow.publicApiKey()]) // TODO: Restrict to Admin
+        .authorization(allow => [allow.groups(['ADMIN'])])
         .handler(a.handler.function(deleteUser)),
 
     sendChangeEmail: a.mutation()
@@ -141,7 +163,7 @@ const schema = a.schema({
             changes: a.json().required()
         })
         .returns(a.json())
-        .authorization(allow => [allow.publicApiKey()]) // TODO: Restrict to Admin
+        .authorization(allow => [allow.authenticated()])
         .handler(a.handler.function(sendChangeEmail)),
 });
 
@@ -150,7 +172,7 @@ export type Schema = ClientSchema<typeof schema>;
 export const data = defineData({
     schema,
     authorizationModes: {
-        defaultAuthorizationMode: 'apiKey',
+        defaultAuthorizationMode: 'userPool',
         apiKeyAuthorizationMode: {
             expiresInDays: 30,
         },

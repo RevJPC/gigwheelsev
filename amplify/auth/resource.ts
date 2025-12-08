@@ -40,5 +40,10 @@ export const auth = defineAuth({
             dataType: "String",
             mutable: true,
         }
+    },
+    senders: {
+        email: {
+            fromEmail: "noreply@gigwheelsev.com"
+        }
     }
 });

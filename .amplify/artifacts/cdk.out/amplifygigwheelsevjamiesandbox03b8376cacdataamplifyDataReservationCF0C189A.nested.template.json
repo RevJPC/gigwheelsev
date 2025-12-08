@@ -647,7 +647,7 @@
     "FunctionVersion": "2018-05-29",
     "Name": "QuerygetReservationauth0Function",
     "RequestMappingTemplateS3Location": {
-     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/0224a3e5097427da3f4460b5d6d2b86ad4195c9cb8da7bc13e7187eead1c3ae3.vtl"
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/67f56e2b47addaad89e259633ac07d5e00685ebafe099b55bb324bac604794dc.vtl"
     },
     "ResponseMappingTemplate": "$util.toJson({})"
    },
@@ -827,7 +827,7 @@
     "FunctionVersion": "2018-05-29",
     "Name": "QuerylistReservationsauth0Function",
     "RequestMappingTemplateS3Location": {
-     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/0224a3e5097427da3f4460b5d6d2b86ad4195c9cb8da7bc13e7187eead1c3ae3.vtl"
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/67f56e2b47addaad89e259633ac07d5e00685ebafe099b55bb324bac604794dc.vtl"
     },
     "ResponseMappingTemplate": "$util.toJson({})"
    },
@@ -1029,7 +1029,7 @@
     "FunctionVersion": "2018-05-29",
     "Name": "MutationcreateReservationauth0Function",
     "RequestMappingTemplateS3Location": {
-     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/d637c1fb7301003b8a5ada269338cf2e8df6cc0dc412ef13acc6158d680b6d3e.vtl"
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/43b1e6341f5239c66f66669c908619dd2d0931f4dc551e126d20f0e2bd4e7db6.vtl"
     },
     "ResponseMappingTemplate": "$util.toJson({})"
    },
@@ -1243,7 +1243,7 @@
      "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/1f5fed297da9c32ae3af922bf3a38ccf23b956078887d16891ec06c20c64722c.vtl"
     },
     "ResponseMappingTemplateS3Location": {
-     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/89f92efd98b1034df0e2497fe31a97de6975de554b8a22e0677d05d6efcafa59.vtl"
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/de6f4dcd3f4d87e723712bcf5224d8c2a4f64bd03437d4cc3469cdaefe881ff5.vtl"
     }
    },
    "DependsOn": [
@@ -1437,7 +1437,7 @@
      "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/1f5fed297da9c32ae3af922bf3a38ccf23b956078887d16891ec06c20c64722c.vtl"
     },
     "ResponseMappingTemplateS3Location": {
-     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/e3416b4d47414f29c21e59a70e83bddb959ef0625854ed7fb0ca376573e99069.vtl"
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/f6ea65dc6bd5d8bf84725d865ad2e582a717219e0f89e88c24b20181627d4353.vtl"
     }
    },
    "DependsOn": [
@@ -1619,7 +1619,7 @@
     "FunctionVersion": "2018-05-29",
     "Name": "SubscriptiononCreateReservationauth0Function",
     "RequestMappingTemplateS3Location": {
-     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/e6da5a6e993df8b5fdc91086b71eb53e72a3a97c98836ef9c9257776f36c452b.vtl"
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/cd3e8b4fd3cee217e95088feb3bd5e502647679fbb88fb9aa27d5b048bb1e701.vtl"
     },
     "ResponseMappingTemplate": "$util.toJson({})"
    },
@@ -1766,7 +1766,7 @@
     "FunctionVersion": "2018-05-29",
     "Name": "SubscriptiononUpdateReservationauth0Function",
     "RequestMappingTemplateS3Location": {
-     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/e6da5a6e993df8b5fdc91086b71eb53e72a3a97c98836ef9c9257776f36c452b.vtl"
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/cd3e8b4fd3cee217e95088feb3bd5e502647679fbb88fb9aa27d5b048bb1e701.vtl"
     },
     "ResponseMappingTemplate": "$util.toJson({})"
    },
@@ -1913,7 +1913,7 @@
     "FunctionVersion": "2018-05-29",
     "Name": "SubscriptiononDeleteReservationauth0Function",
     "RequestMappingTemplateS3Location": {
-     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/e6da5a6e993df8b5fdc91086b71eb53e72a3a97c98836ef9c9257776f36c452b.vtl"
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/cd3e8b4fd3cee217e95088feb3bd5e502647679fbb88fb9aa27d5b048bb1e701.vtl"
     },
     "ResponseMappingTemplate": "$util.toJson({})"
    },
@@ -2046,6 +2046,97 @@
    "DeletionPolicy": "Delete",
    "Metadata": {
     "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/Reservation/subscriptionOnDeleteReservationResolver"
+   }
+  },
+  "ReservationOwnerDataResolverFnReservationOwnerDataResolverFnAppSyncFunctionD5FAEF9C": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataGraphQLAPIEFD49BECApiId"
+    },
+    "DataSourceName": {
+     "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataGraphQLAPINONEDSE5668EC6Name"
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "ReservationOwnerDataResolverFn",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/041534e5fd916595f752318f161512d7c7f83b9f2cf32d0f0be381c12253ff68.vtl"
+    },
+    "ResponseMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/064303962e481067b44300212516363b99aaee539b6bafaf756fdd83ff0b60f0.vtl"
+    }
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/Reservation/ReservationOwnerDataResolverFn/ReservationOwnerDataResolverFn.AppSyncFunction"
+   }
+  },
+  "ReservationownerResolver": {
+   "Type": "AWS::AppSync::Resolver",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataGraphQLAPIEFD49BECApiId"
+    },
+    "FieldName": "owner",
+    "Kind": "PIPELINE",
+    "PipelineConfig": {
+     "Functions": [
+      {
+       "Fn::GetAtt": [
+        "ReservationOwnerDataResolverFnReservationOwnerDataResolverFnAppSyncFunctionD5FAEF9C",
+        "FunctionId"
+       ]
+      }
+     ]
+    },
+    "RequestMappingTemplate": {
+     "Fn::Join": [
+      "",
+      [
+       "$util.qr($ctx.stash.put(\"typeName\", \"Reservation\"))\n$util.qr($ctx.stash.put(\"fieldName\", \"owner\"))\n$util.qr($ctx.stash.put(\"conditions\", []))\n$util.qr($ctx.stash.put(\"metadata\", {}))\n$util.qr($ctx.stash.metadata.put(\"dataSourceType\", \"NONE\"))\n$util.qr($ctx.stash.metadata.put(\"apiId\", \"",
+       {
+        "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacdataamplifyDataGraphQLAPIEFD49BECApiId"
+       },
+       "\"))\n$util.qr($ctx.stash.put(\"connectionAttributes\", {}))\n\n$util.qr($ctx.stash.put(\"authRole\", \"arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":sts::",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":assumed-role/",
+       {
+        "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacauthNestedStackauthNestedStackResourceD32EECAFOutputsamplifygigwheelsevjamiesandbox03b8376cacauthamplifyAuthauthenticatedUserRoleC3A5DEC2Ref"
+       },
+       "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"unauthRole\", \"arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":sts::",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":assumed-role/",
+       {
+        "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacauthNestedStackauthNestedStackResourceD32EECAFOutputsamplifygigwheelsevjamiesandbox03b8376cacauthamplifyAuthunauthenticatedUserRole462C06D4Ref"
+       },
+       "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"identityPoolId\", \"",
+       {
+        "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacauthNestedStackauthNestedStackResourceD32EECAFOutputsamplifygigwheelsevjamiesandbox03b8376cacauthamplifyAuthIdentityPool49485A21Ref"
+       },
+       "\"))\n$util.qr($ctx.stash.put(\"adminRoles\", []))\n$util.toJson({})"
+      ]
+     ]
+    },
+    "ResponseMappingTemplate": "$util.toJson($ctx.prev.result)",
+    "TypeName": "Reservation"
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/data/amplifyData/Reservation/reservationOwnerResolver"
    }
   },
   "CDKMetadata": {

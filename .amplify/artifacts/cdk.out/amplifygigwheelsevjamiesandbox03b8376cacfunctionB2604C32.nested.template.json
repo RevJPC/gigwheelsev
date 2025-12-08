@@ -444,7 +444,7 @@
      "S3Bucket": {
       "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
      },
-     "S3Key": "0058087cc3fd39c739be9342ade27fe5569f5d97942552602971f5e5f8fbfa29.zip"
+     "S3Key": "c55d7137a06947c918dfdfe33ab4e3a49f35ada38036d65bf8d79bc656fa17c7.zip"
     },
     "Environment": {
      "Variables": {
@@ -488,7 +488,7 @@
    "DeletionPolicy": "Delete",
    "Metadata": {
     "aws:cdk:path": "amplify-gigwheelsev-jamie-sandbox-03b8376cac/function/send-change-email-lambda/Resource",
-    "aws:asset:path": "asset.0058087cc3fd39c739be9342ade27fe5569f5d97942552602971f5e5f8fbfa29",
+    "aws:asset:path": "asset.c55d7137a06947c918dfdfe33ab4e3a49f35ada38036d65bf8d79bc656fa17c7",
     "aws:asset:is-bundled": true,
     "aws:asset:property": "Code"
    }

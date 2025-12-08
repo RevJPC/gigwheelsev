@@ -108,7 +108,6 @@ function HandleNewUser() {
             const lastName = nameParts.slice(1).join(' ');
 
             // Create Profile with all required fields
-            console.log("Creating UserProfile with data:", { userId, email, firstName, lastName, ...formData });
             const { data: newProfile, errors: profileErrors } = await getClient().models.UserProfile.create({
                 userId,
                 email,
@@ -133,8 +132,6 @@ function HandleNewUser() {
                 console.error("Error creating profile:", profileErrors);
                 throw new Error("Failed to create user profile");
             }
-
-            console.log("✅ UserProfile created successfully:", newProfile);
 
             // Set default Cognito role if needed
             if (!userAttrs['custom:role']) {

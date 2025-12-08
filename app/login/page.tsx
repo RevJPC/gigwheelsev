@@ -8,8 +8,8 @@ import { fetchAuthSession, fetchUserAttributes } from "aws-amplify/auth";
 import { Hub } from "aws-amplify/utils";
 import { generateClient } from "aws-amplify/data";
 import type { Schema } from "@/amplify/data/resource";
+import { isProfileComplete } from "@/lib/profile-utils";
 
-// Lazy load client to avoid eager configuration issues
 const getClient = () => generateClient<Schema>();
 
 function RoleBasedRedirect() {
@@ -22,14 +22,9 @@ function RoleBasedRedirect() {
 
         async function redirect() {
             try {
-                // Ensure we have a session first
                 await fetchAuthSession();
-
                 const attributes = await fetchUserAttributes();
                 const userId = attributes.sub!;
-                const email = attributes.email!;
-
-                console.log("User authenticated:", { userId, email });
 
                 // Check if UserProfile exists
                 const { data: existingProfiles } = await getClient().models.UserProfile.list({
@@ -37,35 +32,18 @@ function RoleBasedRedirect() {
                 });
 
                 if (existingProfiles.length === 0) {
-                    console.log("No UserProfile found, redirecting to signup...");
-                    // Redirect to signup page to complete profile
                     router.push('/signup');
                     return;
                 }
 
-                // Check if profile is complete (has all required fields)
+                // Check if profile is complete
                 const profile = existingProfiles[0];
-                const isProfileComplete = !!(
-                    profile.phoneNumber &&
-                    profile.streetAddress &&
-                    profile.city &&
-                    profile.state &&
-                    profile.zipCode &&
-                    profile.licenseNumber &&
-                    profile.insurancePolicyNumber &&
-                    profile.dateOfBirth &&
-                    profile.emergencyContactName &&
-                    profile.emergencyContactPhone
-                );
-
-                if (!isProfileComplete) {
-                    console.log("Profile incomplete, redirecting to signup...");
+                if (!isProfileComplete(profile)) {
                     router.push('/signup');
                     return;
                 }
 
                 const role = attributes['custom:role'];
-                console.log("User role found:", role);
 
                 if (!mounted) return;
 
@@ -79,22 +57,19 @@ function RoleBasedRedirect() {
                 }
             } catch (error) {
                 console.error('Error in redirect flow:', error);
-
-                // Retry logic if we just got a session but attributes aren't ready
+                attemptRef.current += 1;
                 if (attemptRef.current < 3) {
-                    attemptRef.current += 1;
-                    setStatus(`Syncing profile... (Attempt ${attemptRef.current})`);
+                    setStatus("Retrying...");
                     setTimeout(redirect, 1000);
-                    return;
+                } else {
+                    setStatus("Unable to load your profile. Redirecting to customer dashboard...");
+                    setTimeout(() => {
+                        if (mounted) router.push('/customer');
+                    }, 1500);
                 }
-
-                // Fallback
-                console.log("Fallback to customer dashboard");
-                router.push('/customer');
             }
         }
 
-        // Listen for token refresh or sign in events as well, in case we mounted too early
         const listener = Hub.listen('auth', (data) => {
             if (data.payload.event === 'signInWithRedirect' || data.payload.event === 'signedIn') {
                 redirect();

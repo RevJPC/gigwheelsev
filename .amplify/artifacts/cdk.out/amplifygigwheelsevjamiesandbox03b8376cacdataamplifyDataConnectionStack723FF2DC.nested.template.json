@@ -12,7 +12,7 @@
     "FunctionVersion": "2018-05-29",
     "Name": "Vehiclereservationsauth0Function",
     "RequestMappingTemplateS3Location": {
-     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/98d57dc1efb9e47547e4d43b376202499240f34e43676c88c84fab62008b2bf5.vtl"
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/db9bfc6577cb46e979d8c17edc0e26ee0335b1e5186fb16c18f98542ef2588c4.vtl"
     },
     "ResponseMappingTemplate": "$util.toJson({})"
    },
@@ -155,7 +155,7 @@
     "FunctionVersion": "2018-05-29",
     "Name": "Vehicleimagesauth0Function",
     "RequestMappingTemplateS3Location": {
-     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/98d57dc1efb9e47547e4d43b376202499240f34e43676c88c84fab62008b2bf5.vtl"
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/39ebedb103bd0f51e3db4bec8189e1157a117c6a9f4be7814903b75b1806f185.vtl"
     },
     "ResponseMappingTemplate": "$util.toJson({})"
    },
@@ -298,7 +298,7 @@
     "FunctionVersion": "2018-05-29",
     "Name": "Vehicleavailabilityauth0Function",
     "RequestMappingTemplateS3Location": {
-     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/98d57dc1efb9e47547e4d43b376202499240f34e43676c88c84fab62008b2bf5.vtl"
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/a0f8102182dd27900e249fc1e2a89c8f35a6b48dd34530bd5041f0ca9c671ece.vtl"
     },
     "ResponseMappingTemplate": "$util.toJson({})"
    },
@@ -441,7 +441,7 @@
     "FunctionVersion": "2018-05-29",
     "Name": "VehicleImagevehicleauth0Function",
     "RequestMappingTemplateS3Location": {
-     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/98d57dc1efb9e47547e4d43b376202499240f34e43676c88c84fab62008b2bf5.vtl"
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/39ebedb103bd0f51e3db4bec8189e1157a117c6a9f4be7814903b75b1806f185.vtl"
     },
     "ResponseMappingTemplate": "$util.toJson({})"
    },
@@ -584,7 +584,7 @@
     "FunctionVersion": "2018-05-29",
     "Name": "Reservationvehicleauth0Function",
     "RequestMappingTemplateS3Location": {
-     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/98d57dc1efb9e47547e4d43b376202499240f34e43676c88c84fab62008b2bf5.vtl"
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/2e4279e3afaaeab1731ed7794983edf101585b35dbdb8d3bf787b9f886160025.vtl"
     },
     "ResponseMappingTemplate": "$util.toJson({})"
    },
@@ -727,7 +727,7 @@
     "FunctionVersion": "2018-05-29",
     "Name": "VehicleAvailabilityvehicleauth0Function",
     "RequestMappingTemplateS3Location": {
-     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/98d57dc1efb9e47547e4d43b376202499240f34e43676c88c84fab62008b2bf5.vtl"
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/2e4279e3afaaeab1731ed7794983edf101585b35dbdb8d3bf787b9f886160025.vtl"
     },
     "ResponseMappingTemplate": "$util.toJson({})"
    },

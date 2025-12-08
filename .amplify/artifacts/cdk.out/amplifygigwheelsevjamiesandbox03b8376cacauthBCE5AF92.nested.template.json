@@ -319,6 +319,30 @@
     "AutoVerifiedAttributes": [
      "email"
     ],
+    "EmailConfiguration": {
+     "EmailSendingAccount": "DEVELOPER",
+     "From": "noreply@gigwheelsev.com",
+     "SourceArn": {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":ses:",
+        {
+         "Ref": "AWS::Region"
+        },
+        ":",
+        {
+         "Ref": "AWS::AccountId"
+        },
+        ":identity/noreply@gigwheelsev.com"
+       ]
+      ]
+     }
+    },
     "EmailVerificationMessage": "The verification code to your new account is {####}",
     "EmailVerificationSubject": "Verify your new account",
     "Policies": {

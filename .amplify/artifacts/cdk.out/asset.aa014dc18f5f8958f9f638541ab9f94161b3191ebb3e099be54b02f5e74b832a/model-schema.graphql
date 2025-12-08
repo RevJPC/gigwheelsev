@@ -1,0 +1,139 @@
+enum UserRole {
+  CUSTOMER
+  EMPLOYEE
+  ADMIN
+}
+
+enum UserStatus {
+  ACTIVE
+  SUSPENDED
+}
+
+enum VehicleStatus {
+  AVAILABLE
+  RENTED
+  MAINTENANCE
+  CHARGING
+}
+
+enum ChangeRequestStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+type Vehicle @model @auth(rules: [{allow: public, provider: apiKey, operations: [read]},
+  {allow: private, operations: [read]},
+  {allow: groups, groups: ["ADMIN", "EMPLOYEE"]}])
+{
+  make: String!
+  model: String!
+  year: Int!
+  vin: String!
+  licensePlate: String
+  batteryLevel: Int
+  range: Float
+  status: VehicleStatus
+  locationLat: Float
+  locationLng: Float
+  pricePerDay: Float
+  color: String
+  imageUrl: String
+  firmwareVersion: String
+  lastSyncedAt: AWSDateTime
+  odometer: Float
+  reservations: [Reservation] @hasMany(references: ["vehicleId"])
+  images: [VehicleImage] @hasMany(references: ["vehicleId"])
+  availability: [VehicleAvailability] @hasMany(references: ["vehicleId"])
+}
+
+type VehicleImage @model @auth(rules: [{allow: public, provider: apiKey, operations: [read]},
+  {allow: private, operations: [read]},
+  {allow: groups, groups: ["ADMIN", "EMPLOYEE"]}])
+{
+  vehicleId: ID!
+  vehicle: Vehicle @belongsTo(references: ["vehicleId"])
+  imageUrl: String!
+  isPrimary: Boolean @default(value: "false")
+  caption: String
+  order: Int @default(value: "0")
+}
+
+enum ReservationStatus {
+  PENDING
+  CONFIRMED
+  COMPLETED
+  CANCELLED
+}
+
+type Reservation @model @auth(rules: [{allow: owner, ownerField: "owner"},
+  {allow: groups, groups: ["ADMIN", "EMPLOYEE"]}])
+{
+  vehicleId: ID!
+  vehicle: Vehicle @belongsTo(references: ["vehicleId"])
+  userId: String!
+  startTime: AWSDateTime!
+  endTime: AWSDateTime!
+  status: ReservationStatus
+  totalPrice: Float
+}
+
+type TeslaIntegration @model @auth(rules: [{allow: groups, groups: ["ADMIN"]}])
+{
+  accessToken: String!
+  refreshToken: String!
+  expiresIn: Int
+  tokenType: String
+}
+
+type UserProfile @model @auth(rules: [{allow: public, provider: apiKey}])
+{
+  userId: String!
+  email: String!
+  firstName: String
+  lastName: String
+  role: UserRole!
+  status: UserStatus
+  profilePictureUrl: String
+  phoneNumber: String
+  streetAddress: String
+  city: String
+  state: String
+  zipCode: String
+  licenseNumber: String
+  insurancePolicyNumber: String
+  dateOfBirth: AWSDate
+  emergencyContactName: String
+  emergencyContactPhone: String
+}
+
+type ProfileChangeRequest @model @auth(rules: [{allow: public, provider: apiKey}])
+{
+  userId: String!
+  requestedBy: String!
+  newData: AWSJSON!
+  token: String!
+  status: ChangeRequestStatus!
+}
+
+type VehicleAvailability @model @auth(rules: [{allow: groups, groups: ["ADMIN", "EMPLOYEE"]},
+  {allow: public, provider: apiKey, operations: [read]}])
+{
+  vehicleId: ID!
+  vehicle: Vehicle @belongsTo(references: ["vehicleId"])
+  startTime: AWSDateTime!
+  endTime: AWSDateTime!
+  isAvailable: Boolean! @default(value: "true")
+  reason: String
+}
+
+type Mutation {
+  deleteUser(userId: String!): AWSJSON @function(name: "FnDeleteUser") @auth(rules: [{allow: public, provider: apiKey}])
+  sendChangeEmail(email: String!, token: String!, requestId: String!, changes: AWSJSON!): AWSJSON @function(name: "FnSendChangeEmail") @auth(rules: [{allow: private}])
+}
+
+type Query {
+  teslaConnect(code: String, redirectUri: String): AWSJSON @function(name: "FnTeslaConnect") @auth(rules: [{allow: public, provider: apiKey}])
+  teslaSync: AWSJSON @function(name: "FnTeslaSync") @auth(rules: [{allow: groups, groups: ["ADMIN"]}])
+  teslaRegister(domain: String): AWSJSON @function(name: "FnTeslaRegister") @auth(rules: [{allow: public, provider: apiKey}])
+}

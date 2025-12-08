@@ -351,21 +351,13 @@
    "Properties": {
     "AdditionalAuthenticationProviders": [
      {
-      "AuthenticationType": "AMAZON_COGNITO_USER_POOLS",
-      "UserPoolConfig": {
-       "AwsRegion": {
-        "Ref": "AWS::Region"
-       },
-       "UserPoolId": {
-        "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacauthNestedStackauthNestedStackResourceD32EECAFOutputsamplifygigwheelsevjamiesandbox03b8376cacauthamplifyAuthUserPool6D20C8C9Ref"
-       }
-      }
+      "AuthenticationType": "API_KEY"
      },
      {
       "AuthenticationType": "AWS_IAM"
      }
     ],
-    "AuthenticationType": "API_KEY",
+    "AuthenticationType": "AMAZON_COGNITO_USER_POOLS",
     "Name": "amplifyData",
     "Tags": [
      {
@@ -380,7 +372,16 @@
       "Key": "created-by",
       "Value": "amplify"
      }
-    ]
+    ],
+    "UserPoolConfig": {
+     "AwsRegion": {
+      "Ref": "AWS::Region"
+     },
+     "DefaultAction": "ALLOW",
+     "UserPoolId": {
+      "Ref": "referencetoamplifygigwheelsevjamiesandbox03b8376cacauthNestedStackauthNestedStackResourceD32EECAFOutputsamplifygigwheelsevjamiesandbox03b8376cacauthamplifyAuthUserPool6D20C8C9Ref"
+     }
+    }
    },
    "UpdateReplacePolicy": "Delete",
    "DeletionPolicy": "Delete",
@@ -398,7 +399,7 @@
      ]
     },
     "DefinitionS3Location": {
-     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/a345636f4ae43b1a7225e60157b90ce5938dbeb12b2fcaad02f7dbebe07b95c0.graphql"
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/d04be0f7a23d89839be33c227565ff8c5501b7d6e05ffc8775676b92d10c0e1f.graphql"
     }
    },
    "UpdateReplacePolicy": "Delete",
@@ -416,7 +417,7 @@
       "ApiId"
      ]
     },
-    "Expires": 1767716900
+    "Expires": 1767743769
    },
    "UpdateReplacePolicy": "Delete",
    "DeletionPolicy": "Delete",
@@ -573,7 +574,7 @@
        {
         "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
        },
-       "/90515e09e82953660811697d562e6446514ac56496b561dbea5f1ef77b9749ae.json"
+       "/7a8e851efb336f2f641a53cbebedbb15165f758592bf1b072207231f26fde078.json"
       ]
      ]
     }
@@ -666,7 +667,7 @@
        {
         "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
        },
-       "/7b27531ccb8242a35f1ec3349c78f4b319fc56e165c05a8018aca3badfa6050e.json"
+       "/56cb339fa3d0488e0a80c775c752260a83be5055852fc6b73d41cfb4560beabc.json"
       ]
      ]
     }
@@ -759,7 +760,7 @@
        {
         "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
        },
-       "/18343798f05f2b709a321c17312972b05940fbfad27669e1ba60964c414d5602.json"
+       "/73dd725d063a2660f2072dd1887edf06c67632ea17fb00a7f48d9d18b00afed4.json"
       ]
      ]
     }
@@ -852,7 +853,7 @@
        {
         "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
        },
-       "/05dbf096f02b27c96b861086c489d8f24c7d9e38fd9cc8b7b4f54aae55b7b2fd.json"
+       "/61f30869df4299f590b90583b3189dce11ced13d0fd832c90d0c0feb2f90a1c2.json"
       ]
      ]
     }
@@ -945,7 +946,7 @@
        {
         "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
        },
-       "/f9e5120933bebcfb5e75b898278f3b7026e587a456061a3118007ff8def09776.json"
+       "/ec7ee43ffb18cd191f21a53bb2961679cb76816d368ef2feeeab4c9795cbb629.json"
       ]
      ]
     }
@@ -1038,7 +1039,7 @@
        {
         "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
        },
-       "/aa2947c73d1fc38c78a000fb199c8a7a0a32e12b5fdbab72f9e942f7c2f396f5.json"
+       "/0174006752f18de2e3c413590f07b73003356541fc40a311c1e97f4dea941270.json"
       ]
      ]
     }
@@ -1131,7 +1132,7 @@
        {
         "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
        },
-       "/296c73cf071b57777efd1f1f2d60d0b95cfc0fd237802589d2f5df9932fe827a.json"
+       "/264424da10b738703221e5b2464220dbfc1e2fd805a5031f76131d65d04fb0e6.json"
       ]
      ]
     }
@@ -1224,7 +1225,7 @@
        {
         "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
        },
-       "/1f18e1b38688df0c8cd3bf427e614eea4060c9293bbaf6a35e9176efc60ff4b3.json"
+       "/72253c923d7c223b3f26317471b29574e4c746bb860df5ac2c9b300fb8140c7b.json"
       ]
      ]
     }
@@ -1344,7 +1345,7 @@
        {
         "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
        },
-       "/7944b55b1556c70f399c9eebb953a6ab1d6dd3a397f5fd97322a36103c70ddda.json"
+       "/86fbe4546c00d914cbc8acc2ea19da2bda91f2d8a27dbe9b8668a6fc7afe328a.json"
       ]
      ]
     }
@@ -1537,7 +1538,7 @@
      }
     ],
     "SourceObjectKeys": [
-     "285f342983e3d2a73d8ce4f77e32279c8d4e20fd771636757d620f3188ecf311.zip"
+     "20c4bb08b560537a5988494bfd45e0a63a548e993ab070177c9ee359f5a57a3c.zip"
     ],
     "SourceMarkers": [
      {}
@@ -2042,7 +2043,7 @@
      }
     ],
     "SourceObjectKeys": [
-     "b5dfffe0a54721267e41f56e612991bfcfd1f8b5d1dfea6f5760bf2b9b091c2c.zip"
+     "18a532ac689d40df569f1ae631d3e3f67ae9810ea0b7cf830bfc146945f71171.zip"
     ],
     "SourceMarkers": [
      {}
