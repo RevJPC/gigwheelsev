@@ -48,11 +48,13 @@ export async function getUserRole(): Promise<UserRole> {
         }
 
         // 2. If not found by userId, try by email (to sync manual entries)
-        if (user.signInDetails?.loginId) {
+        const userEmail = user.signInDetails?.loginId || userAttributes?.email;
+
+        if (userEmail) {
             const { data: byEmail } = await getClient().models.UserProfile.list({
                 filter: {
                     email: {
-                        eq: user.signInDetails.loginId
+                        eq: userEmail
                     }
                 }
             });
